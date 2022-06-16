@@ -209,9 +209,1099 @@
       
           <h2 id="这个Blog仅用作笔记"><a href="#这个Blog仅用作笔记" class="headerlink" title="这个Blog仅用作笔记"></a>这个Blog仅用作笔记</h2><h3 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a>免责声明</h3><p>本站部分内容不代表本人观点<br>背景图片的画师是Relax_Lion</p>
 <p>我会在这里记录我的笔记<br>因为我还没有整搜索引擎推广,所以能看过来的大家应该都认识hh</p>
-<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="经济相关"><a href="#经济相关" class="headerlink" title="经济相关"></a>经济相关</h2><h2 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h2><h3 id="Custom-Render-Pipeline和相关shader"><a href="#Custom-Render-Pipeline和相关shader" class="headerlink" title="Custom Render Pipeline和相关shader"></a>Custom Render Pipeline和相关shader</h3><a href="#">Post not found: CustomRenderPipeline CustomRenderPipeline</a>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="经济相关"><a href="#经济相关" class="headerlink" title="经济相关"></a>经济相关</h2><h2 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h2><h3 id="Custom-Render-Pipeline和相关shader"><a href="#Custom-Render-Pipeline和相关shader" class="headerlink" title="Custom Render Pipeline和相关shader"></a>Custom Render Pipeline和相关shader</h3><a href="/2022/06/16/CustomRenderPipeline/" title="CustomRenderPipeline">CustomRenderPipeline</a>
 <hr>
 <p>More info: <a target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/">CatlikeCoding</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/16/CustomRenderPipeline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/16/CustomRenderPipeline/" class="post-title-link" itemprop="url">CustomRenderPipeline</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-16 23:52:30" itemprop="dateCreated datePublished" datetime="2022-06-16T23:52:30+08:00">2022-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-17 00:52:17" itemprop="dateModified" datetime="2022-06-17T00:52:17+08:00">2022-06-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="目前进度-DIRECTIONAL-SHADOW"><a href="#目前进度-DIRECTIONAL-SHADOW" class="headerlink" title="目前进度:DIRECTIONAL SHADOW"></a>目前进度:DIRECTIONAL SHADOW</h1><p>unity版本:2021.3.3f1c1</p>
+<h1 id="Asset-x2F-CustomRenderPipeline"><a href="#Asset-x2F-CustomRenderPipeline" class="headerlink" title="Asset&#x2F;CustomRenderPipeline"></a>Asset&#x2F;CustomRenderPipeline</h1><p>Unity中要自定义渲染管线是需要生成Asset的. 因此用作渲染的管线脚本一般会有三部分:CustomRenderPipelineAsset; CustomRenderPipeline; CameraRenderer.(Catlike Coding里还包括了CameraRenderer.Editor作为Partial class..)</p>
+<h2 id="CustomRenderPipelineAsset-cs"><a href="#CustomRenderPipelineAsset-cs" class="headerlink" title="CustomRenderPipelineAsset.cs"></a>CustomRenderPipelineAsset.cs</h2><pre><code>using UnityEngine;
+using UnityEngine.Rendering;
+
+[CreateAssetMenu(menuName = &quot;Rendering/CustomRenderPipeline&quot;)]
+public class CustomRenderPipelineAsset : RenderPipelineAsset
+&#123;
+    [SerializeField]
+    bool useDynamicBatching = true, useGPUInstancing = true, useSRPBatching = true;
+    protected override RenderPipeline CreatePipeline()
+    &#123;
+        return new CustomRenderPipeline(useDynamicBatching, useGPUInstancing, useSRPBatching);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="CustomRenderPipeline-cs"><a href="#CustomRenderPipeline-cs" class="headerlink" title="CustomRenderPipeline.cs"></a>CustomRenderPipeline.cs</h2><pre><code>using UnityEngine.Rendering;
+using UnityEngine;
+
+public class CustomRenderPipeline : RenderPipeline
+&#123;
+    CameraRenderer renderer = new CameraRenderer();
+    bool useDynamicBatching, useGPUInstancing;
+    public CustomRenderPipeline(bool useDynamicBatching, bool useGPUInstancing, bool useSRPBatching) &#123;
+    this.useDynamicBatching = useDynamicBatching;
+    this.useGPUInstancing = useGPUInstancing;
+        GraphicsSettings.useScriptableRenderPipelineBatching = 	useSRPBatching;
+        GraphicsSettings.lightsUseLinearIntensity = true;
+        &#125;
+    protected override void Render(ScriptableRenderContext ScriptableRenderContext, Camera[] cameras)
+    &#123;
+
+        foreach (Camera camera in cameras)
+        &#123;
+            renderer.Render(ScriptableRenderContext , camera, useDynamicBatching, useGPUInstancing);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="CameraRenderer-cs"><a href="#CameraRenderer-cs" class="headerlink" title="CameraRenderer.cs"></a>CameraRenderer.cs</h2><pre><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+
+public partial class CameraRenderer
+&#123;
+
+    ScriptableRenderContext context;
+
+    Camera camera;
+
+    const string bufferName = &quot;Render Camera&quot;;
+
+    CommandBuffer buffer = new CommandBuffer
+    &#123;
+        name = bufferName
+    &#125;;
+
+    CullingResults cullingResults;
+    static ShaderTagId unlitShaderTagId = new ShaderTagId(&quot;SRPDefaultUnlit&quot;), litShaderTagId = new ShaderTagId(&quot;CustomLit&quot;);
+
+    Lighting lighting = new Lighting();
+
+    public void Render(ScriptableRenderContext context, Camera camera, bool useDynamicBatching, bool useGPUInstancing)
+    &#123;
+        this.context = context;
+        this.camera = camera;
+
+        PrepareBuffer();
+
+        PrepareForSceneWindow();
+
+        if (!Cull())
+        &#123;
+            return;
+        &#125;
+
+        Setup();
+        lighting.Setup(context, cullingResults);
+
+        DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
+
+        DrawUnsupportedShaders();
+
+
+        DrawGizmos();
+
+
+        Submit();
+    &#125;
+
+
+    void DrawVisibleGeometry(bool useDynamicBatching, bool useGPUInstancing)
+    &#123;
+
+        var sortingSettings = new SortingSettings(camera)
+        &#123;
+            criteria = SortingCriteria.CommonOpaque
+        &#125;;
+
+        var drawingSettings = new DrawingSettings(unlitShaderTagId, sortingSettings)
+        &#123;
+            enableDynamicBatching = useDynamicBatching,
+            enableInstancing = useGPUInstancing
+        &#125;;
+        drawingSettings.SetShaderPassName(1, litShaderTagId);
+
+        GraphicsSettings.useScriptableRenderPipelineBatching = false;
+
+        var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
+
+        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
+    
+
+        context.DrawSkybox(camera);
+
+        sortingSettings.criteria = SortingCriteria.CommonTransparent;
+        drawingSettings.sortingSettings = sortingSettings;
+
+        filteringSettings.renderQueueRange = RenderQueueRange.transparent;
+
+        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
+
+    &#125;
+
+    void Submit()
+    &#123;
+        buffer.EndSample(SampleName);
+        ExecuteBuffer();
+        context.Submit();
+    &#125;
+
+    void Setup()
+    &#123;
+        context.SetupCameraProperties(camera);
+
+        CameraClearFlags flags = camera.clearFlags;
+
+        buffer.ClearRenderTarget(flags &lt;= CameraClearFlags.Depth, flags == CameraClearFlags.Color, 
+            flags == CameraClearFlags.Color ? camera.backgroundColor.linear : Color.clear);
+        buffer.BeginSample(SampleName);     
+        ExecuteBuffer();
+    
+    &#125;
+
+    void ExecuteBuffer()
+    &#123;
+        context.ExecuteCommandBuffer(buffer);
+        buffer.Clear();
+    &#125;
+
+    bool Cull()
+    &#123;
+        ScriptableCullingParameters p;
+
+        if (camera.TryGetCullingParameters(out p))
+        &#123;
+            cullingResults = context.Cull(ref p);
+            return true;
+        &#125;
+        return false;
+    &#125;
+</code></pre>
+<h2 id="CameraRenderer-Editor-cs"><a href="#CameraRenderer-Editor-cs" class="headerlink" title="CameraRenderer.Editor.cs"></a>CameraRenderer.Editor.cs</h2><pre><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Profiling;
+using UnityEngine.Rendering;
+
+public partial class CameraRenderer
+&#123;
+    partial void DrawUnsupportedShaders();
+    partial void DrawGizmos();
+    partial void PrepareForSceneWindow();
+
+    partial void PrepareBuffer();
+    #if UNITY_EDITOR
+
+    static ShaderTagId[] legacyShaderTagIds = &#123;
+        new ShaderTagId(&quot;Always&quot;),
+        new ShaderTagId(&quot;ForwardBase&quot;),
+        new ShaderTagId(&quot;PrepassBase&quot;),
+        new ShaderTagId(&quot;Vertex&quot;),
+        new ShaderTagId(&quot;VertexLMRGBM&quot;),
+        new ShaderTagId(&quot;VertexLM&quot;),
+    &#125;;
+
+    static Material errorMaterial;
+
+    string SampleName &#123; get; set; &#125;
+
+
+    partial void DrawUnsupportedShaders()
+    &#123;
+
+        if (errorMaterial == null)
+        &#123;
+            errorMaterial = new Material(Shader.Find(&quot;Hidden/InternalErrorShader&quot;));
+        &#125;
+     
+
+        var drawingSettings = new DrawingSettings(legacyShaderTagIds[0], new SortingSettings(camera))
+        &#123;overrideMaterial = errorMaterial &#125;;
+        for (int i = 1; i &lt; legacyShaderTagIds.Length; i++)
+        &#123;
+
+            drawingSettings.SetShaderPassName(i, legacyShaderTagIds[i]);
+        &#125;
+
+        var filteringSettings = FilteringSettings.defaultValue;
+
+        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
+    &#125;
+
+    partial void DrawGizmos()
+    &#123;
+        if (Handles.ShouldRenderGizmos())
+        &#123;
+            context.DrawGizmos(camera, GizmoSubset.PreImageEffects);
+            context.DrawGizmos(camera, GizmoSubset.PostImageEffects);
+        &#125;
+    &#125;
+
+    partial void PrepareForSceneWindow()
+    &#123;
+        if (camera.cameraType == CameraType.SceneView)
+        &#123;
+
+            ScriptableRenderContext.EmitWorldGeometryForSceneView(camera);
+        &#125;
+    &#125;
+
+
+    partial void PrepareBuffer()
+    &#123;
+
+        Profiler.BeginSample(&quot;Editor Only&quot;);
+        buffer.name = SampleName = camera.name;
+        Profiler.EndSample();
+    &#125;
+    #else
+    const string SampleName = bufferName;
+
+    #endif
+    &#125;
+
+&#125;
+</code></pre>
+<p>Catlike模仿了URP的文件夹结构,把以上四个文件放在Assets&#x2F;CustomRenderPipeline&#x2F;Runtime里面,截至directional light,这个文件夹里还有个文件:Lighting.cs</p>
+<h2 id="Lighting-cs"><a href="#Lighting-cs" class="headerlink" title="Lighting.cs"></a>Lighting.cs</h2><pre><code>using Unity.Collections;
+using UnityEngine;
+using UnityEngine.Rendering;
+
+public class Lighting
+&#123;
+    const string bufferName = &quot;Lighting&quot;;
+
+    CommandBuffer buffer = new CommandBuffer&#123;
+        name = bufferName
+    &#125;;
+
+    const int maxDirLightCount = 4;
+    static int dirLightCountId = Shader.PropertyToID(&quot;_DirectionalLightCount&quot;), dirLightColorsId = Shader.PropertyToID(&quot;_DirectionalLightColors&quot;), dirLightDirectionsId = Shader.PropertyToID(&quot;_DirectionalLightDirections&quot;);
+    static Vector4[] dirLightColors = new Vector4[maxDirLightCount], dirLightDirections = new Vector4[maxDirLightCount];
+
+    CullingResults cullingResults;
+    public void Setup (ScriptableRenderContext context, CullingResults cullingResults)
+    &#123;
+        this.cullingResults = cullingResults;
+        buffer.BeginSample(bufferName);
+        SetupLights();
+        buffer.EndSample(bufferName);
+        context.ExecuteCommandBuffer(buffer);
+        buffer.Clear();
+    &#125;
+
+    void SetupLights()
+    &#123;
+        NativeArray&lt;VisibleLight&gt; visibleLights = cullingResults.visibleLights;
+        int dirLightCount = 0;
+        for (int i=0; i&lt;visibleLights.Length; i++)
+        &#123;
+            VisibleLight visibleLight = visibleLights[i];
+            if(visibleLight.lightType == 	LightType.Directional)&#123;
+                SetupDirectionalLight(dirLightCount++,ref visibleLight);
+                if (dirLightCount &gt;= maxDirLightCount)
+                &#123;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+        buffer.SetGlobalInt(dirLightCountId, visibleLights.Length);
+        buffer.SetGlobalVectorArray(dirLightColorsId, dirLightColors);
+        buffer.SetGlobalVectorArray(dirLightDirectionsId, dirLightDirections);
+    &#125;
+    void SetupDirectionalLight(int index,ref VisibleLight visibleLight)
+    &#123;
+        dirLightColors[index] = visibleLight.finalColor;
+        dirLightDirections[index] = -visibleLight.localToWorldMatrix.GetColumn(2);
+    &#125;
+&#125;
+</code></pre>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="Asset-x2F-CustomRenderPipeline-x2F-Shader"><a href="#Asset-x2F-CustomRenderPipeline-x2F-Shader" class="headerlink" title="Asset&#x2F;CustomRenderPipeline&#x2F;Shader"></a>Asset&#x2F;CustomRenderPipeline&#x2F;Shader</h1><p>这部分包含7个文件(包括了我自己写的简易卡通shader)</p>
+<h2 id="CartoonLitShader-hlsl"><a href="#CartoonLitShader-hlsl" class="headerlink" title="CartoonLitShader.hlsl"></a>CartoonLitShader.hlsl</h2><pre><code>#ifndef CUSTOM_LIT_PASS_INCLUDED
+#define CUSTOM_LIT_PASS_INCLUDED
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/CartoonSurface.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Light.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/CartoonBRDF.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/CartoonLighting.hlsl&quot;
+
+
+TEXTURE2D(_BaseMap);
+SAMPLER(sampler_BaseMap);
+
+UNITY_INSTANCING_BUFFER_START(UnityPerMaterial)
+UNITY_DEFINE_INSTANCED_PROP(float4, _BaseMap_ST)
+UNITY_DEFINE_INSTANCED_PROP(float4,_BaseColor)
+UNITY_DEFINE_INSTANCED_PROP(float, _Cutoff)
+UNITY_DEFINE_INSTANCED_PROP(float, _Metallic)
+UNITY_DEFINE_INSTANCED_PROP(float, _Smoothness)
+
+
+UNITY_DEFINE_INSTANCED_PROP(float, _FirstEdge)
+UNITY_DEFINE_INSTANCED_PROP(float, _SecondEdge)
+UNITY_INSTANCING_BUFFER_END(UnityPerMaterial)
+
+
+
+struct Attributes
+&#123;
+    float3 positionOS:Position;
+    float2 baseUV : TEXCOORD0;
+    float3 normalOS:NORMAL;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+struct Varying
+&#123;
+    float4 positionCS:SV_POSITION;
+    float3 positionWS:VAR_POSITION;
+    float2 baseUV : VAR_BASE_UV;
+    float3 normalWS: VAR_NORMAL;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+
+
+Varying LitPassVertex(Attributes input)&#123;
+    Varying output;
+    UNITY_SETUP_INSTANCE_ID(input);
+    UNITY_TRANSFER_INSTANCE_ID(input,output);
+    output.positionWS = TransformObjectToWorld(input.positionOS.xyz);
+    float3 normalWS = normalize(TransformObjectToWorldNormal(input.normalOS));
+    output.positionCS = TransformWorldToHClip(output.positionWS);
+    output.normalWS = TransformObjectToWorldNormal(input.normalOS);
+    float4 baseST = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseMap_ST);
+    output.baseUV = input.baseUV *baseST.xy + baseST.zw;
+    return output;
+&#125;
+
+float4 LitPassFragment(Varying input):SV_TARGET&#123;
+    Surface surface;
+
+
+    UNITY_SETUP_INSTANCE_ID(input);
+    float4 baseMap = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.baseUV);
+    float4 baseColor = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseColor);
+    float4 base = baseMap * baseColor;
+    #if defined(_CLIPPING)
+    clip(base.a - UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Cutoff));
+    #endif
+    surface.normal = normalize(input.normalWS);
+    surface.color = base.rgb;
+    surface.alpha = base.a;
+    surface.metallic = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Metallic);
+    surface.smoothness = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Smoothness);
+    surface.viewDirection = normalize(_WorldSpaceCameraPos - input.positionWS);
+    surface.firstedge = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _FirstEdge);
+    surface.secondedge = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _SecondEdge);
+    #if defined(_PREMULTIPLY_ALPHA)
+        CartoonBRDF brdf = GetBRDF(surface, true);
+    #else 
+        CartoonBRDF brdf = GetBRDF(surface);
+    #endif
+    float3 color = GetLighting(surface, brdf);
+
+    return float4(color, surface.alpha);
+&#125;
+
+#endif
+</code></pre>
+<h2 id="CartoonOpaque-shader-其实就是glsl"><a href="#CartoonOpaque-shader-其实就是glsl" class="headerlink" title="CartoonOpaque.shader(其实就是glsl)"></a>CartoonOpaque.shader(其实就是glsl)</h2><pre><code>Shader &quot;Custom/CartoonOpaque&quot;
+&#123;
+    Properties&#123;
+        _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
+        _BaseMap(&quot;Texture&quot;, 2D) = &quot;white&quot;&#123;&#125;
+        _FirstEdge(&quot;First Edge&quot;, Range(-1,1))= 0.707
+        _SecondEdge(&quot;Second Edge&quot;, Range(-1,1))= 0
+        [Toggle(_PREMULTIPLY_ALPHA)] _PremulAlpha (&quot;Premultiply Alpha&quot;, Float) = 0
+
+    &#125;
+    SubShader&#123;
+        Pass&#123;
+            Tags&#123;&quot;LightMode&quot; = &quot;CustomLit&quot;&#125;
+
+            HLSLPROGRAM
+            #pragma target 3.5
+            #pragma vertex LitPassVertex
+            #pragma fragment LitPassFragment
+            #pragma multi_compile_instancing
+            #pragma shader_feature _CLIPPING
+            #pragma shader_feature _PREMULTIPLY_ALPHA
+            #include &quot;Assets/CustomRenderPipeline/Shader/CartoonLitPass.hlsl&quot;
+        
+        
+            ENDHLSL
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="LitPass-hlsl"><a href="#LitPass-hlsl" class="headerlink" title="LitPass.hlsl"></a>LitPass.hlsl</h2><pre><code>#ifndef CUSTOM_LIT_PASS_INCLUDED
+#define CUSTOM_LIT_PASS_INCLUDED
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Surface.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Light.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/BRDF.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Lighting.hlsl&quot;
+
+
+TEXTURE2D(_BaseMap);
+SAMPLER(sampler_BaseMap);
+
+UNITY_INSTANCING_BUFFER_START(UnityPerMaterial)
+UNITY_DEFINE_INSTANCED_PROP(float4, _BaseMap_ST)
+UNITY_DEFINE_INSTANCED_PROP(float4,_BaseColor)
+UNITY_DEFINE_INSTANCED_PROP(float, _Cutoff)
+UNITY_DEFINE_INSTANCED_PROP(float, _Metallic)
+UNITY_DEFINE_INSTANCED_PROP(float, _Smoothness)
+UNITY_INSTANCING_BUFFER_END(UnityPerMaterial)
+
+
+
+struct Attributes
+&#123;
+    float3 positionOS:Position;
+    float2 baseUV : TEXCOORD0;
+    float3 normalOS:NORMAL;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#123;;
+struct Varying
+&#123;
+    float4 positionCS:SV_POSITION;
+    float3 positionWS:VAR_POSITION;
+    float2 baseUV : VAR_BASE_UV;
+    float3 normalWS: VAR_NORMAL;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+
+
+Varying LitPassVertex(Attributes input)&#123;
+    Varying output;
+    UNITY_SETUP_INSTANCE_ID(input);
+    UNITY_TRANSFER_INSTANCE_ID(input,output);
+    output.positionWS = TransformObjectToWorld(input.positionOS.xyz);
+    float3 normalWS = normalize(TransformObjectToWorldNormal(input.normalOS));
+    output.positionCS = TransformWorldToHClip(output.positionWS);
+    output.normalWS = TransformObjectToWorldNormal(input.normalOS);
+    float4 baseST = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseMap_ST);
+    output.baseUV = input.baseUV *baseST.xy + baseST.zw;
+    return output;
+&#125;
+
+float4 LitPassFragment(Varying input):SV_TARGET&#123;
+    Surface surface;
+
+
+    UNITY_SETUP_INSTANCE_ID(input);
+    float4 baseMap = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.baseUV);
+    float4 baseColor = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseColor);
+    float4 base = baseMap * baseColor;
+    #if defined(_CLIPPING)
+    clip(base.a - UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Cutoff));
+    #endif
+    surface.normal = normalize(input.normalWS);
+    surface.color = base.rgb;
+    surface.alpha = base.a;
+    surface.metallic = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Metallic);
+    surface.smoothness = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Smoothness);
+    surface.viewDirection = normalize(_WorldSpaceCameraPos - input.positionWS);
+    #if defined(_PREMULTIPLY_ALPHA)
+        BRDF brdf = GetBRDF(surface, true);
+    #else 
+        BRDF brdf = GetBRDF(surface);
+    #endif
+    float3 color = GetLighting(surface, brdf);
+
+    return float4(color, surface.alpha);
+&#125;
+
+#endif
+</code></pre>
+<h2 id="Opaque-Shader"><a href="#Opaque-Shader" class="headerlink" title="Opaque.Shader"></a>Opaque.Shader</h2><pre><code>Shader &quot;Custom/Opaque&quot;
+&#123;
+    Properties&#123;
+        _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
+        _BaseMap(&quot;Texture&quot;, 2D) = &quot;white&quot;&#123;&#125;
+        _Metallic(&quot;Metallic&quot;, Range(0,1)) = 0.5
+        _Smoothness(&quot;Smoothness&quot;, Range(0,1)) = 1
+        [Toggle(_PREMULTIPLY_ALPHA)] _PremulAlpha (&quot;Premultiply Alpha&quot;, Float) = 0
+
+    &#125;
+    SubShader&#123;
+        Pass&#123;
+            Tags&#123;&quot;LightMode&quot; = &quot;CustomLit&quot;&#125;
+
+            HLSLPROGRAM
+            #pragma target 3.5
+            #pragma vertex LitPassVertex
+            #pragma fragment LitPassFragment
+            #pragma multi_compile_instancing
+            #pragma shader_feature _CLIPPING
+            #pragma shader_feature _PREMULTIPLY_ALPHA
+            #include &quot;Assets/CustomRenderPipeline/Shader/LitPass.hlsl&quot;
+        
+        
+            ENDHLSL
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="Transparent-Shader"><a href="#Transparent-Shader" class="headerlink" title="Transparent.Shader"></a>Transparent.Shader</h2><pre><code>Shader &quot;Custom/Transparent&quot;
+&#123;
+    Properties&#123;
+        _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
+        _BaseMap(&quot;Texture&quot;, 2D) = &quot;white&quot;&#123;&#125;
+        _Cutoff(&quot;Alpha Cutoff&quot;, Range(0.0, 1.0))= 0.5
+        [Toggle(_CLIPPING)] _Clipping (&quot;Alpha Clipping&quot;, Float) = 0
+        [Enum(UnityEngine.Rendering.BlendMode)]_SrcBlend(&quot;Src Blend&quot;, Float) = 1
+        [Enum(UnityEngine.Rendering.BlendMode)]_DstBlend(&quot;Dst Blend&quot;, Float) = 0
+        [Enum(Off, 0 ,On, 1)] _ZWrite (&quot;ZWrite&quot;, Float) = 1
+        [Toggle(_PREMULTIPLY_ALPHA)] _PremulAlpha (&quot;Premultiply Alpha&quot;, Float) = 0
+    &#125;
+    SubShader&#123;
+        Pass&#123;
+            Tags&#123;&quot;LightMode&quot; = &quot;CustomLit&quot;&#125;
+            Blend [_SrcBlend] [_DstBlend]
+            ZWrite [_ZWrite]
+            HLSLPROGRAM
+            #pragma target 3.5
+            #pragma vertex LitPassVertex
+            #pragma fragment LitPassFragment
+            #pragma shader_feature _CLIPPING
+            #pragma shader_feature _PREMULTIPLY_ALPHA
+            #pragma multi_compile_instancing
+            #include &quot;Assets/CustomRenderPipeline/Shader/LitPass.hlsl&quot;
+        
+        
+            ENDHLSL
+        &#125;
+    &#125;
+    CustomEditor &quot;CustomShaderGUI&quot;
+&#125;
+</code></pre>
+<h2 id="UnlitPass-hlsl"><a href="#UnlitPass-hlsl" class="headerlink" title="UnlitPass.hlsl"></a>UnlitPass.hlsl</h2><pre><code>#ifndef CUSTOM_UNLIT_PASS_INCLUDED
+#define CUSTOM_UNLIT_PASS_INCLUDED
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
+
+
+
+UNITY_INSTANCING_BUFFER_START(UnityPerMaterial)
+UNITY_DEFINE_INSTANCED_PROP(float4,_BaseColor)
+UNITY_INSTANCING_BUFFER_END(UnityPerMaterial)
+
+
+
+struct Attributes
+&#123;
+    float3 positionOS:Position;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+struct Varying
+&#123;
+    float4 positionCS:SV_POSITION;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+
+
+Varying UnlitPassVertex(Attributes input)&#123;
+    Varying output;
+    UNITY_SETUP_INSTANCE_ID(input);
+    UNITY_TRANSFER_INSTANCE_ID(input,output);
+    float3 positionWS = TransformObjectToWorld(input.positionOS.xyz);
+
+    output.positionCS = TransformWorldToHClip(positionWS);
+
+    return output;
+&#125;
+
+float4 UnlitPassFragment(Varying input):SV_TARGET&#123;
+    UNITY_SETUP_INSTANCE_ID(input);
+    return UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseColor);
+&#125;
+
+#endif
+</code></pre>
+<h2 id="UnlitShader-Shader"><a href="#UnlitShader-Shader" class="headerlink" title="UnlitShader.Shader"></a>UnlitShader.Shader</h2><pre><code>Shader &quot;Custom/Unlit&quot;
+&#123;
+    Properties&#123;
+        _BaseColor(&quot;BaseColor&quot;, Color) = (1,1,1,1)
+    &#125;
+    SubShader&#123;
+        Pass&#123;
+            HLSLPROGRAM
+            #pragma vertex UnlitPassVertex
+            #pragma fragment UnlitPassFragment
+            #pragma multi_compile_instancing
+            #include &quot;Assets/CustomRenderPipeline/Shader/UnlitPass.hlsl&quot;
+        
+        
+            ENDHLSL
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h1 id="Asset-x2F-CustomRenderPipeline-x2F-ShaderLibrary"><a href="#Asset-x2F-CustomRenderPipeline-x2F-ShaderLibrary" class="headerlink" title="Asset&#x2F;CustomRenderPipeline&#x2F;ShaderLibrary"></a>Asset&#x2F;CustomRenderPipeline&#x2F;ShaderLibrary</h1><p>因为用了十分”现代”的hlsl,关于shader的引用都放在单独的ShaderLibrary文件夹内.</p>
+<h2 id="BRDF-hlsl"><a href="#BRDF-hlsl" class="headerlink" title="BRDF.hlsl"></a>BRDF.hlsl</h2><pre><code>#ifndef CUSTOM_BRDF_INCLUDED
+#define CUSTOM_BRDF_INCLUDED
+#define MIN_REFLECTIVITY 0.04
+
+float OneMinusReflectivity (float metallic) &#123;
+    float range = 1.0 - MIN_REFLECTIVITY;
+    return range - metallic * range;
+&#125;
+struct BRDF &#123;
+    float3 diffuse;
+    float3 specular;
+    float roughness;
+&#125;;
+
+BRDF GetBRDF (Surface surface,  bool applyAlphaToDiffuse = false)
+&#123;
+    BRDF brdf;
+    float oneMinusReflectivity = OneMinusReflectivity(surface.metallic);
+    float perceptualRoughness = PerceptualSmoothnessToPerceptualRoughness(surface.smoothness);
+    brdf.roughness = PerceptualRoughnessToRoughness(perceptualRoughness);
+
+    brdf.diffuse = surface.color*oneMinusReflectivity;
+    if (applyAlphaToDiffuse)
+    &#123;brdf.diffuse *= surface.alpha;&#125;
+    brdf.specular = lerp(MIN_REFLECTIVITY, surface.color, surface.metallic);
+
+    return brdf;
+&#125;
+
+float SpecularStrength (Surface surface, BRDF brdf, Light light) &#123;
+    float3 h = SafeNormalize(light.direction + surface.viewDirection);
+    float nh2 = Square(saturate(dot(surface.normal, h)));
+    float lh2 = Square(saturate(dot(light.direction, h)));
+    float r2 = Square(brdf.roughness);
+    float d2 = Square(nh2 * (r2 - 1.0) + 1.00001);
+    float normalization = brdf.roughness * 4.0 + 2.0;
+    return r2 / (d2 * max(0.1, lh2) * normalization);
+&#125;
+
+float3 DirectBRDF (Surface surface, BRDF brdf, Light light) &#123;
+    return SpecularStrength(surface, brdf, light) * brdf.specular + brdf.diffuse;
+&#125;
+#endif
+</code></pre>
+<h2 id="CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本"><a href="#CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本" class="headerlink" title="CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)"></a>CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)</h2><pre><code>#ifndef CUSTOM_CartoonBRDF_INCLUDED
+#define CUSTOM_CartoonBRDF_INCLUDED
+
+
+
+struct CartoonBRDF &#123;
+    float3 diffuse;
+
+&#125;;
+
+CartoonBRDF GetBRDF (Surface surface)
+&#123;
+    CartoonBRDF brdf;
+
+
+    brdf.diffuse = surface.color;
+    return brdf;
+&#125;
+
+
+
+float3 DirectBRDF (Surface surface, CartoonBRDF brdf, Light light) &#123;
+    return brdf.diffuse;
+&#125;
+#endif
+</code></pre>
+<p>效果如图  </p>
+<p><img src="D:\Blog\source_posts\CustomRenderPipeline-1\effect.png" alt="效果图"></p>
+<h2 id="CartoonLighting-hlsl"><a href="#CartoonLighting-hlsl" class="headerlink" title="CartoonLighting.hlsl"></a>CartoonLighting.hlsl</h2><pre><code>#ifndef CUSTOM_CARTOON_LIGHT_INCLUDED
+#define CUSTOM_CARTOON_LIGHT_INCLUDED
+
+float3 IncomingLight (Surface surface, Light light)
+&#123;
+    float s  =dot(normalize(surface.normal),normalize(light.direction));
+    if (s &gt;= surface.firstedge )
+    &#123;
+        return light.color;
+    &#125;
+    else if(s &lt;= surface.firstedge &amp;&amp; s &gt;= surface.secondedge)
+    &#123;
+        return light.color*0.6;
+    &#125;
+    else&#123;
+        return light.color*0.1;
+    &#125;
+    //return saturate(dot(surface.normal, light.direction))*light.color;
+&#125;
+
+float3 GetLightings (Surface surface,CartoonBRDF brdf, Light light) &#123;
+    return IncomingLight(surface, light) * DirectBRDF(surface, brdf, light);
+&#125;
+
+float3 GetLighting (Surface surface, CartoonBRDF brdf) &#123;
+    float3 color = 0.0;
+    for (int i = 0; i&lt;GetDirectionalLightCount(); i++)
+    &#123;
+        color += GetLightings(surface, brdf, GetDirectionalLight(i));
+    &#125;
+    return color;
+&#125;
+
+
+#endif
+</code></pre>
+<h2 id="CartoonSurface-hlsl"><a href="#CartoonSurface-hlsl" class="headerlink" title="CartoonSurface.hlsl"></a>CartoonSurface.hlsl</h2><pre><code>#ifndef CUSTOM__CARTOON_SURFACE_INCLUDED
+#define CUSTOM_CARTOON_SURFACE_INCLUDED
+
+struct Surface &#123;
+    float3 normal;
+    float3 color;
+    float alpha;
+    float metallic;
+    float smoothness;
+    float3 viewDirection;
+    float firstedge;
+    float secondedge;
+&#125;;
+
+#endif
+</code></pre>
+<h2 id="Common-hlsl"><a href="#Common-hlsl" class="headerlink" title="Common.hlsl"></a>Common.hlsl</h2><pre><code>#ifndef CUSTOM_COMMON_INCLUDED
+#define CUSTOM_COMMON_INCLUDED
+#include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl&quot;
+#include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/UnityInput.hlsl&quot;
+
+
+#define UNITY_MATRIX_M unity_ObjectToWorld
+#define UNITY_MATRIX_I_M unity_WorldToObject
+#define UNITY_MATRIX_V unity_MatrixV
+#define UNITY_MATRIX_VP unity_MatrixVP
+#define UNITY_MATRIX_P glstate_matrix_projection
+#define UNITY_PREV_MATRIX_M unity_PREVMatrixM
+#define UNITY_PREV_MATRIX_I_M unity_PREVMatrixIM
+
+#include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl&quot;
+#include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl&quot;
+
+float Square(float v)
+&#123;
+    return v*v;
+&#125;
+
+#endif
+</code></pre>
+<h2 id="Light-hlsl"><a href="#Light-hlsl" class="headerlink" title="Light.hlsl"></a>Light.hlsl</h2><pre><code>#ifndef CUSTOM_LIGHT_INCLUDED
+#define CUSTOM_LIGHT_INCLUDED
+
+#define MAX_DIRECTIONAL_LIGHT_COUNT 4
+CBUFFER_START(_CustomLight)
+    int _DirectionalLightCount;
+    float4 _DirectionalLightColors[MAX_DIRECTIONAL_LIGHT_COUNT];
+    float4 _DirectionalLightDirections[MAX_DIRECTIONAL_LIGHT_COUNT];
+CBUFFER_END
+
+struct Light&#123;
+    float3 color;
+    float3 direction;
+&#125;;
+
+int GetDirectionalLightCount()
+&#123;
+    return _DirectionalLightCount;
+&#125;
+Light GetDirectionalLight (int index)
+&#123;
+    Light light;
+    light.color = _DirectionalLightColors[index].rgb;
+    light.direction = _DirectionalLightDirections[index].xyz;
+    return light;
+&#125;
+
+#endif
+</code></pre>
+<h2 id="Lighting-hlsl"><a href="#Lighting-hlsl" class="headerlink" title="Lighting.hlsl"></a>Lighting.hlsl</h2><pre><code>#ifndef CUSTOM_LIGHTING_INCLUDED
+#define CUSTOM_LIGHTING_INCLUDED
+
+
+
+float3 IncomingLight (Surface surface, Light light)
+&#123;
+    return saturate(dot(surface.normal, light.direction))*light.color;
+&#125;
+
+float3 GetLightings (Surface surface,BRDF brdf, Light light) &#123;
+    return IncomingLight(surface, light) * DirectBRDF(surface, brdf, light);
+&#125;
+
+float3 GetLighting (Surface surface, BRDF brdf) &#123;
+    float3 color = 0.0;
+    for (int i = 0; i&lt;GetDirectionalLightCount(); i++)
+    &#123;
+        color += GetLightings(surface, brdf, GetDirectionalLight(i));
+    &#125;
+    return color;
+&#125;
+
+#endif
+</code></pre>
+<h2 id="Surface-hlsl"><a href="#Surface-hlsl" class="headerlink" title="Surface.hlsl"></a>Surface.hlsl</h2><pre><code>#ifndef CUSTOM_SURFACE_INCLUDED
+#define CUSTOM_SURFACE_INCLUDED
+
+struct Surface &#123;
+    float3 normal;
+    float3 color;
+    float alpha;
+    float metallic;
+    float smoothness;
+    float3 viewDirection;
+&#125;;
+
+#endif
+</code></pre>
+<h2 id="UnityInput-hlsl"><a href="#UnityInput-hlsl" class="headerlink" title="UnityInput.hlsl"></a>UnityInput.hlsl</h2><pre><code>#ifndef CUSTOM__UNITY_INPUT_INCLUDED
+#define CUSTOM__UNITY_INPUT_INCLUDED
+
+
+CBUFFER_START(UnityPerDraw)
+float4x4 unity_ObjectToWorld;
+float3 _WorldSpaceCameraPos;
+float4x4 unity_WorldToObject;
+float4x4 unity_MatrixV;
+float4x4 glstate_matrix_projection;
+float4x4 unity_PREVMatrixM;
+float4x4 unity_PREVMatrixIM;
+
+    float4 unity_LODFade;
+    real4 unity_WorldTransformParams;
+CBUFFER_END
+float4x4 unity_MatrixVP;
+
+#endif
+</code></pre>
+<h1 id="Assets-x2F-CustomRenderPipeline-x2F-Component-纯纯是为了试验的"><a href="#Assets-x2F-CustomRenderPipeline-x2F-Component-纯纯是为了试验的" class="headerlink" title="Assets&#x2F;CustomRenderPipeline&#x2F;Component(纯纯是为了试验的)"></a>Assets&#x2F;CustomRenderPipeline&#x2F;Component(纯纯是为了试验的)</h1><h2 id="PerObjectMaterialProperties-cs"><a href="#PerObjectMaterialProperties-cs" class="headerlink" title="PerObjectMaterialProperties.cs"></a>PerObjectMaterialProperties.cs</h2><pre><code>using UnityEngine;
+
+[DisallowMultipleComponent]
+public class PerObjectMaterialProperties : MonoBehaviour
+&#123;
+    static int baseColorId = Shader.PropertyToID(&quot;_BaseColor&quot;);
+    static int cutoffId = Shader.PropertyToID(&quot;_Cutoff&quot;),
+            metallicId = Shader.PropertyToID(&quot;_Metallic&quot;),
+            smoothnessId = Shader.PropertyToID(&quot;_Smoothness&quot;);
+    [SerializeField]
+    Color baseColor = Color.white;
+    [SerializeField, Range(0f, 1f)]
+    float cutoff = 0.5f, metallic = 0.5f, smoothness = 0.5f;
+
+    static MaterialPropertyBlock block;
+
+
+    void OnValidate()
+    &#123;
+        if(block == null)
+        &#123;
+            block = new MaterialPropertyBlock();
+        &#125;
+        block.SetColor(baseColorId,baseColor);
+        block.SetFloat(cutoffId, cutoff);
+        block.SetFloat(metallicId, metallic);
+        block.SetFloat(smoothnessId, smoothness);
+        GetComponent&lt;Renderer&gt;().SetPropertyBlock(block);
+    &#125; 
+    void Awake()
+    &#123;
+        OnValidate();
+    &#125;
+&#125;
+</code></pre>
+<h1 id="Assets-x2F-CustomRenderPipeline-x2F-Editor-对我来说没什么用的GUI"><a href="#Assets-x2F-CustomRenderPipeline-x2F-Editor-对我来说没什么用的GUI" class="headerlink" title="Assets&#x2F;CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)"></a>Assets&#x2F;CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)</h1><h2 id="CustomShaderGUI-cs"><a href="#CustomShaderGUI-cs" class="headerlink" title="CustomShaderGUI.cs"></a>CustomShaderGUI.cs</h2><pre><code>using UnityEngine;
+using UnityEditor;
+using UnityEngine.Rendering;
+
+public class CustomShaderGUI : ShaderGUI
+&#123;
+    bool showPresets;
+    MaterialEditor editor;
+    Object[] materials;
+    MaterialProperty[] properties;
+    public override void OnGUI (
+        MaterialEditor materialEditor, MaterialProperty[] properties) &#123;
+        base.OnGUI(materialEditor, properties);
+        editor = materialEditor;
+        materials = materialEditor.targets;
+        this.properties = properties;
+
+        EditorGUILayout.Space();
+        showPresets = EditorGUILayout.Foldout(showPresets, &quot;Presets&quot;, true);
+        if (showPresets) &#123;
+        OpaquePreset();
+        ClipPreset();
+        FadePreset();
+        TransparentPreset();
+        &#125;
+    &#125;
+
+    void SetProperty (string name, float value) &#123;
+        FindProperty(name, properties).floatValue = value;
+    &#125;
+
+    void SetKeyword (string keyword, bool enabled) &#123;
+        if (enabled) &#123;
+            foreach (Material m in materials) &#123;
+                m.EnableKeyword(keyword);
+            &#125;
+        &#125;
+        else &#123;
+            foreach (Material m in materials) &#123;
+                m.DisableKeyword(keyword);
+            &#125;
+        &#125;
+    &#125;
+
+    void SetProperty (string name, string keyword, bool value) &#123;
+        SetProperty(name, value ? 1f : 0f);
+        SetKeyword(keyword, value);
+    &#125;
+
+    bool Clipping &#123;
+        set =&gt; SetProperty(&quot;_Clipping&quot;, &quot;_CLIPPING&quot;, value);
+    &#125;
+
+    bool PremultiplyAlpha &#123;
+        set =&gt; SetProperty(&quot;_PremulAlpha&quot;, &quot;_PREMULTIPLY_ALPHA&quot;, value);
+    &#125;
+
+    BlendMode SrcBlend &#123;
+        set =&gt; SetProperty(&quot;_SrcBlend&quot;, (float)value);
+    &#125;
+
+    BlendMode DstBlend &#123;
+        set =&gt; SetProperty(&quot;_DstBlend&quot;, (float)value);
+    &#125;
+
+    bool ZWrite &#123;
+        set =&gt; SetProperty(&quot;_ZWrite&quot;, value ? 1f : 0f);
+    &#125;
+
+    RenderQueue RenderQueue &#123;
+        set &#123;
+            foreach (Material m in materials) &#123;
+            m.renderQueue = (int)value;
+            &#125;
+        &#125;
+    &#125;
+
+    bool PresetButton (string name) &#123;
+        if (GUILayout.Button(name)) &#123;
+            editor.RegisterPropertyChangeUndo(name);
+            return true;
+        &#125;
+        return false;
+    &#125;
+    void OpaquePreset () &#123;
+        if (PresetButton(&quot;Opaque&quot;)) &#123;
+            Clipping = false;
+            PremultiplyAlpha = false;
+            SrcBlend = BlendMode.One;
+            DstBlend = BlendMode.Zero;
+            ZWrite = true;
+            RenderQueue = RenderQueue.Geometry;
+        &#125;
+    &#125;
+    void ClipPreset () &#123;
+        if (PresetButton(&quot;Clip&quot;)) &#123;
+            Clipping = true;
+            PremultiplyAlpha = false;
+            SrcBlend = BlendMode.One;
+            DstBlend = BlendMode.Zero;
+            ZWrite = true;
+            RenderQueue = RenderQueue.AlphaTest;
+        &#125;
+    &#125;
+    void FadePreset () &#123;
+        if (PresetButton(&quot;Fade&quot;)) &#123;
+            Clipping = false;
+            PremultiplyAlpha = false;
+            SrcBlend = BlendMode.SrcAlpha;
+            DstBlend = BlendMode.OneMinusSrcAlpha;
+            ZWrite = false;
+            RenderQueue = RenderQueue.Transparent;
+        &#125;
+    &#125;
+    void TransparentPreset () &#123;
+        if (PresetButton(&quot;Transparent&quot;)) &#123;
+            Clipping = false;
+            PremultiplyAlpha = true;
+            SrcBlend = BlendMode.One;
+            DstBlend = BlendMode.OneMinusSrcAlpha;
+            ZWrite = false;
+            RenderQueue = RenderQueue.Transparent;
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<p>不知道为什么我的GUI总是会出错..</p>
 
       
     </div>
@@ -295,7 +1385,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -345,7 +1435,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共91字</span>
+  <span class="post-count">博客全站共3.1k字</span>
 </div>
         
 
