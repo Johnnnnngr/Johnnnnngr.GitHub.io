@@ -175,8 +175,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-06-16 23:39:25" itemprop="dateCreated datePublished" datetime="2022-06-16T23:39:25+08:00">2022-06-16</time>
+              <time title="创建时间：2022-06-16 23:39:25 / 修改时间：23:45:06" itemprop="dateCreated datePublished" datetime="2022-06-16T23:39:25+08:00">2022-06-16</time>
             </span>
 
           
@@ -191,7 +192,7 @@
 
       
           <h1 id="目前进度-DIRECTIONAL-SHADOW"><a href="#目前进度-DIRECTIONAL-SHADOW" class="headerlink" title="目前进度:DIRECTIONAL SHADOW"></a>目前进度:DIRECTIONAL SHADOW</h1><p>unity版本:2021.3.3f1c1</p>
-<p>#Asset&#x2F;CustomRenderPipeline<br>Unity中要自定义渲染管线是需要生成Asset的. 因此用作渲染的管线脚本一般会有三部分:CustomRenderPipelineAsset; CustomRenderPipeline; CameraRenderer.(Catlike Coding里还包括了CameraRenderer.Editor作为Partial class..)</p>
+<h1 id="Asset-x2F-CustomRenderPipeline"><a href="#Asset-x2F-CustomRenderPipeline" class="headerlink" title="Asset&#x2F;CustomRenderPipeline"></a>Asset&#x2F;CustomRenderPipeline</h1><p>Unity中要自定义渲染管线是需要生成Asset的. 因此用作渲染的管线脚本一般会有三部分:CustomRenderPipelineAsset; CustomRenderPipeline; CameraRenderer.(Catlike Coding里还包括了CameraRenderer.Editor作为Partial class..)</p>
 <h2 id="CustomRenderPipelineAsset-cs"><a href="#CustomRenderPipelineAsset-cs" class="headerlink" title="CustomRenderPipelineAsset.cs"></a>CustomRenderPipelineAsset.cs</h2><pre><code>using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -206,8 +207,10 @@ public class CustomRenderPipelineAsset : RenderPipelineAsset
     &#125;
 &#125;
 </code></pre>
-<p>##CustomRenderPipeline.cs<br>    using UnityEngine.Rendering;<br>    using UnityEngine;</p>
-<pre><code>public class CustomRenderPipeline : RenderPipeline
+<h2 id="CustomRenderPipeline-cs"><a href="#CustomRenderPipeline-cs" class="headerlink" title="CustomRenderPipeline.cs"></a>CustomRenderPipeline.cs</h2><pre><code>using UnityEngine.Rendering;
+using UnityEngine;
+
+public class CustomRenderPipeline : RenderPipeline
 &#123;
     CameraRenderer renderer = new CameraRenderer();
     bool useDynamicBatching, useGPUInstancing;
@@ -812,8 +815,12 @@ float4 UnlitPassFragment(Varying input):SV_TARGET&#123;
     &#125;
 &#125;
 </code></pre>
-<p>#Asset&#x2F;CustomRenderPipeline&#x2F;ShaderLibrary<br>因为用了十分”现代”的hlsl,关于shader的引用都放在单独的ShaderLibrary文件夹内.<br>##BRDF.hlsl<br>    #ifndef CUSTOM_BRDF_INCLUDED<br>    #define CUSTOM_BRDF_INCLUDED<br>    #define MIN_REFLECTIVITY 0.04</p>
-<pre><code>float OneMinusReflectivity (float metallic) &#123;
+<h1 id="Asset-x2F-CustomRenderPipeline-x2F-ShaderLibrary"><a href="#Asset-x2F-CustomRenderPipeline-x2F-ShaderLibrary" class="headerlink" title="Asset&#x2F;CustomRenderPipeline&#x2F;ShaderLibrary"></a>Asset&#x2F;CustomRenderPipeline&#x2F;ShaderLibrary</h1><p>因为用了十分”现代”的hlsl,关于shader的引用都放在单独的ShaderLibrary文件夹内.</p>
+<h2 id="BRDF-hlsl"><a href="#BRDF-hlsl" class="headerlink" title="BRDF.hlsl"></a>BRDF.hlsl</h2><pre><code>#ifndef CUSTOM_BRDF_INCLUDED
+#define CUSTOM_BRDF_INCLUDED
+#define MIN_REFLECTIVITY 0.04
+
+float OneMinusReflectivity (float metallic) &#123;
     float range = 1.0 - MIN_REFLECTIVITY;
     return range - metallic * range;
 &#125;
@@ -853,8 +860,12 @@ float3 DirectBRDF (Surface surface, BRDF brdf, Light light) &#123;
 &#125;
 #endif
 </code></pre>
-<p>##CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)<br>    #ifndef CUSTOM_CartoonBRDF_INCLUDED<br>    #define CUSTOM_CartoonBRDF_INCLUDED</p>
-<pre><code>struct CartoonBRDF &#123;
+<h2 id="CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本"><a href="#CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本" class="headerlink" title="CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)"></a>CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)</h2><pre><code>#ifndef CUSTOM_CartoonBRDF_INCLUDED
+#define CUSTOM_CartoonBRDF_INCLUDED
+
+
+
+struct CartoonBRDF &#123;
     float3 diffuse;
 
 &#125;;
@@ -1077,8 +1088,11 @@ public class PerObjectMaterialProperties : MonoBehaviour
     &#125;
 &#125;
 </code></pre>
-<p>#Assets&#x2F;CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)<br>##CustomShaderGUI.cs<br>    using UnityEngine;<br>    using UnityEditor;<br>    using UnityEngine.Rendering;</p>
-<pre><code>public class CustomShaderGUI : ShaderGUI
+<h1 id="Assets-x2F-CustomRenderPipeline-x2F-Editor-对我来说没什么用的GUI"><a href="#Assets-x2F-CustomRenderPipeline-x2F-Editor-对我来说没什么用的GUI" class="headerlink" title="Assets&#x2F;CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)"></a>Assets&#x2F;CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)</h1><h2 id="CustomShaderGUI-cs"><a href="#CustomShaderGUI-cs" class="headerlink" title="CustomShaderGUI.cs"></a>CustomShaderGUI.cs</h2><pre><code>using UnityEngine;
+using UnityEditor;
+using UnityEngine.Rendering;
+
+public class CustomShaderGUI : ShaderGUI
 &#123;
     bool showPresets;
     MaterialEditor editor;
