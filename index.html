@@ -37,7 +37,7 @@
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
+    isHome : true,
     isPost : false,
     lang   : 'zh-CN'
   };
@@ -205,9 +205,1238 @@
           <h2 id="这个Blog仅用作笔记"><a href="#这个Blog仅用作笔记" class="headerlink" title="这个Blog仅用作笔记"></a>这个Blog仅用作笔记</h2><h3 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a>免责声明</h3><p>本站部分内容不代表本人观点<br>背景图片的画师是Relax_Lion</p>
 <p>我会在这里记录我的笔记<br>因为我还没有整搜索引擎推广,所以能看过来的大家应该都认识hh</p>
 <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="经济相关"><a href="#经济相关" class="headerlink" title="经济相关"></a>经济相关</h2><a href="/2022/07/06/LaborSupply/" title="LaborSupply">LaborSupply</a>
-<h2 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h2><h3 id="Custom-Render-Pipeline和相关shader"><a href="#Custom-Render-Pipeline和相关shader" class="headerlink" title="Custom Render Pipeline和相关shader"></a>Custom Render Pipeline和相关shader</h3><a href="/2022/06/16/CustomRenderPipeline/" title="CustomRenderPipeline">CustomRenderPipeline</a>
-<hr>
-<p>More info: <a target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/">CatlikeCoding</a></p>
+<h2 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h2><h3 id="Custom-Render-Pipeline和相关shader"><a href="#Custom-Render-Pipeline和相关shader" class="headerlink" title="Custom Render Pipeline和相关shader"></a>Custom Render Pipeline和相关shader</h3><h2 id=""><a href="#" class="headerlink" title=""></a><a href="/2022/06/16/CustomRenderPipeline/" title="CustomRenderPipeline">CustomRenderPipeline</a></h2><p>More info: <a target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/">CatlikeCoding</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/06/LaborSupply/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/06/LaborSupply/" class="post-title-link" itemprop="url">LaborSupply</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-06 00:00:54 / 修改时间：01:36:10" itemprop="dateCreated datePublished" datetime="2022-07-06T00:00:54+08:00">2022-07-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Labor-Supply"><a href="#Labor-Supply" class="headerlink" title="Labor Supply"></a>Labor Supply</h1><p>ls就是纯纯的微观模型.</p>
+<h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions:"></a>Definitions:</h2><p><strong>labor employed(E)</strong>: (以美国为例,实际上不同国家的参考不同,比如灵活就业) 16岁以上有筹工作至少一小时或无筹工作15小时以上(比如family farm中的工人)</p>
+<p><strong>labor unemployed(U)</strong>: 两个或条件: be on a temporary lay off from a job // no job but looking for in 4 weeks before the reference week</p>
+<p><strong>out of the labor force</strong>: 以上两个集合的补集,包括学生,资本家(收入完全是资本回报)</p>
+<p>以上三个集合满足关系:</p>
+<p>E+U=LF(total labor force), 其中的labor force专门指人,而不是工时,所以..统计labor的总量还是非常困难的</p>
+<p><strong>labor force participation rate</strong> = $\frac{LF}{P} $</p>
+<p><strong>employment rate</strong> = $\frac{E}{P} $</p>
+<p><strong>unempolyment rate</strong> = $\frac{U}{LF} $</p>
+<p>因为失业率是失业劳动力除以总劳动力,所以失业率和就业率之和并不一定等于1. 这么调整失业率是为了将本来就不能工作的人排除在失业率计算之外.但是, some economists thought 这么统计失业率不能在特殊情况下反映真实的经济数据,比如美国2009年经济危机的时候,很多人找不到工作变得灰心,于是他们就不再寻找了.此时他们不会算入失业率中,但在这之前他们确确实实是非常普通的劳动力,也具有生产能力(变成了<strong>hidden unemployment</strong>).这和统计失业率的初衷:将无工作能力的人排除相悖. 于是部分经济学家认为用就业率估算失业率更好,但这就将无工作能力的人和灰心的人一起算了.</p>
+<h2 id="Notations"><a href="#Notations" class="headerlink" title="Notations:"></a>Notations:</h2><p>C: 总消费商品价格(leisure不算入内)</p>
+<p>L: 同期消费者的Leisure Time</p>
+<p>T: time available in this period</p>
+<p>U: Satisfaction, 令U=f(C,L)</p>
+<p>$MU_{L} $: leisure的边际效益</p>
+<p>$MU_{C}$: consumption的边际收益</p>
+<h2 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions:"></a>Assumptions:</h2><ol>
+<li>Utility是convex函数</li>
+<li>w,即工资率,是constant,即没有加班补助等.这里只是为了简化.</li>
+<li>目前模型是单期模型,以一周为一个周期.</li>
+<li>leisure是normal good (尽管我们还要再检验一遍,而且不同国家,不同年龄段的人对待leisure的态度都不一样)</li>
+</ol>
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model:"></a>Model:</h2><p>从Utility模型得到:</p>
+<p>$MU_{L} = \frac{\partial U}{\partial L} $</p>
+<p>$MU_{C} = \frac{\partial U}{\partial C} $</p>
+<p>$\frac{\mathrm{d} C}{\mathrm{d} L} = - \frac{MU_L}{MU_C} \ne MRS = \left | \frac{MU_L}{MU_C}  \right | $特别注意MRS…you dummy</p>
+<p>每个人都存在Budget Constraint,主要是两方面的constraint: 一天的时间24h和他的salary.我们假设:</p>
+<p>C = wh + V (令w为工资率,h为工作时间,V为non-labor income,即社保之类的)</p>
+<p>h = T - L</p>
+<p>则: C = w(T - L) + V = -wL + (wT + V). 很明显,C和L成线性负相关. 即如图:<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220704151333157.png" alt="image-20220704151333157" style="zoom:50%;" /></p>
+<p>E点被成为endowment point,即完全不工作只吃社保下的Budget Constraint.<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220704153649267.png" alt="image-20220704153649267" style="zoom:50%;" /></p>
+<p>同经典微观模型,当在此constraint中达到最大utility的时候,两者相切,得到: MRS = w.</p>
+<p>$MRS = w \to  \left | \frac{MU_L}{MU_C}  \right |=w \to \frac{MU_L}{w} = MU_C $</p>
+<p>上式的intuition: 当达到最大utility时, extra hour costs w dollars(是因为leisure的基本单位是hour,因此增加一hour的leisure所带来的效益就和增加一单位的consumption一样了(以美元计),可以写成$\frac{\frac{MU_L}{w} }{MU_C} = 1$,这样adjusted的MU对utility的效果就一样了,其实就是把leisure抽象成以美元计价的商品,单价是$\frac{1 }{w } (\frac{hours}{dollars} )$</p>
+<p>现考虑变量变化:</p>
+<h3 id="Changes-in-V"><a href="#Changes-in-V" class="headerlink" title="Changes in V"></a>Changes in V</h3><p>工资(斜率)不变,只有纯纯的income effect.</p>
+<p>可以用changes in V检验leisure是否为inferior good<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220704154203286.png" alt="image-20220704154203286" style="zoom:50%;" /></p>
+<p>Borjas: 一般认为leisure是normal good,即工资不变,禀赋越高,越不想工作, 而且这是有evidence support的.</p>
+<h3 id="Changes-in-Wages"><a href="#Changes-in-Wages" class="headerlink" title="Changes in Wages"></a>Changes in Wages</h3><p>也就是斜率变化. 这会导致income effect和substitution effect. 因为这两个相反的效果,结果是ambiguity.<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220704155104864.png" alt="image-20220704155104864" style="zoom:50%;" /></p>
+<p>这个ambiguity能说明不同收入的人对待工资变化的态度不同. 高收入人群的leisure比低收入人群(以美元计价)珍贵($\frac{MU_L}{w}$),所以if 收入提高,高收入人群会考虑增加leisure,而低收入人群会减少leisure,因为对于他们来说leisure的机会成本大(即他们本来就穷,consumption的边际递减不明显) (这就是收入塑造的utility吗…)</p>
+<p>可以说,富人的收入效应强,而穷人的替代效应强,因此他们对待工资提高的态度不同:<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220704160258435.png" alt="image-20220704160258435" style="zoom:50%;" /></p>
+<p>标准模型基本无了</p>
+<h2 id="Implications-for-basic-model"><a href="#Implications-for-basic-model" class="headerlink" title="Implications for basic model"></a>Implications for basic model</h2><h3 id="是否进入劳动力市场"><a href="#是否进入劳动力市场" class="headerlink" title="是否进入劳动力市场?"></a>是否进入劳动力市场?</h3><p>已知部分穷人feed on V,因为他们实际工资低于其预期工资(w = MPL), 即在他们的budget constraint上,utility和constraint的交点是endowment point. 注意,这不一定是切点,因为这个constraint它并不和横轴相交. 而当交点为切点的时候,只要工资涨一点点,劳动力就会选择进入劳动力市场. 为切点的工资叫做reservation wage:<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220704203758551.png" alt="image-20220704203758551" style="zoom:50%;" /></p>
+<h3 id="leisure和工资的关系"><a href="#leisure和工资的关系" class="headerlink" title="leisure和工资的关系"></a>leisure和工资的关系</h3><p>和商品一样,相对价格(工资)变化会导致商品消费数量(劳动时间)变化. 变化情况也和商品一样呢.</p>
+<p>Borjas: 从不同收入的人对待工资提高的态度差异推导出先作为normal good 后成为giffen good的leisure (反之,working hours = T - L,得到结论,wh随着工资增加先增后减):呈现出backward-bending的形状</p>
+<p>:<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220704205030495.png" alt="image-20220704205030495" style="zoom:50%;" /></p>
+<p>(概念:这是个人的工资和工时的关系,要计算社会总量,只需要把横坐标的值加总即可:<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220704205916193.png" alt="image-20220704205916193" style="zoom:50%;" />)</p>
+<p>(概念: labor supply elasticity $ \delta =\frac{\frac{\mathrm{d} h}{h} }{\frac{\mathrm{d} w}{w}} = \frac{\mathrm{d} h}{\mathrm{d} w}  \frac{w}{h} $),这个还挺重要的.从弹性能deduce some policy implications.</p>
+<h3 id="Estimation-of-labor-supply-elasticity"><a href="#Estimation-of-labor-supply-elasticity" class="headerlink" title="Estimation of labor supply elasticity"></a>Estimation of labor supply elasticity</h3><p>这是一个被研究地非常透彻的话题,Borjas: empirically, 美国男性的弹性是-0.1(annually,后同)</p>
+<p>基本模型:$h_{i} = \beta w_{i}+\gamma V_{i}+Other Variables $</p>
+<p>其中,$h_i$是工作时间,$w_i$是工资率,$V_i$是non-labor income,$\beta$是当$V_i$不变时,每增加一单位的工资率所改变的$h_i$,同理,$\gamma$是当工资率不变的时增加一单位$V_i$所增加的$h_i$(一单位基本就是one dollar)</p>
+<p>Borjas: $\beta$很关键,它的符号取决于个人的utility曲线,即究竟是IE占优还是SE占优. if IE占优,那么工资上升,leisure增加,working hours减少,ls曲线斜率为负,$\beta$为负. 反之相反. 另外,$\gamma$的符号可以从假设中得到: leisure是normal good,因此$V_i$增加导致工时减少,则$\gamma$为负. 一般地,$\beta$被用来估计labor supply elasticity.</p>
+<p>Borjas: 不同学者对弹性的估计不同,但是广泛被接受的结论是男性是-0.1(annually,后同). 对于男性来说,IE占优,该结论符合1900-2000年间男性工时波动下降的趋势.</p>
+<p>Borjas: 男女的弹性绝对值都很小,即在短期内几乎是无弹性的,只有在长期中才变得有弹性(explanation: 短期内要改变工时很困难)</p>
+<h3 id="Problems-in-estimation"><a href="#Problems-in-estimation" class="headerlink" title="Problems in estimation"></a>Problems in estimation</h3><p>Borjas: 计算弹性的过程中,部分变量的统计存在争议: 工时,工资率和非劳动收入</p>
+<p>工时: 如之前所说的,短期因为外力使得劳动力几乎完全不具备弹性,但是如果我们按年来估计 弹性,那么它会稍微大一些. 另外,工时的统计也是问卷形式,大部分人会回答40h(越南笑了),存在bias.</p>
+<p>工资率: <strong>首先</strong>,因为工资是按年发的(Borjas给出的数据也是annual的),所以我们计算每时工资率自然就是年金除年工时. 如果工时有bias,那么其会被带入到工资率的计算中. overreport工时,造成underestimate工资率,反之相反.这种误差叫做measure error. <strong>其次</strong>,除了measure error之外,还有systematic error: 我们给出的模型是$\frac{MU_L}{w} = MU_C $,即看的是边际量. leisure的定价也是用的边际价格. 如果是年工资除年工时,那就是average了,和margin会有差别. <strong>最后</strong>,在计算社会平均或总量的时候,有那么一部分人,他们无工作意向,但是能工作.也就是说,这部分人的reservation wage高于实际wage(资本家or懒汉比如我). 因此..从population中选出的用于统计的workers就不是random sample了(selection bias).</p>
+<p>非劳动收入: 对于大多数人来说,非劳动收入指过去的savings and investment带来的资本回报(尤其是..上世纪中国,大多数人以节俭和劳动为荣,s很高,savings就高的离谱,though mostly it is a trick from gov). Borjas: 这些人有taste for works, 因此他们有高非劳动收入. 只要这个taste 不变,那么if w不变,他们工作的越多,非劳动收入就越高, 即$h_i和V_i$成正相关. 实际上,有evidence support this, 这表明这个taste(就是OtherVariable?)足够强大到改变correlation的符号. 另外,此情况下leisure是inferior good. (though, 这个正相关并<strong>不能说明因果关系</strong>,这是一个典型例子. Borjas: 需要考虑random shock:<a href="#Adjustment in causation and correlation">click to view the causation</a>)</p>
+<h2 id="Extension-of-basic-model-household-production"><a href="#Extension-of-basic-model-household-production" class="headerlink" title="Extension of basic model: household production"></a>Extension of basic model: household production</h2><p>现在加入household来考量劳动者决策. 这是neo-classical labor-leisure model之外的了.</p>
+<p>definition: household production也就是<strong>非市场交易为目的</strong>的生产行为,基本就是生产<strong>给自己用的</strong>(因此会有相应的utility),如家务</p>
+<p>Borjas: 男女之间之劳动市场和household production之间的时间分配差别巨大: 男主外,女主内(实际上2013年的数据女内外差别不大)</p>
+<p>家庭经济学观点: 男女为了达到efficient, 会specialize. 基本就是男specialize in labor market, 女 in household production. 当然,说到specialization, 基本就是套用比较优势模型了. 男方在劳动力市场赚的米比上其household生产的比值大于女方’s时,男方就选择完全入劳动力市场,女方则完全入household production(个人层面是否存在Krugman的learning curve存疑).</p>
+<p>另外,男女形成家庭的时候,家庭之budget constraint就是个人的加总.</p>
+<p>:<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220705002743244.png" alt="image-20220705002743244" style="zoom:50%;" /></p>
+<p>即一人的产出是另外一人的禀赋.</p>
+<p>因为..BC的形状给出来了,所以要看specialization的程度还得看utility(也是男女加总的utility).如果在非F点的边上相切,那么就是某个人完全specialized,另一个人分饰两角.</p>
+<p>如果家庭中某人的wage增加, 那么相应的这个人贡献的曲线部分斜率增加,而另一个人的禀赋增加.<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220705003256440.png" alt="image-20220705003256440" style="zoom:50%;" /></p>
+<p>implication: 工资较低的一方完全投入于household中可增加opportunity set.</p>
+<p>以上结论可以用于解释为什么现代妇女劳动参与率增加,即</p>
+<ol>
+<li>妇女的real wage增加(会引致妇女的incentive to work增加). Evidence:发展中国家妇女工资上升明显,其劳动参与率也上升明显.</li>
+<li>妇女的投入于household中的机会成本增加.即儿童减少and育儿机器发明使得妇女投入于household中的时间越来越不值钱. 因此她们更愿意将时间投入到labor market中</li>
+<li>culture and legal的变化: 保护妇女生育等权利给妇女减负,让她们敢不做家务.</li>
+</ol>
+<p>Borjas: 经验表明,妇女的correlation between $h_i和w$大约为0.2. 有些人认为因为现代妇女工资急速增长使得妇女劳动参与率急速增长,因此妇女的弹性就比男性高,Borjas认为这是有问题的. 他认为男女的弹性都差不多小,只不过女性总体工资低,大多处于是否要进入劳动市场的考量中,因此工资一高,参与率就高了.所以Borjas几乎就是否定了之前的论调.</p>
+<h3 id="Adjustment-in-causation-and-correlation"><a href="#Adjustment-in-causation-and-correlation" class="headerlink" title="Adjustment in causation and correlation"></a>Adjustment in causation and correlation</h3><p>因为$dV_i和dh_i$之间虽然正相关,但是并不能说明他们之间存在因果.他们可能都是由某变量改变引致的,但两者中的某一方单独变化不会改变另一方. 此例中的某变量就是taste for work, 而这两个就是结果…但是,机智的劳动经济学家认为,要检验因果性就要选择random sample(指之前的$dV_i和dh_i$的变化非随机,如果是culture使得他们正相关,该culture下$dV_i$只会大于0,而且是可预测的).</p>
+<h4 id="常用的random-sample-shock-in-V-i-中奖"><a href="#常用的random-sample-shock-in-V-i-中奖" class="headerlink" title="常用的random sample(shock in $V_i$): 中奖"></a>常用的random sample(shock in $V_i$): 中奖</h4><p>Borjas统计了1970到now的中奖者之行为,近25%的人在一年内离开了工作岗位,额外9%的人减少了工时或取消兼职. 实际上,对<strong>工时的反应程度取决于jackpot的大小</strong>: 50k到200k的得奖主几乎不离开工作岗位,而1m及以上的人中40%都不工作了(迫真横向quasi-linear).</p>
+<h4 id="另外常用的random-sample-shock-in-w-TLC"><a href="#另外常用的random-sample-shock-in-w-TLC" class="headerlink" title="另外常用的random sample(shock in w): TLC"></a>另外常用的random sample(shock in w): TLC</h4><p>Uber之前,纽约的taxi driver之工资是New York City Taxi and Limousine Commission规定的,1997年TLC增加了17%的wage rate per miles, 而之后用里程衡量的taxi driver之工时平均减少了3.2%, 预示了IE占优,及几乎非弹性. (这是annually的)</p>
+<h4 id="conclusion-of-random-shock"><a href="#conclusion-of-random-shock" class="headerlink" title="conclusion of random shock"></a>conclusion of random shock</h4><p>劳动经济学家使用受luck,policy change, human-made experiments等引致的shock来衡量因果关系.(貌似最重要的能体现random的关键在于不能让其可预测(不是废话吗),否则因果性无法验证). </p>
+<p>但是以上的实验or统计都存在问题,那就是working labor 的sample并不是随机取样的.能否将其结论推广至所有人有待验证.</p>
+<h2 id="Policy-Implications"><a href="#Policy-Implications" class="headerlink" title="Policy Implications"></a>Policy Implications</h2><h3 id="welfare-program"><a href="#welfare-program" class="headerlink" title="welfare program"></a>welfare program</h3><p>美国在mid 1960s宣布与poverty的战争,开始采用强烈的welfare policy,但是效果并不好(穷人不干活了),因此在克林顿时代被取消(cute Clinton).</p>
+<p>实际上welfare就是两部分:$V_i和h_i$</p>
+<h4 id="welfare-1-cash-grants-V-i"><a href="#welfare-1-cash-grants-V-i" class="headerlink" title="welfare 1: cash grants($V_i$)"></a>welfare 1: cash grants($V_i$)</h4><p>失业人口能收到$V_i$数量的救济金,but if他们进入劳动力市场,那么停止发放救济金.假设失业人口不存在其他非劳动收入,那么他们的budget constrain如图</p>
+<p>:<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220705184931196.png" alt="image-20220705184931196" style="zoom:50%;" /></p>
+<p>BC就是线段FE$\cup $点G. 为了达到optimization, 失业者选择不工作.</p>
+<h4 id="welfare-2-allowed-work"><a href="#welfare-2-allowed-work" class="headerlink" title="welfare 2: allowed work"></a>welfare 2: allowed work</h4><p>welfare 1 是纯纯的theory, 现实中政府会允许被救济者工作,但是其w会减少(high tax on wages)<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220705222428537.png" alt="image-20220705222428537" style="zoom:50%;" /></p>
+<p>implication: 就算在labor market里面,只要有救济,就会减少工时(毕竟横向quasi-linear). 模型很贴合数据呢……</p>
+<p>implication: 所有的welfare都会降低工时,这是income effect的结果(除非给工资补贴(存疑,我没找evidence)). 总之就是灵活建模hhh,比如Minnesota Family Investment Program给有低龄儿童的妇女生活补贴之案例.完完全全是最优化问题了</p>
+<h4 id="welfare-3-tax-deduction"><a href="#welfare-3-tax-deduction" class="headerlink" title="welfare 3: tax deduction"></a>welfare 3: tax deduction</h4><p>Earned Income Tax Credit: 以美国为例,2017年年收入低于14040刀的人可以有40%的税务优惠(tax credit), 即最大优惠额度为5616刀,同时年收入在14040刀18340刀之间,都享受同样的5616刀税务优惠.当年收入大于18340刀之后,每增加以美元,额度减小21.06美分.即deduction在45007刀的时候完全消失.</p>
+<p>rt:<img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220705233637192.png" alt="image-20220705233637192" style="zoom:50%;" /></p>
+<p>在JE段,相当于w增加.这能提高部分人群的labor participation rate,即让他们进入劳动力市场. </p>
+<p>在HJ段,纯纯的IE,减少工时</p>
+<p>GH段就不用说了,也是IE</p>
+<p>Tax Reform Act of 1986 成效显著,Borjas: 这个法案主要给有小孩的未结婚的妇女用多个,结果妇女的劳动参与率提高(2.4%). 但是Borjas认为当时美国经济加速发展也可以解释这个2.4%,于是他选择对照组,没小孩的未结婚的妇女. 他们不是该法案的受益者,所以没有明显的increase in participation rate. Borjas: 于是可以取两组效果之差为该法案的效果,即2.4%-0=2.4%. 这种方法被称为difference-in-differences estimator.</p>
+<h2 id="Intertemporal-model"><a href="#Intertemporal-model" class="headerlink" title="Intertemporal model"></a>Intertemporal model</h2><p>经典之跨期预算约束模型. 我们之前的分析都是单期的(1年),而跨期更符合实际.基本就是宏观跨期模型的拓展…assumptions几乎一样</p>
+<p>先说结论: Borjas: 男性在16-50岁之间participation rate逐渐增加,之后保持constant或减少,同时,工资和该rate正相关. 女性在16-20上升,20s-30s因为生育问题暂时下降,之后又上升直到50左右,剩下的和男性一样. 有趣的是,任何年龄段,女性的参与率都低于男性,工资也是如此.</p>
+<p>参与率这么变化的原因还是最优化问题,即工资.</p>
+<p>for a given worker, 他可以在不同期中trade leisure来达到总共的最大utility. 即在年轻的时候少工作,50岁左右大量工作,之后又少工作(这是理想情况,假设这个worker不会生病等).需要注意的是,这里的跨期消费有一个十分重要的前提,即expectation has no bias. </p>
+<p>Borjas: 这里和单期消费有偏差: 单期中工资和工时弱负相关,但是跨期中他们是正相关. 这里Borjas提出了比较概念: 单期中的相关性是和平行宇宙中的自己比较的,而跨期中是和不同时间点的我比较的.(reasonable)</p>
+<p>rt: <img src="C:\Users\21221\AppData\Roaming\Typora\typora-user-images\image-20220706002327189.png" alt="image-20220706002327189" style="zoom:50%;" /></p>
+<p>Borjas 用了Dummy Function来描述这个决策(如果我还记得的话,就把这块补充了吧)</p>
+<p>$H_{it}=\delta w_{it}+ {\textstyle \sum_{1}^{n}} \alpha_{i}F_i+OtherVariables$</p>
+<p>含义:观察n个workers,在特定时间段内观察m次,那么将n x m次观察(stacked data)都放入一个Dummy模型中</p>
+<p>其中$F_i$是Dummy Variable, 即对于工人i,它是1,其他工人是0.</p>
+<p>剩下一点绷不住了,有机会再补充</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/16/CustomRenderPipeline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/06/16/CustomRenderPipeline/" class="post-title-link" itemprop="url">CustomRenderPipeline</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-16 23:52:30" itemprop="dateCreated datePublished" datetime="2022-06-16T23:52:30+08:00">2022-06-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-06-17 01:49:56" itemprop="dateModified" datetime="2022-06-17T01:49:56+08:00">2022-06-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="目前进度-DIRECTIONAL-SHADOW"><a href="#目前进度-DIRECTIONAL-SHADOW" class="headerlink" title="目前进度:DIRECTIONAL SHADOW"></a>目前进度:DIRECTIONAL SHADOW</h1><p>unity版本:2021.3.3f1c1</p>
+<h1 id="CustomRenderPipeline"><a href="#CustomRenderPipeline" class="headerlink" title="CustomRenderPipeline"></a>CustomRenderPipeline</h1><p>Unity中要自定义渲染管线是需要生成Asset的. 因此用作渲染的管线脚本一般会有三部分:CustomRenderPipelineAsset; CustomRenderPipeline; CameraRenderer.(Catlike Coding里还包括了CameraRenderer.Editor作为Partial class..)</p>
+<h2 id="CustomRenderPipelineAsset-cs"><a href="#CustomRenderPipelineAsset-cs" class="headerlink" title="CustomRenderPipelineAsset.cs"></a>CustomRenderPipelineAsset.cs</h2><pre><code>using UnityEngine;
+using UnityEngine.Rendering;
+
+[CreateAssetMenu(menuName = &quot;Rendering/CustomRenderPipeline&quot;)]
+public class CustomRenderPipelineAsset : RenderPipelineAsset
+&#123;
+    [SerializeField]
+    bool useDynamicBatching = true, useGPUInstancing = true, useSRPBatching = true;
+    protected override RenderPipeline CreatePipeline()
+    &#123;
+        return new CustomRenderPipeline(useDynamicBatching, useGPUInstancing, useSRPBatching);
+    &#125;
+&#125;
+</code></pre><h2 id="CustomRenderPipeline-cs"><a href="#CustomRenderPipeline-cs" class="headerlink" title="CustomRenderPipeline.cs"></a>CustomRenderPipeline.cs</h2><pre><code>using UnityEngine.Rendering;
+using UnityEngine;
+
+public class CustomRenderPipeline : RenderPipeline
+&#123;
+    CameraRenderer renderer = new CameraRenderer();
+    bool useDynamicBatching, useGPUInstancing;
+    public CustomRenderPipeline(bool useDynamicBatching, bool useGPUInstancing, bool useSRPBatching) &#123;
+    this.useDynamicBatching = useDynamicBatching;
+    this.useGPUInstancing = useGPUInstancing;
+        GraphicsSettings.useScriptableRenderPipelineBatching =     useSRPBatching;
+        GraphicsSettings.lightsUseLinearIntensity = true;
+        &#125;
+    protected override void Render(ScriptableRenderContext ScriptableRenderContext, Camera[] cameras)
+    &#123;
+
+        foreach (Camera camera in cameras)
+        &#123;
+            renderer.Render(ScriptableRenderContext , camera, useDynamicBatching, useGPUInstancing);
+        &#125;
+    &#125;
+&#125;
+</code></pre><h2 id="CameraRenderer-cs"><a href="#CameraRenderer-cs" class="headerlink" title="CameraRenderer.cs"></a>CameraRenderer.cs</h2><pre><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+
+public partial class CameraRenderer
+&#123;
+
+    ScriptableRenderContext context;
+
+    Camera camera;
+
+    const string bufferName = &quot;Render Camera&quot;;
+
+    CommandBuffer buffer = new CommandBuffer
+    &#123;
+        name = bufferName
+    &#125;;
+
+    CullingResults cullingResults;
+    static ShaderTagId unlitShaderTagId = new ShaderTagId(&quot;SRPDefaultUnlit&quot;), litShaderTagId = new ShaderTagId(&quot;CustomLit&quot;);
+
+    Lighting lighting = new Lighting();
+
+    public void Render(ScriptableRenderContext context, Camera camera, bool useDynamicBatching, bool useGPUInstancing)
+    &#123;
+        this.context = context;
+        this.camera = camera;
+
+        PrepareBuffer();
+
+        PrepareForSceneWindow();
+
+        if (!Cull())
+        &#123;
+            return;
+        &#125;
+
+        Setup();
+        lighting.Setup(context, cullingResults);
+
+        DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
+
+        DrawUnsupportedShaders();
+
+
+        DrawGizmos();
+
+
+        Submit();
+    &#125;
+
+
+    void DrawVisibleGeometry(bool useDynamicBatching, bool useGPUInstancing)
+    &#123;
+
+        var sortingSettings = new SortingSettings(camera)
+        &#123;
+            criteria = SortingCriteria.CommonOpaque
+        &#125;;
+
+        var drawingSettings = new DrawingSettings(unlitShaderTagId, sortingSettings)
+        &#123;
+            enableDynamicBatching = useDynamicBatching,
+            enableInstancing = useGPUInstancing
+        &#125;;
+        drawingSettings.SetShaderPassName(1, litShaderTagId);
+
+        GraphicsSettings.useScriptableRenderPipelineBatching = false;
+
+        var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
+
+        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
+
+
+        context.DrawSkybox(camera);
+
+        sortingSettings.criteria = SortingCriteria.CommonTransparent;
+        drawingSettings.sortingSettings = sortingSettings;
+
+        filteringSettings.renderQueueRange = RenderQueueRange.transparent;
+
+        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
+
+    &#125;
+
+    void Submit()
+    &#123;
+        buffer.EndSample(SampleName);
+        ExecuteBuffer();
+        context.Submit();
+    &#125;
+
+    void Setup()
+    &#123;
+        context.SetupCameraProperties(camera);
+
+        CameraClearFlags flags = camera.clearFlags;
+
+        buffer.ClearRenderTarget(flags &lt;= CameraClearFlags.Depth, flags == CameraClearFlags.Color, 
+            flags == CameraClearFlags.Color ? camera.backgroundColor.linear : Color.clear);
+        buffer.BeginSample(SampleName);     
+        ExecuteBuffer();
+
+    &#125;
+
+    void ExecuteBuffer()
+    &#123;
+        context.ExecuteCommandBuffer(buffer);
+        buffer.Clear();
+    &#125;
+
+    bool Cull()
+    &#123;
+        ScriptableCullingParameters p;
+
+        if (camera.TryGetCullingParameters(out p))
+        &#123;
+            cullingResults = context.Cull(ref p);
+            return true;
+        &#125;
+        return false;
+    &#125;
+</code></pre><h2 id="CameraRenderer-Editor-cs"><a href="#CameraRenderer-Editor-cs" class="headerlink" title="CameraRenderer.Editor.cs"></a>CameraRenderer.Editor.cs</h2><pre><code>using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Profiling;
+using UnityEngine.Rendering;
+
+public partial class CameraRenderer
+&#123;
+    partial void DrawUnsupportedShaders();
+    partial void DrawGizmos();
+    partial void PrepareForSceneWindow();
+
+    partial void PrepareBuffer();
+    #if UNITY_EDITOR
+
+    static ShaderTagId[] legacyShaderTagIds = &#123;
+        new ShaderTagId(&quot;Always&quot;),
+        new ShaderTagId(&quot;ForwardBase&quot;),
+        new ShaderTagId(&quot;PrepassBase&quot;),
+        new ShaderTagId(&quot;Vertex&quot;),
+        new ShaderTagId(&quot;VertexLMRGBM&quot;),
+        new ShaderTagId(&quot;VertexLM&quot;),
+    &#125;;
+
+    static Material errorMaterial;
+
+    string SampleName &#123; get; set; &#125;
+
+
+    partial void DrawUnsupportedShaders()
+    &#123;
+
+        if (errorMaterial == null)
+        &#123;
+            errorMaterial = new Material(Shader.Find(&quot;Hidden/InternalErrorShader&quot;));
+        &#125;
+
+
+        var drawingSettings = new DrawingSettings(legacyShaderTagIds[0], new SortingSettings(camera))
+        &#123;overrideMaterial = errorMaterial &#125;;
+        for (int i = 1; i &lt; legacyShaderTagIds.Length; i++)
+        &#123;
+
+            drawingSettings.SetShaderPassName(i, legacyShaderTagIds[i]);
+        &#125;
+
+        var filteringSettings = FilteringSettings.defaultValue;
+
+        context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
+    &#125;
+
+    partial void DrawGizmos()
+    &#123;
+        if (Handles.ShouldRenderGizmos())
+        &#123;
+            context.DrawGizmos(camera, GizmoSubset.PreImageEffects);
+            context.DrawGizmos(camera, GizmoSubset.PostImageEffects);
+        &#125;
+    &#125;
+
+    partial void PrepareForSceneWindow()
+    &#123;
+        if (camera.cameraType == CameraType.SceneView)
+        &#123;
+
+            ScriptableRenderContext.EmitWorldGeometryForSceneView(camera);
+        &#125;
+    &#125;
+
+
+    partial void PrepareBuffer()
+    &#123;
+
+        Profiler.BeginSample(&quot;Editor Only&quot;);
+        buffer.name = SampleName = camera.name;
+        Profiler.EndSample();
+    &#125;
+    #else
+    const string SampleName = bufferName;
+
+    #endif
+    &#125;
+
+&#125;
+</code></pre><p>Catlike模仿了URP的文件夹结构,把以上四个文件放在Assets/CustomRenderPipeline/Runtime里面,截至directional light,这个文件夹里还有个文件:Lighting.cs</p>
+<h2 id="Lighting-cs"><a href="#Lighting-cs" class="headerlink" title="Lighting.cs"></a>Lighting.cs</h2><pre><code>using Unity.Collections;
+using UnityEngine;
+using UnityEngine.Rendering;
+
+public class Lighting
+&#123;
+    const string bufferName = &quot;Lighting&quot;;
+
+    CommandBuffer buffer = new CommandBuffer&#123;
+        name = bufferName
+    &#125;;
+
+    const int maxDirLightCount = 4;
+    static int dirLightCountId = Shader.PropertyToID(&quot;_DirectionalLightCount&quot;), dirLightColorsId = Shader.PropertyToID(&quot;_DirectionalLightColors&quot;), dirLightDirectionsId = Shader.PropertyToID(&quot;_DirectionalLightDirections&quot;);
+    static Vector4[] dirLightColors = new Vector4[maxDirLightCount], dirLightDirections = new Vector4[maxDirLightCount];
+
+    CullingResults cullingResults;
+    public void Setup (ScriptableRenderContext context, CullingResults cullingResults)
+    &#123;
+        this.cullingResults = cullingResults;
+        buffer.BeginSample(bufferName);
+        SetupLights();
+        buffer.EndSample(bufferName);
+        context.ExecuteCommandBuffer(buffer);
+        buffer.Clear();
+    &#125;
+
+    void SetupLights()
+    &#123;
+        NativeArray&lt;VisibleLight&gt; visibleLights = cullingResults.visibleLights;
+        int dirLightCount = 0;
+        for (int i=0; i&lt;visibleLights.Length; i++)
+        &#123;
+            VisibleLight visibleLight = visibleLights[i];
+            if(visibleLight.lightType ==     LightType.Directional)&#123;
+                SetupDirectionalLight(dirLightCount++,ref visibleLight);
+                if (dirLightCount &gt;= maxDirLightCount)
+                &#123;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+        buffer.SetGlobalInt(dirLightCountId, visibleLights.Length);
+        buffer.SetGlobalVectorArray(dirLightColorsId, dirLightColors);
+        buffer.SetGlobalVectorArray(dirLightDirectionsId, dirLightDirections);
+    &#125;
+    void SetupDirectionalLight(int index,ref VisibleLight visibleLight)
+    &#123;
+        dirLightColors[index] = visibleLight.finalColor;
+        dirLightDirections[index] = -visibleLight.localToWorldMatrix.GetColumn(2);
+    &#125;
+&#125;
+</code></pre><h1 id="CustomRenderPipeline-Shader"><a href="#CustomRenderPipeline-Shader" class="headerlink" title="CustomRenderPipeline/Shader"></a>CustomRenderPipeline/Shader</h1><p>这部分包含7个文件(包括了我自己写的简易卡通shader)</p>
+<h2 id="CartoonLitShader-hlsl"><a href="#CartoonLitShader-hlsl" class="headerlink" title="CartoonLitShader.hlsl"></a>CartoonLitShader.hlsl</h2><pre><code>#ifndef CUSTOM_LIT_PASS_INCLUDED
+#define CUSTOM_LIT_PASS_INCLUDED
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/CartoonSurface.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Light.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/CartoonBRDF.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/CartoonLighting.hlsl&quot;
+
+
+TEXTURE2D(_BaseMap);
+SAMPLER(sampler_BaseMap);
+
+UNITY_INSTANCING_BUFFER_START(UnityPerMaterial)
+UNITY_DEFINE_INSTANCED_PROP(float4, _BaseMap_ST)
+UNITY_DEFINE_INSTANCED_PROP(float4,_BaseColor)
+UNITY_DEFINE_INSTANCED_PROP(float, _Cutoff)
+UNITY_DEFINE_INSTANCED_PROP(float, _Metallic)
+UNITY_DEFINE_INSTANCED_PROP(float, _Smoothness)
+
+
+UNITY_DEFINE_INSTANCED_PROP(float, _FirstEdge)
+UNITY_DEFINE_INSTANCED_PROP(float, _SecondEdge)
+UNITY_INSTANCING_BUFFER_END(UnityPerMaterial)
+
+
+
+struct Attributes
+&#123;
+    float3 positionOS:Position;
+    float2 baseUV : TEXCOORD0;
+    float3 normalOS:NORMAL;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+struct Varying
+&#123;
+    float4 positionCS:SV_POSITION;
+    float3 positionWS:VAR_POSITION;
+    float2 baseUV : VAR_BASE_UV;
+    float3 normalWS: VAR_NORMAL;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+
+
+Varying LitPassVertex(Attributes input)&#123;
+    Varying output;
+    UNITY_SETUP_INSTANCE_ID(input);
+    UNITY_TRANSFER_INSTANCE_ID(input,output);
+    output.positionWS = TransformObjectToWorld(input.positionOS.xyz);
+    float3 normalWS = normalize(TransformObjectToWorldNormal(input.normalOS));
+    output.positionCS = TransformWorldToHClip(output.positionWS);
+    output.normalWS = TransformObjectToWorldNormal(input.normalOS);
+    float4 baseST = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseMap_ST);
+    output.baseUV = input.baseUV *baseST.xy + baseST.zw;
+    return output;
+&#125;
+
+float4 LitPassFragment(Varying input):SV_TARGET&#123;
+    Surface surface;
+
+
+    UNITY_SETUP_INSTANCE_ID(input);
+    float4 baseMap = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.baseUV);
+    float4 baseColor = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseColor);
+    float4 base = baseMap * baseColor;
+    #if defined(_CLIPPING)
+    clip(base.a - UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Cutoff));
+    #endif
+    surface.normal = normalize(input.normalWS);
+    surface.color = base.rgb;
+    surface.alpha = base.a;
+    surface.metallic = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Metallic);
+    surface.smoothness = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Smoothness);
+    surface.viewDirection = normalize(_WorldSpaceCameraPos - input.positionWS);
+    surface.firstedge = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _FirstEdge);
+    surface.secondedge = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _SecondEdge);
+    #if defined(_PREMULTIPLY_ALPHA)
+        CartoonBRDF brdf = GetBRDF(surface, true);
+    #else 
+        CartoonBRDF brdf = GetBRDF(surface);
+    #endif
+    float3 color = GetLighting(surface, brdf);
+
+    return float4(color, surface.alpha);
+&#125;
+
+#endif
+</code></pre><h2 id="CartoonOpaque-shader-其实就是glsl"><a href="#CartoonOpaque-shader-其实就是glsl" class="headerlink" title="CartoonOpaque.shader(其实就是glsl)"></a>CartoonOpaque.shader(其实就是glsl)</h2><pre><code>Shader &quot;Custom/CartoonOpaque&quot;
+&#123;
+    Properties&#123;
+        _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
+        _BaseMap(&quot;Texture&quot;, 2D) = &quot;white&quot;&#123;&#125;
+        _FirstEdge(&quot;First Edge&quot;, Range(-1,1))= 0.707
+        _SecondEdge(&quot;Second Edge&quot;, Range(-1,1))= 0
+        [Toggle(_PREMULTIPLY_ALPHA)] _PremulAlpha (&quot;Premultiply Alpha&quot;, Float) = 0
+
+    &#125;
+    SubShader&#123;
+        Pass&#123;
+            Tags&#123;&quot;LightMode&quot; = &quot;CustomLit&quot;&#125;
+
+            HLSLPROGRAM
+            #pragma target 3.5
+            #pragma vertex LitPassVertex
+            #pragma fragment LitPassFragment
+            #pragma multi_compile_instancing
+            #pragma shader_feature _CLIPPING
+            #pragma shader_feature _PREMULTIPLY_ALPHA
+            #include &quot;Assets/CustomRenderPipeline/Shader/CartoonLitPass.hlsl&quot;
+
+
+            ENDHLSL
+        &#125;
+    &#125;
+&#125;
+</code></pre><h2 id="LitPass-hlsl"><a href="#LitPass-hlsl" class="headerlink" title="LitPass.hlsl"></a>LitPass.hlsl</h2><pre><code>#ifndef CUSTOM_LIT_PASS_INCLUDED
+#define CUSTOM_LIT_PASS_INCLUDED
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Surface.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Light.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/BRDF.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Lighting.hlsl&quot;
+
+
+TEXTURE2D(_BaseMap);
+SAMPLER(sampler_BaseMap);
+
+UNITY_INSTANCING_BUFFER_START(UnityPerMaterial)
+UNITY_DEFINE_INSTANCED_PROP(float4, _BaseMap_ST)
+UNITY_DEFINE_INSTANCED_PROP(float4,_BaseColor)
+UNITY_DEFINE_INSTANCED_PROP(float, _Cutoff)
+UNITY_DEFINE_INSTANCED_PROP(float, _Metallic)
+UNITY_DEFINE_INSTANCED_PROP(float, _Smoothness)
+UNITY_INSTANCING_BUFFER_END(UnityPerMaterial)
+
+
+
+struct Attributes
+&#123;
+    float3 positionOS:Position;
+    float2 baseUV : TEXCOORD0;
+    float3 normalOS:NORMAL;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#123;;
+struct Varying
+&#123;
+    float4 positionCS:SV_POSITION;
+    float3 positionWS:VAR_POSITION;
+    float2 baseUV : VAR_BASE_UV;
+    float3 normalWS: VAR_NORMAL;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+
+
+Varying LitPassVertex(Attributes input)&#123;
+    Varying output;
+    UNITY_SETUP_INSTANCE_ID(input);
+    UNITY_TRANSFER_INSTANCE_ID(input,output);
+    output.positionWS = TransformObjectToWorld(input.positionOS.xyz);
+    float3 normalWS = normalize(TransformObjectToWorldNormal(input.normalOS));
+    output.positionCS = TransformWorldToHClip(output.positionWS);
+    output.normalWS = TransformObjectToWorldNormal(input.normalOS);
+    float4 baseST = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseMap_ST);
+    output.baseUV = input.baseUV *baseST.xy + baseST.zw;
+    return output;
+&#125;
+
+float4 LitPassFragment(Varying input):SV_TARGET&#123;
+    Surface surface;
+
+
+    UNITY_SETUP_INSTANCE_ID(input);
+    float4 baseMap = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, input.baseUV);
+    float4 baseColor = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseColor);
+    float4 base = baseMap * baseColor;
+    #if defined(_CLIPPING)
+    clip(base.a - UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Cutoff));
+    #endif
+    surface.normal = normalize(input.normalWS);
+    surface.color = base.rgb;
+    surface.alpha = base.a;
+    surface.metallic = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Metallic);
+    surface.smoothness = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Smoothness);
+    surface.viewDirection = normalize(_WorldSpaceCameraPos - input.positionWS);
+    #if defined(_PREMULTIPLY_ALPHA)
+        BRDF brdf = GetBRDF(surface, true);
+    #else 
+        BRDF brdf = GetBRDF(surface);
+    #endif
+    float3 color = GetLighting(surface, brdf);
+
+    return float4(color, surface.alpha);
+&#125;
+
+#endif
+</code></pre><h2 id="Opaque-Shader"><a href="#Opaque-Shader" class="headerlink" title="Opaque.Shader"></a>Opaque.Shader</h2><pre><code>Shader &quot;Custom/Opaque&quot;
+&#123;
+    Properties&#123;
+        _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
+        _BaseMap(&quot;Texture&quot;, 2D) = &quot;white&quot;&#123;&#125;
+        _Metallic(&quot;Metallic&quot;, Range(0,1)) = 0.5
+        _Smoothness(&quot;Smoothness&quot;, Range(0,1)) = 1
+        [Toggle(_PREMULTIPLY_ALPHA)] _PremulAlpha (&quot;Premultiply Alpha&quot;, Float) = 0
+
+    &#125;
+    SubShader&#123;
+        Pass&#123;
+            Tags&#123;&quot;LightMode&quot; = &quot;CustomLit&quot;&#125;
+
+            HLSLPROGRAM
+            #pragma target 3.5
+            #pragma vertex LitPassVertex
+            #pragma fragment LitPassFragment
+            #pragma multi_compile_instancing
+            #pragma shader_feature _CLIPPING
+            #pragma shader_feature _PREMULTIPLY_ALPHA
+            #include &quot;Assets/CustomRenderPipeline/Shader/LitPass.hlsl&quot;
+
+
+            ENDHLSL
+        &#125;
+    &#125;
+&#125;
+</code></pre><h2 id="Transparent-Shader"><a href="#Transparent-Shader" class="headerlink" title="Transparent.Shader"></a>Transparent.Shader</h2><pre><code>Shader &quot;Custom/Transparent&quot;
+&#123;
+    Properties&#123;
+        _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
+        _BaseMap(&quot;Texture&quot;, 2D) = &quot;white&quot;&#123;&#125;
+        _Cutoff(&quot;Alpha Cutoff&quot;, Range(0.0, 1.0))= 0.5
+        [Toggle(_CLIPPING)] _Clipping (&quot;Alpha Clipping&quot;, Float) = 0
+        [Enum(UnityEngine.Rendering.BlendMode)]_SrcBlend(&quot;Src Blend&quot;, Float) = 1
+        [Enum(UnityEngine.Rendering.BlendMode)]_DstBlend(&quot;Dst Blend&quot;, Float) = 0
+        [Enum(Off, 0 ,On, 1)] _ZWrite (&quot;ZWrite&quot;, Float) = 1
+        [Toggle(_PREMULTIPLY_ALPHA)] _PremulAlpha (&quot;Premultiply Alpha&quot;, Float) = 0
+    &#125;
+    SubShader&#123;
+        Pass&#123;
+            Tags&#123;&quot;LightMode&quot; = &quot;CustomLit&quot;&#125;
+            Blend [_SrcBlend] [_DstBlend]
+            ZWrite [_ZWrite]
+            HLSLPROGRAM
+            #pragma target 3.5
+            #pragma vertex LitPassVertex
+            #pragma fragment LitPassFragment
+            #pragma shader_feature _CLIPPING
+            #pragma shader_feature _PREMULTIPLY_ALPHA
+            #pragma multi_compile_instancing
+            #include &quot;Assets/CustomRenderPipeline/Shader/LitPass.hlsl&quot;
+
+
+            ENDHLSL
+        &#125;
+    &#125;
+    CustomEditor &quot;CustomShaderGUI&quot;
+&#125;
+</code></pre><h2 id="UnlitPass-hlsl"><a href="#UnlitPass-hlsl" class="headerlink" title="UnlitPass.hlsl"></a>UnlitPass.hlsl</h2><pre><code>#ifndef CUSTOM_UNLIT_PASS_INCLUDED
+#define CUSTOM_UNLIT_PASS_INCLUDED
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
+
+
+
+UNITY_INSTANCING_BUFFER_START(UnityPerMaterial)
+UNITY_DEFINE_INSTANCED_PROP(float4,_BaseColor)
+UNITY_INSTANCING_BUFFER_END(UnityPerMaterial)
+
+
+
+struct Attributes
+&#123;
+    float3 positionOS:Position;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+struct Varying
+&#123;
+    float4 positionCS:SV_POSITION;
+    UNITY_VERTEX_INPUT_INSTANCE_ID
+&#125;;
+
+
+Varying UnlitPassVertex(Attributes input)&#123;
+    Varying output;
+    UNITY_SETUP_INSTANCE_ID(input);
+    UNITY_TRANSFER_INSTANCE_ID(input,output);
+    float3 positionWS = TransformObjectToWorld(input.positionOS.xyz);
+
+    output.positionCS = TransformWorldToHClip(positionWS);
+
+    return output;
+&#125;
+
+float4 UnlitPassFragment(Varying input):SV_TARGET&#123;
+    UNITY_SETUP_INSTANCE_ID(input);
+    return UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseColor);
+&#125;
+
+#endif
+</code></pre><h2 id="UnlitShader-Shader"><a href="#UnlitShader-Shader" class="headerlink" title="UnlitShader.Shader"></a>UnlitShader.Shader</h2><pre><code>Shader &quot;Custom/Unlit&quot;
+&#123;
+    Properties&#123;
+        _BaseColor(&quot;BaseColor&quot;, Color) = (1,1,1,1)
+    &#125;
+    SubShader&#123;
+        Pass&#123;
+            HLSLPROGRAM
+            #pragma vertex UnlitPassVertex
+            #pragma fragment UnlitPassFragment
+            #pragma multi_compile_instancing
+            #include &quot;Assets/CustomRenderPipeline/Shader/UnlitPass.hlsl&quot;
+
+
+            ENDHLSL
+        &#125;
+    &#125;
+&#125;
+</code></pre><h1 id="CustomRenderPipeline-ShaderLibrary"><a href="#CustomRenderPipeline-ShaderLibrary" class="headerlink" title="CustomRenderPipeline/ShaderLibrary"></a>CustomRenderPipeline/ShaderLibrary</h1><p>因为用了十分”现代”的hlsl,关于shader的引用都放在单独的ShaderLibrary文件夹内.</p>
+<h2 id="BRDF-hlsl"><a href="#BRDF-hlsl" class="headerlink" title="BRDF.hlsl"></a>BRDF.hlsl</h2><pre><code>#ifndef CUSTOM_BRDF_INCLUDED
+#define CUSTOM_BRDF_INCLUDED
+#define MIN_REFLECTIVITY 0.04
+
+float OneMinusReflectivity (float metallic) &#123;
+    float range = 1.0 - MIN_REFLECTIVITY;
+    return range - metallic * range;
+&#125;
+struct BRDF &#123;
+    float3 diffuse;
+    float3 specular;
+    float roughness;
+&#125;;
+
+BRDF GetBRDF (Surface surface,  bool applyAlphaToDiffuse = false)
+&#123;
+    BRDF brdf;
+    float oneMinusReflectivity = OneMinusReflectivity(surface.metallic);
+    float perceptualRoughness = PerceptualSmoothnessToPerceptualRoughness(surface.smoothness);
+    brdf.roughness = PerceptualRoughnessToRoughness(perceptualRoughness);
+
+    brdf.diffuse = surface.color*oneMinusReflectivity;
+    if (applyAlphaToDiffuse)
+    &#123;brdf.diffuse *= surface.alpha;&#125;
+    brdf.specular = lerp(MIN_REFLECTIVITY, surface.color, surface.metallic);
+
+    return brdf;
+&#125;
+
+float SpecularStrength (Surface surface, BRDF brdf, Light light) &#123;
+    float3 h = SafeNormalize(light.direction + surface.viewDirection);
+    float nh2 = Square(saturate(dot(surface.normal, h)));
+    float lh2 = Square(saturate(dot(light.direction, h)));
+    float r2 = Square(brdf.roughness);
+    float d2 = Square(nh2 * (r2 - 1.0) + 1.00001);
+    float normalization = brdf.roughness * 4.0 + 2.0;
+    return r2 / (d2 * max(0.1, lh2) * normalization);
+&#125;
+
+float3 DirectBRDF (Surface surface, BRDF brdf, Light light) &#123;
+    return SpecularStrength(surface, brdf, light) * brdf.specular + brdf.diffuse;
+&#125;
+#endif
+</code></pre><h2 id="CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本"><a href="#CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本" class="headerlink" title="CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)"></a>CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)</h2><pre><code>#ifndef CUSTOM_CartoonBRDF_INCLUDED
+#define CUSTOM_CartoonBRDF_INCLUDED
+
+
+
+struct CartoonBRDF &#123;
+    float3 diffuse;
+
+&#125;;
+
+CartoonBRDF GetBRDF (Surface surface)
+&#123;
+    CartoonBRDF brdf;
+
+
+    brdf.diffuse = surface.color;
+    return brdf;
+&#125;
+
+
+
+float3 DirectBRDF (Surface surface, CartoonBRDF brdf, Light light) &#123;
+    return brdf.diffuse;
+&#125;
+#endif
+</code></pre><p>效果如图  </p>
+<p><img src="D:\Blog\source\_posts\CustomRenderPipeline-1\effect.png" alt="效果图"></p>
+<h2 id="CartoonLighting-hlsl"><a href="#CartoonLighting-hlsl" class="headerlink" title="CartoonLighting.hlsl"></a>CartoonLighting.hlsl</h2><pre><code>#ifndef CUSTOM_CARTOON_LIGHT_INCLUDED
+#define CUSTOM_CARTOON_LIGHT_INCLUDED
+
+float3 IncomingLight (Surface surface, Light light)
+&#123;
+    float s  =dot(normalize(surface.normal),normalize(light.direction));
+    if (s &gt;= surface.firstedge )
+    &#123;
+        return light.color;
+    &#125;
+    else if(s &lt;= surface.firstedge &amp;&amp; s &gt;= surface.secondedge)
+    &#123;
+        return light.color*0.6;
+    &#125;
+    else&#123;
+        return light.color*0.1;
+    &#125;
+    //return saturate(dot(surface.normal, light.direction))*light.color;
+&#125;
+
+float3 GetLightings (Surface surface,CartoonBRDF brdf, Light light) &#123;
+    return IncomingLight(surface, light) * DirectBRDF(surface, brdf, light);
+&#125;
+
+float3 GetLighting (Surface surface, CartoonBRDF brdf) &#123;
+    float3 color = 0.0;
+    for (int i = 0; i&lt;GetDirectionalLightCount(); i++)
+    &#123;
+        color += GetLightings(surface, brdf, GetDirectionalLight(i));
+    &#125;
+    return color;
+&#125;
+
+
+#endif
+</code></pre><h2 id="CartoonSurface-hlsl"><a href="#CartoonSurface-hlsl" class="headerlink" title="CartoonSurface.hlsl"></a>CartoonSurface.hlsl</h2><pre><code>#ifndef CUSTOM__CARTOON_SURFACE_INCLUDED
+#define CUSTOM_CARTOON_SURFACE_INCLUDED
+
+struct Surface &#123;
+    float3 normal;
+    float3 color;
+    float alpha;
+    float metallic;
+    float smoothness;
+    float3 viewDirection;
+    float firstedge;
+    float secondedge;
+&#125;;
+
+#endif
+</code></pre><h2 id="Common-hlsl"><a href="#Common-hlsl" class="headerlink" title="Common.hlsl"></a>Common.hlsl</h2><pre><code>#ifndef CUSTOM_COMMON_INCLUDED
+#define CUSTOM_COMMON_INCLUDED
+#include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl&quot;
+#include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl&quot;
+#include &quot;Assets/CustomRenderPipeline/ShaderLibrary/UnityInput.hlsl&quot;
+
+
+#define UNITY_MATRIX_M unity_ObjectToWorld
+#define UNITY_MATRIX_I_M unity_WorldToObject
+#define UNITY_MATRIX_V unity_MatrixV
+#define UNITY_MATRIX_VP unity_MatrixVP
+#define UNITY_MATRIX_P glstate_matrix_projection
+#define UNITY_PREV_MATRIX_M unity_PREVMatrixM
+#define UNITY_PREV_MATRIX_I_M unity_PREVMatrixIM
+
+#include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl&quot;
+#include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl&quot;
+
+float Square(float v)
+&#123;
+    return v*v;
+&#125;
+
+#endif
+</code></pre><h2 id="Light-hlsl"><a href="#Light-hlsl" class="headerlink" title="Light.hlsl"></a>Light.hlsl</h2><pre><code>#ifndef CUSTOM_LIGHT_INCLUDED
+#define CUSTOM_LIGHT_INCLUDED
+
+#define MAX_DIRECTIONAL_LIGHT_COUNT 4
+CBUFFER_START(_CustomLight)
+    int _DirectionalLightCount;
+    float4 _DirectionalLightColors[MAX_DIRECTIONAL_LIGHT_COUNT];
+    float4 _DirectionalLightDirections[MAX_DIRECTIONAL_LIGHT_COUNT];
+CBUFFER_END
+
+struct Light&#123;
+    float3 color;
+    float3 direction;
+&#125;;
+
+int GetDirectionalLightCount()
+&#123;
+    return _DirectionalLightCount;
+&#125;
+Light GetDirectionalLight (int index)
+&#123;
+    Light light;
+    light.color = _DirectionalLightColors[index].rgb;
+    light.direction = _DirectionalLightDirections[index].xyz;
+    return light;
+&#125;
+
+#endif
+</code></pre><h2 id="Lighting-hlsl"><a href="#Lighting-hlsl" class="headerlink" title="Lighting.hlsl"></a>Lighting.hlsl</h2><pre><code>#ifndef CUSTOM_LIGHTING_INCLUDED
+#define CUSTOM_LIGHTING_INCLUDED
+
+
+
+float3 IncomingLight (Surface surface, Light light)
+&#123;
+    return saturate(dot(surface.normal, light.direction))*light.color;
+&#125;
+
+float3 GetLightings (Surface surface,BRDF brdf, Light light) &#123;
+    return IncomingLight(surface, light) * DirectBRDF(surface, brdf, light);
+&#125;
+
+float3 GetLighting (Surface surface, BRDF brdf) &#123;
+    float3 color = 0.0;
+    for (int i = 0; i&lt;GetDirectionalLightCount(); i++)
+    &#123;
+        color += GetLightings(surface, brdf, GetDirectionalLight(i));
+    &#125;
+    return color;
+&#125;
+
+#endif
+</code></pre><h2 id="Surface-hlsl"><a href="#Surface-hlsl" class="headerlink" title="Surface.hlsl"></a>Surface.hlsl</h2><pre><code>#ifndef CUSTOM_SURFACE_INCLUDED
+#define CUSTOM_SURFACE_INCLUDED
+
+struct Surface &#123;
+    float3 normal;
+    float3 color;
+    float alpha;
+    float metallic;
+    float smoothness;
+    float3 viewDirection;
+&#125;;
+
+#endif
+</code></pre><h2 id="UnityInput-hlsl"><a href="#UnityInput-hlsl" class="headerlink" title="UnityInput.hlsl"></a>UnityInput.hlsl</h2><pre><code>#ifndef CUSTOM__UNITY_INPUT_INCLUDED
+#define CUSTOM__UNITY_INPUT_INCLUDED
+
+
+CBUFFER_START(UnityPerDraw)
+float4x4 unity_ObjectToWorld;
+float3 _WorldSpaceCameraPos;
+float4x4 unity_WorldToObject;
+float4x4 unity_MatrixV;
+float4x4 glstate_matrix_projection;
+float4x4 unity_PREVMatrixM;
+float4x4 unity_PREVMatrixIM;
+
+    float4 unity_LODFade;
+    real4 unity_WorldTransformParams;
+CBUFFER_END
+float4x4 unity_MatrixVP;
+
+#endif
+</code></pre><h1 id="CustomRenderPipeline-Component-纯纯是为了试验的"><a href="#CustomRenderPipeline-Component-纯纯是为了试验的" class="headerlink" title="CustomRenderPipeline/Component(纯纯是为了试验的)"></a>CustomRenderPipeline/Component(纯纯是为了试验的)</h1><h2 id="PerObjectMaterialProperties-cs"><a href="#PerObjectMaterialProperties-cs" class="headerlink" title="PerObjectMaterialProperties.cs"></a>PerObjectMaterialProperties.cs</h2><pre><code>using UnityEngine;
+
+[DisallowMultipleComponent]
+public class PerObjectMaterialProperties : MonoBehaviour
+&#123;
+    static int baseColorId = Shader.PropertyToID(&quot;_BaseColor&quot;);
+    static int cutoffId = Shader.PropertyToID(&quot;_Cutoff&quot;),
+            metallicId = Shader.PropertyToID(&quot;_Metallic&quot;),
+            smoothnessId = Shader.PropertyToID(&quot;_Smoothness&quot;);
+    [SerializeField]
+    Color baseColor = Color.white;
+    [SerializeField, Range(0f, 1f)]
+    float cutoff = 0.5f, metallic = 0.5f, smoothness = 0.5f;
+
+    static MaterialPropertyBlock block;
+
+
+    void OnValidate()
+    &#123;
+        if(block == null)
+        &#123;
+            block = new MaterialPropertyBlock();
+        &#125;
+        block.SetColor(baseColorId,baseColor);
+        block.SetFloat(cutoffId, cutoff);
+        block.SetFloat(metallicId, metallic);
+        block.SetFloat(smoothnessId, smoothness);
+        GetComponent&lt;Renderer&gt;().SetPropertyBlock(block);
+    &#125; 
+    void Awake()
+    &#123;
+        OnValidate();
+    &#125;
+&#125;
+</code></pre><h1 id="CustomRenderPipeline-Editor-对我来说没什么用的GUI"><a href="#CustomRenderPipeline-Editor-对我来说没什么用的GUI" class="headerlink" title="CustomRenderPipeline/Editor(对我来说没什么用的GUI)"></a>CustomRenderPipeline/Editor(对我来说没什么用的GUI)</h1><h2 id="CustomShaderGUI-cs"><a href="#CustomShaderGUI-cs" class="headerlink" title="CustomShaderGUI.cs"></a>CustomShaderGUI.cs</h2><pre><code>using UnityEngine;
+using UnityEditor;
+using UnityEngine.Rendering;
+
+public class CustomShaderGUI : ShaderGUI
+&#123;
+    bool showPresets;
+    MaterialEditor editor;
+    Object[] materials;
+    MaterialProperty[] properties;
+    public override void OnGUI (
+        MaterialEditor materialEditor, MaterialProperty[] properties) &#123;
+        base.OnGUI(materialEditor, properties);
+        editor = materialEditor;
+        materials = materialEditor.targets;
+        this.properties = properties;
+
+        EditorGUILayout.Space();
+        showPresets = EditorGUILayout.Foldout(showPresets, &quot;Presets&quot;, true);
+        if (showPresets) &#123;
+        OpaquePreset();
+        ClipPreset();
+        FadePreset();
+        TransparentPreset();
+        &#125;
+    &#125;
+
+    void SetProperty (string name, float value) &#123;
+        FindProperty(name, properties).floatValue = value;
+    &#125;
+
+    void SetKeyword (string keyword, bool enabled) &#123;
+        if (enabled) &#123;
+            foreach (Material m in materials) &#123;
+                m.EnableKeyword(keyword);
+            &#125;
+        &#125;
+        else &#123;
+            foreach (Material m in materials) &#123;
+                m.DisableKeyword(keyword);
+            &#125;
+        &#125;
+    &#125;
+
+    void SetProperty (string name, string keyword, bool value) &#123;
+        SetProperty(name, value ? 1f : 0f);
+        SetKeyword(keyword, value);
+    &#125;
+
+    bool Clipping &#123;
+        set =&gt; SetProperty(&quot;_Clipping&quot;, &quot;_CLIPPING&quot;, value);
+    &#125;
+
+    bool PremultiplyAlpha &#123;
+        set =&gt; SetProperty(&quot;_PremulAlpha&quot;, &quot;_PREMULTIPLY_ALPHA&quot;, value);
+    &#125;
+
+    BlendMode SrcBlend &#123;
+        set =&gt; SetProperty(&quot;_SrcBlend&quot;, (float)value);
+    &#125;
+
+    BlendMode DstBlend &#123;
+        set =&gt; SetProperty(&quot;_DstBlend&quot;, (float)value);
+    &#125;
+
+    bool ZWrite &#123;
+        set =&gt; SetProperty(&quot;_ZWrite&quot;, value ? 1f : 0f);
+    &#125;
+
+    RenderQueue RenderQueue &#123;
+        set &#123;
+            foreach (Material m in materials) &#123;
+            m.renderQueue = (int)value;
+            &#125;
+        &#125;
+    &#125;
+
+    bool PresetButton (string name) &#123;
+        if (GUILayout.Button(name)) &#123;
+            editor.RegisterPropertyChangeUndo(name);
+            return true;
+        &#125;
+        return false;
+    &#125;
+    void OpaquePreset () &#123;
+        if (PresetButton(&quot;Opaque&quot;)) &#123;
+            Clipping = false;
+            PremultiplyAlpha = false;
+            SrcBlend = BlendMode.One;
+            DstBlend = BlendMode.Zero;
+            ZWrite = true;
+            RenderQueue = RenderQueue.Geometry;
+        &#125;
+    &#125;
+    void ClipPreset () &#123;
+        if (PresetButton(&quot;Clip&quot;)) &#123;
+            Clipping = true;
+            PremultiplyAlpha = false;
+            SrcBlend = BlendMode.One;
+            DstBlend = BlendMode.Zero;
+            ZWrite = true;
+            RenderQueue = RenderQueue.AlphaTest;
+        &#125;
+    &#125;
+    void FadePreset () &#123;
+        if (PresetButton(&quot;Fade&quot;)) &#123;
+            Clipping = false;
+            PremultiplyAlpha = false;
+            SrcBlend = BlendMode.SrcAlpha;
+            DstBlend = BlendMode.OneMinusSrcAlpha;
+            ZWrite = false;
+            RenderQueue = RenderQueue.Transparent;
+        &#125;
+    &#125;
+    void TransparentPreset () &#123;
+        if (PresetButton(&quot;Transparent&quot;)) &#123;
+            Clipping = false;
+            PremultiplyAlpha = true;
+            SrcBlend = BlendMode.One;
+            DstBlend = BlendMode.OneMinusSrcAlpha;
+            ZWrite = false;
+            RenderQueue = RenderQueue.Transparent;
+        &#125;
+    &#125;
+
+&#125;
+</code></pre><p>不知道为什么我的GUI总是会出错..</p>
 
       
     </div>

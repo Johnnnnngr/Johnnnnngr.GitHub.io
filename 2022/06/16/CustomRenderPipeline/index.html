@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="Johnnnnngr">
 <meta property="og:description" content="目前进度:DIRECTIONAL SHADOWunity版本:2021.3.3f1c1 CustomRenderPipelineUnity中要自定义渲染管线是需要生成Asset的. 因此用作渲染的管线脚本一般会有三部分:CustomRenderPipelineAsset; CustomRenderPipeline; CameraRenderer.(Catlike Coding里还包括了Camera">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:/Blog/source_posts/CustomRenderPipeline-1/effect.png">
+<meta property="og:image" content="d:/Blog/source/_posts/CustomRenderPipeline-1/effect.png">
 <meta property="article:published_time" content="2022-06-16T15:52:30.000Z">
 <meta property="article:modified_time" content="2022-06-16T17:49:56.587Z">
 <meta property="article:author" content="Johnnnngr">
 <meta property="article:tag" content="hide">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/Blog/source_posts/CustomRenderPipeline-1/effect.png">
+<meta name="twitter:image" content="d:/Blog/source/_posts/CustomRenderPipeline-1/effect.png">
 
 <link rel="canonical" href="http://example.com/2022/06/16/CustomRenderPipeline/">
 
@@ -218,8 +218,7 @@ public class CustomRenderPipelineAsset : RenderPipelineAsset
         return new CustomRenderPipeline(useDynamicBatching, useGPUInstancing, useSRPBatching);
     &#125;
 &#125;
-</code></pre>
-<h2 id="CustomRenderPipeline-cs"><a href="#CustomRenderPipeline-cs" class="headerlink" title="CustomRenderPipeline.cs"></a>CustomRenderPipeline.cs</h2><pre><code>using UnityEngine.Rendering;
+</code></pre><h2 id="CustomRenderPipeline-cs"><a href="#CustomRenderPipeline-cs" class="headerlink" title="CustomRenderPipeline.cs"></a>CustomRenderPipeline.cs</h2><pre><code>using UnityEngine.Rendering;
 using UnityEngine;
 
 public class CustomRenderPipeline : RenderPipeline
@@ -229,7 +228,7 @@ public class CustomRenderPipeline : RenderPipeline
     public CustomRenderPipeline(bool useDynamicBatching, bool useGPUInstancing, bool useSRPBatching) &#123;
     this.useDynamicBatching = useDynamicBatching;
     this.useGPUInstancing = useGPUInstancing;
-        GraphicsSettings.useScriptableRenderPipelineBatching = 	useSRPBatching;
+        GraphicsSettings.useScriptableRenderPipelineBatching =     useSRPBatching;
         GraphicsSettings.lightsUseLinearIntensity = true;
         &#125;
     protected override void Render(ScriptableRenderContext ScriptableRenderContext, Camera[] cameras)
@@ -241,8 +240,7 @@ public class CustomRenderPipeline : RenderPipeline
         &#125;
     &#125;
 &#125;
-</code></pre>
-<h2 id="CameraRenderer-cs"><a href="#CameraRenderer-cs" class="headerlink" title="CameraRenderer.cs"></a>CameraRenderer.cs</h2><pre><code>using System.Collections;
+</code></pre><h2 id="CameraRenderer-cs"><a href="#CameraRenderer-cs" class="headerlink" title="CameraRenderer.cs"></a>CameraRenderer.cs</h2><pre><code>using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -315,7 +313,7 @@ public partial class CameraRenderer
         var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
 
         context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
-    
+
 
         context.DrawSkybox(camera);
 
@@ -345,7 +343,7 @@ public partial class CameraRenderer
             flags == CameraClearFlags.Color ? camera.backgroundColor.linear : Color.clear);
         buffer.BeginSample(SampleName);     
         ExecuteBuffer();
-    
+
     &#125;
 
     void ExecuteBuffer()
@@ -365,8 +363,7 @@ public partial class CameraRenderer
         &#125;
         return false;
     &#125;
-</code></pre>
-<h2 id="CameraRenderer-Editor-cs"><a href="#CameraRenderer-Editor-cs" class="headerlink" title="CameraRenderer.Editor.cs"></a>CameraRenderer.Editor.cs</h2><pre><code>using System.Collections;
+</code></pre><h2 id="CameraRenderer-Editor-cs"><a href="#CameraRenderer-Editor-cs" class="headerlink" title="CameraRenderer.Editor.cs"></a>CameraRenderer.Editor.cs</h2><pre><code>using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -403,7 +400,7 @@ public partial class CameraRenderer
         &#123;
             errorMaterial = new Material(Shader.Find(&quot;Hidden/InternalErrorShader&quot;));
         &#125;
-     
+
 
         var drawingSettings = new DrawingSettings(legacyShaderTagIds[0], new SortingSettings(camera))
         &#123;overrideMaterial = errorMaterial &#125;;
@@ -451,8 +448,7 @@ public partial class CameraRenderer
     &#125;
 
 &#125;
-</code></pre>
-<p>Catlike模仿了URP的文件夹结构,把以上四个文件放在Assets&#x2F;CustomRenderPipeline&#x2F;Runtime里面,截至directional light,这个文件夹里还有个文件:Lighting.cs</p>
+</code></pre><p>Catlike模仿了URP的文件夹结构,把以上四个文件放在Assets/CustomRenderPipeline/Runtime里面,截至directional light,这个文件夹里还有个文件:Lighting.cs</p>
 <h2 id="Lighting-cs"><a href="#Lighting-cs" class="headerlink" title="Lighting.cs"></a>Lighting.cs</h2><pre><code>using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -487,7 +483,7 @@ public class Lighting
         for (int i=0; i&lt;visibleLights.Length; i++)
         &#123;
             VisibleLight visibleLight = visibleLights[i];
-            if(visibleLight.lightType == 	LightType.Directional)&#123;
+            if(visibleLight.lightType ==     LightType.Directional)&#123;
                 SetupDirectionalLight(dirLightCount++,ref visibleLight);
                 if (dirLightCount &gt;= maxDirLightCount)
                 &#123;
@@ -505,8 +501,7 @@ public class Lighting
         dirLightDirections[index] = -visibleLight.localToWorldMatrix.GetColumn(2);
     &#125;
 &#125;
-</code></pre>
-<h1 id="CustomRenderPipeline-x2F-Shader"><a href="#CustomRenderPipeline-x2F-Shader" class="headerlink" title="CustomRenderPipeline&#x2F;Shader"></a>CustomRenderPipeline&#x2F;Shader</h1><p>这部分包含7个文件(包括了我自己写的简易卡通shader)</p>
+</code></pre><h1 id="CustomRenderPipeline-Shader"><a href="#CustomRenderPipeline-Shader" class="headerlink" title="CustomRenderPipeline/Shader"></a>CustomRenderPipeline/Shader</h1><p>这部分包含7个文件(包括了我自己写的简易卡通shader)</p>
 <h2 id="CartoonLitShader-hlsl"><a href="#CartoonLitShader-hlsl" class="headerlink" title="CartoonLitShader.hlsl"></a>CartoonLitShader.hlsl</h2><pre><code>#ifndef CUSTOM_LIT_PASS_INCLUDED
 #define CUSTOM_LIT_PASS_INCLUDED
 #include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
@@ -593,8 +588,7 @@ float4 LitPassFragment(Varying input):SV_TARGET&#123;
 &#125;
 
 #endif
-</code></pre>
-<h2 id="CartoonOpaque-shader-其实就是glsl"><a href="#CartoonOpaque-shader-其实就是glsl" class="headerlink" title="CartoonOpaque.shader(其实就是glsl)"></a>CartoonOpaque.shader(其实就是glsl)</h2><pre><code>Shader &quot;Custom/CartoonOpaque&quot;
+</code></pre><h2 id="CartoonOpaque-shader-其实就是glsl"><a href="#CartoonOpaque-shader-其实就是glsl" class="headerlink" title="CartoonOpaque.shader(其实就是glsl)"></a>CartoonOpaque.shader(其实就是glsl)</h2><pre><code>Shader &quot;Custom/CartoonOpaque&quot;
 &#123;
     Properties&#123;
         _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
@@ -616,14 +610,13 @@ float4 LitPassFragment(Varying input):SV_TARGET&#123;
             #pragma shader_feature _CLIPPING
             #pragma shader_feature _PREMULTIPLY_ALPHA
             #include &quot;Assets/CustomRenderPipeline/Shader/CartoonLitPass.hlsl&quot;
-        
-        
+
+
             ENDHLSL
         &#125;
     &#125;
 &#125;
-</code></pre>
-<h2 id="LitPass-hlsl"><a href="#LitPass-hlsl" class="headerlink" title="LitPass.hlsl"></a>LitPass.hlsl</h2><pre><code>#ifndef CUSTOM_LIT_PASS_INCLUDED
+</code></pre><h2 id="LitPass-hlsl"><a href="#LitPass-hlsl" class="headerlink" title="LitPass.hlsl"></a>LitPass.hlsl</h2><pre><code>#ifndef CUSTOM_LIT_PASS_INCLUDED
 #define CUSTOM_LIT_PASS_INCLUDED
 #include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
 #include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Surface.hlsl&quot;
@@ -703,8 +696,7 @@ float4 LitPassFragment(Varying input):SV_TARGET&#123;
 &#125;
 
 #endif
-</code></pre>
-<h2 id="Opaque-Shader"><a href="#Opaque-Shader" class="headerlink" title="Opaque.Shader"></a>Opaque.Shader</h2><pre><code>Shader &quot;Custom/Opaque&quot;
+</code></pre><h2 id="Opaque-Shader"><a href="#Opaque-Shader" class="headerlink" title="Opaque.Shader"></a>Opaque.Shader</h2><pre><code>Shader &quot;Custom/Opaque&quot;
 &#123;
     Properties&#123;
         _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
@@ -726,14 +718,13 @@ float4 LitPassFragment(Varying input):SV_TARGET&#123;
             #pragma shader_feature _CLIPPING
             #pragma shader_feature _PREMULTIPLY_ALPHA
             #include &quot;Assets/CustomRenderPipeline/Shader/LitPass.hlsl&quot;
-        
-        
+
+
             ENDHLSL
         &#125;
     &#125;
 &#125;
-</code></pre>
-<h2 id="Transparent-Shader"><a href="#Transparent-Shader" class="headerlink" title="Transparent.Shader"></a>Transparent.Shader</h2><pre><code>Shader &quot;Custom/Transparent&quot;
+</code></pre><h2 id="Transparent-Shader"><a href="#Transparent-Shader" class="headerlink" title="Transparent.Shader"></a>Transparent.Shader</h2><pre><code>Shader &quot;Custom/Transparent&quot;
 &#123;
     Properties&#123;
         _BaseColor(&quot;BaseColor&quot;, Color) = (0.5,0.5,0.5,1)
@@ -758,15 +749,14 @@ float4 LitPassFragment(Varying input):SV_TARGET&#123;
             #pragma shader_feature _PREMULTIPLY_ALPHA
             #pragma multi_compile_instancing
             #include &quot;Assets/CustomRenderPipeline/Shader/LitPass.hlsl&quot;
-        
-        
+
+
             ENDHLSL
         &#125;
     &#125;
     CustomEditor &quot;CustomShaderGUI&quot;
 &#125;
-</code></pre>
-<h2 id="UnlitPass-hlsl"><a href="#UnlitPass-hlsl" class="headerlink" title="UnlitPass.hlsl"></a>UnlitPass.hlsl</h2><pre><code>#ifndef CUSTOM_UNLIT_PASS_INCLUDED
+</code></pre><h2 id="UnlitPass-hlsl"><a href="#UnlitPass-hlsl" class="headerlink" title="UnlitPass.hlsl"></a>UnlitPass.hlsl</h2><pre><code>#ifndef CUSTOM_UNLIT_PASS_INCLUDED
 #define CUSTOM_UNLIT_PASS_INCLUDED
 #include &quot;Assets/CustomRenderPipeline/ShaderLibrary/Common.hlsl&quot;
 
@@ -807,8 +797,7 @@ float4 UnlitPassFragment(Varying input):SV_TARGET&#123;
 &#125;
 
 #endif
-</code></pre>
-<h2 id="UnlitShader-Shader"><a href="#UnlitShader-Shader" class="headerlink" title="UnlitShader.Shader"></a>UnlitShader.Shader</h2><pre><code>Shader &quot;Custom/Unlit&quot;
+</code></pre><h2 id="UnlitShader-Shader"><a href="#UnlitShader-Shader" class="headerlink" title="UnlitShader.Shader"></a>UnlitShader.Shader</h2><pre><code>Shader &quot;Custom/Unlit&quot;
 &#123;
     Properties&#123;
         _BaseColor(&quot;BaseColor&quot;, Color) = (1,1,1,1)
@@ -820,14 +809,13 @@ float4 UnlitPassFragment(Varying input):SV_TARGET&#123;
             #pragma fragment UnlitPassFragment
             #pragma multi_compile_instancing
             #include &quot;Assets/CustomRenderPipeline/Shader/UnlitPass.hlsl&quot;
-        
-        
+
+
             ENDHLSL
         &#125;
     &#125;
 &#125;
-</code></pre>
-<h1 id="CustomRenderPipeline-x2F-ShaderLibrary"><a href="#CustomRenderPipeline-x2F-ShaderLibrary" class="headerlink" title="CustomRenderPipeline&#x2F;ShaderLibrary"></a>CustomRenderPipeline&#x2F;ShaderLibrary</h1><p>因为用了十分”现代”的hlsl,关于shader的引用都放在单独的ShaderLibrary文件夹内.</p>
+</code></pre><h1 id="CustomRenderPipeline-ShaderLibrary"><a href="#CustomRenderPipeline-ShaderLibrary" class="headerlink" title="CustomRenderPipeline/ShaderLibrary"></a>CustomRenderPipeline/ShaderLibrary</h1><p>因为用了十分”现代”的hlsl,关于shader的引用都放在单独的ShaderLibrary文件夹内.</p>
 <h2 id="BRDF-hlsl"><a href="#BRDF-hlsl" class="headerlink" title="BRDF.hlsl"></a>BRDF.hlsl</h2><pre><code>#ifndef CUSTOM_BRDF_INCLUDED
 #define CUSTOM_BRDF_INCLUDED
 #define MIN_REFLECTIVITY 0.04
@@ -871,8 +859,7 @@ float3 DirectBRDF (Surface surface, BRDF brdf, Light light) &#123;
     return SpecularStrength(surface, brdf, light) * brdf.specular + brdf.diffuse;
 &#125;
 #endif
-</code></pre>
-<h2 id="CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本"><a href="#CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本" class="headerlink" title="CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)"></a>CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)</h2><pre><code>#ifndef CUSTOM_CartoonBRDF_INCLUDED
+</code></pre><h2 id="CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本"><a href="#CartoonBRDF-hlsl-只剩下修改了的漫反射部分的版本" class="headerlink" title="CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)"></a>CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)</h2><pre><code>#ifndef CUSTOM_CartoonBRDF_INCLUDED
 #define CUSTOM_CartoonBRDF_INCLUDED
 
 
@@ -897,9 +884,8 @@ float3 DirectBRDF (Surface surface, CartoonBRDF brdf, Light light) &#123;
     return brdf.diffuse;
 &#125;
 #endif
-</code></pre>
-<p>效果如图  </p>
-<p><img src="D:\Blog\source_posts\CustomRenderPipeline-1\effect.png" alt="效果图"></p>
+</code></pre><p>效果如图  </p>
+<p><img src="D:\Blog\source\_posts\CustomRenderPipeline-1\effect.png" alt="效果图"></p>
 <h2 id="CartoonLighting-hlsl"><a href="#CartoonLighting-hlsl" class="headerlink" title="CartoonLighting.hlsl"></a>CartoonLighting.hlsl</h2><pre><code>#ifndef CUSTOM_CARTOON_LIGHT_INCLUDED
 #define CUSTOM_CARTOON_LIGHT_INCLUDED
 
@@ -935,8 +921,7 @@ float3 GetLighting (Surface surface, CartoonBRDF brdf) &#123;
 
 
 #endif
-</code></pre>
-<h2 id="CartoonSurface-hlsl"><a href="#CartoonSurface-hlsl" class="headerlink" title="CartoonSurface.hlsl"></a>CartoonSurface.hlsl</h2><pre><code>#ifndef CUSTOM__CARTOON_SURFACE_INCLUDED
+</code></pre><h2 id="CartoonSurface-hlsl"><a href="#CartoonSurface-hlsl" class="headerlink" title="CartoonSurface.hlsl"></a>CartoonSurface.hlsl</h2><pre><code>#ifndef CUSTOM__CARTOON_SURFACE_INCLUDED
 #define CUSTOM_CARTOON_SURFACE_INCLUDED
 
 struct Surface &#123;
@@ -951,8 +936,7 @@ struct Surface &#123;
 &#125;;
 
 #endif
-</code></pre>
-<h2 id="Common-hlsl"><a href="#Common-hlsl" class="headerlink" title="Common.hlsl"></a>Common.hlsl</h2><pre><code>#ifndef CUSTOM_COMMON_INCLUDED
+</code></pre><h2 id="Common-hlsl"><a href="#Common-hlsl" class="headerlink" title="Common.hlsl"></a>Common.hlsl</h2><pre><code>#ifndef CUSTOM_COMMON_INCLUDED
 #define CUSTOM_COMMON_INCLUDED
 #include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl&quot;
 #include &quot;Packages/com.unity.render-pipelines.core/ShaderLibrary/CommonMaterial.hlsl&quot;
@@ -976,8 +960,7 @@ float Square(float v)
 &#125;
 
 #endif
-</code></pre>
-<h2 id="Light-hlsl"><a href="#Light-hlsl" class="headerlink" title="Light.hlsl"></a>Light.hlsl</h2><pre><code>#ifndef CUSTOM_LIGHT_INCLUDED
+</code></pre><h2 id="Light-hlsl"><a href="#Light-hlsl" class="headerlink" title="Light.hlsl"></a>Light.hlsl</h2><pre><code>#ifndef CUSTOM_LIGHT_INCLUDED
 #define CUSTOM_LIGHT_INCLUDED
 
 #define MAX_DIRECTIONAL_LIGHT_COUNT 4
@@ -1005,8 +988,7 @@ Light GetDirectionalLight (int index)
 &#125;
 
 #endif
-</code></pre>
-<h2 id="Lighting-hlsl"><a href="#Lighting-hlsl" class="headerlink" title="Lighting.hlsl"></a>Lighting.hlsl</h2><pre><code>#ifndef CUSTOM_LIGHTING_INCLUDED
+</code></pre><h2 id="Lighting-hlsl"><a href="#Lighting-hlsl" class="headerlink" title="Lighting.hlsl"></a>Lighting.hlsl</h2><pre><code>#ifndef CUSTOM_LIGHTING_INCLUDED
 #define CUSTOM_LIGHTING_INCLUDED
 
 
@@ -1030,8 +1012,7 @@ float3 GetLighting (Surface surface, BRDF brdf) &#123;
 &#125;
 
 #endif
-</code></pre>
-<h2 id="Surface-hlsl"><a href="#Surface-hlsl" class="headerlink" title="Surface.hlsl"></a>Surface.hlsl</h2><pre><code>#ifndef CUSTOM_SURFACE_INCLUDED
+</code></pre><h2 id="Surface-hlsl"><a href="#Surface-hlsl" class="headerlink" title="Surface.hlsl"></a>Surface.hlsl</h2><pre><code>#ifndef CUSTOM_SURFACE_INCLUDED
 #define CUSTOM_SURFACE_INCLUDED
 
 struct Surface &#123;
@@ -1044,8 +1025,7 @@ struct Surface &#123;
 &#125;;
 
 #endif
-</code></pre>
-<h2 id="UnityInput-hlsl"><a href="#UnityInput-hlsl" class="headerlink" title="UnityInput.hlsl"></a>UnityInput.hlsl</h2><pre><code>#ifndef CUSTOM__UNITY_INPUT_INCLUDED
+</code></pre><h2 id="UnityInput-hlsl"><a href="#UnityInput-hlsl" class="headerlink" title="UnityInput.hlsl"></a>UnityInput.hlsl</h2><pre><code>#ifndef CUSTOM__UNITY_INPUT_INCLUDED
 #define CUSTOM__UNITY_INPUT_INCLUDED
 
 
@@ -1064,8 +1044,7 @@ CBUFFER_END
 float4x4 unity_MatrixVP;
 
 #endif
-</code></pre>
-<h1 id="CustomRenderPipeline-x2F-Component-纯纯是为了试验的"><a href="#CustomRenderPipeline-x2F-Component-纯纯是为了试验的" class="headerlink" title="CustomRenderPipeline&#x2F;Component(纯纯是为了试验的)"></a>CustomRenderPipeline&#x2F;Component(纯纯是为了试验的)</h1><h2 id="PerObjectMaterialProperties-cs"><a href="#PerObjectMaterialProperties-cs" class="headerlink" title="PerObjectMaterialProperties.cs"></a>PerObjectMaterialProperties.cs</h2><pre><code>using UnityEngine;
+</code></pre><h1 id="CustomRenderPipeline-Component-纯纯是为了试验的"><a href="#CustomRenderPipeline-Component-纯纯是为了试验的" class="headerlink" title="CustomRenderPipeline/Component(纯纯是为了试验的)"></a>CustomRenderPipeline/Component(纯纯是为了试验的)</h1><h2 id="PerObjectMaterialProperties-cs"><a href="#PerObjectMaterialProperties-cs" class="headerlink" title="PerObjectMaterialProperties.cs"></a>PerObjectMaterialProperties.cs</h2><pre><code>using UnityEngine;
 
 [DisallowMultipleComponent]
 public class PerObjectMaterialProperties : MonoBehaviour
@@ -1099,8 +1078,7 @@ public class PerObjectMaterialProperties : MonoBehaviour
         OnValidate();
     &#125;
 &#125;
-</code></pre>
-<h1 id="CustomRenderPipeline-x2F-Editor-对我来说没什么用的GUI"><a href="#CustomRenderPipeline-x2F-Editor-对我来说没什么用的GUI" class="headerlink" title="CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)"></a>CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)</h1><h2 id="CustomShaderGUI-cs"><a href="#CustomShaderGUI-cs" class="headerlink" title="CustomShaderGUI.cs"></a>CustomShaderGUI.cs</h2><pre><code>using UnityEngine;
+</code></pre><h1 id="CustomRenderPipeline-Editor-对我来说没什么用的GUI"><a href="#CustomRenderPipeline-Editor-对我来说没什么用的GUI" class="headerlink" title="CustomRenderPipeline/Editor(对我来说没什么用的GUI)"></a>CustomRenderPipeline/Editor(对我来说没什么用的GUI)</h1><h2 id="CustomShaderGUI-cs"><a href="#CustomShaderGUI-cs" class="headerlink" title="CustomShaderGUI.cs"></a>CustomShaderGUI.cs</h2><pre><code>using UnityEngine;
 using UnityEditor;
 using UnityEngine.Rendering;
 
@@ -1226,8 +1204,7 @@ public class CustomShaderGUI : ShaderGUI
     &#125;
 
 &#125;
-</code></pre>
-<p>不知道为什么我的GUI总是会出错..</p>
+</code></pre><p>不知道为什么我的GUI总是会出错..</p>
 
     </div>
 
@@ -1316,7 +1293,7 @@ public class CustomShaderGUI : ShaderGUI
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%89%8D%E8%BF%9B%E5%BA%A6-DIRECTIONAL-SHADOW"><span class="nav-number">1.</span> <span class="nav-text">目前进度:DIRECTIONAL SHADOW</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline"><span class="nav-number">2.</span> <span class="nav-text">CustomRenderPipeline</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CustomRenderPipelineAsset-cs"><span class="nav-number">2.1.</span> <span class="nav-text">CustomRenderPipelineAsset.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CustomRenderPipeline-cs"><span class="nav-number">2.2.</span> <span class="nav-text">CustomRenderPipeline.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CameraRenderer-cs"><span class="nav-number">2.3.</span> <span class="nav-text">CameraRenderer.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CameraRenderer-Editor-cs"><span class="nav-number">2.4.</span> <span class="nav-text">CameraRenderer.Editor.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lighting-cs"><span class="nav-number">2.5.</span> <span class="nav-text">Lighting.cs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline-x2F-Shader"><span class="nav-number">3.</span> <span class="nav-text">CustomRenderPipeline&#x2F;Shader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonLitShader-hlsl"><span class="nav-number">3.1.</span> <span class="nav-text">CartoonLitShader.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonOpaque-shader-%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AFglsl"><span class="nav-number">3.2.</span> <span class="nav-text">CartoonOpaque.shader(其实就是glsl)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LitPass-hlsl"><span class="nav-number">3.3.</span> <span class="nav-text">LitPass.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Opaque-Shader"><span class="nav-number">3.4.</span> <span class="nav-text">Opaque.Shader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transparent-Shader"><span class="nav-number">3.5.</span> <span class="nav-text">Transparent.Shader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UnlitPass-hlsl"><span class="nav-number">3.6.</span> <span class="nav-text">UnlitPass.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UnlitShader-Shader"><span class="nav-number">3.7.</span> <span class="nav-text">UnlitShader.Shader</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline-x2F-ShaderLibrary"><span class="nav-number">4.</span> <span class="nav-text">CustomRenderPipeline&#x2F;ShaderLibrary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BRDF-hlsl"><span class="nav-number">4.1.</span> <span class="nav-text">BRDF.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonBRDF-hlsl-%E5%8F%AA%E5%89%A9%E4%B8%8B%E4%BF%AE%E6%94%B9%E4%BA%86%E7%9A%84%E6%BC%AB%E5%8F%8D%E5%B0%84%E9%83%A8%E5%88%86%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">4.2.</span> <span class="nav-text">CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonLighting-hlsl"><span class="nav-number">4.3.</span> <span class="nav-text">CartoonLighting.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonSurface-hlsl"><span class="nav-number">4.4.</span> <span class="nav-text">CartoonSurface.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Common-hlsl"><span class="nav-number">4.5.</span> <span class="nav-text">Common.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Light-hlsl"><span class="nav-number">4.6.</span> <span class="nav-text">Light.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lighting-hlsl"><span class="nav-number">4.7.</span> <span class="nav-text">Lighting.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Surface-hlsl"><span class="nav-number">4.8.</span> <span class="nav-text">Surface.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UnityInput-hlsl"><span class="nav-number">4.9.</span> <span class="nav-text">UnityInput.hlsl</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline-x2F-Component-%E7%BA%AF%E7%BA%AF%E6%98%AF%E4%B8%BA%E4%BA%86%E8%AF%95%E9%AA%8C%E7%9A%84"><span class="nav-number">5.</span> <span class="nav-text">CustomRenderPipeline&#x2F;Component(纯纯是为了试验的)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PerObjectMaterialProperties-cs"><span class="nav-number">5.1.</span> <span class="nav-text">PerObjectMaterialProperties.cs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline-x2F-Editor-%E5%AF%B9%E6%88%91%E6%9D%A5%E8%AF%B4%E6%B2%A1%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84GUI"><span class="nav-number">6.</span> <span class="nav-text">CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CustomShaderGUI-cs"><span class="nav-number">6.1.</span> <span class="nav-text">CustomShaderGUI.cs</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%89%8D%E8%BF%9B%E5%BA%A6-DIRECTIONAL-SHADOW"><span class="nav-number">1.</span> <span class="nav-text">目前进度:DIRECTIONAL SHADOW</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline"><span class="nav-number">2.</span> <span class="nav-text">CustomRenderPipeline</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CustomRenderPipelineAsset-cs"><span class="nav-number">2.1.</span> <span class="nav-text">CustomRenderPipelineAsset.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CustomRenderPipeline-cs"><span class="nav-number">2.2.</span> <span class="nav-text">CustomRenderPipeline.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CameraRenderer-cs"><span class="nav-number">2.3.</span> <span class="nav-text">CameraRenderer.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CameraRenderer-Editor-cs"><span class="nav-number">2.4.</span> <span class="nav-text">CameraRenderer.Editor.cs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lighting-cs"><span class="nav-number">2.5.</span> <span class="nav-text">Lighting.cs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline-Shader"><span class="nav-number">3.</span> <span class="nav-text">CustomRenderPipeline&#x2F;Shader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonLitShader-hlsl"><span class="nav-number">3.1.</span> <span class="nav-text">CartoonLitShader.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonOpaque-shader-%E5%85%B6%E5%AE%9E%E5%B0%B1%E6%98%AFglsl"><span class="nav-number">3.2.</span> <span class="nav-text">CartoonOpaque.shader(其实就是glsl)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LitPass-hlsl"><span class="nav-number">3.3.</span> <span class="nav-text">LitPass.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Opaque-Shader"><span class="nav-number">3.4.</span> <span class="nav-text">Opaque.Shader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transparent-Shader"><span class="nav-number">3.5.</span> <span class="nav-text">Transparent.Shader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UnlitPass-hlsl"><span class="nav-number">3.6.</span> <span class="nav-text">UnlitPass.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UnlitShader-Shader"><span class="nav-number">3.7.</span> <span class="nav-text">UnlitShader.Shader</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline-ShaderLibrary"><span class="nav-number">4.</span> <span class="nav-text">CustomRenderPipeline&#x2F;ShaderLibrary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BRDF-hlsl"><span class="nav-number">4.1.</span> <span class="nav-text">BRDF.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonBRDF-hlsl-%E5%8F%AA%E5%89%A9%E4%B8%8B%E4%BF%AE%E6%94%B9%E4%BA%86%E7%9A%84%E6%BC%AB%E5%8F%8D%E5%B0%84%E9%83%A8%E5%88%86%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">4.2.</span> <span class="nav-text">CartoonBRDF.hlsl(只剩下修改了的漫反射部分的版本)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonLighting-hlsl"><span class="nav-number">4.3.</span> <span class="nav-text">CartoonLighting.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CartoonSurface-hlsl"><span class="nav-number">4.4.</span> <span class="nav-text">CartoonSurface.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Common-hlsl"><span class="nav-number">4.5.</span> <span class="nav-text">Common.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Light-hlsl"><span class="nav-number">4.6.</span> <span class="nav-text">Light.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lighting-hlsl"><span class="nav-number">4.7.</span> <span class="nav-text">Lighting.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Surface-hlsl"><span class="nav-number">4.8.</span> <span class="nav-text">Surface.hlsl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UnityInput-hlsl"><span class="nav-number">4.9.</span> <span class="nav-text">UnityInput.hlsl</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline-Component-%E7%BA%AF%E7%BA%AF%E6%98%AF%E4%B8%BA%E4%BA%86%E8%AF%95%E9%AA%8C%E7%9A%84"><span class="nav-number">5.</span> <span class="nav-text">CustomRenderPipeline&#x2F;Component(纯纯是为了试验的)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PerObjectMaterialProperties-cs"><span class="nav-number">5.1.</span> <span class="nav-text">PerObjectMaterialProperties.cs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CustomRenderPipeline-Editor-%E5%AF%B9%E6%88%91%E6%9D%A5%E8%AF%B4%E6%B2%A1%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84GUI"><span class="nav-number">6.</span> <span class="nav-text">CustomRenderPipeline&#x2F;Editor(对我来说没什么用的GUI)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CustomShaderGUI-cs"><span class="nav-number">6.1.</span> <span class="nav-text">CustomShaderGUI.cs</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
