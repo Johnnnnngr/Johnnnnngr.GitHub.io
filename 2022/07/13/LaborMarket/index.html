@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"manual","top_n_per_article":-1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="此文章分三部分. Labor Supply ls就是纯纯的微观模型. Definitions: labor employed(E): (以美国为例,实际上不同国家的参考不同,比如灵活就业) 16岁以上有筹工作至少一小时或无筹工作15小时以上(比如family farm中的工人) labor unemployed(U): 两个或条件: be on a temporary lay o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaborMarket">
+<meta property="og:url" content="http://example.com/2022/07/13/LaborMarket/index.html">
+<meta property="og:site_name" content="Johnnnnngr">
+<meta property="og:description" content="此文章分三部分. Labor Supply ls就是纯纯的微观模型. Definitions: labor employed(E): (以美国为例,实际上不同国家的参考不同,比如灵活就业) 16岁以上有筹工作至少一小时或无筹工作15小时以上(比如family farm中的工人) labor unemployed(U): 两个或条件: be on a temporary lay o">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/1.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/2.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/3.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/4.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/5.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/6.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/7.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/8.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/9.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/10.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/11.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/12.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/13.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/14.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/15.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/16.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/17.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/18.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/19.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/20.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/21.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/22.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/23.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/24.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/25.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/26.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/27.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/28.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/29.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/30.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/31.jpg">
+<meta property="og:image" content="http://example.com/2022/07/13/LaborMarket/32.jpg">
+<meta property="article:published_time" content="2022-07-13T02:42:54.000Z">
+<meta property="article:modified_time" content="2022-07-13T02:52:35.483Z">
+<meta property="article:author" content="Johnnnngr">
+<meta property="article:tag" content="hide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/07/13/LaborMarket/1.jpg">
+
+<link rel="canonical" href="http://example.com/2022/07/13/LaborMarket/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>LaborMarket | Johnnnnngr</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Johnnnnngr</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/13/LaborMarket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LaborMarket
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-13 10:42:54 / 修改时间：10:52:35" itemprop="dateCreated datePublished" datetime="2022-07-13T10:42:54+08:00">2022-07-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>此文章分三部分.</p>
+<h1 id="labor-supply">Labor Supply</h1>
+<p>ls就是纯纯的微观模型.</p>
+<h2 id="definitions">Definitions:</h2>
+<p><strong>labor employed(E)</strong>:
+(以美国为例,实际上不同国家的参考不同,比如灵活就业)
+16岁以上有筹工作至少一小时或无筹工作15小时以上(比如family
+farm中的工人)</p>
+<p><strong>labor unemployed(U)</strong>: 两个或条件: be on a temporary
+lay off from a job // no job but looking for in 4 weeks before the
+reference week</p>
+<p><strong>out of the labor force</strong>:
+以上两个集合的补集,包括学生,资本家(收入完全是资本回报)</p>
+<p>以上三个集合满足关系:</p>
+<p>E+U=LF(total labor force), 其中的labor
+force专门指人,而不是工时,所以..统计labor的总量还是非常困难的</p>
+<p><strong>labor force participation rate</strong> = <span
+class="math display">\[\frac{LF}{P} \]</span></p>
+<p><strong>employment rate</strong> = <span
+class="math display">\[\frac{E}{P} \]</span></p>
+<p><strong>unempolyment rate</strong> = <span
+class="math display">\[\frac{U}{LF} \]</span></p>
+<p>因为失业率是失业劳动力除以总劳动力,所以失业率和就业率之和并不一定等于1.
+这么调整失业率是为了将本来就不能工作的人排除在失业率计算之外.但是, some
+economists thought
+这么统计失业率不能在特殊情况下反映真实的经济数据,比如美国2009年经济危机的时候,很多人找不到工作变得灰心,于是他们就不再寻找了.此时他们不会算入失业率中,但在这之前他们确确实实是非常普通的劳动力,也具有生产能力(变成了<strong>hidden
+unemployment</strong>).这和统计失业率的初衷:将无工作能力的人排除相悖.
+于是部分经济学家认为用就业率估算失业率更好,但这就将无工作能力的人和灰心的人一起算了.</p>
+<h2 id="notations">Notations:</h2>
+<p>C: 总消费商品价格(leisure不算入内)</p>
+<p>L: 同期消费者的Leisure Time</p>
+<p>T: time available in this period</p>
+<p>U: Satisfaction, 令U=f(C,L)</p>
+<p>$MU_{L} $: leisure的边际效益</p>
+<p><span class="math inline">\(MU_{C}\)</span>:
+consumption的边际收益</p>
+<h2 id="assumptions">Assumptions:</h2>
+<ol type="1">
+<li>Utility是convex函数</li>
+<li>w,即工资率,是constant,即没有加班补助等.这里只是为了简化.</li>
+<li>目前模型是单期模型,以一周为一个周期.</li>
+<li>leisure是normal good
+(尽管我们还要再检验一遍,而且不同国家,不同年龄段的人对待leisure的态度都不一样)</li>
+</ol>
+<h2 id="model">Model:</h2>
+<p>从Utility模型得到:</p>
+<p><span class="math display">\[MU_{L} = \frac{\partial U}{\partial L}
+\]</span></p>
+<p><span class="math display">\[MU_{C} = \frac{\partial U}{\partial C}
+\]</span></p>
+<p><span class="math display">\[\frac{\mathrm{d} C}{\mathrm{d} L} = -
+\frac{MU_L}{MU_C} \ne MRS = \left | \frac{MU_L}{MU_C}  \right |
+\]</span>特别注意MRS...you dummy</p>
+<p>每个人都存在Budget Constraint,主要是两方面的constraint:
+一天的时间24h和他的salary.我们假设:</p>
+<p>C = wh + V (令w为工资率,h为工作时间,V为non-labor
+income,即社保之类的)</p>
+<p>h = T - L</p>
+<p>则: C = w(T - L) + V = -wL + (wT + V). 很明显,C和L成线性负相关.
+即如图:<img src="/2022/07/13/LaborMarket/1.jpg" class="" title="效果图1"></p>
+<p>E点被成为endowment point,即完全不工作只吃社保下的Budget
+Constraint.<img src="/2022/07/13/LaborMarket/2.jpg" class="" title="效果图2"></p>
+<p>同经典微观模型,当在此constraint中达到最大utility的时候,两者相切,得到:
+MRS = w.</p>
+<p><span class="math display">\[MRS = w \to  \left |
+\frac{MU_L}{MU_C}  \right |=w \to \frac{MU_L}{w} = MU_C \]</span></p>
+<p>上式的intuition: 当达到最大utility时, extra hour costs w
+dollars(是因为leisure的基本单位是hour,因此增加一hour的leisure所带来的效益就和增加一单位的consumption一样了(以美元计),可以写成<span
+class="math inline">\(\frac{\frac{MU_L}{w} }{MU_C} =
+1\)</span>,这样adjusted的MU对utility的效果就一样了,其实就是把leisure抽象成以美元计价的商品,单价是<span
+class="math inline">\(\frac{1 }{w } (\frac{hours}{dollars}
+)\)</span></p>
+<p>现考虑变量变化:</p>
+<h3 id="changes-in-v">Changes in V</h3>
+<p>工资(斜率)不变,只有纯纯的income effect.</p>
+<p>可以用changes in V检验leisure是否为inferior good<img src="/2022/07/13/LaborMarket/3.jpg" class="" title="效果图3"></p>
+<p>Borjas: 一般认为leisure是normal good,即工资不变,禀赋越高,越不想工作,
+而且这是有evidence support的.</p>
+<h3 id="changes-in-wages">Changes in Wages</h3>
+<p>也就是斜率变化. 这会导致income effect和substitution effect.
+因为这两个相反的效果,结果是ambiguity.<img src="/2022/07/13/LaborMarket/4.jpg" class="" title="效果图4"></p>
+<p>这个ambiguity能说明不同收入的人对待工资变化的态度不同.
+高收入人群的leisure比低收入人群(以美元计价)珍贵(<span
+class="math inline">\(\frac{MU_L}{w}\)</span>),所以if
+收入提高,高收入人群会考虑增加leisure,而低收入人群会减少leisure,因为对于他们来说leisure的机会成本大(即他们本来就穷,consumption的边际递减不明显)
+(这就是收入塑造的utility吗...)</p>
+<p>可以说,富人的收入效应强,而穷人的替代效应强,因此他们对待工资提高的态度不同:<img src="/2022/07/13/LaborMarket/5.jpg" class="" title="效果图5"></p>
+<p>标准模型基本无了</p>
+<h2 id="implications-for-basic-model">Implications for basic model</h2>
+<h3 id="是否进入劳动力市场">是否进入劳动力市场?</h3>
+<p>已知部分穷人feed on V,因为他们实际工资低于其预期工资(w = MPL),
+即在他们的budget constraint上,utility和constraint的交点是endowment
+point. 注意,这不一定是切点,因为这个constraint它并不和横轴相交.
+而当交点为切点的时候,只要工资涨一点点,劳动力就会选择进入劳动力市场.
+为切点的工资叫做reservation wage:<img src="/2022/07/13/LaborMarket/6.jpg" class="" title="效果图6"></p>
+<h3 id="leisure和工资的关系">leisure和工资的关系</h3>
+<p>和商品一样,相对价格(工资)变化会导致商品消费数量(劳动时间)变化.
+变化情况也和商品一样呢.</p>
+<p>Borjas: 从不同收入的人对待工资提高的态度差异推导出先作为normal good
+后成为giffen good的leisure (反之,working hours = T -
+L,得到结论,wh随着工资增加先增后减):呈现出backward-bending的形状</p>
+<p>:<img src="/2022/07/13/LaborMarket/7.jpg" class="" title="效果图7"></p>
+<p>(概念:这是个人的工资和工时的关系,要计算社会总量,只需要把横坐标的值加总即可:<img src="/2022/07/13/LaborMarket/8.jpg" class="" title="效果图8">)</p>
+<p>(概念: labor supply elasticity <span class="math display">\[ \delta
+=\frac{\frac{\mathrm{d} h}{h} }{\frac{\mathrm{d} w}{w}} =
+\frac{\mathrm{d} h}{\mathrm{d} w}  \frac{w}{h}
+\]</span>),这个还挺重要的.从弹性能deduce some policy implications.</p>
+<h3 id="estimation-of-labor-supply-elasticity">Estimation of labor
+supply elasticity</h3>
+<p>这是一个被研究地非常透彻的话题,Borjas: empirically,
+美国男性的弹性是-0.1(annually,后同)</p>
+<p>基本模型:<span class="math display">\[h_{i} = \beta w_{i}+\gamma
+V_{i}+Other Variables \]</span></p>
+<p>其中,<span class="math inline">\(h_i\)</span>是工作时间,<span
+class="math inline">\(w_i\)</span>是工资率,<span
+class="math inline">\(V_i\)</span>是non-labor income,<span
+class="math inline">\(\beta\)</span>是当<span
+class="math inline">\(V_i\)</span>不变时,每增加一单位的工资率所改变的<span
+class="math inline">\(h_i\)</span>,同理,<span
+class="math inline">\(\gamma\)</span>是当工资率不变的时增加一单位<span
+class="math inline">\(V_i\)</span>所增加的<span
+class="math inline">\(h_i\)</span>(一单位基本就是one dollar)</p>
+<p>Borjas: <span
+class="math inline">\(\beta\)</span>很关键,它的符号取决于个人的utility曲线,即究竟是IE占优还是SE占优.
+if IE占优,那么工资上升,leisure增加,working
+hours减少,ls曲线斜率为负,<span class="math inline">\(\beta\)</span>为负.
+反之相反. 另外,<span
+class="math inline">\(\gamma\)</span>的符号可以从假设中得到:
+leisure是normal good,因此<span
+class="math inline">\(V_i\)</span>增加导致工时减少,则<span
+class="math inline">\(\gamma\)</span>为负. 一般地,<span
+class="math inline">\(\beta\)</span>被用来估计labor supply
+elasticity.</p>
+<p>Borjas:
+不同学者对弹性的估计不同,但是广泛被接受的结论是男性是-0.1(annually,后同).
+对于男性来说,IE占优,该结论符合1900-2000年间男性工时波动下降的趋势.</p>
+<p>Borjas:
+男女的弹性绝对值都很小,即在短期内几乎是无弹性的,只有在长期中才变得有弹性(explanation:
+短期内要改变工时很困难)</p>
+<h3 id="problems-in-estimation">Problems in estimation</h3>
+<p>Borjas: 计算弹性的过程中,部分变量的统计存在争议:
+工时,工资率和非劳动收入</p>
+<p>工时:
+如之前所说的,短期因为外力使得劳动力几乎完全不具备弹性,但是如果我们按年来估计
+弹性,那么它会稍微大一些.
+另外,工时的统计也是问卷形式,大部分人会回答40h(越南笑了),存在bias.</p>
+<p>工资率:
+<strong>首先</strong>,因为工资是按年发的(Borjas给出的数据也是annual的),所以我们计算每时工资率自然就是年金除年工时.
+如果工时有bias,那么其会被带入到工资率的计算中.
+overreport工时,造成underestimate工资率,反之相反.这种误差叫做measure
+error. <strong>其次</strong>,除了measure error之外,还有systematic error:
+我们给出的模型是$ = MU_C $,即看的是边际量.
+leisure的定价也是用的边际价格.
+如果是年工资除年工时,那就是average了,和margin会有差别.
+<strong>最后</strong>,在计算社会平均或总量的时候,有那么一部分人,他们无工作意向,但是能工作.也就是说,这部分人的reservation
+wage高于实际wage(资本家or懒汉比如我).
+因此..从population中选出的用于统计的workers就不是random
+sample了(selection bias).</p>
+<p>非劳动收入: 对于大多数人来说,非劳动收入指过去的savings and
+investment带来的资本回报(尤其是..上世纪中国,大多数人以节俭和劳动为荣,s很高,savings就高的离谱,though
+mostly it is a trick from gov). Borjas: 这些人有taste for works,
+因此他们有高非劳动收入. 只要这个taste 不变,那么if
+w不变,他们工作的越多,非劳动收入就越高, 即<span
+class="math inline">\(h_i和V_i\)</span>成正相关. 实际上,有evidence
+support this,
+这表明这个taste(就是OtherVariable?)足够强大到改变correlation的符号.
+另外,此情况下leisure是inferior good. (though,
+这个正相关并<strong>不能说明因果关系</strong>,这是一个典型例子. Borjas:
+需要考虑random shock:<a
+href="#Adjustment%20in%20causation%20and%20correlation">click to view
+the causation</a>)</p>
+<h2 id="extension-of-basic-model-household-production">Extension of
+basic model: household production</h2>
+<p>现在加入household来考量劳动者决策. 这是neo-classical labor-leisure
+model之外的了.</p>
+<p>definition: household
+production也就是<strong>非市场交易为目的</strong>的生产行为,基本就是生产<strong>给自己用的</strong>(因此会有相应的utility),如家务</p>
+<p>Borjas: 男女之间之劳动市场和household
+production之间的时间分配差别巨大:
+男主外,女主内(实际上2013年的数据女内外差别不大)</p>
+<p>家庭经济学观点: 男女为了达到efficient, 会specialize.
+基本就是男specialize in labor market, 女 in household production.
+当然,说到specialization, 基本就是套用比较优势模型了.
+男方在劳动力市场赚的米比上其household生产的比值大于女方's时,男方就选择完全入劳动力市场,女方则完全入household
+production(个人层面是否存在Krugman的learning curve存疑).</p>
+<p>另外,男女形成家庭的时候,家庭之budget constraint就是个人的加总.</p>
+<p>:<img src="/2022/07/13/LaborMarket/9.jpg" class="" title="效果图9"></p>
+<p>即一人的产出是另外一人的禀赋.</p>
+<p>因为..BC的形状给出来了,所以要看specialization的程度还得看utility(也是男女加总的utility).如果在非F点的边上相切,那么就是某个人完全specialized,另一个人分饰两角.</p>
+<p>如果家庭中某人的wage增加,
+那么相应的这个人贡献的曲线部分斜率增加,而另一个人的禀赋增加.<img src="/2022/07/13/LaborMarket/10.jpg" class="" title="效果图10"></p>
+<p>implication: 工资较低的一方完全投入于household中可增加opportunity
+set.</p>
+<p>以上结论可以用于解释为什么现代妇女劳动参与率增加,即</p>
+<ol type="1">
+<li>妇女的real wage增加(会引致妇女的incentive to work增加).
+Evidence:发展中国家妇女工资上升明显,其劳动参与率也上升明显.</li>
+<li>妇女的投入于household中的机会成本增加.即儿童减少and育儿机器发明使得妇女投入于household中的时间越来越不值钱.
+因此她们更愿意将时间投入到labor market中</li>
+<li>culture and legal的变化:
+保护妇女生育等权利给妇女减负,让她们敢不做家务.</li>
+</ol>
+<p>Borjas: 经验表明,妇女的correlation between <span
+class="math inline">\(h_i和w\)</span>大约为0.2.
+有些人认为因为现代妇女工资急速增长使得妇女劳动参与率急速增长,因此妇女的弹性就比男性高,Borjas认为这是有问题的.
+他认为男女的弹性都差不多小,只不过女性总体工资低,大多处于是否要进入劳动市场的考量中,因此工资一高,参与率就高了.所以Borjas几乎就是否定了之前的论调.</p>
+<h3 id="adjustment-in-causation-and-correlation">Adjustment in causation
+and correlation</h3>
+<p>因为<span
+class="math inline">\(dV_i和dh_i\)</span>之间虽然正相关,但是并不能说明他们之间存在因果.他们可能都是由某变量改变引致的,但两者中的某一方单独变化不会改变另一方.
+此例中的某变量就是taste for work,
+而这两个就是结果...但是,机智的劳动经济学家认为,要检验因果性就要选择random
+sample(指之前的<span
+class="math inline">\(dV_i和dh_i\)</span>的变化非随机,如果是culture使得他们正相关,该culture下<span
+class="math inline">\(dV_i\)</span>只会大于0,而且是可预测的).</p>
+<h4 id="常用的random-sampleshock-in-v_i-中奖">常用的random sample(shock
+in <span class="math inline">\(V_i\)</span>): 中奖</h4>
+<p>Borjas统计了1970到now的中奖者之行为,近25%的人在一年内离开了工作岗位,额外9%的人减少了工时或取消兼职.
+实际上,对<strong>工时的反应程度取决于jackpot的大小</strong>:
+50k到200k的得奖主几乎不离开工作岗位,而1m及以上的人中40%都不工作了(迫真横向quasi-linear).</p>
+<h4 id="另外常用的random-sampleshock-in-w-tlc">另外常用的random
+sample(shock in w): TLC</h4>
+<p>Uber之前,纽约的taxi driver之工资是New York City Taxi and Limousine
+Commission规定的,1997年TLC增加了17%的wage rate per miles,
+而之后用里程衡量的taxi driver之工时平均减少了3.2%,
+预示了IE占优,及几乎非弹性. (这是annually的)</p>
+<h4 id="conclusion-of-random-shock">conclusion of random shock</h4>
+<p>劳动经济学家使用受luck,policy change, human-made
+experiments等引致的shock来衡量因果关系.(貌似最重要的能体现random的关键在于不能让其可预测(不是废话吗),否则因果性无法验证).</p>
+<p>但是以上的实验or统计都存在问题,那就是working labor
+的sample并不是随机取样的.能否将其结论推广至所有人有待验证.</p>
+<h2 id="policy-implications">Policy Implications</h2>
+<h3 id="welfare-program">welfare program</h3>
+<p>美国在mid 1960s宣布与poverty的战争,开始采用强烈的welfare
+policy,但是效果并不好(穷人不干活了),因此在克林顿时代被取消(cute
+Clinton).</p>
+<p>实际上welfare就是两部分:<span
+class="math inline">\(V_i和h_i\)</span></p>
+<h4 id="welfare-1-cash-grantsv_i">welfare 1: cash grants(<span
+class="math inline">\(V_i\)</span>)</h4>
+<p>失业人口能收到<span
+class="math inline">\(V_i\)</span>数量的救济金,but
+if他们进入劳动力市场,那么停止发放救济金.假设失业人口不存在其他非劳动收入,那么他们的budget
+constrain如图</p>
+<p>:<img src="/2022/07/13/LaborMarket/11.jpg" class="" title="效果图11"></p>
+<p>BC就是线段FE$$点G. 为了达到optimization, 失业者选择不工作.</p>
+<h4 id="welfare-2-allowed-work">welfare 2: allowed work</h4>
+<p>welfare 1 是纯纯的theory,
+现实中政府会允许被救济者工作,但是其w会减少(high tax on
+wages)<img src="/2022/07/13/LaborMarket/12.jpg" class="" title="效果图12"></p>
+<p>implication: 就算在labor
+market里面,只要有救济,就会减少工时(毕竟横向quasi-linear).
+模型很贴合数据呢......</p>
+<p>implication: 所有的welfare都会降低工时,这是income
+effect的结果(除非给工资补贴(存疑,我没找evidence)).
+总之就是灵活建模hhh,比如Minnesota Family Investment
+Program给有低龄儿童的妇女生活补贴之案例.完完全全是最优化问题了</p>
+<h4 id="welfare-3-tax-deduction">welfare 3: tax deduction</h4>
+<p>Earned Income Tax Credit:
+以美国为例,2017年年收入低于14040刀的人可以有40%的税务优惠(tax credit),
+即最大优惠额度为5616刀,同时年收入在14040刀18340刀之间,都享受同样的5616刀税务优惠.当年收入大于18340刀之后,每增加以美元,额度减小21.06美分.即deduction在45007刀的时候完全消失.</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/13.jpg" class="" title="效果图13"></p>
+<p>在JE段,相当于w增加.这能提高部分人群的labor participation
+rate,即让他们进入劳动力市场.</p>
+<p>在HJ段,纯纯的IE,减少工时</p>
+<p>GH段就不用说了,也是IE</p>
+<p>Tax Reform Act of 1986 成效显著,Borjas:
+这个法案主要给有小孩的未结婚的妇女用多个,结果妇女的劳动参与率提高(2.4%).
+但是Borjas认为当时美国经济加速发展也可以解释这个2.4%,于是他选择对照组,没小孩的未结婚的妇女.
+他们不是该法案的受益者,所以没有明显的increase in participation rate.
+Borjas: 于是可以取两组效果之差为该法案的效果,即2.4%-0=2.4%.
+这种方法被称为difference-in-differences estimator.</p>
+<h2 id="intertemporal-model">Intertemporal model</h2>
+<p>经典之跨期预算约束模型.
+我们之前的分析都是单期的(1年),而跨期更符合实际.基本就是宏观跨期模型的拓展...assumptions几乎一样</p>
+<p>先说结论: Borjas: 男性在16-50岁之间participation
+rate逐渐增加,之后保持constant或减少,同时,工资和该rate正相关.
+女性在16-20上升,20s-30s因为生育问题暂时下降,之后又上升直到50左右,剩下的和男性一样.
+有趣的是,任何年龄段,女性的参与率都低于男性,工资也是如此.</p>
+<p>参与率这么变化的原因还是最优化问题,即工资.</p>
+<p>for a given worker, 他可以在不同期中trade
+leisure来达到总共的最大utility.
+即在年轻的时候少工作,50岁左右大量工作,之后又少工作(这是理想情况,假设这个worker不会生病等).需要注意的是,这里的跨期消费有一个十分重要的前提,即expectation
+has no bias.</p>
+<p>Borjas: 这里和单期消费有偏差:
+单期中工资和工时弱负相关,但是跨期中他们是正相关.
+这里Borjas提出了比较概念:
+单期中的相关性是和平行宇宙中的自己比较的,而跨期中是和不同时间点的我比较的.(reasonable)</p>
+<p>rt: <img src="/2022/07/13/LaborMarket/14.jpg" class="" title="效果图14"></p>
+<p>Borjas 用了Dummy
+Function来描述这个决策(如果我还记得的话,就把这块补充了吧)</p>
+<p><span class="math display">\[H_{it}=\delta w_{it}+ {\textstyle
+\sum_{1}^{n}} \alpha_{i}F_i+OtherVariables\]</span></p>
+<p>含义:观察n个workers,在特定时间段内观察m次,那么将n x m次观察(stacked
+data)都放入一个Dummy模型中</p>
+<p>其中<span class="math inline">\(F_i\)</span>是Dummy Variable,
+即对于工人i,它是1,其他工人是0.</p>
+<p>剩下一点绷不住了,有机会再补充</p>
+<hr />
+<h1 id="labor-demand">Labor Demand</h1>
+<p>上一章分析了劳动供给及其拓展,
+并指明劳动者提供的工时是其最优化的结果.</p>
+<p>劳动力需求则是取决于firms的决策,其决策(生产多少商品)又取决于消费者的决策(也就是同时拥有劳动力和消费力的个人的决策).</p>
+<h2 id="definition-notations">Definition &amp; Notations:</h2>
+<p><strong>derived demand</strong>: a demand derived from consumers,
+即由消费者决策引致的各需求变量, 如firm's labor demand &amp; firm
+为生产购置的资产(这里就被Borjas分为两部分: 劳动需求和other
+inputs的需求)</p>
+<p><strong>labor input</strong>: 本书中使用的模型是用工时记为labor
+input的, 有两个restrictions: 1.
+工时=工人数*每个工人的平均工时(社会工时,这是统计的一个难点),同时,每单位的labor
+input都是同质的(好!终于明白这个假设的由来了: labor input reveals no
+information about its components) 2.
+每个工人都是同质化的,不存在其MPL之间的difference. Borjas:
+以上假设全假,但是有利于得到本质的结论(因此你需要读一些拓展的readings)</p>
+<p><strong>The law of Diminishing Return</strong>: 即过于拥挤会降低效率.
+这是存在最优解的条件之一.</p>
+<p><strong>Elasticity of Labor Demand</strong>: percentage change in
+<strong>shortrun</strong> employment(<span
+class="math inline">\(E_{SR}\)</span>) from a 1% change in wage.</p>
+<p><strong>Marginal Productivity Condition</strong>: w=<span
+class="math inline">\(MP_E\)</span>时停止招募. 即firm招募多少的rule</p>
+<p><strong>Isoquants</strong>:
+等产量线中各种E和K的组合集合.相当于消费者的indifference curve</p>
+<p><strong>marginal rate of technical substitution</strong>: 厂商的MRS,
+等于$ = - $(纯纯的微观理论)</p>
+<hr />
+<p><strong>q</strong>: output</p>
+<p><strong>p</strong>: price firm can sell its price,
+在此模型中,p不受个别厂商的影响</p>
+<p><strong>w &amp; r</strong>: wage rate &amp; price of capital,
+在此模型中,w和r也不受公司使用input的数量的影响</p>
+<p><strong>Marginal Product of Labor(<span
+class="math inline">\(MP_E\)</span>)</strong> :
+即每个工时的边际产出,等于$ $</p>
+<p><strong>Average Product of Labor(<span
+class="math inline">\(AP_E\)</span>) </strong>: 即每单位工时的平均产出,
+等于$ $</p>
+<p>(重要性质: MPL大于APL时,APL之导数大于0,反之相反.
+于是MPL和APL交于APL最大值处)</p>
+<p><strong>Value of Marginal Product</strong>(<span
+class="math inline">\(VMP_E\)</span>) :
+额外增加一个工人所增加的生产产值(以美元计),等于<span
+class="math inline">\(MP_E \times p\)</span></p>
+<p><strong>Value of Average Product(<span
+class="math inline">\(VAP_E\)</span>)</strong> : output value per worker
+in average,等于<span class="math inline">\(AP_E \times p\)</span></p>
+<p>(重要性质:
+VMP与VAP曲线的形状和MP与AP曲线的形状相似,且极值点等都identical,
+所以....)</p>
+<hr />
+<p>基本可以说,labor
+demand之决定因素是企业产品的需求,而影响因素是各种政策,比如最低工资和员工开除保护法等(实际上是影响了企业的成本,则可以量化为dollars)</p>
+<h2 id="basic-model">Basic Model:</h2>
+<h3 id="assumptions-1">Assumptions</h3>
+<ol type="1">
+<li>perfect competitions, which means the firms are small
+individuals.</li>
+<li>all price are constant (p, w, r =), 即由1得到的结论.</li>
+<li>all firms and individuals search for optimization</li>
+<li>Production function:
+我们只采用包含劳动力和物质资本的模型来简化生产环节,得到函数:<span
+class="math inline">\(q=f(E,K)\)</span>其中q是output,
+E是工时(employeed-hours)即labor input, K是物质资本.
+于是可以得到企业利润为:<span class="math inline">\(Profits =
+pq-wE-rK\)</span></li>
+<li>diminishing rate of return.</li>
+</ol>
+<h3 id="the-short-run">The Short Run</h3>
+<p>短期即企业不能及时改变物质资本的span. 令SR中资本使用量为<span
+class="math inline">\(K_0\)</span></p>
+<p>企业选择雇佣多少工时,则取决于w和<span
+class="math inline">\(VMP_E\)</span>的形状:</p>
+<p><span class="math display">\[\begin{cases}
+  &amp; \text{ } w=VMP_E\to 多雇佣一个工人的收益等于成本 \\
+  &amp; \text{ } VMP_E在交点处导数小于0\to
+通常上式会有两解,我们选择较大的解,原因很简单
+\end{cases}\]</span></p>
+<p>rt: <img src="/2022/07/13/LaborMarket/15.jpg" class="" title="效果图15"></p>
+<p>(扎布多德勒,Borjas怎么不直接写<span
+class="math inline">\(\int_{a}^{E_{max}}(VMP_E - w) dE
+最大时取E_{max}\)</span>)</p>
+<p>(可怜的公司只能改变雇佣的工时,而不能改变工资. 因此,存在可能性:
+就算是在最优点,只要wage大于<span
+class="math inline">\(VAP_E\)</span>,那么企业还是会亏损,因此退市)</p>
+<p>To be honest,
+在VAP,VMP交点之前的函数部分对于生产决策来说几乎没有意义,因为交点之前的点企业完全可以选择多雇佣来增加收益除非wage函数很特别.所以可以舍弃交点之前的部分.舍弃之后的部分成为Demand
+Curve for Labor,于是有函数:<span
+class="math inline">\(w=f(E,p,r,K)\)</span>和其图像</p>
+<p>:<img src="/2022/07/13/LaborMarket/16.jpg" class="" title="效果图16"></p>
+<p>rt, 相当于<span class="math inline">\(E=F(w,p,r,K)=f^{-1}
+(w,p,r,K)\)</span>,
+其中w变化引致的E变化不会移动曲线,但是p,K等其他变量的变化会导致曲线移动(r变化不会,但是r变化可能会导致K变化从而影响曲线位置).
+eg: p,K增加,曲线右移(<span class="math inline">\(VMP_E=MP_E \times
+p\)</span>)</p>
+<h4 id="market-labor-demand">market labor demand</h4>
+<p>市场labor
+demand就是所有firms的需求的某种加总,但是其口径却绝对不是简单的加:</p>
+<p><span
+class="math inline">\(\begin{cases}单一企业不能影响价格  \\所有企业一起可以影响价格  \\VMP_E=MP_E\times
+p\end{cases}\)</span> $$
+如果所有企业扩张并降低工资,那么工时增加,产出增加,产品价格会下降(消费者供需)</p>
+<p>一旦产品价格下降,<span
+class="math inline">\(VMP_E\)</span>会降低,因此曲线会左移,即每个firm的labor
+demand会左移,导致增加的工时需求低于预期.</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/17.jpg" class="" title="效果图17"></p>
+<p>此图是两个firms的情况.</p>
+<p>Borjas: 为了衡量这种变化,引入Elasticity of labor
+demand来衡量w变化引致的工时需求的变化:</p>
+<p>$_{SR} = <span
+class="math inline">\((这并不能解释变化,变化是exogenous)同时,因为\)</span>w=f(E)$是downward-sloping,所以该弹性一般小于0.</p>
+<p>同其他弹性,if 绝对值大于1,则有弹性,小于1则无弹性.</p>
+<h4 id="alternative-way-to-interpret-the-stopping-rule">alternative way
+to interpret the stopping rule</h4>
+<p>之前的都是假设了资本使用量<span class="math inline">\(K_0\)</span>
+,实际上考虑资本使用,可以得到更复杂的决策(长期):</p>
+<p><span class="math display">\[\max_{w,r,E,K} \Pi
+(w,r,E,K)=\pi(E,K)-C(w,r,E,K)\]</span></p>
+<p><span class="math display">\[s.t. \begin{cases}E\ge 0 \\K\ge 0 \\r\ge
+0\\w\ge 0 \\q=f(E,K)\\ \pi=pq \\C=rK+wE  \end{cases}\]</span></p>
+<p>结果自然是Marginal Cost(多生产一单位的边际成本) = Marginal
+Revenue(多生产一单位的收益),即<span
+class="math inline">\(\Pi\)</span>满足FOC.</p>
+<p>:<img src="/2022/07/13/LaborMarket/18.jpg" class="" title="效果图18"></p>
+<p>FOC:</p>
+<p><span class="math display">\[\frac{\partial \pi }{\partial q}
+=  \frac{\partial C }{\partial q}\to p=w\times
+\frac{1}{MP_E}+r\times\frac{1}{MP_K} \]</span></p>
+<p>等式右边可以直接目测法: 多生产以单位产品,分别需要<span
+class="math inline">\(\frac{1}{MP_E}和\frac{1}{MP_K}\)</span>单位的E和K.</p>
+<p>另外,<span class="math inline">\(\frac{\partial C }{\partial
+q}=\frac{\partial (wE+rK) }{\partial q}=w\frac{\partial E }{\partial
+q}+r\frac{\partial K }{\partial q}=w\times
+\frac{1}{MP_E}+r\times\frac{1}{MP_K}\)</span></p>
+<p>短期不考虑K的变化,得到<span class="math inline">\(p=w\times
+\frac{1}{MP_E}\to w=p\times MP_E\to
+Borjas:知道了产量也就知道了工时需求\)</span></p>
+<h3 id="the-long-run">The Long Run</h3>
+<p>厂商在长期存在类似于Budget
+Constrain的isoquant(生产函数)和isocost(成本函数)</p>
+<p><strong>Isoquant</strong>. 它有以下几个性质(和indifference
+curve一样呢):</p>
+<ol type="1">
+<li>必然downward-sloping</li>
+<li>do not intersect</li>
+<li>higher isoquant预示着higher output</li>
+<li>convex to origin</li>
+</ol>
+<p>同IC,可以得到: $ = - $(marginal rate of technical substitution)</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/19.jpg" class="" title="效果图19"></p>
+<p>Isocost, 相当于Budget Constrain,不过他的函数形式很simple : <span
+class="math display">\[C=wE+rK\]</span></p>
+<p>任意一个isocost集中的E,K组合都使得总成本不变:</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/20.jpg" class="" title="效果图20"></p>
+<p>固定成本为<span class="math inline">\(C_0\)</span>,则,<span
+class="math inline">\(K=\frac{C_0-wE}{r}=\frac{C_0}{r}-\frac{w}{r}E\)</span>,成线性关系.因此斜率为<span
+class="math inline">\(-\frac{w}{r}\)</span></p>
+<p>同labor supply,
+厂商要效益最大化就得小成本大收益,即之前提到的constraint
+optimization(只不过那里是直接分析利润了,这里还停留在产量上,虽然没什么差别)</p>
+<p><span class="math display">\[\max_{w,r,E,K}
+-C(w,r,E,K)=-(rK+wE)\]</span></p>
+<p><span class="math display">\[s.t. \begin{cases}E\ge 0 \\K\ge 0 \\r\ge
+0\\w\ge 0  \\q=f(w,r,E,K)=q_0  \end{cases}\]</span></p>
+<p>注意!厂商关注的不是特定成本下最大的产量,而是特定产量下最小的成本(这和利润最大化等价),因为产量是市场决定的,因此产量也是该模型和商品市场模型的接口(实际上产量即之前最优化问题的解,即利润最大化的解,其中,价格p取决于商品市场)</p>
+<p>解自然是切点了,即</p>
+<p>:<img src="/2022/07/13/LaborMarket/21.jpg" class="" title="效果图21"></p>
+<p>此时<span class="math inline">\(MRTS=-\frac{w}{r}\to
+\frac{MP_E}{w}=\frac{MP_K}{r}\to
+implication:额外的一美元花在E和K上,所增加的output数量一样\)</span></p>
+<p>注意!从短期的特定资本量下,最优E满足<span
+class="math inline">\(p=w\times
+MP_E\)</span>,对于资本来说,特定E下,最优资本量也满足<span
+class="math inline">\(p=r\times
+MP_K\)</span>.这里的等式是指需求解的变量之外的变量视作常数,因此可以对之外的变量使用包络定理得到global
+optimization. 此时<span class="math inline">\(p=w \times MP_E + r \times
+MP_K\)</span> (类比方向偏导)(我没检验该结论的正确性)</p>
+<h4 id="long-run-demand-curve">Long Run Demand Curve</h4>
+<p>长期labor demand curve是不同<span
+class="math inline">\(C_0\)</span>下的optimization
+points的集合,它们的形状就是一条曲线.</p>
+<p>在长期我们不需要假设固定的cost(<span
+class="math inline">\(C_0\)</span>,即Cost曲线族可能均匀分布),因为长期它取决于A,p,r(等其他变量),所以长期的isocost变化是比较复杂的,它会绕着某点旋转.</p>
+<p>eg: 假设工资减少,那么MC减少,企业扩张,用工增加,</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/22.jpg" class="" title="效果图22"></p>
+<p>工时需求及资本需求从P到R.实际上,工资降低,则劳动需求必定增加,但是资本需求不一定增加,可能减少.</p>
+<h4 id="substitution-effect-and-scale-effect">Substitution Effect and
+Scale Effect</h4>
+<p>如上,工资减少有两个效应: 替代效应和规模效应.
+前者指因为工资减少,E相对于K的价格下降,企业会变得更加劳动密集, 因此E
+demand增加.
+后者指因为工资是成本的一部分,工资减少相当于成本减少,因此企业会生产更多的产品,则需要更多的工人.</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/23.jpg" class="" title="效果图23"></p>
+<p>more specifically: <span
+class="math display">\[\begin{cases}从P到Q(也就是斜率不变时的纯因为成本下降引致的扩张)是scale
+\\从Q到R(即相对价格改变而引致的input再分配)是substitution
+\end{cases}\]</span></p>
+<p>scale effect对标income effect, 即只要labor和capital都是normal
+good,则价格下降,他们两个都会因scale effect而增加.</p>
+<p>substitution effect就纯纯的和微观一样了.对于labor,
+因为斜率变缓,所以SE大于0,则labor必定增加.而对于capital,因为它变贵了,所以SE小于0,则capital有可能减少.</p>
+<p>规定,longrun-employment change elasticity:</p>
+<p><span class="math display">\[\delta_{LR}=\frac{\mathrm{d}
+E_{LR}}{\mathrm{d} w} \times \frac{w}{E_{LR}}
+\]</span>,必小于0(短期也同理..)</p>
+<p>操,看到了Borjas之灵魂explanation(虽然很simple):
+短期不能改变capital,因此短期的最优化必然伴随着更高的cost,但是长期可以改变capital,即firms面临的constraints比较少,所以长期的最优化必然比短期更加有弹性.</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/24.jpg" class="" title="效果图24"></p>
+<h4 id="estimation-of-elasticity">Estimation of Elasticity</h4>
+<p>学界估计短期弹性是-0.4到-0.5,长期是-1 (eg: using men uncovered by
+<strong>The Fair Labor Standards Act of 1938</strong> in contrast with
+women in the same period that is covered by it:
+该法律略微降低了男性加班时长,但女性加班时长略微增加.
+这里用了difference-in-differences trick,很特别地,用女性作为control
+group不能完美地得到女性的结论.)</p>
+<h5
+id="elasticity-of-substitution-perfect-complement-and-perfect-substitutions">elasticity
+of substitution： perfect complement and perfect substitutions</h5>
+<p>substitution
+effect的强度取决于isoquant的形状.现考虑两个极端情形：</p>
+<p><strong>Perfect
+substitution</strong>：即两个input能以特定比例互相代替而不影响产出（即level-curve是直线）</p>
+<p>：<img src="/2022/07/13/LaborMarket/25.jpg" class="" title="效果图25"></p>
+<p><span class="math display">\[q_0 = f(E,K)\to \frac{\mathrm{d}
+K}{\mathrm{d} E}=-\frac{q^{&#39;}_{1} }{q^{&#39;}_{2}}=\alpha
+\]</span></p>
+<p>此时，如果isocost不奇怪，那么企业一般只会使用一种生产要素来达到最低成本</p>
+<hr />
+<p><strong>Perfect
+Complement</strong>：两个input完全不能代替，只有他们按某种比例同时增加才能增加总产出.</p>
+<p>：<img src="/2022/07/13/LaborMarket/26.jpg" class="" title="效果图26"></p>
+<hr />
+<p>以上两个情况可以推出，越接近linear，则替代效应越强。为此，甚至还有个概念：</p>
+<p><strong>elasticity of substitution</strong>：<span
+class="math inline">\(\delta = \frac{\mathrm{d} \frac{K}{E} }{\mathrm{d}
+\frac{w}{r} } \times \frac{\frac{w}{r} }{\frac{K}{E}}\)</span></p>
+<p>完全替代，则$= $ ,完全互补，则<span class="math inline">\(\delta =
+0\)</span></p>
+<h3 id="labor-demand-the-marshalls-rules-of-derived-demand">labor
+demand： The Marshall’s Rules of Derived Demand</h3>
+<p>labor demand和w之间的弹性关系($= $),in brief：</p>
+<ol type="1">
+<li>elasticity of substitution越大,那么labor demand之弹性越大</li>
+<li>商品市场中对output的需求弹性越大时,labor demand之弹性越大（因为if
+wage增加，企业成本增加，物价上涨（仅限完全竞争市场）,商品需求下降,则企业减产,减少E.
+因此商品需求下降的越多，减少的E也就越多）</li>
+<li>labor share in production越大,则弹性越大(eg: 劳动密集型生产)</li>
+<li>其他factor的供给弹性越大,labor
+demand的需求弹性越大(即,捏麻麻的,其他要素供给弹性越大表示价格上涨一点,供给量越大.因此可以说其他要素很好获得.所以,得出结论)</li>
+</ol>
+<p>注意以上的弹性越大是指: more elastic,即绝对值越大.</p>
+<h4 id="example-of-marshalls-rule-the-behavior-of-union">example of
+Marshall’s rule: the behavior of union</h4>
+<p>工会,即工人的议价工具. 工会可以提高工人的bargaining power,
+让工人的工资上升. 一旦工资上升,firm就会减少labor demand,引致labor
+lay-off. 因此,如果公司的<span
+class="math inline">\(E^{D}\)</span>越inelastic,越少的工人会被开除.
+因此工会的一大任务就是减少其弹性.</p>
+<p>Borjas: 因此工会会反对科技进步...(?操什么neo-Luddite Fallacy),
+因为普遍认为科技进步会让资本代替人力,导致部分人失业. (Easterly:
+真是愚蠢.
+科技进步带来的长期影响反而是失业率下降,因为它并不是使人力需求减少,而是使人力和资本结合更加高效,因此同等人力下MPK减少的不会这么快了,商品价格下降.
+只不过,那些只会使用旧技术的人肯定会失业罢)</p>
+<p>eg: the typesetters’ union
+拒绝报纸行业的机械化,即为了避免资本供给弹性增加而引致劳动需求弹性增加</p>
+<p>Borjas: 同时,工会还要组织非工会firms生产的商品占领本地市场. eg: the
+united Auto Workers(UAW) 使得日本车难以crack American market(原理:
+因为工会要提高工资,那么成本上升,价格上升,人们就倾向于购买外国货.
+因此工会要通过阻止消费者接触外国货来减少本国货的竞争)</p>
+<p>Borjas: labor
+share低的时候工会比较容易成功,因为提高工资后成本增加的不是很多, 即labor
+demand 基本是inelastic的.</p>
+<p>Borjas: union倾向于提高nonunion input的价格,来让企业更多地使用union
+input. eg: the Davis-Bacon
+Act让合同签订者必须要在参与公共投资地项目的时候支付“prevail
+wage”,即union wage,就算企业没有union workers.
+因此,企业如果雇佣更多的nonunion
+labor,那么其成本会上升.(即其他的input更加的inelastic)</p>
+<h3
+id="extension-of-two-factor-production-function-multivariable-function">Extension
+of two factor production function: multivariable function</h3>
+<p>我们之前的生产要素仅限于labor
+和capital,而现实中情况往往比这复杂,其中一个复杂化就是:
+现实中的投入并不是同质的. 即labor 会有union labor 和non-union labor,
+而capital会有 old-machine和new-machine.因此我们假定生产函数为:</p>
+<p><span
+class="math display">\[q=f(x_1,x_2,x_3,x_4.......x_n)\]</span></p>
+<p>同样的,在其他input不变的情况下,第i个投入在<span
+class="math inline">\(w_i=p\times MP_i\)</span>的时候达到收益最大.
+另外,只要假设: Diminishing return 成立,那么对于任意投入,其level
+curve都是convex的.</p>
+<p>我们规定<strong>cross-elasticity of labor demand</strong>: <span
+class="math inline">\(\delta _{ij} = \frac{\mathrm{d} x_i}{\mathrm{d}
+x_j} \times \frac{x_j}{x_i}\)</span> (notice: the price of another input
+versus the demand)</p>
+<p>如果ij交叉弹性为正,则ij互为替代品(即j的价格增加,i的需求增加),如果为负,则互为complements</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/27.jpg" class="" title="效果图27"></p>
+<p>(假设j的价格增加,左边i的需求增加,为替代品,右边i的需求减少,为互补品)</p>
+<hr />
+<h4 id="capital-skill-complementarity-hypothesis">Capital-Skill
+complementarity hypothesis</h4>
+<p>unskilled labor和capital是substitutes,但是skilled
+labor和capital是complements.</p>
+<p>Borjas: 如果机器价格下降,firms会雇佣更少的unskilled labor,
+同时雇佣更多的skilled labor.</p>
+<p>Easterly: 标准人力资本模型貌似可以解释:</p>
+<p><span class="math display">\[\begin{cases}Y=AK^{\alpha } H^{\beta
+}L^{\gamma}
+\\\alpha +\beta +\gamma =1\end{cases}\]</span></p>
+<p>机器价格下降则购入更多机器,操作机器需要skilled
+worker(当然还有由IE引致的R&amp;D投资等)</p>
+<p>policy implication: 政府之investment tax
+credit(即给物质资本购买提供补贴)会让企业减少unskilled workers,
+但增加skilled workers. 虽然能促进投资,但是会损害unskilled workers的利益.
+真的是,没人力资本的人在哪都是fw.</p>
+<h1 id="labor-market-equilibrium">Labor Market Equilibrium</h1>
+<p>基本假设: labor supply之SE大于IE,则ls向上倾斜.</p>
+<p>rt:<img src="/2022/07/13/LaborMarket/28.jpg" class="" title="效果图28"></p>
+<p>Borjas: 如果劳动市场向交点移动并稳定在交点(if no economic shock, then
+the equilibrium would persist indefinitely)</p>
+<p>Borjas: 现代劳动经济学家关注特定群体的劳动均衡点,比如妇女:</p>
+<p>(<strong>Methodology</strong>)要研究妇女的labor demand elasticity,
+我们只需要在demand曲线不变的情况下找到上面两个点就可以判断弹性.
+但现实中某个政策往往会改变demand curve.
+那么我们实际上会得到一条有偏差的曲线:</p>
+<p>rt: <img src="/2022/07/13/LaborMarket/29.jpg" class="" title="效果图29"></p>
+<p>即曲线ZZ, Borjas: 曲线ZZ并不能reveal any information.
+但是我们可以用method of instrumental variables来估计.
+即找到一个instrumental variable,能改变supply curve但不影响demand curve
+(大概意思是找到某种特殊情况)</p>
+<p>eg: 二战时美国妇女大量进入劳动市场,代替原来的男性.这会增加女性的labor
+supply. 我们用migration来作为<span class="math inline">\(d(labor
+supply)\)</span>的估计因子. 此时migration就是一个instrumental
+variable.</p>
+<p>detail: <strong><em>Daron Acemoglu, David H. Autor, and David Lyle,
+“Women, War and Wages: The Effect of Female</em></strong>
+<strong><em>Labor Supply on the Wage Structure at Midcentury,” Journal
+of Political Economy 112(June 2004): 497-551</em></strong></p>
+<h2 id="policy-implication-minimum-wage">Policy Implication: Minimum
+wage</h2>
+<p>美国政府在1938年首次推出最低工资, as one of the provisions of the
+Fair Labor Standards Act (FLSA).
+注意,美国规定的是名义最低工资,因此随着通胀该工资的购买力会下降.</p>
+<p>模型: <img src="/2022/07/13/LaborMarket/30.jpg" class="" title="效果图30"></p>
+<p>假设:</p>
+<ol type="1">
+<li>开始的时候在<span class="math inline">\(w^*\)</span>处均衡.
+政府设置最低工资于<span class="math inline">\(\overline{w}\)</span>
+处,高于均衡工资.</li>
+<li>完全竞争劳动市场</li>
+<li>所有公司都遵守法律,即最低工资使所有workers受影响.</li>
+</ol>
+<p>结论:</p>
+<ol type="1">
+<li>firms减少雇佣,labor demand减少</li>
+<li>labor supply增加,因为更多的人看到更高的工资而选择进入劳动力市场</li>
+<li>失业增加. 一部分失业是<span class="math inline">\(E^*-\overline
+E\)</span>引致的,一部分失业是新进入的劳动力<span
+class="math inline">\(E_S-\overline E\)</span>引致的.</li>
+<li>implications: 此最低工资受益最大的是least skilled workers,
+但是受害最大的也是least skilled workers:
+因为公司裁员最先裁的就是这批人,所以他们当中的失业增加,
+但同时如果有人运气好留下来了,那么他们工资的增幅是最大的.</li>
+</ol>
+<h3 id="addition-1-no-compliance-on-the-minimum-wage"><strong>Addition
+1: no compliance on the minimum wage:</strong></h3>
+<p>如果公司不遵守最低工资要求,他们一般只会收到trivial penalty.
+即支付员工工资实际工资和最低工资的近两年的差额.
+这种没有什么影响的惩罚容易使公司违反最低工资法,因为没有发现的话就赚翻了.
+此外,被政府发现的话,企业会收到无利率的loan,
+相当于一点点小惩罚,一点都不痛(美国)</p>
+<h3
+id="addition-2-not-all-workers-are-covered-by-the-legislation">Addition
+2: not all workers are covered by the legislation</h3>
+<p>一旦法律只作用于部分field,那么劳动力市场就会被切割.</p>
+<p>rt: <img src="/2022/07/13/LaborMarket/31.jpg" class="" title="效果图31"></p>
+<p>一旦covered field的最低工资高于均衡工资,那么additional
+1中的结论就会发生在该field中. 另外,部分失业人口会转移到uncovered
+field中, 令这部分supply曲线右移,则工资下降. 另外,如果covered
+field允许自由移动的话,部分uncovered
+field的劳动力会受到高工资的吸引而进入covered
+field中.这两种migration其实是两个结果,可能同时发生.</p>
+<p>为讨论究竟往那边移动,假设从uncovered 到covered中找到工作的概率为<span
+class="math inline">\(\pi\)</span>,则令其工资为<span
+class="math inline">\(\overline
+w\)</span>(不然也不会migration).则其期望工资为:<span
+class="math display">\[\pi \times \overline w +(1-\pi)\times 0 = \pi
+\times \overline w\]</span></p>
+<p>另外,该工人如果呆在uncovered中,其工资由市场决定,设为<span
+class="math inline">\(w_U\)</span>(这个工资是100%确定的,因为该工人已经就业了).这样,两个fields的预期工资如果产生差值,那么就会导致migration,使得工资低的field劳动力减少而工资增加,最终导致:<span
+class="math inline">\(\pi \times \overline w = w_U\)</span>
+(需要注意,covered
+field的预期工资并不是不变的,如果工人大量涌入该field,那么找到工资的概率会下降,则预期工资会下降)</p>
+<h3 id="evidence">Evidence</h3>
+<h4 id="example-teenager-alcohol-overuse-and-minimum-wages">example:
+teenager alcohol overuse and minimum wages</h4>
+<p>如题,最低工资会引致一些社会问题. Scott et. al:
+美国最低工资受益最大方其实是青少年.
+因为大部分青少年的MPL很低,同时他们的生活必需品一般是父母支持的.
+最低工资可以大幅增加他们的收入,于是他们可以购买更多酒精.</p>
+<p>于是最低工资法案发行之后,可以预计青少年饮酒量增加.
+这会引致青少年中因酗酒驾车造成的事故数增加,同时此类交通事故的死亡率也增加.事实也是如此</p>
+<p><strong><em>(Scott Adams, McKinley L. Blackburn, and Chad D. Cotti,
+“Minimum Wages and Alcohol-Related Traffic Fatalities among Teens,”
+Review of Economics and Statistics 83 (August 2012): 820 -
+840)</em></strong></p>
+<h4 id="context">Context</h4>
+<p>实际上劳动经济学家认为最低工资有两方面影响: 降低就业率和增加收入.
+许多劳动经济学家关注青少年的就业情况,因为他们可以说是完全被最低工资政策cover的.</p>
+<p>Borjas: 用古早的统计方法得到结论, 年轻人就业弹性<span
+class="math inline">\(\subset[-0.3,-0.1]\)</span>. 即最低工资增加10%,
+其就业率降低1%-3%.
+但是1990s之后劳动经济学家认为这个统计有问题,于是他们专注于非常具体的问题.在某些sectors,
+papers指出最低工资不会影响就业率</p>
+<h5 id="case-1-new-jersey-and-pennsylvania">case 1: New Jersey and
+Pennsylvania</h5>
+<p><strong><em>(David Card and Alan B. Krueger, “Minimum Wages and
+Employment: A Case Study of the Fast-Food Industry in New Jersey and
+Pennsylvania,” American Economic Review 84 (September
+1994))</em></strong></p>
+<p>background: 1992年4月1日,
+新泽西州将最低时薪提高到5.05刀,而他临近的宾州并没有跟进,维持在4.25刀.
+以快餐行业为例, 排除其季节性营收波动,
+使用之前的模型来预测的话,新泽西州的labor demand应该下降.
+BUT实际上,其labor demand反而上升. rt: <img src="/2022/07/13/LaborMarket/32.jpg" class="" title="效果图32"></p>
+<p>(两州都下降是因为经济波动,是systematic shock)</p>
+<p>推断: 这反映出labor
+demand实际上斜率是正的,即和模型的最基本假设不符.模型是否出现了问题?</p>
+<p>狡辩:</p>
+<ol type="1">
+<li>可能是因为最低工资的影响实在是太小了, 小到被噪音掩盖.
+所以这个natural experiment 不能反映真实情况. 同时存在sampling
+error.</li>
+<li><strong><em>(David Neumark and William Wascher, “Minimum Wages and
+Employment: A Case Study of the Fast-</em></strong> <strong><em>Food
+Industry in New Jersey and Pennsylvania, Comment,” American Economic
+Review 90 (December 2000)</em></strong> David &amp;
+Alan的统计方法有问题,他们是用电话采访的,存在measurement error和noise,
+得到的labor demand elasticity is noisy.</li>
+</ol>
+<h5 id="case-2-the-seattle-minimum-wage-debate">case 2: the Seattle
+Minimum Wage Debate</h5>
+<p>你自己看吧, p131</p>
+<p>Michael Baker, Dwayne Benjamin, and Shuchita Stanger, “The Highs and
+Lows of the Minimum Wage Effect: A Time-Series Cross-Section Study of
+the Canadian Law,” Journal of Labor Economics 17 (April 1999):
+318-350</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hide/" rel="tag"># hide</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/16/CustomRenderPipeline/" rel="prev" title="CustomRenderPipeline">
+      <i class="fa fa-chevron-left"></i> CustomRenderPipeline
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NjYxMS8zMzA3NA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#labor-supply"><span class="nav-number">1.</span> <span class="nav-text">Labor Supply</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definitions"><span class="nav-number">1.1.</span> <span class="nav-text">Definitions:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#notations"><span class="nav-number">1.2.</span> <span class="nav-text">Notations:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#assumptions"><span class="nav-number">1.3.</span> <span class="nav-text">Assumptions:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-number">1.4.</span> <span class="nav-text">Model:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#changes-in-v"><span class="nav-number">1.4.1.</span> <span class="nav-text">Changes in V</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#changes-in-wages"><span class="nav-number">1.4.2.</span> <span class="nav-text">Changes in Wages</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#implications-for-basic-model"><span class="nav-number">1.5.</span> <span class="nav-text">Implications for basic model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E8%BF%9B%E5%85%A5%E5%8A%B3%E5%8A%A8%E5%8A%9B%E5%B8%82%E5%9C%BA"><span class="nav-number">1.5.1.</span> <span class="nav-text">是否进入劳动力市场?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leisure%E5%92%8C%E5%B7%A5%E8%B5%84%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.5.2.</span> <span class="nav-text">leisure和工资的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#estimation-of-labor-supply-elasticity"><span class="nav-number">1.5.3.</span> <span class="nav-text">Estimation of labor
+supply elasticity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problems-in-estimation"><span class="nav-number">1.5.4.</span> <span class="nav-text">Problems in estimation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#extension-of-basic-model-household-production"><span class="nav-number">1.6.</span> <span class="nav-text">Extension of
+basic model: household production</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#adjustment-in-causation-and-correlation"><span class="nav-number">1.6.1.</span> <span class="nav-text">Adjustment in causation
+and correlation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84random-sampleshock-in-v_i-%E4%B8%AD%E5%A5%96"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">常用的random sample(shock
+in \(V_i\)): 中奖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A6%E5%A4%96%E5%B8%B8%E7%94%A8%E7%9A%84random-sampleshock-in-w-tlc"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">另外常用的random
+sample(shock in w): TLC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#conclusion-of-random-shock"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">conclusion of random shock</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-implications"><span class="nav-number">1.7.</span> <span class="nav-text">Policy Implications</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#welfare-program"><span class="nav-number">1.7.1.</span> <span class="nav-text">welfare program</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#welfare-1-cash-grantsv_i"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">welfare 1: cash grants(\(V_i\))</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#welfare-2-allowed-work"><span class="nav-number">1.7.1.2.</span> <span class="nav-text">welfare 2: allowed work</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#welfare-3-tax-deduction"><span class="nav-number">1.7.1.3.</span> <span class="nav-text">welfare 3: tax deduction</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intertemporal-model"><span class="nav-number">1.8.</span> <span class="nav-text">Intertemporal model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#labor-demand"><span class="nav-number">2.</span> <span class="nav-text">Labor Demand</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-notations"><span class="nav-number">2.1.</span> <span class="nav-text">Definition &amp; Notations:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#basic-model"><span class="nav-number">2.2.</span> <span class="nav-text">Basic Model:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#assumptions-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">Assumptions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-short-run"><span class="nav-number">2.2.2.</span> <span class="nav-text">The Short Run</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#market-labor-demand"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">market labor demand</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#alternative-way-to-interpret-the-stopping-rule"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">alternative way
+to interpret the stopping rule</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#the-long-run"><span class="nav-number">2.2.3.</span> <span class="nav-text">The Long Run</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#long-run-demand-curve"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">Long Run Demand Curve</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#substitution-effect-and-scale-effect"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">Substitution Effect and
+Scale Effect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#estimation-of-elasticity"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">Estimation of Elasticity</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#elasticity-of-substitution-perfect-complement-and-perfect-substitutions"><span class="nav-number">2.2.3.3.1.</span> <span class="nav-text">elasticity
+of substitution： perfect complement and perfect substitutions</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#labor-demand-the-marshalls-rules-of-derived-demand"><span class="nav-number">2.2.4.</span> <span class="nav-text">labor
+demand： The Marshall’s Rules of Derived Demand</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#example-of-marshalls-rule-the-behavior-of-union"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">example of
+Marshall’s rule: the behavior of union</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#extension-of-two-factor-production-function-multivariable-function"><span class="nav-number">2.2.5.</span> <span class="nav-text">Extension
+of two factor production function: multivariable function</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#capital-skill-complementarity-hypothesis"><span class="nav-number">2.2.5.1.</span> <span class="nav-text">Capital-Skill
+complementarity hypothesis</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#labor-market-equilibrium"><span class="nav-number">3.</span> <span class="nav-text">Labor Market Equilibrium</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-implication-minimum-wage"><span class="nav-number">3.1.</span> <span class="nav-text">Policy Implication: Minimum
+wage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#addition-1-no-compliance-on-the-minimum-wage"><span class="nav-number">3.1.1.</span> <span class="nav-text">Addition
+1: no compliance on the minimum wage:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addition-2-not-all-workers-are-covered-by-the-legislation"><span class="nav-number">3.1.2.</span> <span class="nav-text">Addition
+2: not all workers are covered by the legislation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#evidence"><span class="nav-number">3.1.3.</span> <span class="nav-text">Evidence</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#example-teenager-alcohol-overuse-and-minimum-wages"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">example:
+teenager alcohol overuse and minimum wages</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#context"><span class="nav-number">3.1.3.2.</span> <span class="nav-text">Context</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#case-1-new-jersey-and-pennsylvania"><span class="nav-number">3.1.3.2.1.</span> <span class="nav-text">case 1: New Jersey and
+Pennsylvania</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#case-2-the-seattle-minimum-wage-debate"><span class="nav-number">3.1.3.2.2.</span> <span class="nav-text">case 2: the Seattle
+Minimum Wage Debate</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Johnnnngr"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Johnnnngr</p>
+  <div class="site-description" itemprop="description">some discoveries...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/Johnnnnngr/Johnnnnngr.github.io" title="https:&#x2F;&#x2F;github.com&#x2F;Johnnnnngr&#x2F;Johnnnnngr.github.io" rel="noopener" target="_blank">待更新...</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Johnnnngr</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共13.3k字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
