@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"manual","top_n_per_article":-1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Imperfect labor market 重谈均衡,无语 小总结: 如果市场是competitive的,并且firms和workers都能自由进出(CEA: monopsony 很大程度上是由于劳动力不能自由移动而产生的)时,均衡是efficient的(即总welfare最大).  Properties of Equilibrium in single market brief">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ImperfectLaborMarket">
+<meta property="og:url" content="http://example.com/2022/08/19/ImperfectLaborMarket/index.html">
+<meta property="og:site_name" content="Johnnnnngr">
+<meta property="og:description" content="Imperfect labor market 重谈均衡,无语 小总结: 如果市场是competitive的,并且firms和workers都能自由进出(CEA: monopsony 很大程度上是由于劳动力不能自由移动而产生的)时,均衡是efficient的(即总welfare最大).  Properties of Equilibrium in single market brief">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/1.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/2.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/3.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/4.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/5.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/6.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/7.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/8.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/9.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/10.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/11.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/12.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/13.jpg">
+<meta property="og:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/14.jpg">
+<meta property="article:published_time" content="2022-08-18T17:46:00.000Z">
+<meta property="article:modified_time" content="2022-08-18T17:53:36.810Z">
+<meta property="article:author" content="Johnnnngr">
+<meta property="article:tag" content="hide">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/08/19/ImperfectLaborMarket/1.jpg">
+
+<link rel="canonical" href="http://example.com/2022/08/19/ImperfectLaborMarket/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ImperfectLaborMarket | Johnnnnngr</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Johnnnnngr</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/19/ImperfectLaborMarket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ImperfectLaborMarket
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-19 01:46:00 / 修改时间：01:53:36" itemprop="dateCreated datePublished" datetime="2022-08-19T01:46:00+08:00">2022-08-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Imperfect labor market</p>
+<p>重谈均衡,无语</p>
+<p>小总结: 如果市场是competitive的,并且firms和workers都能自由进出(CEA:
+monopsony
+很大程度上是由于劳动力不能自由移动而产生的)时,均衡是efficient的(即总welfare最大).</p>
+<hr />
+<h1 id="properties-of-equilibrium-in-single-market">Properties of
+Equilibrium in single market</h1>
+<p>briefly: <img src="/2022/08/19/ImperfectLaborMarket/1.jpg" class="" title="效果图1"></p>
+<p>supply 曲线指给定工资率下的劳动供给, demand
+曲线指给定工资率下的劳动需求.均衡处于(<span
+class="math inline">\(E^{*},w^{*}\)</span>)处.此时<span
+class="math inline">\(w^{*}=MPL\)</span>.</p>
+<h2 id="property-1-no-unemployment">Property 1: no unemployment</h2>
+<p>这是失业的定义决定的,在均衡处没有想找工作但找不到的人.完美竞争市场中所有公司给的工资都一样.</p>
+<p>Borjas: 实际中工资经常有shocks (由经济周期或其他冲击引致,书本例子:
+Palestinian与Israeli之冲突导致银行commuter供给减少),所以实际几乎达不到stable的均衡状态(瞬间均衡还是有可能的).</p>
+<h2 id="property-2-maximum-efficiency">Property 2: maximum
+efficiency</h2>
+<p>均衡的时候效率最大. 这和其他市场的分析一样呢.</p>
+<p>rt, S曲线就是工人之工资,等于<span
+class="math inline">\(E^*w^*\)</span>,即长方形面积(因为完全竞争).
+D曲线就是工人生产之价值(由公司预估个体之w=MPL得,梯形是产品的价值),两者剪一剪,得到区域P,这就是企业的净利润(<strong>producer
+surplus</strong>).</p>
+<p>同理,有些工人MPL没这么高,但是却可以在<span
+class="math inline">\(w^*\)</span>处生产,他们运气真好,存在区域Q的福利(<strong>worker
+surplus</strong>).</p>
+<p>最终,<strong>Producer Surplus + Worker Surplus = Gains from
+Trade</strong>,也就是总福利.</p>
+<p>很显然,均衡处总福利最大,因为如果曲线不移动时任何没到均衡点的雇佣水平都会造成效率损失.
+我们将最优allocation 称为<strong>efficient allocation</strong>.</p>
+<hr />
+<h1 id="properties-of-equilibrium-across-labor-market">Properties of
+Equilibrium Across Labor Market</h1>
+<p>是对单个劳动市场的延申.现实中即使劳动力MPL一样,他们所处的诸如地理和所处行业等集合因素也会影响他们所属于的labor
+market. Borjas给出了简单的两市场模型</p>
+<h2 id="model">Model</h2>
+<p>assumptions:</p>
+<ol type="1">
+<li>存在两个劳动力市场A和B</li>
+<li>完全竞争(?我自己加的,为了使MPL=w)</li>
+<li>每个劳动力市场雇佣的劳动力之生产力都一样(MPL =
+),因此A市场中的劳动力和B中的存在替代关系.</li>
+<li>劳动力供给无弹性 (for simplicity,相当于人特别少)</li>
+<li>A的工资高于B (<span class="math inline">\(w^A &gt; w^* &gt;
+w^B\)</span>)</li>
+</ol>
+<p>rt: <img src="/2022/08/19/ImperfectLaborMarket/2.jpg" class="" title="效果图2"></p>
+<p>(左A右B)</p>
+<p>如果初始情况是这样的,而且两地畅通无阻,那么A的employer为低成本会移动到B去,B的worker为高工资移动到A.最终这两个市场的工资会一样.(就算worker或employer仅一方能移动也会导致两地工资一样)</p>
+<h2 id="property-1-single-wage-property">Property 1: Single wage
+property</h2>
+<p>即两个市场的工资一样的时候,双方都是efficient的.</p>
+<p>Borjas: 假设存在一个dictator,它可以在两个市场间分配labor.
+那么为了efficient,
+它会将labor从MPL低的地方往高的地方分配(B到A,因为w=MPL.这样的话生产总量会上升).因此dictator会不断转移labor,直到双方工资相等(MPL也一样,这时候相当于生产最优).</p>
+<p>Borjas: 从图像也可以证明.产值即<span
+class="math inline">\(\int\limits_{D}^{}
+D(E)dE\)</span>,相当于梯形面积.很明显B地因为labor过多导致dE的边很小,转移到A地能增加总面积.</p>
+<h2 id="implication">Implication</h2>
+<p>因为单一工资效率最大,而且labor和employer都有incentive到most
+efficient的方向,那么不同labor markets
+(即不同地域,行业等)的工资会convergent.</p>
+<p>evidence: 米国各州的工业工资趋同:</p>
+<p>:<img src="/2022/08/19/ImperfectLaborMarket/3.jpg" class="" title="效果图3"></p>
+<p>不得不说,美国的labor migration这块做的真的很好.</p>
+<p>evidence:
+Borjas认为就算在一些劳动力移动不如美国这么方便的地方也观察到了convergence.
+如Japan. (Probably in some nations the difference grows :) )</p>
+<p>evidence:
+国家之间的收入差距仍然persistent,但是部分国家之间是convergent了,而部分国家收入差距却加大.
+Borjas在此处认为国家间的labor
+income会受到trade影响,如NAFTA中的美墨收入重分配:
+美墨在NAFTA之后收入确实缩小了,但是绝对值仍然很大.美国工厂转移到墨西哥享受低廉的成本,而美国可以被墨西哥工人代替的工人工资下降.
+虽然工资下降了,但是他们能买到的商品价格更低.即虽然他们收入减少,但是globally
+increased the total output, 社会总消费增加. (异议:
+就算社会总消费增加了,这些工人能买的还是会变少,财富被少部分人集中).
+此外,中美贸易增加也导致了同样的问题. (Barry Naughton,2007 &amp;
+Easterly:
+中国的高速增长主要还是因为技术进步呢,而reallocation虽然也很重要,但是比不上技术进步)</p>
+<p>上面的evidence要特别搞清楚谁占便宜了(厂商和消费者),谁吃亏了(被替代的工人).
+(感觉生产技术不高的市场会完完全全吃亏,比如西班牙加入欧盟导致年轻人都跑了,此时只能低端specification了,那么国运堪忧)</p>
+<hr />
+<h1 id="policy-implication-payroll-tax-subsidy">Policy Implication:
+Payroll tax &amp; Subsidy</h1>
+<p>和商品市场的分析雷同.</p>
+<h2 id="payroll-tax-on-firms">payroll tax on firms</h2>
+<p>:<img src="/2022/08/19/ImperfectLaborMarket/4.jpg" class="" title="效果图4"></p>
+<p>企业收入税会导致同工资下生产减少,产生DWL. 分析和微观一样呢.</p>
+<p>briefly: 企业支付成本为<span class="math inline">\(w_1
++1\)</span>,而工人收到<span class="math inline">\(w_1\)</span>.
+政府拿走1.这导致新均衡处于左边,为<span
+class="math inline">\(E_1\)</span>,社会工资为<span
+class="math inline">\(w_1\)</span>.
+tax在谁身上的影响大完全由两个曲线的弹性决定.</p>
+<h2 id="payroll-tax-on-workers">payroll tax on workers</h2>
+<p>:<img src="/2022/08/19/ImperfectLaborMarket/5.jpg" class="" title="效果图5"></p>
+<p>Borjas:
+如果给工人收税,即工人每工作一小时要收1美元的税.原本均衡为<span
+class="math inline">\((E_0,w_0)\)</span>,工人希望税后也能达到这个水平,即在<span
+class="math inline">\(E_0\)</span>处到手的工资还是<span
+class="math inline">\(w_0\)</span>,那么他们就会要求更高的工资(多1美元/时).表现为S曲线左移.总效果和给企业收税一样.</p>
+<p>极端情况:如果labor
+supply是完全非弹性的,即是垂直的,那么tax完全由worker接下了(地方垄断企,哭死),但此时没有DWL.</p>
+<p>:<img src="/2022/08/19/ImperfectLaborMarket/6.jpg" class="" title="效果图6"></p>
+<p>(如果D水平或S垂直,则没有DWL)</p>
+<h2 id="subsidy">Subsidy</h2>
+<p>补贴一般都是公司多雇佣一单位工时补贴一定数量(此例中是1刀)</p>
+<p>相当于降低了生产成本,则企业会扩大规模,D右移</p>
+<p>:<img src="/2022/08/19/ImperfectLaborMarket/7.jpg" class="" title="效果图7"></p>
+<p>同微观(甚至更加细节的补贴和某些变态的补贴形式请见MWG),不一定会产生DWL,要看D和S的斜率.</p>
+<p>美国最大的补贴action是New Jobs Tax Credit (NJTC, 1978年初come into
+effect)</p>
+<h1 id="policy-implication-mandated-benefits">Policy Implication:
+Mandated Benefits</h1>
+<p>美国政府可以mandate
+firms给labor一些福利,比如安全的工作环境和残疾工之照顾.
+这些福利叫做mandated benefits.</p>
+<p>Borjas给了一个简单的mandated benefit: 午休的时候给员工spinach
+pie(空心菜派,woc 什么黑暗料理).
+这个派是要花钱的(假设每个员工C元),所以算入企业的生产成本中.那么生产成本上升导致企业D下降(垂直下降C).
+而工人会对该pie做出评价(相当于企业被纳税).</p>
+<ol type="1">
+<li>如果工人despise the pie,即工人attach no value from the
+pie,那么工人的S不变(均衡为Q).</li>
+<li>如果工人认为pie还是有部分价值的,那么他们会享用pie,但他们仍然不会用那些mandated
+benefit的资金买pie,则他们的S会略微下降(即同工时下想要的工资略微下降,相当于MPL=w+value
+from pie, pie成了他们工资的一部分)(均衡为左边的R).</li>
+<li>如果工人完全认同pie的价值,相当于如果没有mandated
+benefit,工人都会去购买这个spinach
+pie,那么工人需要的工资就纯纯的降低了C(均衡为右边的R),此情况就是纯纯的企业帮忙买pie了.</li>
+</ol>
+<p>:<img src="/2022/08/19/ImperfectLaborMarket/8.jpg" class="" title="效果图8"></p>
+<ol start="4" type="1">
+<li>如果工人认为pie物超所值,那么还会再下降,相当于企业减少了生产成本(特殊购买渠道,怎么看都是social
+capital到physical capital的转化),突然想到这是一个rent seeking from
+authority的好方法呢.</li>
+</ol>
+<p>Implication: 只要工人认为的mandated benefit有价值,那么这个就会more
+preferred, 因为他造成的DWL小于tax.</p>
+<h2 id="policy-evidence-obamacare">policy evidence: Obamacare</h2>
+<p>卧槽,出现了著名事件:奥巴马之医保政策.这个政策被大多数网民用来评价奥巴马之巨大争议政策.</p>
+<p>背景:
+2009年三分之二的美国labor被医保覆盖,但是16%的labor根本就没有医保.到2010年Enactment
+of the Patient Protection and Affordable Care Act (ACA),也就是Obamacare.
+这个东西非常非常复杂,
+但他解决了一个问题,即是否所有人都应该接受医保这个mandated benefit.
+到2014年左右Obamacare才全面into act, 产生了巨大的labor market
+effect.基本就是工人不吃这一套,认为强制医保并不是一个合理的馈赠(美国不同州的医保额不一样,取决于当地的医生有多厉害.毕竟美国的医疗商业化了,不同收入的人群对待医保的态度差别巨大).另外,学界对这个政策的predictions也不一样.毕竟是个非常复杂的provision,
+里面的许多政策都互相interact.</p>
+<h1 id="policy-implication-immigration">Policy Implication:
+Immigration</h1>
+<p>啥都不多说,先摆evidence: 美国1965年之后有resurgence of immigration
+wave. 引发了一系列对移民政策的debate,其中的反对者----本地工人,most of
+them 因为born to be substitutions of immigrators 而导致工资下降.
+但是支持者----firms, 因为移民而能够低成本生产.</p>
+<h2 id="short-run">short run</h2>
+<p>上图!:<img src="/2022/08/19/ImperfectLaborMarket/9.jpg" class="" title="效果图9"></p>
+<p>一般移民和工人形成替代关系,左边是完美替代,浅色直线代表本地人的supply.
+可见因为移民导致总supply,即<span class="math inline">\(E_1\)</span>
+增加而工资下降(至<span
+class="math inline">\(w_1\)</span>),本地人忍受不了低工资,所以 <span
+class="math inline">\(S_N\)</span> 减少为<span
+class="math inline">\(N_1\)</span>. <strong>注意短期内capital
+是fixed的呦.</strong></p>
+<p>但如果移民和本地形成互补关系,则移民能增加本地人的MPL(什么援交战士,Borjas:
+利用low skilled immigrator解放本地high skill workers),如右图.
+MPL增加则工资增加(至<span class="math inline">\(w_1\)</span>).
+此时本地人的supply曲线不变,但是因同E下MPL提高而导致的D右移,均衡时本地人的总E增加,至<span
+class="math inline">\(N_1\)</span>.</p>
+<h2 id="long-run">long run</h2>
+<p>这不就是宏观模型吗..</p>
+<p>假设生产模型为$Y=AK<sup>L</sup><span
+class="math inline">\(,并且\)</span>+ $,且完全竞争,则均衡时有:</p>
+<p><span class="math display">\[w=MPL=\frac{\partial Y}{\partial L}
+=\beta AK^\alpha L^{\beta -1}=\beta A\frac{K^\alpha}{L^{\alpha }} =\beta
+Ak^{\alpha}\]</span></p>
+<p>即长期工资只和人均资本存量有关. 根据Solow
+Model,得到技术不变时长期人均资本处于steady state <span
+class="math inline">\(k^*\)</span>.</p>
+<p>替代: 没什么好说的,相当于单纯的劳动力注入,长期工资回归.</p>
+<p>互补: 移民帮本地人增加了A,长期<span
+class="math inline">\(k^*\)</span>增加,工资增加.
+(互补的情况太少见了,所以..几乎不算入了)</p>
+<p>rt:<img src="/2022/08/19/ImperfectLaborMarket/10.jpg" class="" title="效果图10"></p>
+<p>injection of
+labor在长期不改变工资,但是总output是会增加的,人均output不变. (什么Solow
+Model)</p>
+<h2 id="evidence-the-mariel-boatlift">Evidence: The Mariel Boatlift</h2>
+<p>见P161. 古巴1980年有偷渡去美国的在Mariel码头登录.这相当于一个supply
+shock, 工人的工资统计却和模型预期的一样:
+Miami工人的工资在1980后下降,然后花decades to recover.</p>
+<p>许多人认为这是因为当时的噪音太大了，统计失真，所以...</p>
+<h2 id="evidence-the-skill-cell-approach">Evidence: The skill cell
+approach</h2>
+<p>skill cell是指拥有类似experience和education的workers.
+经济学家近年开始关注这个东西了，并作出了统计. 结果当然是每个skill
+cell中的人数和其工资成负相关.基本可以说明移民injection降低工资了.</p>
+<p>National Academy of
+Sciences统计了1990-2010年移民和美国工人工资并作表：</p>
+<p>：<img src="/2022/08/19/ImperfectLaborMarket/11.jpg" class="" title="效果图11"></p>
+<p>基本符合Solow Model.</p>
+<p>另外，美墨移民限制放宽后也观察到了墨西哥部分群体工资飙升.</p>
+<h2 id="minimum-wage-debate">Minimum wage Debate</h2>
+<p>Mariel Boatlife的例子说明需求是完全弹性的，而labor
+demand章节中的新泽西和宾州快餐例子说明需求是无弹性的。这有个conflict，是因为这两个例子所得到的demand都对，但是仅限于他们所处的环境。</p>
+<h1 id="immigration-surplus">Immigration Surplus</h1>
+<p>移民带来的injection of
+labor会暂时降低工资，则企业生产成本减少，总福利增加。</p>
+<p>rt：<img src="/2022/08/19/ImperfectLaborMarket/12.jpg" class="" title="效果图12"></p>
+<p>即蓝色三角形部分。这一部分是工厂多生产的产值，即由移民引致的增加的净output。因为他的存在必须由工资降低引致，所以这只能是短期的estimation。</p>
+<h1 id="policy-implication-human-capital">Policy Implication: Human
+Capital</h1>
+<p>人力资本给当地劳动力 or
+output带来的影响远大于之前低技术移民的工资效应,
+因为人力资本转移能有spillover effect (详见Easterly,
+但是lr的笔记我好像扔掉了woc).</p>
+<p>为什么nmd这个模型我tm以前看到过</p>
+<p>basic: 技术移民可以拆分成两部分: 物理劳动力和技术.
+物理劳动力即基本的工作单位injection会增加supply; 技术injection
+通过spillover effect增加生产力,即MPL, 如此demand会右移.</p>
+<p>:<img src="/2022/08/19/ImperfectLaborMarket/13.jpg" class="" title="效果图13"></p>
+<p>本地人工资不变?</p>
+<p>Borjas这里举了纳粹德国和苏联的例子,自己看吧.</p>
+<h1 id="the-cobweb-model">The Cobweb Model</h1>
+<p>模型中的d和s都是瞬间变化的,但是现实中人们对市场的预测会有延迟,或者人们做出改变需要时间,那么d和s的变化就不是瞬间的了.Borjas:
+比如engineer的市场是周期性的,一段时间供大于需,一段时间需大于供,这是因为培养一位engineer花时间,并且称为engineer的决策在刚进school的时候就被下了,所以supply不能及时随着行情变化,同时supply相当于无弹性.</p>
+<p>那么就会出现如下情况:第一年处于均衡(<span
+class="math inline">\(E_0\)</span>,<span
+class="math inline">\(w_0\)</span>),如果此时突然demand增加,因为学校毕业的engineer仅是按照上年均衡确定的,所以当下只能提<span
+class="math inline">\(E_0\)</span>的劳动力.于是当年企业不得不提高工资竞争,工资处于<span
+class="math inline">\(w_1\)</span>.
+第二年学生看到工资这么高,踊跃参与了,结果提供了<span
+class="math inline">\(E_1\)</span>的劳动力,过剩,第二年工资大幅下降.如此往复最终达到均衡点(<span
+class="math inline">\(E^*,w^*\)</span>)
+(离散情况可以达到均衡点呢,连续情况只能lim了).</p>
+<p>:<img src="/2022/08/19/ImperfectLaborMarket/14.jpg" class="" title="效果图14"></p>
+<p>更一般地, 此模型有两个前提:
+形成能进入市场的劳动力需要时间,这是肯定的;
+是否进入该劳动力市场由当前的工资决定,这是有争议的,因为人们一般会做出预测,预测到了就没有cobweb
+model了. 可以说cobweb model假定了人们必须接受misleading information.</p>
+<p>Cobweb Model 在professorial domain中很常见.</p>
+<h1 id="monopsony">Monopsony</h1>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hide/" rel="tag"># hide</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/16/PreferenceAndRationalChoice/" rel="prev" title="PreferenceAndRationalChoice">
+      <i class="fa fa-chevron-left"></i> PreferenceAndRationalChoice
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NjYxMS8zMzA3NA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#properties-of-equilibrium-in-single-market"><span class="nav-number">1.</span> <span class="nav-text">Properties of
+Equilibrium in single market</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#property-1-no-unemployment"><span class="nav-number">1.1.</span> <span class="nav-text">Property 1: no unemployment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#property-2-maximum-efficiency"><span class="nav-number">1.2.</span> <span class="nav-text">Property 2: maximum
+efficiency</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#properties-of-equilibrium-across-labor-market"><span class="nav-number">2.</span> <span class="nav-text">Properties of
+Equilibrium Across Labor Market</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-number">2.1.</span> <span class="nav-text">Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#property-1-single-wage-property"><span class="nav-number">2.2.</span> <span class="nav-text">Property 1: Single wage
+property</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#implication"><span class="nav-number">2.3.</span> <span class="nav-text">Implication</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policy-implication-payroll-tax-subsidy"><span class="nav-number">3.</span> <span class="nav-text">Policy Implication:
+Payroll tax &amp; Subsidy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#payroll-tax-on-firms"><span class="nav-number">3.1.</span> <span class="nav-text">payroll tax on firms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#payroll-tax-on-workers"><span class="nav-number">3.2.</span> <span class="nav-text">payroll tax on workers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#subsidy"><span class="nav-number">3.3.</span> <span class="nav-text">Subsidy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policy-implication-mandated-benefits"><span class="nav-number">4.</span> <span class="nav-text">Policy Implication:
+Mandated Benefits</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#policy-evidence-obamacare"><span class="nav-number">4.1.</span> <span class="nav-text">policy evidence: Obamacare</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policy-implication-immigration"><span class="nav-number">5.</span> <span class="nav-text">Policy Implication:
+Immigration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#short-run"><span class="nav-number">5.1.</span> <span class="nav-text">short run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#long-run"><span class="nav-number">5.2.</span> <span class="nav-text">long run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evidence-the-mariel-boatlift"><span class="nav-number">5.3.</span> <span class="nav-text">Evidence: The Mariel Boatlift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evidence-the-skill-cell-approach"><span class="nav-number">5.4.</span> <span class="nav-text">Evidence: The skill cell
+approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimum-wage-debate"><span class="nav-number">5.5.</span> <span class="nav-text">Minimum wage Debate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#immigration-surplus"><span class="nav-number">6.</span> <span class="nav-text">Immigration Surplus</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#policy-implication-human-capital"><span class="nav-number">7.</span> <span class="nav-text">Policy Implication: Human
+Capital</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-cobweb-model"><span class="nav-number">8.</span> <span class="nav-text">The Cobweb Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#monopsony"><span class="nav-number">9.</span> <span class="nav-text">Monopsony</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Johnnnngr"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Johnnnngr</p>
+  <div class="site-description" itemprop="description">some discoveries...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/Johnnnnngr/Johnnnnngr.github.io" title="https:&#x2F;&#x2F;github.com&#x2F;Johnnnnngr&#x2F;Johnnnnngr.github.io" rel="noopener" target="_blank">待更新...</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Johnnnngr</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共18.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
