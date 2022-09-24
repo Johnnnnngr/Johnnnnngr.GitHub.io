@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"manual","top_n_per_article":-1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Lottery lottery即表示一个随即结果的事件. eg: 买彩票.  Strictly Defined: 令Z为一个集合(常常是价格集). 发生在Z上的lottery是一个从Z到R的映射关系,表示为函数p. 有: \(\left\{\begin{matrix} p(z) &gt; 0 , z是Z的元素.\\ p(k) &#x3D; 0, k不是Z的元素.\\ {\textstyle \s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lottery">
+<meta property="og:url" content="http://example.com/2022/09/24/Lottery/index.html">
+<meta property="og:site_name" content="Johnnnnngr">
+<meta property="og:description" content="Lottery lottery即表示一个随即结果的事件. eg: 买彩票.  Strictly Defined: 令Z为一个集合(常常是价格集). 发生在Z上的lottery是一个从Z到R的映射关系,表示为函数p. 有: \(\left\{\begin{matrix} p(z) &gt; 0 , z是Z的元素.\\ p(k) &#x3D; 0, k不是Z的元素.\\ {\textstyle \s">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-24T04:54:54.000Z">
+<meta property="article:modified_time" content="2022-09-24T04:55:00.487Z">
+<meta property="article:author" content="Johnnnngr">
+<meta property="article:tag" content="hide">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/09/24/Lottery/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Lottery | Johnnnnngr</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Johnnnnngr</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/24/Lottery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lottery
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-24 12:54:54 / 修改时间：12:55:00" itemprop="dateCreated datePublished" datetime="2022-09-24T12:54:54+08:00">2022-09-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="lottery">Lottery</h1>
+<p>lottery即表示一个随即结果的事件. eg: 买彩票.</p>
+<hr />
+<p>Strictly Defined: 令Z为一个集合(常常是价格集).
+<strong><em>发生在Z上的lottery是一个从Z到R的映射关系,表示为函数p</em></strong>.</p>
+<p>有: <span class="math inline">\(\left\{\begin{matrix} p(z) &gt; 0 ,
+z是Z的元素.\\ p(k) = 0, k不是Z的元素.\\ {\textstyle \sum_{z\in Z}^{}}
+p(z)=1,即总概率为1.\end{matrix}\right.\)</span> (纯纯的分布函数).</p>
+<p>此外,我们定义lottery p的support(即<span
+class="math inline">\(supp(p)\)</span>)为所有使p(z)取正值的价格的集合.
+(美好的概率空间)</p>
+<p>此外,定义<span
+class="math inline">\(L(Z)\)</span>为发生在该集上的所有lottery的集合<span
+class="math inline">\(\to\)</span><span
+class="math inline">\(\left\{\begin{matrix}特殊的lottery如[z]表示结果为z的概率为1  \\价格为z_k时的概率为\alpha_k,表示为\alpha_1\cdot
+z_1\oplus \alpha_2\cdot z_2\oplus...\oplus\alpha_K\cdot
+z_K\end{matrix}\right.\)</span></p>
+<p>(很明显<span class="math inline">\([z]\in L(Z),\alpha_1\cdot
+z_1\oplus \alpha_2\cdot z_2\oplus...\oplus\alpha_K\cdot z_K \in
+L(Z)\)</span>)</p>
+<hr />
+<h1 id="preference-over-lotteries">Preference Over Lotteries</h1>
+<p>我们关注L(Z)上不同的p并作出决策. (第一章definition of preference见KC
+Border)</p>
+<p>这里给出三种常见的映射关系:悲观主义,good and bad, minimizing
+options</p>
+<hr />
+<h2 id="pessimist">Pessimist</h2>
+<p>悲观主义之p指在<span
+class="math inline">\(Z\)</span>上有严格的按照最差价格比较的偏好.</p>
+<p>Define <span class="math inline">\(w(p) \in supp(p)\)</span>, 令<span
+class="math inline">\(\forall y \succ w(p), y \in supp(p)\)</span>.
+则悲观主义者存在: <span class="math inline">\(w(p)\succ w(q) \to p \succ
+q\)</span>.</p>
+<p>(w是一种映射关系,而不是单纯的Z中的元素(什么反函数).)</p>
+<hr />
+<h2 id="good-and-bad">Good and Bad</h2>
+<p>这种人将Z分为两个子集,即Good集和Bad集.</p>
+<p>则令G(p)为good集中元素发生的概率($= {_{z good}^{}}p(z) <span
+class="math inline">\(). 有:\)</span>G(p) G(q) p q$.</p>
+<hr />
+<h2 id="minimizing-options">Minimizing Options</h2>
+<p>这种人对不确定性很敏感,即supp(p)中的价格数量越多,则越不喜欢.</p>
+<p>即:<span class="math inline">\(|supp(p)|\le |supp(q)|\to q\succeq
+p\)</span>​.</p>
+<hr />
+<p>以上只是特别列出的</p>
+<h1 id="properties-of-preferences">Properties of Preferences</h1>
+<p>实际上并不是所有的p都会满足以下列出的性质,但是最最最常用的p
+consistent with expected utility满足就行了.</p>
+<hr />
+<h2 id="continuity">Continuity</h2>
+<p>for <span class="math inline">\(\forall Z\)</span>, 如果<span
+class="math inline">\(\forall a,b,c \in Z\)</span>存在关系<span
+class="math inline">\([a]\succ [b] \succ [c]\)</span>, 此时如果<span
+class="math inline">\(\exist \alpha \in (0,1)\)</span>使得<span
+class="math inline">\([b] \sim \alpha \cdot a \oplus (1-\alpha) \cdot
+c\)</span>. 则Z上的偏好关系满足Continuity.</p>
+<p>很直接了,如果[a]优于[b]优于[c],则[b]必indifferent于a,c的线性组合中(什么convex集).</p>
+<h3 id="检验">检验</h3>
+<hr />
+<h4 id="pessimisive-不满足">Pessimisive : 不满足</h4>
+<p>for <span class="math inline">\([a]\succ [b] \succ [c]\)</span>,
+<span class="math inline">\([b]\succ \alpha \cdot a \oplus (1-\alpha)
+\cdot c \sim [c]\)</span></p>
+<hr />
+<h4 id="good-and-bad-满足">Good and Bad : 满足</h4>
+<p>这里用到一个逻辑判断式:<span class="math inline">\(A \to
+B\Leftrightarrow C\)</span>, if A is false,则该语句返回true.</p>
+<p>因此对于Good and Bad,if 它有三个z,
+即xyz,那么他无论怎么分good和bad,必有两个在同一个集合里<span
+class="math inline">\(\to\)</span>必有两个是indifferent的.
+因此不满足条件<span class="math inline">\([a]\succ [b] \succ
+[c]\)</span>​,因此自动满足...</p>
+<hr />
+<h4 id="option-minimizing-满足">Option minimizing : 满足</h4>
+<p>同上,对于<span
+class="math inline">\([a][b][c]\)</span>,他们的supp都等于一,因此不满足条件<span
+class="math inline">\([a]\succ [b] \succ [c]\)</span>​,自动成立</p>
+<hr />
+<h2 id="independence">Independence</h2>
+<p><span class="math inline">\(对于任何lottery:\alpha_1 \cdot x_1
+\oplus...\oplus \alpha_k \cdot x_k \oplus..和\alpha\cdot
+a\oplus\beta\cdot b,有: \\ [x_k]\succ \alpha\cdot a\oplus\beta\cdot b \\
+\Leftrightarrow \alpha_1 \cdot x_1 \oplus...\oplus \alpha_k \cdot x_k
+\oplus.. \succ \alpha_1 \cdot x_1 \oplus...\oplus \alpha_k \cdot
+(\alpha\cdot a\oplus\beta\cdot b) \oplus..\)</span></p>
+<p>直译:如果[x]优于一个compound lottery等价于<span
+class="math inline">\(p \succ q\)</span>,且<span
+class="math inline">\(p,q\)</span>仅第k项分别为上式中的左右项,则这个preference
+independent.</p>
+<p>也就是说,lottery中z的preference关系不会受到supp(p)的大小的影响(所有项的preference都相互独立).
+式中compound lottery可换为任意的lottery.</p>
+<h3 id="检验-1">检验</h3>
+<hr />
+<h4 id="pessimisive-不满足-1">Pessimisive : 不满足</h4>
+<p><span class="math inline">\([x_k] \succ \alpha\cdot a\oplus\beta\cdot
+b\)</span>只能说明<span
+class="math inline">\(x_k要大于min(a,b)\)</span>,但不足与和第二式等价,因为可能发生<span
+class="math inline">\(\exist
+x_i&lt;mix(a,b)&lt;x_k\)</span>,这样的话两式就<span
+class="math inline">\(\sim\)</span>​了.</p>
+<hr />
+<h4 id="good-and-bad-满足-1">Good and Bad : 满足</h4>
+<p>officially: 通过<span
+class="math inline">\(G(p)-G(q)和G(x_k)-G(compound
+L)\)</span>符号一样来确定. 因为if <span class="math inline">\(\forall
+x_i \in Good或Bad集,G(p_i)=G(q_i)\)</span>.</p>
+<p>到最后G(p)和G(q)唯一的区别就由<span
+class="math inline">\(x_k\)</span>​和compound L来决定了.</p>
+<hr />
+<h4 id="optional-minimizing-不满足">Optional Minimizing : 不满足</h4>
+<p>举个反例: <span class="math inline">\([a] \succ n_1 \cdot a \oplus
+(1-n_1) \cdot b\)</span>,但是<span class="math inline">\(m_1\cdot a
+\oplus (1-m_1) \cdot b \sim m_1\cdot (n_1 \cdot a \oplus (1-n_1) \cdot
+b)\oplus (1-m_1)b\)</span></p>
+<p>因为是由supp判断的,而supp是所有possible
+元素一起决定的,所以不可能会independent.</p>
+<hr />
+<h2 id="monotonicity">Monotonicity</h2>
+<p>if <span class="math inline">\(\forall x,y \in Z\)</span> with <span
+class="math inline">\([x]\succ [y],\forall \alpha , \beta \in
+[0,1]\)</span>,有:</p>
+<p><span class="math inline">\(\alpha &gt;\beta \Leftrightarrow \alpha
+\cdot x \oplus (1-\alpha) \cdot y \succ \beta \cdot x \oplus
+(1-\beta)\cdot y\)</span></p>
+<p>有个引理: any independent preference over L(Z) is monotonic</p>
+<p>证明:</p>
+<p><strong>for only if</strong>: 如果<span class="math inline">\(\alpha
+&gt; \beta\)</span>,则改写等式为<span
+class="math display">\[\left\{\begin{matrix}\alpha \cdot x\oplus
+(1-\alpha )\cdot y = \beta \cdot x\oplus (\alpha -\beta)\cdot x\oplus
+(1-\alpha)\cdot y
+\\\beta \cdot x\oplus (1-\beta )\cdot y = \beta \cdot x\oplus (\alpha
+-\beta)\cdot y\oplus (1-\alpha)\cdot y\end{matrix}\right.\]</span></p>
+<p>if<span class="math inline">\(\alpha \cdot x \oplus (1-\alpha) \cdot
+y \succ \beta \cdot x \oplus (1-\beta)\cdot y\)</span>,则:</p>
+<p>因为independent,且<span class="math inline">\([x]\succ
+[y]\)</span>,所以:</p>
+<p><span class="math inline">\(\beta \cdot x\oplus (\alpha -\beta)\cdot
+x\oplus (1-\alpha)\cdot y \succ \beta \cdot x\oplus (\alpha -\beta)\cdot
+y\oplus (1-\alpha)\cdot y\)</span></p>
+<p><strong>for if</strong>: 如果<span class="math inline">\(\beta \cdot
+x\oplus (\alpha -\beta)\cdot x\oplus (1-\alpha)\cdot y \succ \beta \cdot
+x\oplus (\alpha -\beta)\cdot y\oplus (1-\alpha)\cdot
+y\)</span>,则假设:</p>
+<ol type="1">
+<li><span class="math inline">\(\alpha&gt;\beta\)</span>
+,此时刚好满足monotonicity.</li>
+<li><span class="math inline">\(\alpha &lt;\beta\)</span>, 由only
+if的结论可以推导出<span class="math inline">\(\alpha \cdot x \oplus
+(1-\alpha) \cdot y \prec \beta \cdot x \oplus (1-\beta)\cdot
+y\)</span>,与条件不符.</li>
+<li><span class="math inline">\(\alpha = \beta\)</span>, 此时<span
+class="math inline">\(\alpha \cdot x \oplus (1-\alpha) \cdot y \sim
+\beta \cdot x \oplus (1-\beta)\cdot y\)</span>,与条件不符.</li>
+</ol>
+<p>所以只能是<span class="math inline">\(\alpha&gt;\beta\)</span>.</p>
+<p>my thought: 一旦条件给出<span class="math inline">\(\alpha \cdot x
+\oplus (1-\alpha) \cdot y \succ \beta \cdot x \oplus (1-\beta)\cdot
+y\)</span>,则改写后的等式中间那个必须属于supp(p),则<span
+class="math inline">\(\alpha -\beta\)</span>必须大于0.</p>
+<h1 id="expected-utility">Expected Utility</h1>
+<p>any preference over L(Z) is consistent with expected utility if there
+is a function u: <span class="math inline">\(Z\to R\)</span> such
+that</p>
+<p><span class="math inline">\(p\succ q\)</span> if <span
+class="math inline">\(Eu(p)\ge Eu(q)\)</span>. for <span
+class="math inline">\(Eu(p)=\sum_{z\in Z }^{} p(z)u(z), p\in
+L(Z)\)</span>.</p>
+<p>易证其满足complete and transitive, 其中u被称作expected utility
+function,也即伯努利方程(最早是伯努利提出效用概念),u(z)因为是数字,所以可以看作random
+variable, z如果也是数字的话那也可以看作random variable.</p>
+<h2 id="定理1">定理1</h2>
+<p>如果u是L(Z)上的效用方程,那么v也是L(Z)上的效用方程$$ <span
+class="math inline">\(\exist a&gt;0,b\)</span> 使得<span
+class="math inline">\(v(z)=au(z)+b\)</span>, for all <span
+class="math inline">\(z\in Z\)</span>.</p>
+<p>(即expected utility function is unique up to an affine
+transformation)</p>
+<p>证明:</p>
+<p><strong>only if</strong>: for<span
+class="math inline">\(a&gt;0,b\)</span> 且u是效用方程,则假设<span
+class="math inline">\(Eu(p)\ge Eu(q) \to p\succ q\)</span>.</p>
+<p><span class="math inline">\(Eu(p)=\sum_{z\in Z }^{}
+p(z)u(z)&gt;Eu(q)=\sum_{z\in Z }^{} q(z)u(z)\)</span>.</p>
+<p><span class="math inline">\(Ev(p)=\sum_{z\in Z }^{}
+p(z)v(z)=\sum_{z\in Z }^{} p(z)au(z)+bp(z)=a\sum_{z\in Z
+}^{}p(z)u(z)+b\)</span></p>
+<p><span class="math inline">\(Ev(q)=\sum_{z\in Z }^{}
+q(z)v(z)=\sum_{z\in Z }^{} q(z)au(z)+bq(z)=a\sum_{z\in Z
+}^{}q(z)u(z)+b\)</span></p>
+<p><span class="math inline">\(Ev(p)-Ev(q)=a\sum_{z\in Z
+}^{}p(z)u(z)-q(z)u(z)=a(Eu(p)-Eu(q))\)</span>.因此v的preference和u的一样.</p>
+<p><strong>if</strong>: 假设u,v都是效用函数,则:假设<span
+class="math inline">\(p\succ q\)</span>,有</p>
+<p><span class="math inline">\(\left\{\begin{matrix}\sum pv&gt;\sum
+qv  \\\sum pu&gt; \sum qu \end{matrix}\right.\)</span></p>
+<p>令<strong>p</strong>=<span
+class="math inline">\(\begin{bmatrix}p(z_1)  \\..  \\..  \\p(z_n)
+\end{bmatrix}\)</span>,<strong>q</strong>=<span
+class="math inline">\(\begin{bmatrix}q(z_1)  \\..  \\..  \\q(z_n)
+\end{bmatrix}\)</span>,<strong>v</strong>=<span
+class="math inline">\(\begin{bmatrix}v(z_1)  \\..  \\..  \\v(z_n)
+\end{bmatrix}\)</span>,<strong>u</strong>=<span
+class="math inline">\(\begin{bmatrix}u(z_1)  \\..  \\..  \\u(z_n)
+\end{bmatrix}\)</span>.</p>
+<p>可得<span
+class="math inline">\(p&#39;v&gt;q&#39;v且p&#39;u&gt;q&#39;u\)</span>,可得到:</p>
+<p><span
+class="math inline">\(\left\{\begin{matrix}(p-q)&#39;v&gt;0  \\(p-q)&#39;u&gt;0
+\end{matrix}\right.\)</span>, 这意味着<span
+class="math inline">\(\forall
+(p-q)\)</span>,它和u,v的夹角都必须小于90度<span
+class="math inline">\(\to\)</span>u,v 共向<span
+class="math inline">\(\to\)</span> <span class="math inline">\(\exist
+a&gt;0,b\)</span> 使得v=au+b.</p>
+<p>Q.E.D</p>
+<h2 id="定理2">定理2</h2>
+<p>preference满足continuity和independence等价于preference满足预期效用.</p>
+<p>(preference over L(Z) is consistent with expected utility iff it is
+continuous and independent)</p>
+<p>证明:等下再写.</p>
+<h1 id="risk-attitude">Risk Attitude</h1>
+<p>令<span class="math inline">\(Z=R_+ = [0,+\infin)\)</span>, expected
+value of p is: <span class="math inline">\(E(p)= \sum
+p(z)z\)</span>.</p>
+<p>此时,preference over L(<span
+class="math inline">\(R_+\)</span>)有三种情况:</p>
+<p><span
+class="math inline">\(\left\{\begin{matrix}risk-neutral:E(p)\sim
+p  \\risk-averse:E(p)\succeq p \\risk-loving:p\succeq E(p)
+\end{matrix}\right.\)</span></p>
+<h2 id="定理">定理</h2>
+<p>如果u是concave,即u满足:if <span class="math inline">\(x,y\in
+R_+\)</span>, <span class="math inline">\(\alpha\in (0,1)\to\)</span>
+<span class="math inline">\(u(\alpha x+(1-\alpha)y)\ge \alpha
+u(x)+(1-\alpha)u(y)\)</span>.</p>
+<p>(可以自己画张图,就是函数值在两点连线之上.)</p>
+<p>等价于其上的p就是risk averse.</p>
+<p>证明:</p>
+<p>if: according to Jensen’s inequality,可知如果u是concave的话满足:</p>
+<p><span class="math inline">\(u(\sum pz)\ge \sum pu \to
+u(E(p))&gt;Eu(p)\to E(p)\succeq p\)</span>.因为E(p)只有一个,所以<span
+class="math inline">\(u(E(p))\)</span>就是expected utility.</p>
+<p>only if: <span class="math inline">\(E(p)\succeq p\to u(E(p))&gt;\sum
+pu\)</span>.这个上面证过了.</p>
+<p>Q.E.D</p>
+<p>补充琴生不等式证明:</p>
+<p>if u is concave:即证明<span class="math inline">\(u(\sum pz)\ge \sum
+pu\)</span></p>
+<p>令A=<span class="math inline">\(\sum pz\)</span>,因为<span
+class="math inline">\(\sum p=1\)</span>,则A必<span
+class="math inline">\(\in(z_{min},z_{max})\)</span>,则原式化为:<span
+class="math inline">\(u(A)-\sum pu = \sum p(u(A)-u)=\sum p\int_{x_i}^{A}
+u&#39;(x) dx\)</span>.</p>
+<p>由u是concave得知,u’递减,则<span class="math inline">\(\int_{x_i}^{A}
+u&#39;(x) dx\ge u&#39;(A)(A-x_i)\)</span></p>
+<p>得到:<span class="math inline">\(u(A)-\sum pu \ge \sum pu’(A)(A-x_i)
+= u&#39;(A)\sum p(A-x_i)=u&#39;(A)(A-A)=0\)</span>.</p>
+<p>即:<span class="math inline">\(u(A)-\sum pu \ge0\)</span>, Q.E.D</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hide/" rel="tag"># hide</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/24/%E5%85%B3%E4%BA%8E%E6%AC%A7%E6%B4%B2%E4%B9%8B%E9%AB%98%E5%B1%82%E4%BD%8F%E5%AE%85/" rel="prev" title="关于欧洲之高层住宅">
+      <i class="fa fa-chevron-left"></i> 关于欧洲之高层住宅
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NjYxMS8zMzA3NA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lottery"><span class="nav-number">1.</span> <span class="nav-text">Lottery</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#preference-over-lotteries"><span class="nav-number">2.</span> <span class="nav-text">Preference Over Lotteries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pessimist"><span class="nav-number">2.1.</span> <span class="nav-text">Pessimist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-and-bad"><span class="nav-number">2.2.</span> <span class="nav-text">Good and Bad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimizing-options"><span class="nav-number">2.3.</span> <span class="nav-text">Minimizing Options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#properties-of-preferences"><span class="nav-number">3.</span> <span class="nav-text">Properties of Preferences</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#continuity"><span class="nav-number">3.1.</span> <span class="nav-text">Continuity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C"><span class="nav-number">3.1.1.</span> <span class="nav-text">检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pessimisive-%E4%B8%8D%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Pessimisive : 不满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#good-and-bad-%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">Good and Bad : 满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#option-minimizing-%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">Option minimizing : 满足</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#independence"><span class="nav-number">3.2.</span> <span class="nav-text">Independence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pessimisive-%E4%B8%8D%E6%BB%A1%E8%B6%B3-1"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">Pessimisive : 不满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#good-and-bad-%E6%BB%A1%E8%B6%B3-1"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Good and Bad : 满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optional-minimizing-%E4%B8%8D%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">Optional Minimizing : 不满足</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monotonicity"><span class="nav-number">3.3.</span> <span class="nav-text">Monotonicity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#expected-utility"><span class="nav-number">4.</span> <span class="nav-text">Expected Utility</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">4.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%862"><span class="nav-number">4.2.</span> <span class="nav-text">定理2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#risk-attitude"><span class="nav-number">5.</span> <span class="nav-text">Risk Attitude</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">定理</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Johnnnngr"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Johnnnngr</p>
+  <div class="site-description" itemprop="description">some discoveries...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/Johnnnnngr/Johnnnnngr.github.io" title="https:&#x2F;&#x2F;github.com&#x2F;Johnnnnngr&#x2F;Johnnnnngr.github.io" rel="noopener" target="_blank">待更新...</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Johnnnngr</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共29.3k字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
