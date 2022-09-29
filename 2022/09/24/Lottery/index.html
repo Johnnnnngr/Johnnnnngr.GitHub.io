@@ -28,7 +28,7 @@
 <meta property="og:description" content="Lottery lottery即表示一个随即结果的事件. eg: 买彩票.  Strictly Defined: 令Z为一个集合(常常是价格集). 发生在Z上的lottery是一个从Z到R的映射关系,表示为函数p. 有: \(\left\{\begin{matrix} p(z) &gt; 0 , z是Z的元素.\\ p(k) &#x3D; 0, k不是Z的元素.\\ {\textstyle \s">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-24T05:42:54.000Z">
-<meta property="article:modified_time" content="2022-09-24T09:23:50.566Z">
+<meta property="article:modified_time" content="2022-09-29T16:47:12.595Z">
 <meta property="article:author" content="Johnnnngr">
 <meta property="article:tag" content="hide">
 <meta name="twitter:card" content="summary">
@@ -183,10 +183,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-09-24 13:42:54 / 修改时间：17:23:50" itemprop="dateCreated datePublished" datetime="2022-09-24T13:42:54+08:00">2022-09-24</time>
+              <time title="创建时间：2022-09-24 13:42:54" itemprop="dateCreated datePublished" datetime="2022-09-24T13:42:54+08:00">2022-09-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-30 00:47:12" itemprop="dateModified" datetime="2022-09-30T00:47:12+08:00">2022-09-30</time>
+              </span>
 
           
 
@@ -421,7 +427,71 @@ a&gt;0,b\)</span> 使得v=au+b.</p>
 <p>preference满足continuity和independence等价于preference满足预期效用.</p>
 <p>(preference over L(Z) is consistent with expected utility iff it is
 continuous and independent)</p>
-<p>证明:等下再写.</p>
+<p>证明:</p>
+<p><strong>if</strong>: preference is consistent with expected utility:
+assume <span class="math inline">\([x] \succeq [y] \succeq [z]\)</span>,
+因<span class="math inline">\(Eu([z])=u(z)\)</span>, then <span
+class="math inline">\(u(x) \ge u(y)\ge u(z)\)</span>, then <span
+class="math inline">\(\exists \alpha, u(y) = \alpha
+u(x)+(1-\alpha)u(z)\)</span>. 此时有: <span
+class="math inline">\(\frac{u(y) - u(z)}{u(x)-u(z)} =\alpha
+\in(0,1)\)</span>, 则满足continuity.</p>
+<p>另外,assume <span class="math inline">\(\alpha_1 \cdot x_1
+\oplus...\oplus \alpha_k \cdot x_k \oplus... \succeq \alpha_1 \cdot x_1
+\oplus...\oplus\alpha_k \cdot(\beta \cdot a \oplus(1-\beta)\cdot
+b)\oplus...\)</span></p>
+<p>有:<span class="math inline">\(\sum \alpha_i x_i \ge \sum \alpha_{i’}
+x_{i’} + \alpha_k(\beta a+(1-\beta)b)\)</span></p>
+<p>得:<span class="math inline">\(\alpha_k x_k \ge \alpha_k(\beta
+a+(1-\beta)b) \to x_k \ge (\beta a+(1-\beta)b)\)</span></p>
+<p><span class="math inline">\(\to [x_k]\succeq \beta \cdot a
+\oplus(1-\beta)\cdot b\)</span> ,则满足independence.</p>
+<p><strong>only if</strong>: assume Z是一个有限集,则将其元素排列为:<span
+class="math inline">\([z_1]\succeq[z_2]...\succeq[z_n]\)</span>, 则<span
+class="math inline">\(\forall i\in(1,n),\exists a\in(0,1)\)</span>,
+使得<span class="math inline">\([z_i]\sim a\cdot z_1 \oplus (1-a)\cdot
+z_n\)</span>,且如果各个<span
+class="math inline">\(z_i\)</span>的偏好不同,那么每个a都是唯一的.
+则对于某个lottery: <span class="math inline">\(p_1\cdot z_1\oplus
+p_2\cdot z_2\oplus...p_n\cdot z_n\)</span>,
+利用independence可得它和该lottery有相同偏好: <span
+class="math inline">\(p_1\cdot z_1\oplus p_2\cdot (a_2\cdot
+z_1\oplus(1-a_2)\cdot z_n)...\oplus p_n\cdot z_n\)</span>.</p>
+<p><span class="math inline">\(\to \sum p_i z_1 a_i\oplus \sum
+p_i(1-a_i)z_n \to z_i\sum p_i a_i\oplus (1-\sum p_i a_i)z_n\)</span>.
+则因<span class="math inline">\(z_i
+和z_n\)</span>之间的偏好已经确定了,那么<span
+class="math inline">\(\forall p,q\)</span>之间的偏好比较就是在比较<span
+class="math inline">\(\sum p_i a_i\)</span>的大小(monotonicity).
+那么也很自然的<span class="math inline">\(a_i\)</span>就是<span
+class="math inline">\(z_i\)</span>的utility,可以写作<span
+class="math inline">\(a_i=u(z_i)\)</span>.</p>
+<p>btw, 如果出现<span
+class="math inline">\([z_1]\sim[z_n]\)</span>的情况,只需要将<span
+class="math inline">\(\forall i, a_i =0\)</span>即可确定所有的<span
+class="math inline">\(\sim\)</span>关系.</p>
+<p>Q.E.D</p>
+<h1 id="allais-paradox">Allais Paradox</h1>
+<p>eg: 如果有两组lottery, <span
+class="math inline">\(\left\{\begin{matrix}L1:0.2\cdot \$4000 \oplus 0.8
+\cdot \$0  \\R1: 0.25\cdot \$3000\oplus 0.75\cdot \$0
+\end{matrix}\right.\)</span> 和 <span
+class="math inline">\(\left\{\begin{matrix}L2: 0.8\cdot \$4000\oplus
+0.2\cdot \$0  \\R2: \$3000 \end{matrix}\right.\)</span></p>
+<p>如果你遵循理性人原则(效用最大化),那么这两组中(一组选一个)该怎么选?</p>
+<p>答案是(<span class="math inline">\(L_1,L_2\)</span>)或(<span
+class="math inline">\(R_1,R_2\)</span>).</p>
+<p>证: 定义算子$$为两个元素之间待比较的偏好.</p>
+<p>有: <span class="math inline">\(L_1\heartsuit L_2=(0.2 \times 4000 +
+0.8 \times 0) \sim(0.25 \times 3000+0.75 \times 0)\)</span></p>
+<p><span class="math inline">\(\to (0.2\times 4000 + 0.05 \times 0) \sim
+(0.25 \times 3000)\)</span></p>
+<p><span class="math inline">\(\underset{\times 4}{\to} (0.8 \times 4000
++ 0.2 \times 0) \sim (1\times 3000)\)</span> ,这刚好就是第二组了.</p>
+<p>其中<span class="math inline">\(\heartsuit\)</span>可以是<span
+class="math inline">\(\succeq\)</span>,也可以是 $$ ,对应的 <span
+class="math inline">\(\sim\)</span> 取大于,小于.</p>
+<p>Q.E.D</p>
 <h1 id="risk-attitude">Risk Attitude</h1>
 <p>令<span class="math inline">\(Z=R_+ = [0,+\infty )\)</span>, expected
 value of p is: <span class="math inline">\(E(p)= \sum
@@ -432,6 +502,7 @@ class="math inline">\(R_+\)</span>)有三种情况:</p>
 class="math inline">\(\left\{\begin{matrix}risk-neutral:E(p)\sim
 p  \\risk-averse:E(p)\succeq p \\risk-loving:p\succeq E(p)
 \end{matrix}\right.\)</span></p>
+<p>实际上上面的Allais paradox可以用risk attitude来解释.</p>
 <h2 id="定理">定理</h2>
 <p>如果u是concave,即u满足:if <span class="math inline">\(x,y\in
 R_+\)</span>, <span class="math inline">\(\alpha\in (0,1)\to\)</span>
@@ -444,8 +515,14 @@ u(x)+(1-\alpha)u(y)\)</span>.</p>
 <p><span class="math inline">\(u(\sum pz)\ge \sum pu \to
 u(E(p))&gt;Eu(p)\to E(p)\succeq p\)</span>.因为E(p)只有一个,所以<span
 class="math inline">\(u(E(p))\)</span>就是expected utility.</p>
-<p>only if: <span class="math inline">\(E(p)\succeq p\to u(E(p))&gt;\sum
-pu\)</span>.这个上面证过了.</p>
+<p>only if: 这个不需要琴生不等式: risk averse: <span
+class="math inline">\(E(p)=\sum pz \succeq p\)</span> <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(\left\{\begin{matrix}\alpha x+(1-\alpha)y \succeq
+\alpha \cdot x \oplus (1-\alpha)\cdot y  \\Eu(\alpha
+x+(1-\alpha)y)&gt;Eu(p) \end{matrix}\right.\)</span> <span
+class="math inline">\(\to\)</span> <span class="math inline">\(u(\alpha
+x+(1-\alpha)y)&gt;\alpha u(x)+ (1-\alpha) u(y)\)</span></p>
 <p>Q.E.D</p>
 <p>补充琴生不等式证明:</p>
 <p>if u is concave:即证明<span class="math inline">\(u(\sum pz)\ge \sum
@@ -545,7 +622,7 @@ u&#39;(x) dx\ge u&#39;(A)(A-x_i)\)</span></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lottery"><span class="nav-number">1.</span> <span class="nav-text">Lottery</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#preference-over-lotteries"><span class="nav-number">2.</span> <span class="nav-text">Preference Over Lotteries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pessimist"><span class="nav-number">2.1.</span> <span class="nav-text">Pessimist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-and-bad"><span class="nav-number">2.2.</span> <span class="nav-text">Good and Bad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimizing-options"><span class="nav-number">2.3.</span> <span class="nav-text">Minimizing Options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#properties-of-preferences"><span class="nav-number">3.</span> <span class="nav-text">Properties of Preferences</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#continuity"><span class="nav-number">3.1.</span> <span class="nav-text">Continuity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C"><span class="nav-number">3.1.1.</span> <span class="nav-text">检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pessimisive-%E4%B8%8D%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Pessimisive : 不满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#good-and-bad-%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">Good and Bad : 满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#option-minimizing-%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">Option minimizing : 满足</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#independence"><span class="nav-number">3.2.</span> <span class="nav-text">Independence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pessimisive-%E4%B8%8D%E6%BB%A1%E8%B6%B3-1"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">Pessimisive : 不满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#good-and-bad-%E6%BB%A1%E8%B6%B3-1"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Good and Bad : 满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optional-minimizing-%E4%B8%8D%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">Optional Minimizing : 不满足</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monotonicity"><span class="nav-number">3.3.</span> <span class="nav-text">Monotonicity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#expected-utility"><span class="nav-number">4.</span> <span class="nav-text">Expected Utility</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">4.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%862"><span class="nav-number">4.2.</span> <span class="nav-text">定理2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#risk-attitude"><span class="nav-number">5.</span> <span class="nav-text">Risk Attitude</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">定理</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lottery"><span class="nav-number">1.</span> <span class="nav-text">Lottery</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#preference-over-lotteries"><span class="nav-number">2.</span> <span class="nav-text">Preference Over Lotteries</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pessimist"><span class="nav-number">2.1.</span> <span class="nav-text">Pessimist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-and-bad"><span class="nav-number">2.2.</span> <span class="nav-text">Good and Bad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minimizing-options"><span class="nav-number">2.3.</span> <span class="nav-text">Minimizing Options</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#properties-of-preferences"><span class="nav-number">3.</span> <span class="nav-text">Properties of Preferences</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#continuity"><span class="nav-number">3.1.</span> <span class="nav-text">Continuity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C"><span class="nav-number">3.1.1.</span> <span class="nav-text">检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pessimisive-%E4%B8%8D%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">Pessimisive : 不满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#good-and-bad-%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">Good and Bad : 满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#option-minimizing-%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">Option minimizing : 满足</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#independence"><span class="nav-number">3.2.</span> <span class="nav-text">Independence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%AA%8C-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">检验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pessimisive-%E4%B8%8D%E6%BB%A1%E8%B6%B3-1"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">Pessimisive : 不满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#good-and-bad-%E6%BB%A1%E8%B6%B3-1"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">Good and Bad : 满足</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optional-minimizing-%E4%B8%8D%E6%BB%A1%E8%B6%B3"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">Optional Minimizing : 不满足</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monotonicity"><span class="nav-number">3.3.</span> <span class="nav-text">Monotonicity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#expected-utility"><span class="nav-number">4.</span> <span class="nav-text">Expected Utility</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%861"><span class="nav-number">4.1.</span> <span class="nav-text">定理1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%862"><span class="nav-number">4.2.</span> <span class="nav-text">定理2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#allais-paradox"><span class="nav-number">5.</span> <span class="nav-text">Allais Paradox</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#risk-attitude"><span class="nav-number">6.</span> <span class="nav-text">Risk Attitude</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%90%86"><span class="nav-number">6.1.</span> <span class="nav-text">定理</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -615,7 +692,7 @@ u&#39;(x) dx\ge u&#39;(A)(A-x_i)\)</span></p>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共29.3k字</span>
+  <span class="post-count">博客全站共30k字</span>
 </div>
         
 
