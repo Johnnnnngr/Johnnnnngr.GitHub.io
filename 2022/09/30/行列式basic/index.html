@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"manual","top_n_per_article":-1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Preference and Rational Choice source: KC Border, Caltech, April 2012 The concept of preference 善良但邪恶的KC Border: “我正在努力写完这个note, 因此有部分仅仅是place holder” 大多数经济学家和政治科学家将preference视作binary relation.">
+  <meta name="description" content="行列式 source: 高等代数,丘佬 排列 定义: n个正整数组成的全排列称为n元排列. 在n元排列中,从左到右任取一对数\(a_i,a_j\),如果\(a_i&lt;a_j\),则称这对数构成一个顺序,如果\(a_i&gt;a_j\),则称这对数构成一个逆序. n元排列中的逆序的总数称为逆序数. 逆序数为偶(奇)的排列称为偶(奇)排列. 规定\(\tau(a_1..a_n)\)为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PreferenceAndRationalChoice">
-<meta property="og:url" content="http://example.com/2022/07/16/PreferenceAndRationalChoice/index.html">
+<meta property="og:title" content="行列式basic">
+<meta property="og:url" content="http://example.com/2022/09/30/%E8%A1%8C%E5%88%97%E5%BC%8Fbasic/index.html">
 <meta property="og:site_name" content="Johnnnnngr">
-<meta property="og:description" content="Preference and Rational Choice source: KC Border, Caltech, April 2012 The concept of preference 善良但邪恶的KC Border: “我正在努力写完这个note, 因此有部分仅仅是place holder” 大多数经济学家和政治科学家将preference视作binary relation.">
+<meta property="og:description" content="行列式 source: 高等代数,丘佬 排列 定义: n个正整数组成的全排列称为n元排列. 在n元排列中,从左到右任取一对数\(a_i,a_j\),如果\(a_i&lt;a_j\),则称这对数构成一个顺序,如果\(a_i&gt;a_j\),则称这对数构成一个逆序. n元排列中的逆序的总数称为逆序数. 逆序数为偶(奇)的排列称为偶(奇)排列. 规定\(\tau(a_1..a_n)\)为">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-15T17:26:43.000Z">
-<meta property="article:modified_time" content="2022-07-15T17:30:08.112Z">
+<meta property="article:published_time" content="2022-09-30T04:42:00.000Z">
+<meta property="article:modified_time" content="2022-09-30T04:42:17.992Z">
 <meta property="article:author" content="Johnnnngr">
 <meta property="article:tag" content="hide">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/07/16/PreferenceAndRationalChoice/">
+<link rel="canonical" href="http://example.com/2022/09/30/%E8%A1%8C%E5%88%97%E5%BC%8Fbasic/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>PreferenceAndRationalChoice | Johnnnnngr</title>
+  <title>行列式basic | Johnnnnngr</title>
   
 
 
@@ -160,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/16/PreferenceAndRationalChoice/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/30/%E8%A1%8C%E5%88%97%E5%BC%8Fbasic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -173,7 +173,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          PreferenceAndRationalChoice
+          行列式basic
         </h1>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-07-16 01:26:43 / 修改时间：01:30:08" itemprop="dateCreated datePublished" datetime="2022-07-16T01:26:43+08:00">2022-07-16</time>
+              <time title="创建时间：2022-09-30 12:42:00 / 修改时间：12:42:17" itemprop="dateCreated datePublished" datetime="2022-09-30T12:42:00+08:00">2022-09-30</time>
             </span>
 
           
@@ -199,137 +199,119 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Preference and Rational Choice</p>
-<p>source: KC Border, Caltech, April 2012</p>
-<h1 id="the-concept-of-preference">The concept of preference</h1>
-<p>善良但邪恶的KC Border: “我正在努力写完这个note, 因此有部分仅仅是place
-holder”</p>
-<p>大多数经济学家和政治科学家将preference视作binary relation.
-即preference必须是比较的. 可以说,preference是一种objects之间的关系.
-我们可以将preference作为决策的依据(同理,我们也可以利用随机变量作为决策的依据,比如抛一枚硬币),
-但实际上(现实中),虽然可以说人们做决策都是用preference(或类似的东西),但是没有人会在决策的时候考虑preference这个notion(即并不会精细地测量每个选择的preference).
-因此,preference这个概念更像是对决策的解释,而不是用来预测的.(除了万能的神经科学家将要reveal的个人utility测量方式)</p>
-<p>另外,Camerer, Loewenstein &amp; Prelec指出,
-经济学家应该区分wanting和liking.
-有些人的决策是受到wanting支配的,尽管实际上他们wanting的东西不会带给他们什么utility.(什么随机实验?流汗黄豆了)</p>
-<p>但是本篇只研究<strong><em>what kind of choice behavior is consistent
-with being motivated by preference</em></strong>.
-要观察一个人是否由preference驱动,需要观察他的决策方式(黑箱).</p>
-<h2 id="intro级别的preference">intro级别的preference</h2>
-<p>最早是Paul Samuelson提出的: 如果你在能选择y的情况下,选择了x,
-那可以说,你并不更偏好y (<span class="math inline">\(x\succeq y\)</span>)
-(Principle of Revealed Preference)</p>
-<p>Gul and Pesedorfer认为, 偏好只是一个理论概念,是对实际的简化<span
-class="math inline">\(\to\)</span>Camerer, Loewenstein &amp; Prelec:
-因此实际上决定一个人决策的并不是他的偏好,而是他们当时的精神状态(即wanting而不是liking)(Dietrich
-and List可以作为补充材料)</p>
-<p>然而目前这个preference关系还没有被KC Border严格定义..(流汗黄豆)</p>
-<p>要实现萨缪尔森的对preference的观察,倒是有一种方法: <strong><em>choice
-observation</em></strong>: 给定choice set (eg: ${ x,y,z } <span
-class="math inline">\(), 通过剔除不被选择的选项来归纳出preference.(fine
-for laboratory settings but not fine for field observations) ).
-另外,不同状态下做出的选择会引入不必要的变量带来噪音. (eg: 周一吃burrito,
-周二吃pasta, 周三吃sushi. 是否可以认为我们存在一个choice set\)</span>{
-burrito, pasta, sushi } $? 另外,如果这个人他有个固定的contingent
-plan,那么这三天吃的只能算是一个observation,这样就不能有比较,自然no
-reveal of preference) (Borjas貌似对1000人20组的实验中使用了Dummy
-Function来减少噪音)</p>
-<h2 id="definition-of-preference">Definition of Preference</h2>
-<h3 id="二元关系intro">二元关系intro</h3>
-<p>规定preference为一个集合中元素的binary relation. 用R表示一个binary
-relation (不一定是preference),用X表示所考虑的集合.R表示为:</p>
-<p><span class="math display">\[\left \{ (x,y)\in X\times X:x R y \right
-\} \]</span></p>
-<p>(KC Border: The graph is a <strong>set-theoretic</strong> way of
-representing the relation, but it is not the relation itself. see more
-in K. J. Devlin (???什么实分析))</p>
-<p>同时,R可能具有一些性质:</p>
-<ol type="1">
-<li>Asymmetric : 即<span class="math inline">\(xRy 不能推出
-yRx\)</span>. 注意:
-x,y的所属子集不同可以使其之间的关系既可能是对称的也可能是不对称的.</li>
-<li>Transitive: 即<span class="math inline">\(xRy且yRz \to
-xRz\)</span>.</li>
-<li>Complete: 即集合X上的元素之间必须有R关系. (must satisfy xRy or yRx
-or both)</li>
-<li>Reflexive: 即xRx. if always satisfy <span class="math inline">\(\neg
-xRx\)</span>,则称R为irreflexive</li>
-</ol>
-<p>(for more detail see real analysis)</p>
-<p><strong>Strict Preference</strong>一定满足Asymmetric和Transitive.
-<strong>Indifference</strong>一定满足Symmetric和Reflexivity,可能满足Transitivity
-(<span class="math inline">\(\forall n,
-我对n克糖和n+1克糖持indifferent态度.
-但是我不可能对1克糖和1吨糖持indifferent态度. (什么bounded
-true)\)</span>​)</p>
+        <p>行列式</p>
+<p>source: 高等代数,丘佬</p>
+<h1 id="排列">排列</h1>
+<p>定义: n个正整数组成的全排列称为n元排列.</p>
+<p>在n元排列中,从左到右<strong>任取</strong>一对数<span
+class="math inline">\(a_i,a_j\)</span>,如果<span
+class="math inline">\(a_i&lt;a_j\)</span>,则称这对数构成一个顺序,如果<span
+class="math inline">\(a_i&gt;a_j\)</span>,则称这对数构成一个逆序.
+n元排列中的逆序的总数称为逆序数.</p>
+<p>逆序数为偶(奇)的排列称为偶(奇)排列.</p>
+<p>规定<span
+class="math inline">\(\tau(a_1..a_n)\)</span>为该排列的逆序数.</p>
+<p>eg: 排列413625是奇排列还是偶排列? 答: 其逆序为(41 43 42 32 62
+65),所以是偶排列.</p>
 <hr />
-<h3 id="greatest-and-maximal-element-of-a-relation">Greatest and maximal
-element of a relation</h3>
-<p>给定二元关系R和集合X, 对于非空集合<span
-class="math inline">\(B\subset X\)</span></p>
-<p>如果x满足<span class="math inline">\(x \in B且\forall y \in B, \neg y
-Rx\)</span>,则称x为R-maximal element.
-如果成立,则R<strong>一般</strong>是irreflexive的(严格preference必须用)</p>
-<p>如果x满足<span class="math inline">\(x \in B且\forall y \in B, y
-Rx\)</span>​,则称x为R-greatest element. 如果成立,则R一定是reflexive的
-(非严格preference可以用)</p>
+<p>eg: 假设1...n形成的n元排列<span
+class="math inline">\(a_1a_2...a_kb_1b_2...b_{n-k}\)</span>中, <span
+class="math inline">\(a_1&lt;a_2...&lt;a_k,b_1&lt;b_2&lt;...&lt;b_{n-k}\)</span>,求该排列的逆序数.</p>
+<p>答: 总归一个一个看过去的. 对于<span
+class="math inline">\(a_1\)</span>, 比他小的有<span
+class="math inline">\(a_1 -1个\)</span>, 对于<span
+class="math inline">\(a_2\)</span>,在他之后比他小的有<span
+class="math inline">\(a_2 -2\)</span>个,同理,<span
+class="math inline">\(a_i\)</span>之后比他小的有<span
+class="math inline">\(a_i-1-(i-1)=a_i -i\)</span>个. 但是<span
+class="math inline">\(b_i\)</span>之后没有比他小的了.
+所以逆序数等于$a_i-i=(a_i) - $​.</p>
 <hr />
-<h3 id="choice-function">Choice Function</h3>
-<p>规定集合X包含所有<strong>alternatives</strong>, $ <span
-class="math inline">\(为X的非空子集的非空簇(family). 则\)</span>
-$的成员称为<strong>budgets</strong>或<strong>budget sets</strong>.
-规定pair <span class="math inline">\((X,\mathcal{B}
-)\)</span>为<strong>budget space</strong>.
-(许多经济学家开始使用menu作为synonym for
-budget,也有经济学家使用传统的以收入和物价定义的budget)</p>
-<p>一个选择(<strong>choice,choice function, choice
-correspondence</strong>)是从$B <span
-class="math inline">\(到B的子集\)</span>c(B)<span
-class="math inline">\(的**映射**(该映射记作c).
-其中,子集\)</span>c(B)<span
-class="math inline">\(称为在B中的决策(**choice for B**),
-如果此时\)</span>x c(B)<span class="math inline">\(则称x is **chosen**
-from B. 如果\)</span>y B$,则称y is <strong>available</strong>. Triple
-<span
-class="math inline">\((X,\mathcal{B},c)\)</span>被称为<strong>choice
-structure</strong> 或<strong>choice space</strong>.</p>
-<p>choice set可以不是singleton或nonempty. 如果<span
-class="math inline">\(c(B)对\forall
-B都是非空的\)</span>,则称c为decisive; 如果<span
-class="math inline">\(c(B)对\forall
-B都是的单例的\)</span>,则称c为univalent的. (Austen-Smith and
-Banks称此c为resolute)</p>
-<p>实际上,一个choice在社会学家眼里是a set of observation of an
-individual’s choice. 理论上可以假设$ <span
-class="math inline">\(包含了X中所有的非空有限集,
-但现实中不可能做到这么具体,因此称\)</span> $为saturated
-(什么phong光照模型), if it contains every 非空有限子集of X.</p>
-<p>经济学家对$ $​该包含多少budget sets持不同态度.
-有些人认为真实的预算空间应该包含有限多的预算集,但是大多数经济学家更喜欢有无限多预算集的实验.</p>
-<hr />
-<h3 id="competitive-budgets">Competitive Budgets</h3>
-<p>新古典经济学家格外关注infinite budget space of competitive
-budgets.</p>
-<p>规定: for some n,$X = R_{+}^{n} <span
-class="math inline">\(另外,\)</span>令(p,w)为budgets,满足: (p,w) = { x
-R_{+}^{n}:pxw } , p, w&gt; 0<span
-class="math inline">\(.此时,\)</span><span
-class="math inline">\(为\)</span>$collection.</p>
-<p>以上定义的interpretation: budget由价格<span
-class="math inline">\(\overrightarrow{p}\)</span>和收入<span
-class="math inline">\(w\)</span>决定的.</p>
-<p>在该budget space上定义的choice称为<strong>demand
-correspondence</strong>. 定义demand function为singleton-valued demand
-correspondence. <strong>demand correspondence是理想状态的映射,
-在现实中是不可能被观察到的.</strong></p>
-<p>demand correspondence满足<strong>budget exhaustion</strong> if: <span
-class="math inline">\(x \in c(\beta(p,w)) \to p \cdot x
-=w\)</span>(即刚好在最大预算上)</p>
-<p>另外,我们习惯性地将demand function写作x(p,w)而不是<span
-class="math inline">\(c(\beta (p,w))\)</span>.
-需求函数同时存在一些restrictions, 比如零次齐次性:<span
-class="math inline">\(\forall \lambda &gt; 0, \beta(p,w)=\beta(\lambda
-p, \lambda w) \to x(p,w)=x(\lambda p, \lambda w)\)</span></p>
+<p>性质: 对换后次数守恒性: <span class="math inline">\(\forall
+n元排列\)</span>,如果其元素对换了a次形成顺序列,那么其逆序数的奇偶性和a一样.
+(这个的证明日后再说)</p>
+<p>eg: 接上面的问题,如果<span
+class="math inline">\(c_1c_2..c_k是a_1a_2..a_k\)</span>的k元排列,<span
+class="math inline">\(d_1d_2..d_{n-k}\)</span>是<span
+class="math inline">\(b_1b_2..b_{n-k}\)</span>的(n-k)元排列,则证明$(-1)^{(c_1c_2..c_kd_1d_2..d_{n-k})
+} =(-1)<sup>{(c_1c_2..c_k)+(d_1d_2..d_{n-k})}(-1)</sup>{a_i}(-1)^{ }
+$</p>
+<p>答: 运用性质,得到: 如果把等式左边进行s次对换使其成为顺序<span
+class="math inline">\(a_1a_2..a_k\)</span>,因为它为偶排列,所以s和<span
+class="math inline">\(c_1c_2..c_k\)</span>的奇偶性一样(证明日后再说,但是主观上可以用数学归纳法).
+所以得到<span
+class="math inline">\((-1)^{\tau(c_1..c_k)}=(-1)^s(-1)^{\tau(a_1..a_k)}\)</span>
+(注意只看奇偶性)</p>
+<p>得到:<span
+class="math inline">\((-1)^{\tau(c_1..c_kd_1..d_{n-k})}=(-1)^s(-1)^{\tau(a_1..a_kd_1..d_{n-k})}\)</span>.
+等式右边就是上一题的问题,则可以化简为:</p>
+<p><span
+class="math inline">\((-1)^{\tau(c_1..c_kd_1..d_{n-k})}=(-1)^s(-1)^{(\sum
+a_i-i)+\tau(d_1d_2..d_{n-k})}\)</span></p>
+<p><span class="math inline">\(\to =(-1)^{\tau (c_1c_2..c_k)}(-1)^{(\sum
+a_i) - \frac{k(1+k)}{2}}(-1)^{\tau(d_1..d_{n-k})}\)</span>.</p>
+<p>Q.E.D</p>
+<h1 id="行列式的定义">行列式的定义</h1>
+<p>定义: n级矩阵<span
+class="math inline">\(A=(a_{ij})\)</span>的行列式是<span
+class="math inline">\(n!\)</span>项的代数和,其中每一项都是不同行,不同列的n个元素的乘积,把这n个元素以行指标为自然顺序排好位置,当列指标构成排列是偶排列时,该项带正号;是奇排列时,该项带负号.即:</p>
+<p><span class="math inline">\(\begin{vmatrix}  a_{11} &amp; a_{12}
+&amp; .. &amp; a_{1n}\\  a_{21}&amp; a_{22} &amp; .. &amp; a_{2n}\\  ..
+&amp; .. &amp; ..&amp;.. \\  a_{n1} &amp; a_{n2} &amp; .. &amp;a_{nn}
+\end{vmatrix} = \sum_{j_1j_2..j_n}^{}
+(-1)^{\tau(j_1..j_n)}a_{1j_1}a_{2j_2}..a_{nj_n}=|A|=det(A)\)</span>.</p>
+<p>等式右边表示由<span
+class="math inline">\(j_1..j_n\)</span>能组成<strong>n!(=从第一行到第n行可行的元素之积)</strong>个排序,同时将他们作为a的指标再取$<span
+class="math inline">\(,之后所有项相加,\)</span>_{j_1..j_n}$表示对所有n元排列(作为指标的n元排列)求和.</p>
+<p>性质: n阶上三角行列式的值等于它的主对角线上n个元素的乘积.</p>
+<p>性质: 每一项<span
+class="math inline">\((-1)^{\tau(j_1..j_n)}a_{1j_1}a_{2j_2}..a_{nj_n}\)</span>可以按任意顺序相乘,但其结果永远等于给定自然序列的排列之乘积的结果,即:</p>
+<p><span
+class="math inline">\((-1)^{\tau(j_1..j_n)}a_{1j_1}a_{2j_2}..a_{nj_n}=(-1)^{\tau(j_1..j_n)+\tau(k_1..k_n)}a_{k_1j_1}a_{k_2j_2}..a_{k_nj_n}\)</span>.</p>
+<p>关于k的那部分就是上面的例题:
+s次对换成偶排序时,s和原排序奇偶性一样.</p>
+<p>eg: 证明: n阶行列式中,第<span
+class="math inline">\(i_1..i_k\)</span>行和第<span
+class="math inline">\(j_1..j_l\)</span>列的交叉位置都为0,且<span
+class="math inline">\(k+l&gt;0\)</span>,则行列式的值为0.</p>
+<p>反证法: 假设不为0,则至少有一组排列避开了<span
+class="math inline">\(i_1..i_k\)</span>行和<span
+class="math inline">\(j_1..j_l\)</span>列. 假设处在<span
+class="math inline">\(i_1..i_k\)</span>行的元素不在<span
+class="math inline">\(j_1..j_l\)</span>列中,则以最左上角的元素为原点构建mesh,可得:该构成排列的点集<span
+class="math inline">\(A\)</span>不包含点集<span
+class="math inline">\((i_a,j_b),\forall
+a\in(1,k),b\in(1,l)\)</span>,同时A中的元素(o,p)在每个dimension上都不重复,则:在所有<span
+class="math inline">\(i_a\)</span>行中,要排列<span
+class="math inline">\(i_a\)</span>个点,满足(o,p)的定义.相当于在n列中去除<span
+class="math inline">\(l\)</span>列,取<span
+class="math inline">\(k\)</span>列以满足之前的条件,则必须满足条件<span
+class="math inline">\(k+l\le n\)</span>,不然取不满, 则和假设相悖,Q.E.D.
+(丘佬写的简单多了,自己看吧)</p>
+<h1 id="行列式的性质">行列式的性质</h1>
+<p>所有性质都能由行列式的定义得出.</p>
+<h2 id="交换行列转置行列式不变">交换行列(转置),行列式不变</h2>
+<p>证: 见上面的例题</p>
+<h2
+id="行列式一行的公因子可以提取出来">行列式一行的公因子可以提取出来</h2>
+<p>证: 所有排序必然包含某一行的所有元素,所以可以提取</p>
+<h2
+id="行列式的一行列如果是两组数的和那么它是两个类似的行列式之和">行列式的一行/列如果是两组数的和,那么它是两个类似的行列式之和</h2>
+<p>证: <span class="math inline">\(\sum_{j_1j_2..j_n}^{}
+(-1)^{\tau(j_1..j_n)}a_{1j_1}a_{2j_2}..a_{nj_n}\)</span>中,<span
+class="math inline">\(a_{ij_s}=b_{im_s}+c_{in_s}\)</span>,则原式为<span
+class="math inline">\(\sum_{j_1j_2..j_n}^{}
+(-1)^{\tau(j_1..j_n)}a_{1j_1}a_{2j_2}.(b_{im_s}+c_{in_s}).a_{nj_n}\)</span>,等于什么显而易见了,拆分的等式相当于两个仅第i行不同的行列式.</p>
+<h2 id="两行列互换行列式反号">两行/列互换,行列式反号</h2>
+<p>证: 互换一次相当于对换一次,则排列奇偶性变化</p>
+<h2 id="rankn-行列式为0">rank&lt;n, 行列式为0</h2>
+<p>证: rank&lt;n, 则有多行/列的组合为0,
+可将原矩阵化简为一行/列为0的矩阵,则行列式为0</p>
+<h2
+id="一行列的倍数加到令一行列上行列式不变">一行/列的倍数加到令一行/列上,行列式不变</h2>
+<p>证: easy,不证了</p>
+<h2 id="tip">Tip</h2>
+<p>一般用上面性质将行列式化简为上三角行列式能简化计算.</p>
 
     </div>
 
@@ -348,13 +330,10 @@ p, \lambda w) \to x(p,w)=x(\lambda p, \lambda w)\)</span></p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/07/13/LaborMarket/" rel="prev" title="LaborMarket">
-      <i class="fa fa-chevron-left"></i> LaborMarket
+    <a href="/2022/09/24/Lottery/" rel="prev" title="Lottery">
+      <i class="fa fa-chevron-left"></i> Lottery
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/08/19/ImperfectLaborMarket/" rel="next" title="ImperfectLaborMarket">
-      ImperfectLaborMarket <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -418,8 +397,7 @@ p, \lambda w) \to x(p,w)=x(\lambda p, \lambda w)\)</span></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#the-concept-of-preference"><span class="nav-number">1.</span> <span class="nav-text">The concept of preference</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#intro%E7%BA%A7%E5%88%AB%E7%9A%84preference"><span class="nav-number">1.1.</span> <span class="nav-text">intro级别的preference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-of-preference"><span class="nav-number">1.2.</span> <span class="nav-text">Definition of Preference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%85%83%E5%85%B3%E7%B3%BBintro"><span class="nav-number">1.2.1.</span> <span class="nav-text">二元关系intro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#greatest-and-maximal-element-of-a-relation"><span class="nav-number">1.2.2.</span> <span class="nav-text">Greatest and maximal
-element of a relation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-function"><span class="nav-number">1.2.3.</span> <span class="nav-text">Choice Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#competitive-budgets"><span class="nav-number">1.2.4.</span> <span class="nav-text">Competitive Budgets</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">排列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">行列式的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-number">3.</span> <span class="nav-text">行列式的性质</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E8%A1%8C%E5%88%97%E8%BD%AC%E7%BD%AE%E8%A1%8C%E5%88%97%E5%BC%8F%E4%B8%8D%E5%8F%98"><span class="nav-number">3.1.</span> <span class="nav-text">交换行列(转置),行列式不变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F%E4%B8%80%E8%A1%8C%E7%9A%84%E5%85%AC%E5%9B%A0%E5%AD%90%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8F%96%E5%87%BA%E6%9D%A5"><span class="nav-number">3.2.</span> <span class="nav-text">行列式一行的公因子可以提取出来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F%E7%9A%84%E4%B8%80%E8%A1%8C%E5%88%97%E5%A6%82%E6%9E%9C%E6%98%AF%E4%B8%A4%E7%BB%84%E6%95%B0%E7%9A%84%E5%92%8C%E9%82%A3%E4%B9%88%E5%AE%83%E6%98%AF%E4%B8%A4%E4%B8%AA%E7%B1%BB%E4%BC%BC%E7%9A%84%E8%A1%8C%E5%88%97%E5%BC%8F%E4%B9%8B%E5%92%8C"><span class="nav-number">3.3.</span> <span class="nav-text">行列式的一行&#x2F;列如果是两组数的和,那么它是两个类似的行列式之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E8%A1%8C%E5%88%97%E4%BA%92%E6%8D%A2%E8%A1%8C%E5%88%97%E5%BC%8F%E5%8F%8D%E5%8F%B7"><span class="nav-number">3.4.</span> <span class="nav-text">两行&#x2F;列互换,行列式反号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rankn-%E8%A1%8C%E5%88%97%E5%BC%8F%E4%B8%BA0"><span class="nav-number">3.5.</span> <span class="nav-text">rank&lt;n, 行列式为0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E8%A1%8C%E5%88%97%E7%9A%84%E5%80%8D%E6%95%B0%E5%8A%A0%E5%88%B0%E4%BB%A4%E4%B8%80%E8%A1%8C%E5%88%97%E4%B8%8A%E8%A1%8C%E5%88%97%E5%BC%8F%E4%B8%8D%E5%8F%98"><span class="nav-number">3.6.</span> <span class="nav-text">一行&#x2F;列的倍数加到令一行&#x2F;列上,行列式不变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tip"><span class="nav-number">3.7.</span> <span class="nav-text">Tip</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
