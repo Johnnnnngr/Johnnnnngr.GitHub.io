@@ -276,7 +276,7 @@ target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/"
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-09-30 12:42:00 / 修改时间：12:42:17" itemprop="dateCreated datePublished" datetime="2022-09-30T12:42:00+08:00">2022-09-30</time>
+              <time title="创建时间：2022-09-30 12:42:00 / 修改时间：12:57:14" itemprop="dateCreated datePublished" datetime="2022-09-30T12:42:00+08:00">2022-09-30</time>
             </span>
 
           
@@ -316,11 +316,16 @@ class="math inline">\(a_2 -2\)</span>个,同理,<span
 class="math inline">\(a_i\)</span>之后比他小的有<span
 class="math inline">\(a_i-1-(i-1)=a_i -i\)</span>个. 但是<span
 class="math inline">\(b_i\)</span>之后没有比他小的了.
-所以逆序数等于$a_i-i=(a_i) - $​.</p>
+所以逆序数等于<span class="math inline">\(\sum a_i-i=(\sum a_i)
+-\frac{k(1+k)}{2}\)</span>​.</p>
 <hr />
 <p>性质: 对换后次数守恒性: <span class="math inline">\(\forall
 n元排列\)</span>,如果其元素对换了a次形成顺序列,那么其逆序数的奇偶性和a一样.
 (这个的证明日后再说)</p>
+<p>日后:
+证:首先,相邻的对换会改变奇偶性,这个易证,齐次,不相邻的对换可以转换为相邻的对换:
+假设两个元素之间有s个元素,那么1次两个元素的不相邻对换可以由2s+1次相邻对换实现(左到右s+1次,右到左s次,可以用数学归纳法证明这个等式).
+因为2s+1必为奇数,所以对换必改变奇偶性.因此如果s次对换得到的结果是偶排列,那么s和原排序同奇偶.</p>
 <p>eg: 接上面的问题,如果<span
 class="math inline">\(c_1c_2..c_k是a_1a_2..a_k\)</span>的k元排列,<span
 class="math inline">\(d_1d_2..d_{n-k}\)</span>是<span
@@ -4009,7 +4014,7 @@ public class CustomShaderGUI : ShaderGUI
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共31.4k字</span>
+  <span class="post-count">博客全站共31.5k字</span>
 </div>
         
 
