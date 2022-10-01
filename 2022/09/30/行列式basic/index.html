@@ -28,7 +28,7 @@
 <meta property="og:description" content="#Source source: 高等代数,丘佬 排列 定义: n个正整数组成的全排列称为n元排列. 在n元排列中,从左到右任取一对数\(a_i,a_j\),如果\(a_i&lt;a_j\),则称这对数构成一个顺序,如果\(a_i&gt;a_j\),则称这对数构成一个逆序. n元排列中的逆序的总数称为逆序数. 逆序数为偶(奇)的排列称为偶(奇)排列. 规定\(\tau(a_1..a_n">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-30T04:42:00.000Z">
-<meta property="article:modified_time" content="2022-09-30T05:00:58.773Z">
+<meta property="article:modified_time" content="2022-10-01T16:15:22.063Z">
 <meta property="article:author" content="Johnnnngr">
 <meta property="article:tag" content="hide">
 <meta name="twitter:card" content="summary">
@@ -183,10 +183,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-09-30 12:42:00 / 修改时间：13:00:58" itemprop="dateCreated datePublished" datetime="2022-09-30T12:42:00+08:00">2022-09-30</time>
+              <time title="创建时间：2022-09-30 12:42:00" itemprop="dateCreated datePublished" datetime="2022-09-30T12:42:00+08:00">2022-09-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-02 00:15:22" itemprop="dateModified" datetime="2022-10-02T00:15:22+08:00">2022-10-02</time>
+              </span>
 
           
 
@@ -238,9 +244,10 @@ n元排列\)</span>,如果其元素对换了a次形成顺序列,那么其逆序�
 <p>eg: 接上面的问题,如果<span
 class="math inline">\(c_1c_2..c_k是a_1a_2..a_k\)</span>的k元排列,<span
 class="math inline">\(d_1d_2..d_{n-k}\)</span>是<span
-class="math inline">\(b_1b_2..b_{n-k}\)</span>的(n-k)元排列,则证明$(-1)^{(c_1c_2..c_kd_1d_2..d_{n-k})
-} =(-1)<sup>{(c_1c_2..c_k)+(d_1d_2..d_{n-k})}(-1)</sup>{a_i}(-1)^{ }
-$</p>
+class="math inline">\(b_1b_2..b_{n-k}\)</span>的(n-k)元排列,则证明<span
+class="math inline">\((-1)^{\tau (c_1c_2..c_kd_1d_2..d_{n-k}) }
+=(-1)^{\tau (c_1c_2..c_k)+\tau(d_1d_2..d_{n-k})}(-1)^{\sum
+a_i}(-1)^{\frac{k(k+1)}{2}}\)</span></p>
 <p>答: 运用性质,得到: 如果把等式左边进行s次对换使其成为顺序<span
 class="math inline">\(a_1a_2..a_k\)</span>,因为它为偶排列,所以s和<span
 class="math inline">\(c_1c_2..c_k\)</span>的奇偶性一样(证明日后再说,但是主观上可以用数学归纳法).
