@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"manual","top_n_per_article":-1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最大似然估计 来源: BRUCE E. HANSEN Parametric Model Definition: 随机变量X(假定为iid)的parametric model是一个依赖于未知参数$ $的完全概率函数. (严格定义: A PM for a random sample is the assumption that \(X_i\), i &#x3D; 1,..,n, are i.i.d.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="似然basic">
+<meta property="og:url" content="http://example.com/2022/10/12/%E4%BC%BC%E7%84%B6basic/index.html">
+<meta property="og:site_name" content="Johnnnnngr">
+<meta property="og:description" content="最大似然估计 来源: BRUCE E. HANSEN Parametric Model Definition: 随机变量X(假定为iid)的parametric model是一个依赖于未知参数$ $的完全概率函数. (严格定义: A PM for a random sample is the assumption that \(X_i\), i &#x3D; 1,..,n, are i.i.d.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-12T11:47:00.000Z">
+<meta property="article:modified_time" content="2022-10-12T11:48:56.718Z">
+<meta property="article:author" content="Johnnnngr">
+<meta property="article:tag" content="hide">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/10/12/%E4%BC%BC%E7%84%B6basic/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>似然basic | Johnnnnngr</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Johnnnnngr</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/12/%E4%BC%BC%E7%84%B6basic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          似然basic
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-12 19:47:00 / 修改时间：19:48:56" itemprop="dateCreated datePublished" datetime="2022-10-12T19:47:00+08:00">2022-10-12</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最大似然估计</p>
+<p>来源: BRUCE E. HANSEN</p>
+<h1 id="parametric-model">Parametric Model</h1>
+<p>Definition: 随机变量X(假定为iid)的parametric
+model是一个依赖于未知参数$ $的完全概率函数. (严格定义: A PM for a random
+sample is the assumption that <span class="math inline">\(X_i\)</span>,
+i = 1,..,n, are i.i.d. with known density function <span
+class="math inline">\(f(x|\theta)\)</span> or mass function <span
+class="math inline">\(\pi(x|\theta)\)</span> with unknown parameter
+<span class="math inline">\(\theta \in \Theta\)</span>).</p>
+<p>注:其中$
+$一般是scalar,但也可以是一个向量(因此实际上会有很多未知一维变量,过于复杂,我们仅考虑一维未知量)</p>
+<p>注: 实际上可以不是iid,但是我们仅考虑iid.</p>
+<p>离散形式下我们可以将PM写作一个概率密度函数<span
+class="math inline">\(\pi(X|\theta)\)</span>,连续形势下我们可以将其写作<span
+class="math inline">\(f(x|\theta)\)</span>. 令未知参数<span
+class="math inline">\(\theta \in \Theta\)</span>,后者称为parameter
+space. 因为PM的未知参数只能从一个特定集合<span
+class="math inline">\(\Theta\)</span>中选取,所以规定<span
+class="math inline">\(\Theta\)</span>中所有参数构成的所有分布函数组成的集合称为parametric
+family. eg: 假定一个PM为 <span class="math inline">\(X\sim
+N(\mu,\sigma^2 )\)</span>,其密度函数为<span
+class="math inline">\(f(x|\mu,\sigma^2)\)</span>,有参数<span
+class="math inline">\(\mu\in R,\sigma^2 \in(0,\infty )\)</span>.</p>
+<p>注: PM可以是自己随便构造的.</p>
+<hr />
+<p>Definition: 当<span class="math inline">\(\exists \theta_i \in
+\Theta\)</span>使得<span
+class="math inline">\(f(x|\theta_i)=f(x)\)</span>,后者即true data
+distribution.而且<span
+class="math inline">\(\theta_i\)</span>的值唯一,则称该<span
+class="math inline">\(\theta_i\)</span>为true parameter value, 该PM is
+correctly specified.</p>
+<p>反之,如果不存在参数使得模型可以反应真实分布,则称该PM is
+mis-specified.</p>
+<p>eg: 对于真实分布<span class="math inline">\(f(x)=2exp(-2x)\)</span>,
+指数模型<span
+class="math inline">\(f(x|\lambda)=\lambda^{-1}exp(\frac{-x}{\lambda }
+)\)</span>是一个correctly specific model, 因为仅存在<span
+class="math inline">\(\lambda_0=0.5\)</span>使模型符合真实分布,
+但指数正态分布就是mis-specified
+model了,因为不存在满足要求的参数使该模型符合真实分布.</p>
+<h1 id="likelihood">Likelihood</h1>
+<p>基本假设: 我们所用的模型是correctly specified的.</p>
+<p>Definition: 似然是用指定PM计算的所有实验的联合分布密度(The likelihood
+is the joint density of the observations calculated using the
+model.)</p>
+<p>因为我们假定随机变量是iid,所以其联合分布密度就是各个分布的累积.
+同时我们仅用一个model,
+所以每次实验的分布都是一样的.因此似然函数(likelihood
+function)等于如下函数:<span class="math display">\[L_n(\theta)\equiv
+f(x_1,..x_n|\theta)=\prod f(x_i|\theta).\]</span></p>
+<p>其中<span class="math inline">\(L_n\)</span>指似然函数.</p>
+<p>类似于概率函数分析哪个值最可能发生,
+我们用似然函数分析参数取哪个值最可能符合我们的观察.因此,
+最大化似然的参数<span class="math inline">\(\hat{\theta
+}\)</span>就是实际参数(或最接近的,但我们已经假设用的模型是correct
+specified的,所以一般就是).</p>
+<p>由此引出最大似然估计</p>
+<h2 id="maximum-likelihood-estimator">Maximum Likelihood estimator</h2>
+<p><span class="math inline">\(\hat{\theta }\)</span>就是最大化<span
+class="math inline">\(L_n(\theta)\)</span>的参数,即:<span
+class="math inline">\(\hat{\theta }=\underset{\theta \in \Theta}{argmax}
+L_n(\theta)\)</span></p>
+<p>例子自己看例题. 求<span class="math inline">\(\hat{\theta
+}\)</span>一般就是FOC+SOC两步走.</p>
+<p>为了简便计算,我们一般取似然函数的log: <span
+class="math inline">\(\mathfrak{l} _n(\theta)\equiv
+log(L_n(\theta))\)</span>.</p>
+<p>可行性证明: 因为取自然对数不会改变原函数在各个<span
+class="math inline">\(\theta\)</span>的单调性,即其导数符号处处相同,所以可用.</p>
+<h3 id="likelihood-analog-principle">Likelihood Analog Principle</h3>
+<p>定义expected log density: <span class="math inline">\(\mathfrak{l}
+(\theta)=E[logf(X|\theta)]\)</span>. 当模型是correctly specified时,
+实际的参数<span
+class="math inline">\(\theta_0\)</span>最大化了这个函数(自己证明).</p>
+<p>eg: <span
+class="math inline">\(f(x|\lambda)=\lambda^{-1}exp(-x/\lambda)\)</span>,
+则其expected log density为: <span class="math inline">\(\mathfrak{l}
+(\lambda)=E[logf(X|\lambda)]=E[-log\lambda-X/\lambda]=-log\lambda-E[X]/\lambda=-log\lambda-\lambda_0/\lambda\)</span>.
+FOC:<span
+class="math inline">\(-\lambda^{-1}+\lambda_0\lambda^{-2}=0\)</span>,有唯一解<span
+class="math inline">\(\lambda=\lambda_0\)</span>.</p>
+<p>注意此处的density是对全体X,即population而言的.</p>
+<p>类似的,我们对<span class="math inline">\(\mathfrak{l}
+(\theta)\)</span>进行sample analog:</p>
+<p>$ ()=_n ()=logf(X_i|) $.</p>
+<p>同理, <span class="math inline">\(\hat{\theta}\)</span>
+使它最大化.</p>
+<h3 id="invariance-property">Invariance Property</h3>
+<p>if <span class="math inline">\(\hat{\theta}\)</span>是MLE of <span
+class="math inline">\(\theta \in R^m\)</span>, 那么对于任何变换<span
+class="math inline">\(\beta=h(\theta)\in R^l\)</span>, 他的MLE,即<span
+class="math inline">\(\hat{\beta}=h(\hat{\theta})\)</span>.
+自己证明.</p>
+<h3 id="consistency">Consistency</h3>
+<p>等下写</p>
+<h3 id="asymptotically-normally-distribution">Asymptotically normally
+distribution</h3>
+<p>等下写</p>
+<h3 id="asymptotically-efficient">Asymptotically efficient</h3>
+<p>等下写</p>
+<h2 id="likelihood-ratio-test-for-simple-hypothesis">Likelihood Ratio
+Test for simple Hypothesis</h2>
+<p>仅考虑最简单的<span class="math inline">\(H_0\)</span>和<span
+class="math inline">\(H_1\)</span>:</p>
+<p><span
+class="math inline">\(\left\{\begin{matrix}H_0:\theta=\theta_0  \\H_1:\theta
+= \theta_1 \end{matrix}\right.\)</span></p>
+<p>如果不接受<span class="math inline">\(H_0\)</span>,只要使<span
+class="math inline">\(L_n(\theta_1)\)</span>在<strong>一定程度上</strong>比<span
+class="math inline">\(L_n(\theta_0)\)</span>大,即<span
+class="math inline">\(\theta_1\)</span>比<span
+class="math inline">\(\theta_0\)</span>更有可能.</p>
+<p>关键词: 一定程度,大. 所以我们可以用比例形式判断: $L= <span
+class="math inline">\(. 此时,如果\)</span>Lc$则accept <span
+class="math inline">\(H_0\)</span>, 如果<span class="math inline">\(L\ge
+c\)</span>则reject <span class="math inline">\(H_0\)</span>.</p>
+<p>为了方便计算,我们采用log形式,则定义likelihood ratio statistic为:
+<span class="math inline">\(LR_n=2(\mathfrak{l}
+_n(\theta_1)-\mathfrak{l}_n(\theta_0))\)</span>. <span
+class="math inline">\(\to\)</span> if <span class="math inline">\(LR_n
+\le c\)</span>则接受<span class="math inline">\(H_0\)</span>, if <span
+class="math inline">\(LR_n\ge c\)</span>则拒绝<span
+class="math inline">\(H_0\)</span>.
+至于为什么要乘2,一部分是历史原因,另一部分是因为这样在比较critical value
+的时候会方便,而且乘2对结果其实没什么影响.</p>
+<p>下面我们引申至复杂情形</p>
+<h2 id="likelihood-ratio-test-against-composite-alternatives">Likelihood
+Ratio Test against composite alternatives</h2>
+<p><span class="math inline">\(\left\{\begin{matrix}H_0: \theta
+=\theta_0  \\H_1:\theta \ne \theta_0 \end{matrix}\right.\)</span></p>
+<p>令<span
+class="math inline">\(\hat{\theta}\)</span>为MLE,则此时的LR为<span
+class="math inline">\(LR_n=2(\mathfrak{l_n(\widehat{\theta}
+)-l_n(\theta_0)} )\)</span>. 此时判别式和上面一样.</p>
+<h2 id="t-test">t-test</h2>
+<p>simple null(单值)against composite
+alternatives(区间)的ratio类似于t-test. 利用泰勒展开证明.</p>
+<p>令<span class="math inline">\(\theta \in R^k\)</span>, <span
+class="math inline">\(LR_n=2(\mathfrak{l}_n
+(\hat{\theta})-\mathfrak{l}_n (\theta_0))\)</span>. 以<span
+class="math inline">\(\hat\theta\)</span>为起点对<span
+class="math inline">\(\mathfrak{l}_n
+(\theta_0)\)</span>做二阶泰勒展开,得:</p>
+<p>$_n (_0)_n ( )++(-_0)' _n ( )(-_0) $.</p>
+<p>我们在求<span
+class="math inline">\(\hat\theta\)</span>的时候已经使$=0 $了,
+而他的SOC是Hessian <span class="math inline">\(H_f\)</span> = <span
+class="math inline">\(-\widehat{V} ^{-1}\)</span>. 后者是Hessian
+Estimator of asymptotic variance of <span
+class="math inline">\(\hat\theta\)</span>.</p>
+<p>得到: <span class="math inline">\(\mathfrak{l}_n
+(\theta_0)\simeq\mathfrak{l}_n (\widehat{\theta}
+)-\frac{1}{2}(\hat\theta-\theta_0)&#39;\widehat{V}
+^{-1}(\hat\theta-\theta_0)\)</span>.</p>
+<p>得到: <span
+class="math inline">\(LR_n\simeq(\hat\theta-\theta_0)&#39;\widehat{V}
+^{-1}(\hat\theta-\theta_0)\)</span>. 当<span
+class="math inline">\(n\to\infty\)</span>, <span
+class="math inline">\(LR_n \underset{d}{\to} X_m^2\)</span>. m是<span
+class="math inline">\(\theta\)</span>的维数(向量长度)(这个自己证明吧).</p>
+<p>则: <span class="math inline">\(c=q_{1-\alpha}\)</span>.
+后者为卡方分布的(<span class="math inline">\(1-\alpha\)</span>)
+区间.</p>
+<p>此时,在一维情况下<span
+class="math inline">\((\hat\theta-\theta_0)&#39;\widehat{V}
+^{-1}(\hat\theta-\theta_0)=T^2\)</span>, 则在大数和一维下,可用<span
+class="math inline">\(|T|&gt;c\)</span>代替<span
+class="math inline">\(LR_n&gt;c\)</span>.</p>
+<p>注: 以上情况仅在大数时成立,若样本小则LR和X的差距很大.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hide/" rel="tag"># hide</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/12/%E7%9F%A9%E9%98%B5basic/" rel="prev" title="矩阵basic">
+      <i class="fa fa-chevron-left"></i> 矩阵basic
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NjYxMS8zMzA3NA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#parametric-model"><span class="nav-number">1.</span> <span class="nav-text">Parametric Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#likelihood"><span class="nav-number">2.</span> <span class="nav-text">Likelihood</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maximum-likelihood-estimator"><span class="nav-number">2.1.</span> <span class="nav-text">Maximum Likelihood estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#likelihood-analog-principle"><span class="nav-number">2.1.1.</span> <span class="nav-text">Likelihood Analog Principle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#invariance-property"><span class="nav-number">2.1.2.</span> <span class="nav-text">Invariance Property</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#consistency"><span class="nav-number">2.1.3.</span> <span class="nav-text">Consistency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#asymptotically-normally-distribution"><span class="nav-number">2.1.4.</span> <span class="nav-text">Asymptotically normally
+distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#asymptotically-efficient"><span class="nav-number">2.1.5.</span> <span class="nav-text">Asymptotically efficient</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#likelihood-ratio-test-for-simple-hypothesis"><span class="nav-number">2.2.</span> <span class="nav-text">Likelihood Ratio
+Test for simple Hypothesis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#likelihood-ratio-test-against-composite-alternatives"><span class="nav-number">2.3.</span> <span class="nav-text">Likelihood
+Ratio Test against composite alternatives</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t-test"><span class="nav-number">2.4.</span> <span class="nav-text">t-test</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Johnnnngr"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Johnnnngr</p>
+  <div class="site-description" itemprop="description">some discoveries...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/Johnnnnngr/Johnnnnngr.github.io" title="https:&#x2F;&#x2F;github.com&#x2F;Johnnnnngr&#x2F;Johnnnnngr.github.io" rel="noopener" target="_blank">待更新...</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Johnnnngr</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共35.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
