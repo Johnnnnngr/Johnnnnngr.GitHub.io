@@ -28,7 +28,7 @@
 <meta property="og:description" content="最大似然估计 来源: BRUCE E. HANSEN Parametric Model Definition: 随机变量X(假定为iid)的parametric model是一个依赖于未知参数$ $的完全概率函数. (严格定义: A PM for a random sample is the assumption that \(X_i\), i &#x3D; 1,..,n, are i.i.d.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-12T11:47:00.000Z">
-<meta property="article:modified_time" content="2022-10-12T11:48:56.718Z">
+<meta property="article:modified_time" content="2022-10-12T12:29:29.634Z">
 <meta property="article:author" content="Johnnnngr">
 <meta property="article:tag" content="hide">
 <meta name="twitter:card" content="summary">
@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-10-12 19:47:00 / 修改时间：19:48:56" itemprop="dateCreated datePublished" datetime="2022-10-12T19:47:00+08:00">2022-10-12</time>
+              <time title="创建时间：2022-10-12 19:47:00 / 修改时间：20:29:29" itemprop="dateCreated datePublished" datetime="2022-10-12T19:47:00+08:00">2022-10-12</time>
             </span>
 
           
@@ -277,15 +277,17 @@ class="math inline">\(\theta\)</span>的单调性,即其导数符号处处相同
 class="math inline">\(\theta_0\)</span>最大化了这个函数(自己证明).</p>
 <p>eg: <span
 class="math inline">\(f(x|\lambda)=\lambda^{-1}exp(-x/\lambda)\)</span>,
-则其expected log density为: <span class="math inline">\(\mathfrak{l}
-(\lambda)=E[logf(X|\lambda)]=E[-log\lambda-X/\lambda]=-log\lambda-E[X]/\lambda=-log\lambda-\lambda_0/\lambda\)</span>.
+则其expected log density为: <span class="math display">\[\mathfrak{l}
+(\lambda)=E[logf(X|\lambda)]=E[-log\lambda-X/\lambda]=-log\lambda-E[X]/\lambda=-log\lambda-\lambda_0/\lambda\]</span>.
 FOC:<span
-class="math inline">\(-\lambda^{-1}+\lambda_0\lambda^{-2}=0\)</span>,有唯一解<span
-class="math inline">\(\lambda=\lambda_0\)</span>.</p>
+class="math inline">\(-\lambda^{-1}+\lambda_0\lambda^{-2}=0\)</span>.</p>
+<p>有唯一解<span class="math inline">\(\lambda=\lambda_0\)</span>.</p>
 <p>注意此处的density是对全体X,即population而言的.</p>
 <p>类似的,我们对<span class="math inline">\(\mathfrak{l}
 (\theta)\)</span>进行sample analog:</p>
-<p>$ ()=_n ()=logf(X_i|) $.</p>
+<p><span class="math display">\[\overline { \mathfrak{l}}_{n} ( \theta
+)= \frac{1}{n} \mathfrak{l}_{n} ( \theta )= \frac{1}{n} \sum logf(X_i |
+\theta ) \]</span>.</p>
 <p>同理, <span class="math inline">\(\hat{\theta}\)</span>
 使它最大化.</p>
 <h3 id="invariance-property">Invariance Property</h3>
@@ -313,10 +315,12 @@ class="math inline">\(L_n(\theta_1)\)</span>在<strong>一定程度上</strong>�
 class="math inline">\(L_n(\theta_0)\)</span>大,即<span
 class="math inline">\(\theta_1\)</span>比<span
 class="math inline">\(\theta_0\)</span>更有可能.</p>
-<p>关键词: 一定程度,大. 所以我们可以用比例形式判断: $L= <span
-class="math inline">\(. 此时,如果\)</span>Lc$则accept <span
-class="math inline">\(H_0\)</span>, 如果<span class="math inline">\(L\ge
-c\)</span>则reject <span class="math inline">\(H_0\)</span>.</p>
+<p>关键词: 一定程度,大. 所以我们可以用比例形式判断: <span
+class="math display">\[L= \frac{L_{n}( \theta_{1} )}{L_{n}( \theta_{0}
+)}\]</span>.</p>
+<p>此时,如果 <span class="math inline">\(L \le c\)</span> 则accept <span
+class="math inline">\(H_0\)</span>, 如果<span class="math inline">\(L
+\ge c\)</span>则reject <span class="math inline">\(H_0\)</span>.</p>
 <p>为了方便计算,我们采用log形式,则定义likelihood ratio statistic为:
 <span class="math inline">\(LR_n=2(\mathfrak{l}
 _n(\theta_1)-\mathfrak{l}_n(\theta_0))\)</span>. <span
@@ -344,7 +348,12 @@ class="math inline">\(LR_n=2(\mathfrak{l}_n
 class="math inline">\(\hat\theta\)</span>为起点对<span
 class="math inline">\(\mathfrak{l}_n
 (\theta_0)\)</span>做二阶泰勒展开,得:</p>
-<p>$_n (_0)_n ( )++(-_0)' _n ( )(-_0) $.</p>
+<p><span class="math display">\[\mathfrak{l}_{n} ( \theta_{0} ) \simeq
+\mathfrak{l}_{n} ( \widehat{\theta} )+ \frac{\partial \mathfrak{l}_{n} (
+\widehat{\theta} )&#39;( \hat{\theta}-\theta_{0})}{\partial
+\theta}+\frac{1}{2}(\hat{\theta}-\theta_{0})&#39;
+\frac{\partial^2}{\partial \theta\partial \theta&#39;} \mathfrak{l}_{n}
+(\widehat{\theta} )(\hat{\theta}-\theta_{0}) \]</span>.</p>
 <p>我们在求<span
 class="math inline">\(\hat\theta\)</span>的时候已经使$=0 $了,
 而他的SOC是Hessian <span class="math inline">\(H_f\)</span> = <span
@@ -528,7 +537,7 @@ Ratio Test against composite alternatives</span></a></li><li class="nav-item nav
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共35.1k字</span>
+  <span class="post-count">博客全站共35.2k字</span>
 </div>
         
 
