@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"manual","top_n_per_article":-1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="微分方程的解之解释 source..阿诺尔德 简单说明 先给出一个简单的概念,之后给出严格的数学定义. 相空间 “一个过程称为是确定的,如果它的整个未来的和整个过去的行程能由它的现在的状态唯一决定. 一个过程的所有可能的状态的集合称为相空间”. 翻译运动: 相是指一个东西的样子, 而其样子的“空间”就是指这个样子从最初到结束时所有可能的情况. 比如一个小球的运动, 如果给定初始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程之解">
+<meta property="og:url" content="http://example.com/2022/10/14/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E4%B9%8B%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Johnnnnngr">
+<meta property="og:description" content="微分方程的解之解释 source..阿诺尔德 简单说明 先给出一个简单的概念,之后给出严格的数学定义. 相空间 “一个过程称为是确定的,如果它的整个未来的和整个过去的行程能由它的现在的状态唯一决定. 一个过程的所有可能的状态的集合称为相空间”. 翻译运动: 相是指一个东西的样子, 而其样子的“空间”就是指这个样子从最初到结束时所有可能的情况. 比如一个小球的运动, 如果给定初始">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-14T05:36:54.000Z">
+<meta property="article:modified_time" content="2022-10-14T05:36:22.133Z">
+<meta property="article:author" content="Johnnnngr">
+<meta property="article:tag" content="hide">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/10/14/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E4%B9%8B%E8%A7%A3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>常微分方程之解 | Johnnnnngr</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Johnnnnngr</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/14/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E4%B9%8B%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          常微分方程之解
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-14 13:36:54 / 修改时间：13:36:22" itemprop="dateCreated datePublished" datetime="2022-10-14T13:36:54+08:00">2022-10-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>微分方程的解之解释</p>
+<p>source..阿诺尔德</p>
+<h1 id="简单说明">简单说明</h1>
+<p>先给出一个简单的概念,之后给出严格的数学定义.</p>
+<h2 id="相空间">相空间</h2>
+<p><strong>“一个过程称为是确定的,如果它的整个未来的和整个过去的行程能由它的现在的状态唯一决定.
+一个过程的所有可能的状态的集合称为相空间”</strong>. 翻译运动:
+相是指一个东西的样子,
+而其样子的“空间”就是指这个样子从最初到结束时所有可能的情况.
+比如一个小球的运动,
+如果给定初始位置和初始速度(外力已知,所以其轨迹是可以“预测”的,也就是说,在运动中的任何时刻都可以知道小球过去和未来的运动状态),那么小球每一刻的瞬时位置和瞬时速度分别组成的集合就是两个相空间的元素.</p>
+<p>但是,量子力学中质点的运动不是一个确定的过程,即:
+运动的未来状态时运动的现在状态决定的,而不是运动的过去状态.
+因此给定任意运动中的一个时刻,我们只能知道该时刻未来的状态,而不能知道过去时刻的状态,
+所以这种运动不是由其现在状态唯一确定的,因此相空间对其不适用.</p>
+<h2 id="有限维">有限维</h2>
+<p>一个过程是有限维的,如果它的相空间是有限维的(注意上面的例子提到的相空间的元素是描述运动不同方面的向量,因此相空间有限维等价于描述运动的参数有限个).</p>
+<h2 id="可微性">可微性</h2>
+<p>一个过程是可微的,如果它的相空间具有<strong>可微流形</strong>的结构,<strong>而且</strong>它的状态随时间的改变是由可微函数来描述的.
+比如培养皿中的细菌就是一个确定的一维的可微过程(假定营养物质确定,温度等其他条件都确定),首先,一维是因为描述运动的参数只有细菌的数量,其次可微是因为细菌的繁殖有专门的常微分方程...</p>
+<h2 id="相流">相流</h2>
+<p>确定过程的数学模型,还是见下文吧,相流是个十分抽象的概念.</p>
+<h1 id="精确定义">精确定义</h1>
+<h2 id="相流-1">相流</h2>
+<p>设M是相空间而<span class="math inline">\(x \in
+M\)</span>是过程的初始状态, 设<span
+class="math inline">\(g^{t}x\)</span>表示初始状态为x的过程在时刻t的状态.
+对于每一师叔t 它确定相空间M到它自身的一个映射<span
+class="math inline">\(g^{t} : M \to M\)</span>. <span
+class="math inline">\(g^{t}\)</span>称为t推进映射, 即将<span
+class="math inline">\(x \in M\)</span>映射进新的状态<span
+class="math inline">\(g^{t}x \in M\)</span>.</p>
+<p>我们规定:</p>
+<ol type="1">
+<li><span
+class="math inline">\(g^{0}\)</span>为恒等映射,即将M的每一点留在原来的位置(在时刻0的状态).</li>
+<li><span class="math inline">\(g^{t+s}=g^{t}g^{s}\)</span>.
+即x经过t时刻后在<span
+class="math inline">\(g^{t}x\)</span>处,再经过s时刻后再<span
+class="math inline">\(g^{s}g^{t}x\)</span>处. 不仅可以从物理的角度理解:
+具有相空间的小球经过t+s时刻和先经过t在经过s单位时间的运动轨迹一样.
+另外从方程的角度理解: x经过<span
+class="math inline">\(g^{t}\)</span>映射后记作<span
+class="math inline">\(y=g^{t}x\)</span>,再经过<span
+class="math inline">\(g^{s}\)</span>后记作<span
+class="math inline">\(z=g^{s}y\)</span>,则最终<span
+class="math inline">\(z=g^{s}g^{t}x\)</span>.
+(如果t,s仅代表时间的话那确实没问题...但是函数的domain和range顺序都变了,这...)</li>
+</ol>
+<p>假定固定一个相点<span class="math inline">\(x\in
+M\)</span>,即固定一个初始状态. 令时间流逝,
+则x会在相空间中描出一条相曲线<span class="math inline">\({y=g^{t}x, t\in
+R}\)</span>. 由于相点都沿着自己的相曲线运动,因此t推进映射族<span
+class="math inline">\(g^{t}:M\to
+M\)</span>​正好构成<strong>相流</strong>.</p>
+<p>因此可以给出严格数学定义: <strong>“一个由所有实数组成的集合(<span
+class="math inline">\(t\in R\)</span>)所标记的,
+由集合M到他自身的映射族<span
+class="math inline">\(\{g^{t}\}\)</span>如果对于所有的<span
+class="math inline">\(s,t \in
+R\)</span>满足以上两个规定,则称为M的单参数变换群(即前面定义的,只针对某个参数的一维映射称为单参数)”</strong>.</p>
+<p>由集合<span
+class="math inline">\(M\)</span>和由M的单参数变换群组成的偶<span
+class="math inline">\((M,\{g^{t}\})\)</span>称为<strong>相流</strong>.
+集合M称为相流的相空间,M的元素称为相点.</p>
+<p>设<span class="math inline">\(x\in M\)</span>是任意相点,
+如果存在实直线到相空间的映射, 令其表示为:<span
+class="math inline">\(\varphi :R\to M,\varphi
+(t)=g^{t}x\)</span>.(即时间对应的相点位置), 我们称该映射为相流<span
+class="math inline">\((M,\{g^{t}\})\)</span>​作用下点x的<strong>运动</strong>.</p>
+<hr />
+<h2 id="相曲线">相曲线</h2>
+<p>在上面的映射下R的象(即<span class="math inline">\(t\in
+R\)</span>下的全部运动轨迹)称为相流<span
+class="math inline">\((M,\{g^{t}\})\)</span>的相曲线.</p>
+<p>​ 引理: 经过相空间的每一点有且只有一条相曲线.</p>
+<p>相流<span
+class="math inline">\((M,\{g^{t}\})\)</span>的平衡位置即相曲线为一个相点的情况:
+<span class="math inline">\(g^{t}x=x,\forall t \in R\)</span>.</p>
+<hr />
+<h2 id="扩张空间和积分曲线">扩张空间和积分曲线</h2>
+<p>定义集合A和B的直积: A<span
+class="math inline">\(\times\)</span>B为所有有序偶(a,b)的集合,其中<span
+class="math inline">\(a\in A, b\in B\)</span>.映射<span
+class="math inline">\(A\to B\)</span>的图形定义为A<span
+class="math inline">\(\times\)</span>B的子集,它有所有点<span
+class="math inline">\((a,f(a))\)</span>,<span class="math inline">\(a\in
+A\)</span>组成.</p>
+<p>相流<span
+class="math inline">\((M,\{g^{t}\})\)</span>的<strong>扩张空间</strong>指实轴t和相空间M的直积:
+<span class="math inline">\(R\times
+M\)</span>.而运动$$称为该相流的<strong>积分曲线</strong></p>
+<p>引理: 经过扩张空间的每一点有且只有一条积分曲线</p>
+<p>tips: 积分曲线所处的空间永远比相曲线多一维,即t.</p>
+<hr />
+<h2 id="微分同胚">微分同胚</h2>
+<p>给定一个欧几里得空间<span
+class="math inline">\(R^{n}\)</span>的开区域U, 其上的可微函数<span
+class="math inline">\(f:U\to R\)</span>设为r次可微,<span
+class="math inline">\(r\in[1,\infty]\)</span>.</p>
+<p>以上可微函数可以表示为: <strong>给定另一个欧几里得空间<span
+class="math inline">\(R^{m}\)</span>的开区域V,其上的元素有坐标<span
+class="math inline">\((y_{1},y_{2}..,y_{m})\)</span>.
+令f表示从U到V的可微映射:<span class="math inline">\(f:U\to
+V\)</span>.注意,这里是将U中的元素(有n个坐标分量)映射到V</strong>(有m个坐标分量)上.
+规定V上某元素的某坐标分量<span
+class="math inline">\(y_{i}=f_{i}(x_{1},x_{2}..x_{n})\)</span>(这里是坐标分量的映射关系,即从<span
+class="math inline">\((x_{1},x_{2}..x_{n})\)</span>到R的映射),
+<strong>则<span class="math inline">\(y_{i}\)</span>也就是<span
+class="math inline">\(V\to R\)</span>的可微映射,对应的<span
+class="math inline">\(f_{i}\)</span>是f的分量</strong>,(也就是<span
+class="math inline">\(f_{i}\)</span>, 也即<span
+class="math inline">\(y_{i}(y_{1},y_{2}..,y_{m}):V\to
+R\)</span>,虽然看起来"为什么一个坐标分量能作为一种映射关系,而且这个坐标分量本身就已经是R了,为什么还要映射"很怪,但是希望我的理解没毛病嗷).
+<strong>那么:<span class="math inline">\(y_{i}\circ f\)</span>就是<span
+class="math inline">\(U\to R\)</span>的映射</strong>(<span
+class="math inline">\(y_{i}\circ f\)</span>即<span
+class="math inline">\(y_{i}(f(x_{1}..x_{n}))\)</span>,<strong>相当于段落开头定义的f.这里两个f的定义是不一样的...但为了方便我连用两个f.
+</strong>.</p>
+<p>我们规定,第二段中的<span class="math inline">\(f: U\to
+V\)</span>可微,如果满足<span class="math inline">\(f^{-1}:V\to
+U\)</span>也可微,那么f就是微分同胚.</p>
+<p>知道了微分同胚,我们可以定义流形上的单参数微分同胚群<span
+class="math inline">\(\{g^{t}\}\)</span>为直积<span
+class="math inline">\(R\times M\to M\)</span>的映射, 即<span
+class="math inline">\(g:R\times M\to M;g(t,x)=g^{t}x,t\in R,x\in
+M\)</span>. 它满足关系:</p>
+<ol type="1">
+<li><span class="math inline">\(g\)</span>是可微映射</li>
+<li>族<span
+class="math inline">\(\{g^{t}\}\)</span>是M的单参数变换群</li>
+<li>(由1,2可推出)<span
+class="math inline">\(g^{t}\)</span>是微分同胚.</li>
+</ol>
+<h2 id="向量场">向量场</h2>
+<p>注:
+原书是专注于物理学的ODE教材,因此会涉及很多的物理学定义,但是我再此将其抽象为更普遍的概念,所以有些名字可能不是很专业.</p>
+<p>相流<span class="math inline">\((M,\{g^{t}\})\)</span>在点<span
+class="math inline">\(x\in M\)</span>上的导数<span
+class="math inline">\(v(x)\)</span>称为相速度,即相点的运动趋势. 有:</p>
+<p><span class="math display">\[\overset{.}{x}
+=\frac{\mathrm{d}}{\mathrm{d} t}|_{t=0}g^{t}=v(x)\]</span>;</p>
+<p><span class="math display">\[\frac{\mathrm{d}}{\mathrm{d}
+t}|_{t=a}g^{t}=v(g^{a}t)\]</span>.</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hide/" rel="tag"># hide</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/14/waitinglist/" rel="prev" title="waitinglist">
+      <i class="fa fa-chevron-left"></i> waitinglist
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81NjYxMS8zMzA3NA=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">简单说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E7%A9%BA%E9%97%B4"><span class="nav-number">1.1.</span> <span class="nav-text">相空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%99%90%E7%BB%B4"><span class="nav-number">1.2.</span> <span class="nav-text">有限维</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E5%BE%AE%E6%80%A7"><span class="nav-number">1.3.</span> <span class="nav-text">可微性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E6%B5%81"><span class="nav-number">1.4.</span> <span class="nav-text">相流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B2%BE%E7%A1%AE%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">精确定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E6%B5%81-1"><span class="nav-number">2.1.</span> <span class="nav-text">相流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.2.</span> <span class="nav-text">相曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%BC%A0%E7%A9%BA%E9%97%B4%E5%92%8C%E7%A7%AF%E5%88%86%E6%9B%B2%E7%BA%BF"><span class="nav-number">2.3.</span> <span class="nav-text">扩张空间和积分曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%88%86%E5%90%8C%E8%83%9A"><span class="nav-number">2.4.</span> <span class="nav-text">微分同胚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%91%E9%87%8F%E5%9C%BA"><span class="nav-number">2.5.</span> <span class="nav-text">向量场</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Johnnnngr"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Johnnnngr</p>
+  <div class="site-description" itemprop="description">some discoveries...</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/Johnnnnngr/Johnnnnngr.github.io" title="https:&#x2F;&#x2F;github.com&#x2F;Johnnnnngr&#x2F;Johnnnnngr.github.io" rel="noopener" target="_blank">待更新...</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Johnnnngr</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共37.2k字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
