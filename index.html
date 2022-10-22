@@ -165,6 +165,257 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/20/%E4%BB%A3%E6%95%B0%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%9A%84%E9%9B%8F%E5%BD%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/20/%E4%BB%A3%E6%95%B0%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%9A%84%E9%9B%8F%E5%BD%A2/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-20 01:04:54 / 修改时间：02:15:16" itemprop="dateCreated datePublished" datetime="2022-10-20T01:04:54+08:00">2022-10-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>初级不等式</p>
+<p>来源: 哈代</p>
+<h1 id="代数不等式的雏形">代数不等式的雏形</h1>
+<p>几乎所有代数不等式都可以从以下两种形式扩展得到.</p>
+<h2 id="常规平均值">常规平均值</h2>
+<p>不等式的雏形即: <span class="math inline">\(M_{r}(a)=(\frac{1}{n}\sum
+a^{r})^{\frac{1}{r}}\)</span>.其中a是一个有序数组,即<span
+class="math inline">\(a=(a_{1},a_{2}..a_{n})\)</span>. 虽然<span
+class="math inline">\(a_{i}\)</span>的取值并不受限制,但我们在分析的时候一般使其非负,
+然后再由非负推广至一般情况. r也是如此,一般使其不等于0, 但可趋近于0.</p>
+<p>由该雏形可以推广出算数平均: <span
+class="math inline">\(U(a)=M_{1}(a)=\frac{\sum a}{n}\)</span>和调和平均:
+<span
+class="math inline">\(H(a)=M_{-1}(a)=\frac{n}{\sum\frac{1}{a}}\)</span>.</p>
+<p>我们额外规定几何平均<span class="math inline">\(B(a)=(\prod
+a)^{\frac{1}{r}}\)</span>.(实际上几何平均是雏形种<span
+class="math inline">\(r\to 0\)</span>的情形).</p>
+<h2 id="加权平均值">加权平均值</h2>
+<p>更一般的形式, 有序数组<span
+class="math inline">\((a)\)</span>的各项有各自的权重<span
+class="math inline">\((p)\)</span>,有序数组p和a中的元素对应. 因为<span
+class="math inline">\(M_{r}(a)\)</span>本身是一个齐次函数,因此可以normalize
+a的权重使得<span class="math inline">\(\sum
+p=1\)</span>.(这么做是为了简化证明和计算,但实际上这并不代表一般形式,因此要扩展到<span
+class="math inline">\(\sum p\)</span>为任意值时,要额外做一些工作).
+有:</p>
+<p><span class="math display">\[M_{r}(a,p)=(\frac{1}{\sum p}\sum
+pa^{r})^{\frac{1}{r}}\]</span>.</p>
+<p>他能推导出加权的其他平均值:</p>
+<ol type="1">
+<li><span class="math inline">\(U(a,p)=\frac{\sum pa}{\sum
+p}\)</span></li>
+<li><span class="math inline">\(H(a,p)=\frac{\sum p}{\sum
+\frac{1}{pa}}\)</span>.</li>
+<li><span class="math inline">\(B(a,p)=(\prod a^{p})^{\frac{1}{\sum
+p}}\)</span>.</li>
+</ol>
+<p>normalized form:在标准化下用q代替权重p.</p>
+<ol type="1">
+<li><span class="math inline">\(M_{r}(a,q)=(\frac{1}{\sum q}\sum
+qa^{r})^{\frac{1}{r}}=(\sum qa^{r})^{\frac{1}{r}}\)</span>.</li>
+<li><span class="math inline">\(U(a,q)=\sum qa\)</span>.</li>
+<li><span class="math inline">\(B(a,q)=\prod a^{q}\)</span>.</li>
+</ol>
+<p>加权平均会用到重要的四个公式,很容易证明:</p>
+<ol type="1">
+<li><span class="math inline">\(M_{r}(a)=[U(a^{r})]^{1/r}\)</span>.</li>
+<li><span class="math inline">\(B(a)=exp[U[ln(a)]]\)</span>.</li>
+<li><span
+class="math inline">\(M_{-r}=\frac{1}{M_{r}(1/a)}\)</span>.</li>
+<li><span
+class="math inline">\(M_{rs}(a)=[M_{s}(a^{r})]^{1/r}\)</span>.</li>
+</ol>
+<p>假设a&gt;0(可推广至一般情况),则又有</p>
+<ol start="5" type="1">
+<li><span class="math inline">\(U(a+b)=U(a)+U(b)\)</span>.</li>
+<li><span class="math inline">\(B(ab)=B(a)B(b)\)</span>.</li>
+<li><span class="math inline">\(M_{r}(b)=kM_{r}(a)\)</span>,for
+(b)=k(a).</li>
+<li><span class="math inline">\(B(b)=kB(a)\)</span>, for (b)=k(a).</li>
+<li><span class="math inline">\(M_{r}(a)\le M_{r}(b)\)</span>, for <span
+class="math inline">\(a_{i}\le b_{i}, \forall i \in D\)</span>.</li>
+</ol>
+<h1 id="重要定理及证明">重要定理及证明</h1>
+<ol type="1">
+<li><p>min a &lt; <span class="math inline">\(M_{r}(a)\)</span> &lt; max
+a, 除非所有a相等或者r&lt;0且存在部分a为0.</p>
+<p>证明: 等式<span class="math inline">\(\sum q(a-U(a))=\sum qa-\sum
+qU(a)=\sum qa-\sum q\frac{\sum a}{n}=0\)</span>恒成立.什么计量证明?</p>
+<p>则: <span class="math inline">\((a-U)\)</span>要么等于0,
+要么有部分a大于U,有部分a小于U. 所以排除前者的情况, 必存在<span
+class="math inline">\(a_{i}&lt;U&lt;a_{j}\)</span>. 另外,min a &lt;
+<span class="math inline">\(M_{r}(a)\)</span> &lt; max a等价于<span
+class="math inline">\(min^{r}(a)&lt;[M_{r}(a)]^{r}=U(a^{r})&lt;max^{r}(a)\)</span>.
+即:对<span
+class="math inline">\(a^{r}_{i}&lt;U(a^{r})&lt;a^{r}_{j}\)</span>开r根号,就QED了.</p></li>
+<li><p>min a&lt;<span class="math inline">\(B(a)\)</span>&lt;max a,
+除非所有a都相等或者有些a等于0.</p>
+<p>证明: <span class="math inline">\(B(a)=\prod a^{q}\to\frac{\prod
+a^{q}}{B}=1\)</span>. for <span
+class="math inline">\(B(a)=exp[U[ln(a)]]=exp(\sum qln(a))=\prod
+exp(qln(a))\)</span>.</p>
+<p>原式<span class="math inline">\(=\prod a^{q}=\prod (\prod
+a^{q})^{q}\)</span>.这里可以单独看某个<span
+class="math inline">\(a_{i}\)</span>,结果为<span
+class="math inline">\(a_{i}^{q_{1}\sum q=q_{1}}\)</span>.
+另外,也可以直接用<span
+class="math inline">\(B(a)=exp[U[ln(a)]]\)</span>, 即<span
+class="math inline">\(\prod B^{q}=e^{\sum qU(ln(a))}=e^{\sum
+qln(a)}=\prod a^{q}\)</span>.
+(无语,是太简单了嘛,哈代过程都不写了).</p></li>
+<li><p><span class="math inline">\(\lim_{r \to 0}
+M_{r}(a)=B(a)\)</span></p>
+<p>证明: <span class="math inline">\(M_{r}(a)=exp(\frac{1}{r}ln\sum
+qa^{r})=exp\{\frac{1}{r}ln[1+r\sum qln(a)+O(r^{2})]\}\to exp(\sum
+qln(a))=\prod a^{q}\)</span>.</p>
+<p>后者即B(a).</p></li>
+<li><p><span class="math inline">\(\lim_{r \to \infty}
+M_{r}(a)=max(a)\)</span>, <span class="math inline">\(\lim_{r \to
+-\infty} M_{r}(a)=min(a)\)</span>.</p>
+<p>证明:</p></li>
+</ol>
+<h1 id="柯西不等式">柯西不等式</h1>
+<p>定理: 除非所有的a都相等,否则总满足<span
+class="math inline">\(M_{r}(a)&lt;M_{2r}(a)\)</span>(r&gt;0).
+写成代数形式即:<span class="math inline">\((\sum pa^{r})^{2}&lt;\sum
+p\sum pa^{2r}\)</span>.</p>
+<p>令p=b,即p的倍数的任意有序数列,得到柯西不等式的一般形式:<span
+class="math inline">\((\sum ab)^{2}&lt;\sum a^{2}\sum
+b^{2}\)</span>.除非a,b成比例.</p>
+<p>简短的证明: 原式$a<sup>{2}b</sup>{2}-(ab)<sup>{2}=<em>{u,v}
+(a</em>{u}b_{v}-a_{v}b_{u})</sup>{2} $.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E4%B8%80%E8%88%AC%E5%BD%A2%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E7%9A%84%E4%B8%80%E8%88%AC%E5%BD%A2%E5%BC%8F/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-19 15:38:17" itemprop="dateCreated datePublished" datetime="2022-10-19T15:38:17+08:00">2022-10-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>常微分方程</p>
+<p>source: 王高雄</p>
+<h1 id="常微分方程的一般形式">常微分方程的一般形式</h1>
+<p>常微分方程的一般形式为: <span
+class="math inline">\(F(x,y,\frac{dy}{dx},..,\frac{d^{n}y}{dx^{n}})=0\)</span>.</p>
+<h2 id="线性">线性</h2>
+<p>如果一般形式的左边为y及其导数的有理整式,则称其为线性的.
+线性微分方程有一般形式:</p>
+<p><span
+class="math inline">\(\frac{d^{n}y}{dx^{n}}+a_{1}(x)\frac{d^{n-1}y}{dx^{n-1}}+...+a_{n-1}\frac{dy}{dx}+a_{n}y
+=f(x)\)</span>. 其中<span
+class="math inline">\(a_{i}(x)\)</span>是关于x的任意函数.</p>
+<p>线性也就是说y可以被完美地分离.</p>
+<h2 id="解">解</h2>
+<p>方程的解分为显式解和隐式解.
+前者就是y=g(x),后者是y和x的隐函数形式.</p>
+<h3 id="通解和特解">通解和特解</h3>
+<p>对于n阶方程,把含有n个任意常数的函数$y=(x,c_{1},c_{2}..c_{n})
+$称为通解.</p>
+<p>另外, 为了确定一个解,
+我们给出方程在特定情况下满足的条件(定解条件,一般是初始条件,即initial
+value),能解出定解.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/15/INTRO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -328,7 +579,7 @@ target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/"
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -382,7 +633,7 @@ target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/"
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共38.9k字</span>
+  <span class="post-count">博客全站共40.4k字</span>
 </div>
         
 
