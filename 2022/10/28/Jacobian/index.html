@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"manual","top_n_per_article":-1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Preference and Rational Choice source: KC Border, Caltech, April 2012 The concept of preference 善良但邪恶的KC Border: “我正在努力写完这个note, 因此有部分仅仅是place holder” 大多数经济学家和政治科学家将preference视作binary relation.">
+  <meta name="description" content="Jacobian 雅各布矩阵和雅各布行列式的运用. Brief 假设存在函数\(y:R^{n}\to R^{m}\),即y是n维欧几里得空间到m维欧几里得空间的映射,有:\(\left\{\begin{matrix} y_{1}&#x3D;f_{1}(x_{1},x_{2}..x_{n}) \\y_{2}&#x3D;f_{2}(x_{1},x_{2}..x_{n}) \\... \\y_{m}&#x3D;f_{m}">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PreferenceAndRationalChoice">
-<meta property="og:url" content="http://example.com/2022/07/16/PreferenceAndRationalChoice/index.html">
+<meta property="og:title" content="Jacobian">
+<meta property="og:url" content="http://example.com/2022/10/28/Jacobian/index.html">
 <meta property="og:site_name" content="Johnnnnngr">
-<meta property="og:description" content="Preference and Rational Choice source: KC Border, Caltech, April 2012 The concept of preference 善良但邪恶的KC Border: “我正在努力写完这个note, 因此有部分仅仅是place holder” 大多数经济学家和政治科学家将preference视作binary relation.">
+<meta property="og:description" content="Jacobian 雅各布矩阵和雅各布行列式的运用. Brief 假设存在函数\(y:R^{n}\to R^{m}\),即y是n维欧几里得空间到m维欧几里得空间的映射,有:\(\left\{\begin{matrix} y_{1}&#x3D;f_{1}(x_{1},x_{2}..x_{n}) \\y_{2}&#x3D;f_{2}(x_{1},x_{2}..x_{n}) \\... \\y_{m}&#x3D;f_{m}">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-15T17:26:43.000Z">
-<meta property="article:modified_time" content="2022-10-12T12:21:15.952Z">
+<meta property="article:published_time" content="2022-10-28T13:37:54.000Z">
+<meta property="article:modified_time" content="2022-10-28T13:43:01.563Z">
 <meta property="article:author" content="Johnnnngr">
 <meta property="article:tag" content="hide">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/07/16/PreferenceAndRationalChoice/">
+<link rel="canonical" href="http://example.com/2022/10/28/Jacobian/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>PreferenceAndRationalChoice | Johnnnnngr</title>
+  <title>Jacobian | Johnnnnngr</title>
   
 
 
@@ -169,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/16/PreferenceAndRationalChoice/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/28/Jacobian/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -182,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          PreferenceAndRationalChoice
+          Jacobian
         </h1>
 
         <div class="post-meta">
@@ -192,16 +192,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-07-16 01:26:43" itemprop="dateCreated datePublished" datetime="2022-07-16T01:26:43+08:00">2022-07-16</time>
+              <time title="创建时间：2022-10-28 21:37:54 / 修改时间：21:43:01" itemprop="dateCreated datePublished" datetime="2022-10-28T21:37:54+08:00">2022-10-28</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-12 20:21:15" itemprop="dateModified" datetime="2022-10-12T20:21:15+08:00">2022-10-12</time>
-              </span>
 
           
 
@@ -214,137 +208,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Preference and Rational Choice</p>
-<p>source: KC Border, Caltech, April 2012</p>
-<h1 id="the-concept-of-preference">The concept of preference</h1>
-<p>善良但邪恶的KC Border: “我正在努力写完这个note, 因此有部分仅仅是place
-holder”</p>
-<p>大多数经济学家和政治科学家将preference视作binary relation.
-即preference必须是比较的. 可以说,preference是一种objects之间的关系.
-我们可以将preference作为决策的依据(同理,我们也可以利用随机变量作为决策的依据,比如抛一枚硬币),
-但实际上(现实中),虽然可以说人们做决策都是用preference(或类似的东西),但是没有人会在决策的时候考虑preference这个notion(即并不会精细地测量每个选择的preference).
-因此,preference这个概念更像是对决策的解释,而不是用来预测的.(除了万能的神经科学家将要reveal的个人utility测量方式)</p>
-<p>另外,Camerer, Loewenstein &amp; Prelec指出,
-经济学家应该区分wanting和liking.
-有些人的决策是受到wanting支配的,尽管实际上他们wanting的东西不会带给他们什么utility.(什么随机实验?流汗黄豆了)</p>
-<p>但是本篇只研究<strong><em>what kind of choice behavior is consistent
-with being motivated by preference</em></strong>.
-要观察一个人是否由preference驱动,需要观察他的决策方式(黑箱).</p>
-<h2 id="intro级别的preference">intro级别的preference</h2>
-<p>最早是Paul Samuelson提出的: 如果你在能选择y的情况下,选择了x,
-那可以说,你并不更偏好y (<span class="math inline">\(x\succeq y\)</span>)
-(Principle of Revealed Preference)</p>
-<p>Gul and Pesedorfer认为, 偏好只是一个理论概念,是对实际的简化<span
-class="math inline">\(\to\)</span>Camerer, Loewenstein &amp; Prelec:
-因此实际上决定一个人决策的并不是他的偏好,而是他们当时的精神状态(即wanting而不是liking)(Dietrich
-and List可以作为补充材料)</p>
-<p>然而目前这个preference关系还没有被KC Border严格定义..(流汗黄豆)</p>
-<p>要实现萨缪尔森的对preference的观察,倒是有一种方法: <strong><em>choice
-observation</em></strong>: 给定choice set (eg: ${ x,y,z } <span
-class="math inline">\(), 通过剔除不被选择的选项来归纳出preference.(fine
-for laboratory settings but not fine for field observations) ).
-另外,不同状态下做出的选择会引入不必要的变量带来噪音. (eg: 周一吃burrito,
-周二吃pasta, 周三吃sushi. 是否可以认为我们存在一个choice set\)</span>{
-burrito, pasta, sushi } $? 另外,如果这个人他有个固定的contingent
-plan,那么这三天吃的只能算是一个observation,这样就不能有比较,自然no
-reveal of preference) (Borjas貌似对1000人20组的实验中使用了Dummy
-Function来减少噪音)</p>
-<h2 id="definition-of-preference">Definition of Preference</h2>
-<h3 id="二元关系intro">二元关系intro</h3>
-<p>规定preference为一个集合中元素的binary relation. 用R表示一个binary
-relation (不一定是preference),用X表示所考虑的集合.R表示为:</p>
-<p><span class="math display">\[\left \{ (x,y)\in X\times X:x R y \right
-\} \]</span></p>
-<p>(KC Border: The graph is a <strong>set-theoretic</strong> way of
-representing the relation, but it is not the relation itself. see more
-in K. J. Devlin (???什么实分析))</p>
-<p>同时,R可能具有一些性质:</p>
-<ol type="1">
-<li>Asymmetric : 即<span class="math inline">\(xRy 不能推出
-yRx\)</span>. 注意:
-x,y的所属子集不同可以使其之间的关系既可能是对称的也可能是不对称的.</li>
-<li>Transitive: 即<span class="math inline">\(xRy且yRz \to
-xRz\)</span>.</li>
-<li>Complete: 即集合X上的元素之间必须有R关系. (must satisfy xRy or yRx
-or both)</li>
-<li>Reflexive: 即xRx. if always satisfy <span class="math inline">\(\neg
-xRx\)</span>,则称R为irreflexive</li>
-</ol>
-<p>(for more detail see real analysis)</p>
-<p><strong>Strict Preference</strong>一定满足Asymmetric和Transitive.
-<strong>Indifference</strong>一定满足Symmetric和Reflexivity,可能满足Transitivity
-(<span class="math inline">\(\forall n,
-我对n克糖和n+1克糖持indifferent态度.
-但是我不可能对1克糖和1吨糖持indifferent态度. (什么bounded
-true)\)</span>​)</p>
-<hr />
-<h3 id="greatest-and-maximal-element-of-a-relation">Greatest and maximal
-element of a relation</h3>
-<p>给定二元关系R和集合X, 对于非空集合<span
-class="math inline">\(B\subset X\)</span></p>
-<p>如果x满足<span class="math inline">\(x \in B且\forall y \in B, \neg y
-Rx\)</span>,则称x为R-maximal element.
-如果成立,则R<strong>一般</strong>是irreflexive的(严格preference必须用)</p>
-<p>如果x满足<span class="math inline">\(x \in B且\forall y \in B, y
-Rx\)</span>​,则称x为R-greatest element. 如果成立,则R一定是reflexive的
-(非严格preference可以用)</p>
-<hr />
-<h3 id="choice-function">Choice Function</h3>
-<p>规定集合X包含所有<strong>alternatives</strong>, $ <span
-class="math inline">\(为X的非空子集的非空簇(family). 则\)</span>
-$的成员称为<strong>budgets</strong>或<strong>budget sets</strong>.
-规定pair <span class="math inline">\((X,\mathcal{B}
-)\)</span>为<strong>budget space</strong>.
-(许多经济学家开始使用menu作为synonym for
-budget,也有经济学家使用传统的以收入和物价定义的budget)</p>
-<p>一个选择(<strong>choice,choice function, choice
-correspondence</strong>)是从$B <span
-class="math inline">\(到B的子集\)</span>c(B)<span
-class="math inline">\(的**映射**(该映射记作c).
-其中,子集\)</span>c(B)<span
-class="math inline">\(称为在B中的决策(**choice for B**),
-如果此时\)</span>x c(B)<span class="math inline">\(则称x is **chosen**
-from B. 如果\)</span>y B$,则称y is <strong>available</strong>. Triple
-<span
-class="math inline">\((X,\mathcal{B},c)\)</span>被称为<strong>choice
-structure</strong> 或<strong>choice space</strong>.</p>
-<p>choice set可以不是singleton或nonempty. 如果<span
-class="math inline">\(c(B)对\forall
-B都是非空的\)</span>,则称c为decisive; 如果<span
-class="math inline">\(c(B)对\forall
-B都是的单例的\)</span>,则称c为univalent的. (Austen-Smith and
-Banks称此c为resolute)</p>
-<p>实际上,一个choice在社会学家眼里是a set of observation of an
-individual’s choice. 理论上可以假设$ <span
-class="math inline">\(包含了X中所有的非空有限集,
-但现实中不可能做到这么具体,因此称\)</span> $为saturated
-(什么phong光照模型), if it contains every 非空有限子集of X.</p>
-<p>经济学家对$ $​该包含多少budget sets持不同态度.
-有些人认为真实的预算空间应该包含有限多的预算集,但是大多数经济学家更喜欢有无限多预算集的实验.</p>
-<hr />
-<h3 id="competitive-budgets">Competitive Budgets</h3>
-<p>新古典经济学家格外关注infinite budget space of competitive
-budgets.</p>
-<p>规定: for some n,$X = R_{+}^{n} <span
-class="math inline">\(另外,\)</span>令(p,w)为budgets,满足: (p,w) = { x
-R_{+}^{n}:pxw } , p, w&gt; 0<span
-class="math inline">\(.此时,\)</span><span
-class="math inline">\(为\)</span>$collection.</p>
-<p>以上定义的interpretation: budget由价格<span
-class="math inline">\(\overrightarrow{p}\)</span>和收入<span
-class="math inline">\(w\)</span>决定的.</p>
-<p>在该budget space上定义的choice称为<strong>demand
-correspondence</strong>. 定义demand function为singleton-valued demand
-correspondence. <strong>demand correspondence是理想状态的映射,
-在现实中是不可能被观察到的.</strong></p>
-<p>demand correspondence满足<strong>budget exhaustion</strong> if: <span
-class="math inline">\(x \in c(\beta(p,w)) \to p \cdot x
-=w\)</span>(即刚好在最大预算上)</p>
-<p>另外,我们习惯性地将demand function写作x(p,w)而不是<span
-class="math inline">\(c(\beta (p,w))\)</span>.
-需求函数同时存在一些restrictions, 比如零次齐次性:<span
-class="math inline">\(\forall \lambda &gt; 0, \beta(p,w)=\beta(\lambda
-p, \lambda w) \to x(p,w)=x(\lambda p, \lambda w)\)</span></p>
+        <p>Jacobian</p>
+<p>雅各布矩阵和雅各布行列式的运用.</p>
+<h1 id="brief">Brief</h1>
+<p>假设存在函数<span class="math inline">\(y:R^{n}\to
+R^{m}\)</span>,即y是n维欧几里得空间到m维欧几里得空间的映射,有:<span
+class="math inline">\(\left\{\begin{matrix}
+y_{1}=f_{1}(x_{1},x_{2}..x_{n}) \\y_{2}=f_{2}(x_{1},x_{2}..x_{n}) \\...
+\\y_{m}=f_{m}(x_{1},x_{2}..x_{n})\end{matrix}\right.\)</span> ,</p>
+<p>则其雅各布矩阵为<span class="math inline">\(J=\begin{bmatrix}
+\frac{\partial f_{1}}{\partial x_{1}} &amp;\frac{\partial
+f_{1}}{\partial x_{2}} &amp;... &amp;\frac{\partial f_{1}}{\partial
+x_{n}} \\ \frac{\partial f_{2}}{\partial x_{1}} &amp;\frac{\partial
+f_{2}}{\partial x_{2}} &amp;... &amp;\frac{\partial f_{2}}{\partial
+x_{n}} \\ .. &amp;... &amp;... &amp;... \\\frac{\partial f_{m}}{\partial
+x_{1}} &amp;\frac{\partial f_{m}}{\partial x_{2}} &amp;...
+&amp;\frac{\partial f_{m}}{\partial x_{n}}\end{bmatrix}\)</span>.</p>
+<p>雅各布矩阵拥有矩阵都有的"变换"的性质,即输入n维向量,可以输出m维向量(一定是线性变换吗?).该矩阵也可以看作是
+<span class="math inline">\(R^{n}\to R^{m}\)</span>. 即<span
+class="math inline">\(J\cdot \begin{bmatrix} x_{1} \\ x_{2} \\ ... \\
+x_{n}\end{bmatrix}=\begin{bmatrix} y_{1} \\ y_{2} \\ ... \\
+y_{m}\end{bmatrix}\)</span>.</p>
+<p>如果雅各布矩阵是方阵(nxn),则可定义雅各布行列式:<span
+class="math inline">\(|J|=\begin{vmatrix} \frac{\partial f_{1}}{\partial
+x_{1}} &amp;\frac{\partial f_{1}}{\partial x_{2}} &amp;...
+&amp;\frac{\partial f_{1}}{\partial x_{n}} \\ \frac{\partial
+f_{2}}{\partial x_{1}} &amp;\frac{\partial f_{2}}{\partial x_{2}}
+&amp;... &amp;\frac{\partial f_{2}}{\partial x_{n}} \\ .. &amp;...
+&amp;... &amp;... \\\frac{\partial f_{m}}{\partial x_{1}}
+&amp;\frac{\partial f_{m}}{\partial x_{2}} &amp;... &amp;\frac{\partial
+f_{m}}{\partial x_{n}}\end{vmatrix}\)</span>.该行列式有性质:<span
+class="math inline">\(\prod dy_{i}=|J|\prod dx_{i}\)</span>.</p>
+<p>证明: 分别将<span
+class="math inline">\(x_{i},y_{i}\)</span>一次作为对角线矩阵的对角线元素,有:<span
+class="math inline">\(Y=JX\to det(Y)=det(JX)=det(J)det(X)\)</span>,</p>
+<p>得到<span class="math inline">\(\prod dy_{i}=|J|\prod
+dx_{i}\)</span>.</p>
+<p>这可以理解为x和y分别所在n维欧氏空间的微小增量之比为det(J).</p>
+<h1 id="二维">二维</h1>
+<p>二维下的雅各布矩阵可作为坐标系变换的工具: 假设有两个坐标系(x,y) &amp;
+(u,v),使得<span class="math inline">\(\left\{\begin{matrix} x=x(u,v)
+\\y=y(u,v) \end{matrix}\right.\)</span>.</p>
+<p>此时<span class="math inline">\(|J|=|\frac{\partial (x,y)}{\partial
+(u,v)} |\)</span>. 据上式得<span
+class="math inline">\(dxdy=|J|dudv\)</span>.
+这意味着在xy坐标系中的微小区域<span
+class="math inline">\(dxdy=dA\)</span>的面积等于<span
+class="math inline">\(|J|dudv\)</span>.</p>
 
     </div>
 
@@ -363,13 +273,10 @@ p, \lambda w) \to x(p,w)=x(\lambda p, \lambda w)\)</span></p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/07/13/LaborMarket/" rel="prev" title="LaborMarket">
-      <i class="fa fa-chevron-left"></i> LaborMarket
+    <a href="/2022/10/28/%E6%9E%81%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/" rel="prev" title="极坐标转换">
+      <i class="fa fa-chevron-left"></i> 极坐标转换
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/08/19/ImperfectLaborMarket/" rel="next" title="ImperfectLaborMarket">
-      ImperfectLaborMarket <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -433,8 +340,7 @@ p, \lambda w) \to x(p,w)=x(\lambda p, \lambda w)\)</span></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#the-concept-of-preference"><span class="nav-number">1.</span> <span class="nav-text">The concept of preference</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#intro%E7%BA%A7%E5%88%AB%E7%9A%84preference"><span class="nav-number">1.1.</span> <span class="nav-text">intro级别的preference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#definition-of-preference"><span class="nav-number">1.2.</span> <span class="nav-text">Definition of Preference</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%85%83%E5%85%B3%E7%B3%BBintro"><span class="nav-number">1.2.1.</span> <span class="nav-text">二元关系intro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#greatest-and-maximal-element-of-a-relation"><span class="nav-number">1.2.2.</span> <span class="nav-text">Greatest and maximal
-element of a relation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#choice-function"><span class="nav-number">1.2.3.</span> <span class="nav-text">Choice Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#competitive-budgets"><span class="nav-number">1.2.4.</span> <span class="nav-text">Competitive Budgets</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#brief"><span class="nav-number">1.</span> <span class="nav-text">Brief</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4"><span class="nav-number">2.</span> <span class="nav-text">二维</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

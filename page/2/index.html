@@ -165,6 +165,824 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/24/Lottery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/24/Lottery/" class="post-title-link" itemprop="url">Lottery</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-09-24 13:42:54" itemprop="dateCreated datePublished" datetime="2022-09-24T13:42:54+08:00">2022-09-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-12 20:21:23" itemprop="dateModified" datetime="2022-10-12T20:21:23+08:00">2022-10-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="lottery">Lottery</h1>
+<p>lottery即表示一个随即结果的事件. eg: 买彩票.</p>
+<hr />
+<p>Strictly Defined: 令Z为一个集合(常常是价格集).
+<strong><em>发生在Z上的lottery是一个从Z到R的映射关系,表示为函数p</em></strong>.</p>
+<p>有: <span class="math inline">\(\left\{\begin{matrix} p(z) &gt; 0 ,
+z是Z的元素.\\ p(k) = 0, k不是Z的元素.\\ {\textstyle \sum_{z\in Z}^{}}
+p(z)=1,即总概率为1.\end{matrix}\right.\)</span> (纯纯的分布函数).</p>
+<p>此外,我们定义lottery p的support(即<span
+class="math inline">\(supp(p)\)</span>)为所有使p(z)取正值的价格的集合.
+(美好的概率空间)</p>
+<p>此外,定义<span
+class="math inline">\(L(Z)\)</span>为发生在该集上的所有lottery的集合<span
+class="math inline">\(\to\)</span><span
+class="math inline">\(\left\{\begin{matrix}特殊的lottery如[z]表示结果为z的概率为1  \\价格为z_k时的概率为\alpha_k,表示为\alpha_1\cdot
+z_1\oplus \alpha_2\cdot z_2\oplus...\oplus\alpha_K\cdot
+z_K\end{matrix}\right.\)</span></p>
+<p>(很明显<span class="math inline">\([z]\in L(Z),\alpha_1\cdot
+z_1\oplus \alpha_2\cdot z_2\oplus...\oplus\alpha_K\cdot z_K \in
+L(Z)\)</span>)</p>
+<hr />
+<h1 id="preference-over-lotteries">Preference Over Lotteries</h1>
+<p>我们关注L(Z)上不同的p并作出决策. (第一章definition of preference见KC
+Border)</p>
+<p>这里给出三种常见的映射关系:悲观主义,good and bad, minimizing
+options</p>
+<hr />
+<h2 id="pessimist">Pessimist</h2>
+<p>悲观主义之p指在<span
+class="math inline">\(Z\)</span>上有严格的按照最差价格比较的偏好.</p>
+<p>Define <span class="math inline">\(w(p) \in supp(p)\)</span>, 令<span
+class="math inline">\(\forall y \succ w(p), y \in supp(p)\)</span>.
+则悲观主义者存在: <span class="math inline">\(w(p)\succ w(q) \to p \succ
+q\)</span>.</p>
+<p>(w是一种映射关系,而不是单纯的Z中的元素(什么反函数).)</p>
+<hr />
+<h2 id="good-and-bad">Good and Bad</h2>
+<p>这种人将Z分为两个子集,即Good集和Bad集.</p>
+<p>则令G(p)为good集中元素发生的概率($= {_{z good}^{}}p(z) <span
+class="math inline">\(). 有:\)</span>G(p) G(q) p q$.</p>
+<hr />
+<h2 id="minimizing-options">Minimizing Options</h2>
+<p>这种人对不确定性很敏感,即supp(p)中的价格数量越多,则越不喜欢.</p>
+<p>即:<span class="math inline">\(|supp(p)|\le |supp(q)|\to q\succeq
+p\)</span>​.</p>
+<hr />
+<p>以上只是特别列出的</p>
+<h1 id="properties-of-preferences">Properties of Preferences</h1>
+<p>实际上并不是所有的p都会满足以下列出的性质,但是最最最常用的p
+consistent with expected utility满足就行了.</p>
+<hr />
+<h2 id="continuity">Continuity</h2>
+<p>for <span class="math inline">\(\forall Z\)</span>, 如果<span
+class="math inline">\(\forall a,b,c \in Z\)</span>存在关系<span
+class="math inline">\([a]\succ [b] \succ [c]\)</span>, 此时如果<span
+class="math inline">\(\exists \alpha \in (0,1)\)</span>使得<span
+class="math inline">\([b] \sim \alpha \cdot a \oplus (1-\alpha) \cdot
+c\)</span>. 则Z上的偏好关系满足Continuity.</p>
+<p>很直接了,如果[a]优于[b]优于[c],则[b]必indifferent于a,c的线性组合中(什么convex集).</p>
+<h3 id="检验">检验</h3>
+<hr />
+<h4 id="pessimisive-不满足">Pessimisive : 不满足</h4>
+<p>for <span class="math inline">\([a]\succ [b] \succ [c]\)</span>,
+<span class="math inline">\([b]\succ \alpha \cdot a \oplus (1-\alpha)
+\cdot c \sim [c]\)</span></p>
+<hr />
+<h4 id="good-and-bad-满足">Good and Bad : 满足</h4>
+<p>这里用到一个逻辑判断式:<span class="math inline">\(A \to
+B\Leftrightarrow C\)</span>, if A is false,则该语句返回true.</p>
+<p>因此对于Good and Bad,if 它有三个z,
+即xyz,那么他无论怎么分good和bad,必有两个在同一个集合里<span
+class="math inline">\(\to\)</span>必有两个是indifferent的.
+因此不满足条件<span class="math inline">\([a]\succ [b] \succ
+[c]\)</span>​,因此自动满足...</p>
+<hr />
+<h4 id="option-minimizing-满足">Option minimizing : 满足</h4>
+<p>同上,对于<span
+class="math inline">\([a][b][c]\)</span>,他们的supp都等于一,因此不满足条件<span
+class="math inline">\([a]\succ [b] \succ [c]\)</span>​,自动成立</p>
+<hr />
+<h2 id="independence">Independence</h2>
+<p><span class="math inline">\(对于任何lottery:\alpha_1 \cdot x_1
+\oplus...\oplus \alpha_k \cdot x_k \oplus..和\alpha\cdot
+a\oplus\beta\cdot b,有: \\ [x_k]\succ \alpha\cdot a\oplus\beta\cdot b \\
+\Leftrightarrow \alpha_1 \cdot x_1 \oplus...\oplus \alpha_k \cdot x_k
+\oplus.. \succ \alpha_1 \cdot x_1 \oplus...\oplus \alpha_k \cdot
+(\alpha\cdot a\oplus\beta\cdot b) \oplus..\)</span></p>
+<p>直译:如果[x]优于一个compound lottery等价于<span
+class="math inline">\(p \succ q\)</span>,且<span
+class="math inline">\(p,q\)</span>仅第k项分别为上式中的左右项,则这个preference
+independent.</p>
+<p>也就是说,lottery中z的preference关系不会受到supp(p)的大小的影响(所有项的preference都相互独立).
+式中compound lottery可换为任意的lottery.</p>
+<h3 id="检验-1">检验</h3>
+<hr />
+<h4 id="pessimisive-不满足-1">Pessimisive : 不满足</h4>
+<p><span class="math inline">\([x_k] \succ \alpha\cdot a\oplus\beta\cdot
+b\)</span>只能说明<span
+class="math inline">\(x_k要大于min(a,b)\)</span>,但不足与和第二式等价,因为可能发生<span
+class="math inline">\(\exists
+x_i&lt;mix(a,b)&lt;x_k\)</span>,这样的话两式就<span
+class="math inline">\(\sim\)</span>​了.</p>
+<hr />
+<h4 id="good-and-bad-满足-1">Good and Bad : 满足</h4>
+<p>officially: 通过<span
+class="math inline">\(G(p)-G(q)和G(x_k)-G(compound
+L)\)</span>符号一样来确定. 因为if <span class="math inline">\(\forall
+x_i \in Good或Bad集,G(p_i)=G(q_i)\)</span>.</p>
+<p>到最后G(p)和G(q)唯一的区别就由<span
+class="math inline">\(x_k\)</span>​和compound L来决定了.</p>
+<hr />
+<h4 id="optional-minimizing-不满足">Optional Minimizing : 不满足</h4>
+<p>举个反例: <span class="math inline">\([a] \succ n_1 \cdot a \oplus
+(1-n_1) \cdot b\)</span>,但是<span class="math inline">\(m_1\cdot a
+\oplus (1-m_1) \cdot b \sim m_1\cdot (n_1 \cdot a \oplus (1-n_1) \cdot
+b)\oplus (1-m_1)b\)</span></p>
+<p>因为是由supp判断的,而supp是所有possible
+元素一起决定的,所以不可能会independent.</p>
+<hr />
+<h2 id="monotonicity">Monotonicity</h2>
+<p>if <span class="math inline">\(\forall x,y \in Z\)</span> with <span
+class="math inline">\([x]\succ [y],\forall \alpha , \beta \in
+[0,1]\)</span>,有:</p>
+<p><span class="math inline">\(\alpha &gt;\beta \Leftrightarrow \alpha
+\cdot x \oplus (1-\alpha) \cdot y \succ \beta \cdot x \oplus
+(1-\beta)\cdot y\)</span></p>
+<p>有个引理: any independent preference over L(Z) is monotonic</p>
+<p>证明:</p>
+<p><strong>for only if</strong>: 如果<span class="math inline">\(\alpha
+&gt; \beta\)</span>,则改写等式为<span
+class="math display">\[\left\{\begin{matrix}\alpha \cdot x\oplus
+(1-\alpha )\cdot y = \beta \cdot x\oplus (\alpha -\beta)\cdot x\oplus
+(1-\alpha)\cdot y
+\\\beta \cdot x\oplus (1-\beta )\cdot y = \beta \cdot x\oplus (\alpha
+-\beta)\cdot y\oplus (1-\alpha)\cdot y\end{matrix}\right.\]</span></p>
+<p>if<span class="math inline">\(\alpha \cdot x \oplus (1-\alpha) \cdot
+y \succ \beta \cdot x \oplus (1-\beta)\cdot y\)</span>,则:</p>
+<p>因为independent,且<span class="math inline">\([x]\succ
+[y]\)</span>,所以:</p>
+<p><span class="math inline">\(\beta \cdot x\oplus (\alpha -\beta)\cdot
+x\oplus (1-\alpha)\cdot y \succ \beta \cdot x\oplus (\alpha -\beta)\cdot
+y\oplus (1-\alpha)\cdot y\)</span></p>
+<p><strong>for if</strong>: 如果<span class="math inline">\(\beta \cdot
+x\oplus (\alpha -\beta)\cdot x\oplus (1-\alpha)\cdot y \succ \beta \cdot
+x\oplus (\alpha -\beta)\cdot y\oplus (1-\alpha)\cdot
+y\)</span>,则假设:</p>
+<ol type="1">
+<li><span class="math inline">\(\alpha&gt;\beta\)</span>
+,此时刚好满足monotonicity.</li>
+<li><span class="math inline">\(\alpha &lt;\beta\)</span>, 由only
+if的结论可以推导出<span class="math inline">\(\alpha \cdot x \oplus
+(1-\alpha) \cdot y \prec \beta \cdot x \oplus (1-\beta)\cdot
+y\)</span>,与条件不符.</li>
+<li><span class="math inline">\(\alpha = \beta\)</span>, 此时<span
+class="math inline">\(\alpha \cdot x \oplus (1-\alpha) \cdot y \sim
+\beta \cdot x \oplus (1-\beta)\cdot y\)</span>,与条件不符.</li>
+</ol>
+<p>所以只能是<span class="math inline">\(\alpha&gt;\beta\)</span>.</p>
+<p>my thought: 一旦条件给出<span class="math inline">\(\alpha \cdot x
+\oplus (1-\alpha) \cdot y \succ \beta \cdot x \oplus (1-\beta)\cdot
+y\)</span>,则改写后的等式中间那个必须属于supp(p),则<span
+class="math inline">\(\alpha -\beta\)</span>必须大于0.</p>
+<h1 id="expected-utility">Expected Utility</h1>
+<p>any preference over L(Z) is consistent with expected utility if there
+is a function u: <span class="math inline">\(Z\to R\)</span> such
+that</p>
+<p><span class="math inline">\(p\succ q\)</span> if <span
+class="math inline">\(Eu(p)\ge Eu(q)\)</span>. for <span
+class="math inline">\(Eu(p)=\sum_{z\in Z }^{} p(z)u(z), p\in
+L(Z)\)</span>.</p>
+<p>易证其满足complete and transitive, 其中u被称作expected utility
+function,也即伯努利方程(最早是伯努利提出效用概念),u(z)因为是数字,所以可以看作random
+variable, z如果也是数字的话那也可以看作random variable.</p>
+<h2 id="定理1">定理1</h2>
+<p>如果u是L(Z)上的效用方程,那么v也是L(Z)上的效用方程$$ <span
+class="math inline">\(\exists a&gt;0,b\)</span> 使得<span
+class="math inline">\(v(z)=au(z)+b\)</span>, for all <span
+class="math inline">\(z\in Z\)</span>.</p>
+<p>(即expected utility function is unique up to an affine
+transformation)</p>
+<p>证明:</p>
+<p><strong>only if</strong>: for<span
+class="math inline">\(a&gt;0,b\)</span> 且u是效用方程,则假设<span
+class="math inline">\(Eu(p)\ge Eu(q) \to p\succ q\)</span>.</p>
+<p><span class="math inline">\(Eu(p)=\sum_{z\in Z }^{}
+p(z)u(z)&gt;Eu(q)=\sum_{z\in Z }^{} q(z)u(z)\)</span>.</p>
+<p><span class="math inline">\(Ev(p)=\sum_{z\in Z }^{}
+p(z)v(z)=\sum_{z\in Z }^{} p(z)au(z)+bp(z)=a\sum_{z\in Z
+}^{}p(z)u(z)+b\)</span></p>
+<p><span class="math inline">\(Ev(q)=\sum_{z\in Z }^{}
+q(z)v(z)=\sum_{z\in Z }^{} q(z)au(z)+bq(z)=a\sum_{z\in Z
+}^{}q(z)u(z)+b\)</span></p>
+<p><span class="math inline">\(Ev(p)-Ev(q)=a\sum_{z\in Z
+}^{}p(z)u(z)-q(z)u(z)=a(Eu(p)-Eu(q))\)</span>.因此v的preference和u的一样.</p>
+<p><strong>if</strong>: 假设u,v都是效用函数,则:假设<span
+class="math inline">\(p\succ q\)</span>,有</p>
+<p><span class="math inline">\(\left\{\begin{matrix}\sum pv&gt;\sum
+qv  \\\sum pu&gt; \sum qu \end{matrix}\right.\)</span></p>
+<p>令<strong>p</strong>=<span
+class="math inline">\(\begin{bmatrix}p(z_1)  \\..  \\..  \\p(z_n)
+\end{bmatrix}\)</span>,<strong>q</strong>=<span
+class="math inline">\(\begin{bmatrix}q(z_1)  \\..  \\..  \\q(z_n)
+\end{bmatrix}\)</span>,<strong>v</strong>=<span
+class="math inline">\(\begin{bmatrix}v(z_1)  \\..  \\..  \\v(z_n)
+\end{bmatrix}\)</span>,<strong>u</strong>=<span
+class="math inline">\(\begin{bmatrix}u(z_1)  \\..  \\..  \\u(z_n)
+\end{bmatrix}\)</span>.</p>
+<p>可得<span
+class="math inline">\(p&#39;v&gt;q&#39;v且p&#39;u&gt;q&#39;u\)</span>,可得到:</p>
+<p><span
+class="math inline">\(\left\{\begin{matrix}(p-q)&#39;v&gt;0  \\(p-q)&#39;u&gt;0
+\end{matrix}\right.\)</span>, 这意味着<span
+class="math inline">\(\forall
+(p-q)\)</span>,它和u,v的夹角都必须小于90度<span
+class="math inline">\(\to\)</span>u,v 共向<span
+class="math inline">\(\to\)</span> <span class="math inline">\(\exists
+a&gt;0,b\)</span> 使得v=au+b.</p>
+<p>Q.E.D</p>
+<h2 id="定理2">定理2</h2>
+<p>preference满足continuity和independence等价于preference满足预期效用.</p>
+<p>(preference over L(Z) is consistent with expected utility iff it is
+continuous and independent)</p>
+<p>证明:</p>
+<p><strong>if</strong>: preference is consistent with expected utility:
+assume <span class="math inline">\([x] \succeq [y] \succeq [z]\)</span>,
+因<span class="math inline">\(Eu([z])=u(z)\)</span>, then <span
+class="math inline">\(u(x) \ge u(y)\ge u(z)\)</span>, then <span
+class="math inline">\(\exists \alpha, u(y) = \alpha
+u(x)+(1-\alpha)u(z)\)</span>. 此时有: <span
+class="math inline">\(\frac{u(y) - u(z)}{u(x)-u(z)} =\alpha
+\in(0,1)\)</span>, 则满足continuity.</p>
+<p>另外,assume <span class="math inline">\(\alpha_1 \cdot x_1
+\oplus...\oplus \alpha_k \cdot x_k \oplus... \succeq \alpha_1 \cdot x_1
+\oplus...\oplus\alpha_k \cdot(\beta \cdot a \oplus(1-\beta)\cdot
+b)\oplus...\)</span></p>
+<p>有:<span class="math inline">\(\sum \alpha_i x_i \ge \sum \alpha_{i’}
+x_{i’} + \alpha_k(\beta a+(1-\beta)b)\)</span></p>
+<p>得:<span class="math inline">\(\alpha_k x_k \ge \alpha_k(\beta
+a+(1-\beta)b) \to x_k \ge (\beta a+(1-\beta)b)\)</span></p>
+<p><span class="math inline">\(\to [x_k]\succeq \beta \cdot a
+\oplus(1-\beta)\cdot b\)</span> ,则满足independence.</p>
+<p><strong>only if</strong>: assume Z是一个有限集,则将其元素排列为:<span
+class="math inline">\([z_1]\succeq[z_2]...\succeq[z_n]\)</span>, 则<span
+class="math inline">\(\forall i\in(1,n),\exists a\in(0,1)\)</span>,
+使得<span class="math inline">\([z_i]\sim a\cdot z_1 \oplus (1-a)\cdot
+z_n\)</span>,且如果各个<span
+class="math inline">\(z_i\)</span>的偏好不同,那么每个a都是唯一的.
+则对于某个lottery: <span class="math inline">\(p_1\cdot z_1\oplus
+p_2\cdot z_2\oplus...p_n\cdot z_n\)</span>,
+利用independence可得它和该lottery有相同偏好: <span
+class="math inline">\(p_1\cdot z_1\oplus p_2\cdot (a_2\cdot
+z_1\oplus(1-a_2)\cdot z_n)...\oplus p_n\cdot z_n\)</span>.</p>
+<p><span class="math inline">\(\to \sum p_i z_1 a_i\oplus \sum
+p_i(1-a_i)z_n \to z_i\sum p_i a_i\oplus (1-\sum p_i a_i)z_n\)</span>.
+则因<span class="math inline">\(z_i
+和z_n\)</span>之间的偏好已经确定了,那么<span
+class="math inline">\(\forall p,q\)</span>之间的偏好比较就是在比较<span
+class="math inline">\(\sum p_i a_i\)</span>的大小(monotonicity).
+那么也很自然的<span class="math inline">\(a_i\)</span>就是<span
+class="math inline">\(z_i\)</span>的utility,可以写作<span
+class="math inline">\(a_i=u(z_i)\)</span>.</p>
+<p>btw, 如果出现<span
+class="math inline">\([z_1]\sim[z_n]\)</span>的情况,只需要将<span
+class="math inline">\(\forall i, a_i =0\)</span>即可确定所有的<span
+class="math inline">\(\sim\)</span>关系.</p>
+<p>Q.E.D</p>
+<h1 id="allais-paradox">Allais Paradox</h1>
+<p>eg: 如果有两组lottery, <span
+class="math inline">\(\left\{\begin{matrix}L1:0.2\cdot \$4000 \oplus 0.8
+\cdot \$0  \\R1: 0.25\cdot \$3000\oplus 0.75\cdot \$0
+\end{matrix}\right.\)</span> 和 <span
+class="math inline">\(\left\{\begin{matrix}L2: 0.8\cdot \$4000\oplus
+0.2\cdot \$0  \\R2: \$3000 \end{matrix}\right.\)</span></p>
+<p>如果你遵循理性人原则(效用最大化),那么这两组中(一组选一个)该怎么选?</p>
+<p>答案是(<span class="math inline">\(L_1,L_2\)</span>)或(<span
+class="math inline">\(R_1,R_2\)</span>).</p>
+<p>证: 定义算子$$为两个元素之间待比较的偏好.</p>
+<p>有: <span class="math inline">\(L_1\heartsuit L_2=(0.2 \times 4000 +
+0.8 \times 0) \sim(0.25 \times 3000+0.75 \times 0)\)</span></p>
+<p><span class="math inline">\(\to (0.2\times 4000 + 0.05 \times 0) \sim
+(0.25 \times 3000)\)</span></p>
+<p><span class="math inline">\(\underset{\times 4}{\to} (0.8 \times 4000
++ 0.2 \times 0) \sim (1\times 3000)\)</span> ,这刚好就是第二组了.</p>
+<p>其中<span class="math inline">\(\heartsuit\)</span>可以是<span
+class="math inline">\(\succeq\)</span>,也可以是 $$ ,对应的 <span
+class="math inline">\(\sim\)</span> 取大于,小于.</p>
+<p>Q.E.D</p>
+<h1 id="risk-attitude">Risk Attitude</h1>
+<p>令<span class="math inline">\(Z=R_+ = [0,+\infty )\)</span>, expected
+value of p is: <span class="math inline">\(E(p)= \sum
+p(z)z\)</span>.</p>
+<p>此时,preference over L(<span
+class="math inline">\(R_+\)</span>)有三种情况:</p>
+<p><span
+class="math inline">\(\left\{\begin{matrix}risk-neutral:E(p)\sim
+p  \\risk-averse:E(p)\succeq p \\risk-loving:p\succeq E(p)
+\end{matrix}\right.\)</span></p>
+<p>实际上上面的Allais paradox可以用risk attitude来解释.</p>
+<h2 id="定理">定理</h2>
+<p>如果u是concave,即u满足:if <span class="math inline">\(x,y\in
+R_+\)</span>, <span class="math inline">\(\alpha\in (0,1)\to\)</span>
+<span class="math inline">\(u(\alpha x+(1-\alpha)y)\ge \alpha
+u(x)+(1-\alpha)u(y)\)</span>.</p>
+<p>(可以自己画张图,就是函数值在两点连线之上.)</p>
+<p>等价于其上的p就是risk averse.</p>
+<p>证明:</p>
+<p>if: according to Jensen’s inequality,可知如果u是concave的话满足:</p>
+<p><span class="math inline">\(u(\sum pz)\ge \sum pu \to
+u(E(p))&gt;Eu(p)\to E(p)\succeq p\)</span>.因为E(p)只有一个,所以<span
+class="math inline">\(u(E(p))\)</span>就是expected utility.</p>
+<p>only if: 这个不需要琴生不等式: risk averse: <span
+class="math inline">\(E(p)=\sum pz \succeq p\)</span> <span
+class="math inline">\(\to\)</span> <span
+class="math inline">\(\left\{\begin{matrix}\alpha x+(1-\alpha)y \succeq
+\alpha \cdot x \oplus (1-\alpha)\cdot y  \\Eu(\alpha
+x+(1-\alpha)y)&gt;Eu(p) \end{matrix}\right.\)</span> <span
+class="math inline">\(\to\)</span> <span class="math inline">\(u(\alpha
+x+(1-\alpha)y)&gt;\alpha u(x)+ (1-\alpha) u(y)\)</span></p>
+<p>Q.E.D</p>
+<p>补充琴生不等式证明:</p>
+<p>if u is concave:即证明<span class="math inline">\(u(\sum pz)\ge \sum
+pu\)</span></p>
+<p>令A=<span class="math inline">\(\sum pz\)</span>,因为<span
+class="math inline">\(\sum p=1\)</span>,则A必<span
+class="math inline">\(\in(z_{min},z_{max})\)</span>,则原式化为:<span
+class="math inline">\(u(A)-\sum pu = \sum p(u(A)-u)=\sum p\int_{x_i}^{A}
+u&#39;(x) dx\)</span>.</p>
+<p>由u是concave得知,u’递减,则<span class="math inline">\(\int_{x_i}^{A}
+u&#39;(x) dx\ge u&#39;(A)(A-x_i)\)</span></p>
+<p>得到:<span class="math inline">\(u(A)-\sum pu \ge \sum pu’(A)(A-x_i)
+= u&#39;(A)\sum p(A-x_i)=u&#39;(A)(A-A)=0\)</span>.</p>
+<p>即:<span class="math inline">\(u(A)-\sum pu \ge0\)</span>, Q.E.D</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/24/%E5%85%B3%E4%BA%8E%E6%AC%A7%E6%B4%B2%E4%B9%8B%E9%AB%98%E5%B1%82%E4%BD%8F%E5%AE%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/24/%E5%85%B3%E4%BA%8E%E6%AC%A7%E6%B4%B2%E4%B9%8B%E9%AB%98%E5%B1%82%E4%BD%8F%E5%AE%85/" class="post-title-link" itemprop="url">关于欧洲之高层住宅</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-09-24 10:33:00 / 修改时间：10:33:13" itemprop="dateCreated datePublished" datetime="2022-09-24T10:33:00+08:00">2022-09-24</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>关于世界之高层住宅</p>
+<p>最近被推荐了一篇文章,可以用来对比预测中国高层的命运.</p>
+<ol type="1">
+<li><p>中国兴建高楼的举措类似于欧美之1960s.</p></li>
+<li><p>特别地,美加澳新等移民国家除部分城市外大多数都是CBD+外围别墅布局.
+日本学习西方也是别墅布局.</p></li>
+<li><p>英法德意等旧资本主义国家不以别墅布局为主,反而是高层林立.</p></li>
+</ol>
+<p>这些老资本主义国家的住房模式和现中国大修高楼有相似之处,于是可以借其做prophesy.(作者认为形式并不乐观)</p>
+<h1 id="西欧兴建高层住宅的背景">西欧兴建高层住宅的背景</h1>
+<h2 id="理论基础">理论基础</h2>
+<p>(巴黎)1922
+柯布西耶提出过明日之城,想让人住进高层,接着是瓦赞计划接着在20年代末的光辉之城.
+法国的住房理念真领先呢,不愧是20s末之前的发达资本主义国家.
+接着1933年出现雅典宪章,提供了城市开发的理论基础.</p>
+<h2 id="物质和经济基础">物质和经济基础</h2>
+<ol type="1">
+<li>二战后大部分欧洲城市都被夷为平地,除了巴黎罗马等.
+他们需要战后重建.</li>
+<li>马歇尔计划给欧洲大量资金,城市化加速,城区扩张. (此时dual
+eco迅速发展)</li>
+<li>重建后的婴儿潮带来long-lasting的高n</li>
+<li>政府开始重视如十九世纪晚期英国的伦敦和利物浦的公共住宅计划等为工人提高居住条件的城市规划方案</li>
+<li>混凝土水泥技术提高. 建造成本降低</li>
+</ol>
+<p>于是当时欧洲大肆建造高楼,不仅可以缓解住房紧张,避免平民窟出现,还可以刺激经济,</p>
+<p>当时的高楼主要是在中心区外围,各种设施非常现代和齐全.因此甚至倍受当时中产的欢迎.</p>
+<p>因为一开始的经济效益很好,所以高楼的密度高度一度成为当时经济水平的指标.</p>
+<p>这里有个小correlation:当时兴建高楼国家的城市化水平普遍在50%左右,正对应了我国目前的城市化水平.</p>
+<h1 id="高层之问题">高层之问题</h1>
+<h2 id="丑">丑</h2>
+<p>完全没有设计感的jail,
+虽然建造很方便,因为有模板,但是完美没有美感(粗鲁主义)</p>
+<h2 id="存在结构和材质缺陷">存在结构和材质缺陷</h2>
+<p>因为建设的快,所以不能精细地建设,于是jail的寿命没有19世纪一些精心打磨的建筑的寿命长.
+同时因为是模式化的图纸照搬建设,所以一旦图纸设计存在缺陷,那么一大片楼都会遭殃.</p>
+<p>eg: 1968. Ronan Point事件.
+该事件造成大片恐慌,也使得英国政府修改关于高楼的建筑法规.</p>
+<h2 id="远">远</h2>
+<p>因为古典建筑设计非常讲究,所以就算被炸毁了也不会完全拆除,而是翻修和保养.
+同时这些古典建筑大多位于中心区域(老城区).
+因此大面积的高层住宅不得不在相对偏远的地方建设.
+这种远离商圈的布局风险极高,因为难以招商引资(市场不够大).</p>
+<h2 id="基础设施的匮乏">基础设施的匮乏</h2>
+<p>有些小区先盖楼房再修设施,同时有些小区仅考虑了较少的人口,使得小区的设施过于拥挤,居民为满足需求不得不进入老城区.</p>
+<hr />
+<h2 id="物业的低效">物业的低效</h2>
+<p>hhh现在在中国也能看到物业的低效带来大量不满.</p>
+<p>当时并没有十分完备的物业章程,所以物业水平不高,照明,漏水等问题不能很好解决,导致某些小区居民润走,一旦润走,物业的资金收入就会降低,于是物业水平再下降,形成循环.如此,小区治安也会下降.</p>
+<h2 id="居民构成改变">居民构成改变</h2>
+<p>高楼建设的初衷是为了缓解城区住房紧张问题,当时欧洲还是以工业为主,因此住进高楼的大多是蓝领.
+但是60年代欧洲提倡发展服务业(金融等),导致第二产业劳动力需求下降,工人大量失业,这些高层中的居民容易发癫.
+另外,他们普遍不富裕,等他们老了之后都躲在高层中领养老金.
+小区中没有活力.</p>
+<h2 id="人口压力下降高层产能过剩">人口压力下降,高层产能过剩</h2>
+<p>一时间兴建高层很快就缓解了人口压力,同时战后欧洲变得富裕,变富的人选择别墅,小区开始空置.
+六十年代英国住房危机缓解后政府就不支持修高层了.
+开发商也致力于别墅等新型小区的建设.</p>
+<h2 id="移民热潮">移民热潮</h2>
+<p>大量移民进入欧洲,成为高层的租客和住户等.因为原先住在高层的就是底层,见识和水平都不高,移民也没什么钱,于是高层区因为不同信仰观念和劳动力纠纷等原因犯罪率上升,成为高层贫民窟.</p>
+<h1 id="开始拆">开始拆!</h1>
+<p>因为高层的问题层出不穷,成为社会治安的痛点,于是许多国家再70s兴拆高层.
+(大体可以说是因为高层因各种原因成为鼠鼠聚集的地方,什么住户下沉,但是房价非常高的市中心高层,用材和设计都十分讲究,往往能筛选鼠鼠,使其不至于沦落为贫民窟)</p>
+<p>另外,高层因缺陷使得维修成本高于重修成本,
+租户增加,素质不高加上其他之前说过的原因使得原本住户离开,房屋空置率增加.</p>
+<p>各种问题使得高层的不适合有水平的居民居住(经济),而没水平的人聚在一起容易搞事(治安),所以高层的社会价值很低,保留高层的机会成本很高,所以决定拆迁.</p>
+<p>以至于拆除高楼成为一种时尚,就算没有设计问题的高楼也被拆了很多,大多还是因为这些高楼的人文不和谐.</p>
+<h1 id="拆后的问题">拆后的问题</h1>
+<p>rt,很明显,高层是为了解决人口增加引致的住房问题的.
+一旦高楼拆除,加上政府引导(1979撒切尔私有化改革),使得民众看好低密度住宅.
+这导致房价上涨,住房问题日益明显.</p>
+<h1 id="改造热潮">改造热潮</h1>
+<p>因为房价上涨,所以政府为了兼顾低收入人群,不得不保留部分高层.
+并改进这些高层,包括更换设备和有毒材料等,同时也提高物业质量,在周围兴建大型娱乐场和办公场所等(到这已经非常现代了,就是城市更新).并且最重要的时提高小区活力.</p>
+<h1 id="modern-altitude">Modern Altitude</h1>
+<p>英国2017
+Grenfell大火案使得社会对高层容忍度降低,以至于部分国家宣布完全拆除高层这种危楼.</p>
+<p>实际上,欧洲很多的高层建设就算结构没问题,设计问题还是很大.很多都是危楼,而且高层建设就是给低收入人群用的,是为了解决住房紧张问题的,这种高密度的住房方式并不适合现代人.</p>
+<h1 id="结语">结语</h1>
+<p>高层堕落的原因:设施不行,设计缺陷,位置不好引致住户下沉,物业堕落.</p>
+<p>因此高层这种住房方式并不是不合理,反倒在非常繁华地带的高层因为各项设施都非常不错而保存下来.</p>
+<p>(my theory:
+高层这种高密度住宅本身是减分项,必须依靠相关配套设施来加分使总分高于住户的threshold才行.我相信有别墅住不会住进高层吧)</p>
+<p>中国现在的发展水平刚好是路易斯模型的第二阶段(能够互证),当农村生产力提高,许多高层就要出现危机了.但是目前中国的房地产...看来还不到那个时候就已经寄了呢.毕竟是absolutism,irregular的市场不能出现regular的结局.
+另外,刺激服务业也是高层衰落的原因,但是zg这么多高层,zf只要限制别墅建设就能很好的解决这个问题,真是...唉.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/21/Education/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Johnnnngr">
+      <meta itemprop="description" content="some discoveries...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Johnnnnngr">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/21/Education/" class="post-title-link" itemprop="url">Education</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-21 00:04:00" itemprop="dateCreated datePublished" datetime="2022-08-21T00:04:00+08:00">2022-08-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-12 20:21:38" itemprop="dateModified" datetime="2022-10-12T20:21:38+08:00">2022-10-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>HumanCapital</p>
+<h1 id="definition-of-human-capital">Definition of human capital</h1>
+<p>a set of skills abilities and acquired skills.</p>
+<hr />
+<p>Borjas 这里研究的只是我们选择投资多少human capital
+,以及这些人力资本如何影响我们的收入.</p>
+<p>人力资本的主要获得方式是schooling and training program.
+美国的人均学历不断提高,基本可以说美国的人力资本积累不断增加.</p>
+<p>Borjas:
+问题是为什么早期积累的少呢,也就是说,为什么早期人们不选择上学而是早早去工作?
+因为人们选择积累人力资本实际上是面临trade off:
+上学没工资,但不上学未来的工资低(所以上学tmd还有风险). 所以in conclusion:
+选择上学的收益是未来的高工资,而成本是现在的低工资和其他投资机会.
+但是对于一个国家总体的教育水平来说,除了人们本身的资金外,还有政策(助学金)和学校准入门槛高低会影响总体教育水平.</p>
+<p>另外,Borjas 认为,对于工人的工资水平,最重要的决定因素还是人力资本存量.
+其他因素诸如颜值,运气等虽然会极大地改变个人的工资,但是总体上还是人力资本占主导.
+因此提升low skill workers工资的最好方法自然就是政府补贴其学习.</p>
+<hr />
+<h1 id="the-schooling-model">The Schooling Model</h1>
+<p>考量人力资本积累和收入的关系.</p>
+<p>Borjas:
+实际上人们积累人力资本不仅仅是为了工资,还有社会地位等其他的side effects.
+但是模型中并不考量.</p>
+<h2 id="assumptions">Assumptions</h2>
+<ol type="1">
+<li>18岁少年,面临着是否进入大学进修三年的选择.</li>
+<li>没有job-training, 只有school 为人力资本的唯一来源.</li>
+<li>人力资本不折旧, 因此他的工资在毕业后不会变化了.</li>
+<li>65岁退休</li>
+</ol>
+<h2 id="graph-explanation">Graph &amp; Explanation</h2>
+<p>:<img src="/2022/08/21/Education/1.jpg" class="" title="效果图1"></p>
+<p>H为学费,<span
+class="math inline">\(w_{HS}\)</span>为高中学历的收入,<span
+class="math inline">\(w_{COL}\)</span>为大学毕业的收入.
+大学学历收入高于高中学历的部分可以看作compensation for a degree.</p>
+<p>选择是否进入大学可以看两个决策的现值:</p>
+<p>不读大学:<span
+class="math inline">\(PV_{HS}=w_{HS}+\frac{w_{HS}}{(1+r)}
++\frac{w_{HS}}{(1+r)^2}+...+\frac{w_{HS}}{(1+r)^{46}}\)</span></p>
+<p>读大学:<span class="math inline">\(PV_{COL}=-H-\frac{H}{(1+r)}
+-\frac{H}{(1+r)^2}-\frac{H}{(1+r)^3}+\frac{w_{col}}{(1+r)^{4}}+...+\frac{w_{col}}{(1+r)^{46}}\)</span></p>
+<p>是时候决策了! if <span class="math inline">\(PV_{HS} &gt;
+PV_{COL}\)</span>,则不读大学,反之相反. (Borjas:
+是可能出现不去读大学的情况的,只要r够大).</p>
+<p>在比较的过程中,r很关键.r越大,说明attachment to future value is small.
+r 一般是market rate of interest,但也可以是我们的时间偏好(time
+preference),即我们预期的今天不消费受到的委屈放到明天释放的rate
+(什么不可知的心理学rate),一般是present-oriented
+之人r比较大,因为他们受不了委屈.</p>
+<h2 id="wage-school-locus-mrr">Wage-School Locus &amp; MRR</h2>
+<p>WSL是expected的人们愿意为各个学历接受的工资.
+为了更加细分人们学习的意愿,大学四年不一定是四年,也可以是中途辍学或选择短时间的项目.因此引入WSL进行更细致的决策.</p>
+<p>:<img src="/2022/08/21/Education/2.jpg" class="" title="效果图2"></p>
+<p>这条曲线有三个重要的特点:</p>
+<ol type="1">
+<li>upward-sloping: 学的越多,工资越高.</li>
+<li>整体上是个差分函数,即多学一年工资才会涨,不然其实不变.</li>
+<li>concave: 预示着diminishing returns (Easterly
+写过文章指出人力资本积累是资本越多积累越快的...你们快打一架吧).</li>
+</ol>
+<p>我们记WSL的斜率为$ <span class="math inline">\(.
+多读一年的工资增长率为\)</span>$, 也就是<strong>marginal rate of return
+to school</strong>, 其必随着学习时间递减,这个关系用Marginal Rate of
+Return curve描述:</p>
+<p>MRR:<img src="/2022/08/21/Education/3.jpg" class="" title="效果图3"></p>
+<p>注意竖轴是discount rate哦.</p>
+<h2 id="stopping-rule">Stopping Rule</h2>
+<p>何时停止读书? Borjas: 当然是当多读一年的MRR = discount rate
+(r)就停止呀(也就是说今年读书的收益率和折现率一样,那么明年再读必亏).</p>
+<p>写点Borjas没提到的: 这个运算基本说是:<span class="math inline">\(PV =
+\sum_{i=1}^{k} (\frac{-H}{(1+r)^{i-1}} )+\sum_{k}^{n}
+\frac{w\prod_{j=1}^{k} (1+MRR_j) }{(1+r)^{k-1}}\)</span>.
+Borjas说的保真吗?
+做个拉格朗日吧家人们.好像不保真啊,如果多做一年那么代价是学费,必须要学费增值等于额外收入才行啊.如果学到MRR
+= r,那岂不是一年的收入可能比学费的现值少了?
+Borjas这里应该是边学边工作吧.
+或者,Borjas这里的MRR变成了未来所有收入的现值.</p>
+<p>Borjas:
+现实中是否进入大学还有其他很多的考量,所以说实话这个选择和是否投资一样,充满了risk.</p>
+<h2 id="difference-in-wages">Difference in Wages</h2>
+<p>如前所述,有两个导致不同人选择读多少书的因素: discount rate &amp;
+MRR.</p>
+<hr />
+<h3 id="discount-rate">Discount rate</h3>
+<p>这就是个人的偏好了(因为只有将time
+preference作为r才会导致折现率不同).实际上如果跨期预算约束也用这个偏好的话,那么对于个人来说他最优的学习时间也是使得总utility最大的决策.</p>
+<p>相关policy implication: 义务教育(compulsory
+education)能确保所有人的工资会高于之前的. woc in this way such policy is
+evil for not maximizing some students’ profit.</p>
+<hr />
+<h3 id="mrr">MRR</h3>
+<p>也就是MRR曲线不同,即学习能力不同.
+当然是学习能力越强,MRR曲线越上方(即同等学时下导数和绝对值越大)</p>
+<p>eg: 有两个人Ace和Bob.
+令Bob的MRR高于Ace.则如果两人的r相同,那么Bob会比Ace多学一些.</p>
+<p>:<img src="/2022/08/21/Education/4.jpg" class="" title="效果图4"></p>
+<p>此图中Bob赚的多,不仅因为Bob学的多,而且因为Bob is more able
+(Ace真惨).</p>
+<p>Borjas: 实际上这个innate ability
+difference是很难观察到的.那条Z线,现实中也几乎不可能被回归出,就算被回归出了也没啥用.</p>
+<hr />
+<h3 id="about-ability-bias">About ability bias</h3>
+<p>因为MRR很难被回归出,而且如果只告诉两人的收入,是很难确定究竟是r不同还是ability不同.
+因此,如果没有证据证明是能力不同,那么基本就是r的锅了(但ability
+difference如实存在). 但是诸如宣传compulsory
+education能涨多少工资的人,他们忽略了ability的影响.</p>
+<hr />
+<h3 id="estimation-of-mrr">Estimation of MRR</h3>
+<p>around 14%. Borjas在这里做了复杂的回归分析.</p>
+<hr />
+<h1 id="policy-implication-schools-in-indonesia">Policy Implication:
+Schools in Indonesia</h1>
+<p>Borjas:
+发展中国家的教育投资回报率巨高(也就是说skilled-workers和非skilled-workers工资差距很大).</p>
+<p>evidence: 印度尼西亚政府在1973年launched a major school construction
+program (INPRES). 统计结果: 使得入学率提高3%,
+有学校建立的地区比无学校建立的地区工资提高11%. (Borjas:
+可以说多学一年使得工资提高27%,即3%/11%).</p>
+<p>:<img src="/2022/08/21/Education/5.jpg" class="" title="效果图5"></p>
+<h1 id="policy-implication-the-education-production-function">Policy
+Implication: The Education Production Function</h1>
+<p>经典model: <span
+class="math inline">\(Y=f(x_1,x_2...x_n)\)</span>.</p>
+<p>Y表示学生的achievement (比如成绩和收入),
+各个变量表示教学的因素,比如师生比,老师的学历,其他学生的水平(socioeconomic
+characterstics).</p>
+<p>因为1980s左右对教育的看法还是:
+大力投资教育并不能给学生带来很高的收益(即Y的提高).
+但是之后做了一系列实验,证明了:</p>
+<ol type="1">
+<li>小班教学学生的水平更高</li>
+<li>老师越牛学生的水平越高</li>
+<li>师生比越高学生的水平越高</li>
+</ol>
+<p>得出结论人均教育投资越高,学生的Y越高.</p>
+<p>反例: 进入精英大学是否会更大程度地提高学生的未来收入? 并不.Borjas:
+精英大学入学的学生本身水平已经很高了. (我艹!
+但是我觉得刚毕业的时候还是名校学生薪资更高).</p>
+<h1 id="test-on-schooling-model">Test on Schooling Model</h1>
+<p>我们要检验该模型是否正确,以得到以上讨论的模型的implications.</p>
+<p>检验的一大难点在于我们不可能在现实中完全找到一个人他既参加大学又不参加大学(即不能进入平行宇宙).
+所以Borjas指出只能找有一样MRR曲线的人
+(即拥有一样ability的人)来估计(从统计角度来说引入新变量增加了<span
+class="math inline">\(V(\theta)\)</span>).</p>
+<p>另外,检验还存在selection bias, 即我们各自选择最适合我们自己的.
+因此两个不一样的人(不可能有两个MRR和能力一样的人)对比结果可能会reject
+hypothesis of schooling model.</p>
+<p>此外,研究指出,人们的能力也分很多种,比如智商情商等,甚至还有适应环境的能力.
+这些都会一定程度地影响个体的收入. (evidence:
+大学生在蓝领生产力不如大专生; 大专生在白领生产力不如大学生).</p>
+<h1 id="signaling-theory">Signaling Theory</h1>
+<p>有人认为学历<strong>并不能提高学生地productivity</strong>,而是学位证书证明了学生的innate
+ability.</p>
+<p>假设存在两种工人: low skilled and high skilled.
+两种工人出现的频率和薪资如表:</p>
+<p>:<img src="/2022/08/21/Education/6.jpg" class="" title="效果图6"></p>
+<p>假设workers出生在两种人群中的概率按照频率分布,同时不能自己决定</p>
+<p>假设workers知道自己的水平,但是employers不可能知道.即存在asymmetric
+information. 则在面试的时候workers一定会说自己是high skilled
+workers来利用信息差获利.
+公司有理由不相信任何一位workers并将它们一视同仁.
+(毕竟只有工作后才能知道谁是lj)</p>
+<h2 id="pooling-equilibrium">Pooling Equilibrium</h2>
+<p>公司将所有workers放入一个pool中,支付一样的工资来达到最优化:</p>
+<p>给每位工人支付平均工资, 即<span class="math inline">\(Average Wage
+=(200000\times q) +(300000 \times (1-q)) =
+300000-100000q\)</span>.(此即pooling equilibrium 下的工资)</p>
+<p>结果low skilled worker自然很高兴,因为还是比自己的MPL高了.但是high
+skilled workers
+和employers不高兴.同时效率和welfare都不是有效的,因为大佬可能被分去扫地,而菜鸡会被分去管理.</p>
+<h2 id="signaling">Signaling</h2>
+<p>因为信息差,有人不满意.
+所以不满意的人会尽量证明自己的水平,以被分配到合适的岗位上去,他们的证明就是signal.
+而学位证书就是一种<strong>绝对精准</strong>的signal. (no mismatch
+occured).</p>
+<p>假设公司认为读了<span
+class="math inline">\(\bar{y}\)</span>年的工人就是高水平的,那么就形成工资差异.
+这样所有人都会想要完成<span
+class="math inline">\(\bar{y}\)</span>年的大学, 但是完成存在成本:
+令出生就高水平的人完成需要20000刀,而出生低水平的人需要25001刀
+(多出来的部分可以算成是智商税). 这点非常关键:
+<strong>完成同样学业所需的成本差异是signaling
+理论的基本假设.</strong></p>
+<h2 id="separating-theorem">Separating Theorem</h2>
+<p>一旦完成学业的成本不同,公司可以选择<span
+class="math inline">\(\bar{y}\)</span>来进行筛选:
+只要让低水平工人的成本略高于高水平工人的工资,并且高水平工人的净收入大于低水平工人的收入
+(不然没人会去读书)即可.即:</p>
+<p><span class="math inline">\(200000 &gt; 300000 - (25001 \times
+\bar{y})\&amp; 200000&lt;300000-(20000 \times \bar{y})\)</span></p>
+<p>就能达到筛选.</p>
+<p>rt:<img src="/2022/08/21/Education/7.jpg" class="" title="效果图7"></p>
+<p>此例中<span class="math inline">\(5&gt;\bar{y} &gt; 3.999\)</span>.
+公司在这个范围内决策会形成separating equilibrium.</p>
+<h2 id="policy-implication">Policy Implication</h2>
+<p>schooling模型指出国家想要摆脱贫困可以投资教育,signaling
+理论指出低水平的工人工资仍然很低,只有政府的助学补贴能拯救他们
+(仅指提高工资,生产力不提高, 看起来signaling
+theory预示着国家只能优化工作分配,而不能提高个人生产力).</p>
+<p>但是两个模型都能说明企业喜欢高生产力的人,且他们的工资更高.
+所以究竟在增长中哪种模型占优就不重要了.</p>
+<p>Borjas举了个GED的例子,自己看吧.</p>
+<h1 id="private-and-social-rate-return">Private and Social rate
+return</h1>
+<p>小概念.</p>
+<p>个人: increase in a worker’s earnings resulting from an additional
+year of schooling.</p>
+<p>社会: increase in national income resulting from that same year of
+education.</p>
+<p>signaling理论还真指出了教育的意义仅在于优化工作分配.
+(英雄所见略同)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/19/MONOPSONY/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2864,7 +3682,7 @@ public class CustomShaderGUI : ShaderGUI
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-15 00:22:56" itemprop="dateModified" datetime="2022-10-15T00:22:56+08:00">2022-10-15</time>
+                <time title="修改时间：2022-10-28 21:58:22" itemprop="dateModified" datetime="2022-10-28T21:58:22+08:00">2022-10-28</time>
               </span>
 
           
@@ -2886,7 +3704,9 @@ public class CustomShaderGUI : ShaderGUI
 因为我还没有整搜索引擎推广,所以能看过来的大家应该都认识:)</p>
 <h1 id="索引">索引</h1>
 <h2 id="waiting-list">WAITING LIST</h2>
-<p>.<a href="/2022/10/14/waitinglist/" title="waitinglist">waitinglist</a></p>
+<p>.<a href="/2022/10/14/waitinglist/" title="waitinglist">waitinglist</a><br />
+.<a href="/2022/10/28/Jacobian/" title="Jacobian">Jacobian</a><br />
+.<a href="/2022/10/28/%E6%9E%81%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/" title="极坐标转换">极坐标转换</a></p>
 <h2 id="经济相关">经济相关</h2>
 <h3 id="劳动经济学">劳动经济学</h3>
 <p>.<a href="/2022/07/13/LaborMarket/" title="LaborMarket">LaborMarket</a><br />
@@ -2901,7 +3721,8 @@ public class CustomShaderGUI : ShaderGUI
 <p>.<a href="/2022/09/30/%E8%A1%8C%E5%88%97%E5%BC%8Fbasic/" title="行列式basic">行列式basic</a><br />
 .<a href="/2022/10/12/%E7%9F%A9%E9%98%B5basic/" title="矩阵basic">矩阵basic</a><br />
 .<a href="/2022/10/12/%E4%BC%BC%E7%84%B6basic/" title="似然basic">似然basic</a><br />
-.<a href="/2022/10/15/%E8%AE%A1%E9%87%8Fbasic/" title="计量basic">计量basic</a></p>
+.<a href="/2022/10/15/%E8%AE%A1%E9%87%8Fbasic/" title="计量basic">计量basic</a><br />
+.<a href="/2022/10/28/%E8%B6%85%E8%B6%8A%E5%87%BD%E6%95%B0%E7%9A%84%E5%80%BC/" title="超越函数的值">超越函数的值</a></p>
 <h2 id="shader">Shader</h2>
 <h3 id="custom-render-pipeline和相关shader">Custom Render
 Pipeline和相关shader</h3>
@@ -2994,7 +3815,7 @@ target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/"
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -3048,7 +3869,7 @@ target="_blank" rel="noopener" href="https://catlikecoding.com/unity/tutorials/"
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共40.1k字</span>
+  <span class="post-count">博客全站共41.3k字</span>
 </div>
         
 
